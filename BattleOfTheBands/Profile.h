@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h> 
 
+
 @interface Profile : NSObject
 
 @property (strong,nonatomic) UIImage *bandImage;
@@ -17,6 +18,8 @@
 @property (strong,nonatomic) NSString *bioOfBand;
 @property (strong,nonatomic) NSURL *bandWebsite;
 @property (strong,nonatomic) NSArray *songs;
+
+@property (assign,nonatomic) BOOL isBand;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 

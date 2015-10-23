@@ -13,6 +13,7 @@ static NSString * const bioOfBandKey = @"bioOfBand";
 static NSString * const bandImageKey = @"bandImageKey";
 static NSString * const voteKey = @"voteKey";
 static NSString * const bandWebsiteKey =@"bandWebsiteKey";
+static NSString * const songsKey = @"songsKey";
 
 
 @implementation Profile

@@ -80,8 +80,8 @@
         [profileDictionaries addObject:[profile dictionaryRepresentation]];
     }
     
+    [FirebaseController base];
     
-    //Firebase *base =[[Firebase alloc]initWithUrl:@"https://devmtnbrock.firebaseio.com/entries/"];
     
     //[base setValue:entryDictionaries];
 }

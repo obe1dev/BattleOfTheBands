@@ -13,4 +13,6 @@
 
 + (Firebase *) base;
 
++(void) creatAccount:(NSString *)userName password:(NSString *)password;
+
 @end
