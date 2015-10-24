@@ -71,24 +71,56 @@
 
 #pragma mark Read
 
+- (void)loadFromPersistentStorage {
+    
+    //[[FirebaseController base] childByAppendingPath:@"/profiles/"];
+    
+    [[FirebaseController profiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        NSMutableArray *profiles = [NSMutableArray new];
+        
+        for (NSDictionary *profile in snapshot.value) {
+            
+            
+            [profiles addObject:[[Profile alloc] initWithDictionary:profile]];
+        }
+        self.profiles = profiles;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadProfiles" object:nil];
+        
+    }];
+}
+
 #pragma mark Update
 
-- (void)saveToPersistentStorage {
+- (void) saveToPersistentStorage {
+    
     NSMutableArray *profileDictionaries = [NSMutableArray new];
     for (Profile *profile in self.profiles) {
         
         [profileDictionaries addObject:[profile dictionaryRepresentation]];
     }
     
-    [FirebaseController base];
-    
-    
-    //[base setValue:entryDictionaries];
+    [[FirebaseController base] setValue:profileDictionaries];
+}
+
+- (void) save:(NSArray *) profiles{
+    [self saveToPersistentStorage];
 }
 
 #pragma mark delete
 
 -(void) removeProfile:(Profile *)profile{
+    
+    if (!profile) {
+        return;
+    }
+    
+    NSMutableArray *profileList = self.profiles.mutableCopy;
+    [profileList removeObject:profile];
+    self.profiles = profileList;
+    [self saveToPersistentStorage];
+
     
 }
 

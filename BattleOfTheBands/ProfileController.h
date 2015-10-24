@@ -21,4 +21,6 @@
 
 -(void) removeProfile:(Profile *)Profile;
 
+- (void) save:(NSArray *) profiles;
+
 @end

@@ -33,6 +33,10 @@
     
 };
 
++(Firebase *) profiles {
+    return [[[FirebaseController base] childByAppendingPath:@"/profiles/"] childByAppendingPath:[FirebaseController currentUserUID]];
+}
+
 
 + (Firebase *) userSongBase {
     return [[[FirebaseController base] childByAppendingPath:@"/songs/"] childByAppendingPath:[FirebaseController currentUserUID]];

@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Songs.h"
 
 @interface SongsController : NSObject
+
+@property (strong,nonatomic,readonly) NSMutableArray *songs;
+
++ (SongsController *)sharedInstance;
+
+-(Songs *)createSongWithsongName:(NSString *)songName songData:(NSData *)songData;
+
+-(void) addSong:(Songs *)song;
+
+-(void) removeSong:(Songs *)song;
+
+- (void) save:(NSArray *) songs;
 
 @end
