@@ -13,8 +13,6 @@
 
 + (Firebase *) base;
 
-+(Firebase *) profiles;
-
 + (Firebase *) userSongBase;
 
 +(void) creatAccount:(NSString *)userName password:(NSString *)password;

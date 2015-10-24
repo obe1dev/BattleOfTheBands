@@ -12,6 +12,10 @@
 
 @interface Profile : NSObject
 
+//do i need to add uid and passwords
+
+@property (strong,nonatomic) NSString *uID;
+@property (strong,nonatomic) NSString *password;
 @property (strong,nonatomic) UIImage *bandImage;
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSNumber *vote;

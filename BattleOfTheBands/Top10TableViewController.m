@@ -49,7 +49,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Top10TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    //Profile *profile = [ProfileController sharedInstance].profile[indexPath.row];
     
     cell.textLabel.text = [ProfileController sharedInstance].profile[indexPath.row];
     

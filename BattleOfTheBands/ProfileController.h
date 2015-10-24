@@ -15,12 +15,12 @@
 
 + (ProfileController *)sharedInstance;
 
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand vote:(NSNumber *)vote bandWebsite:(NSURL *)bandWebsite songs:(NSArray *)songs;
+-(Profile *)createProfileWithName:(NSString *)name uID:(NSString *)uID password:(NSString *)password bioOfBand:(NSString *)bioOfBand vote:(NSNumber *)vote bandWebsite:(NSURL *)bandWebsite songs:(NSArray *)songs;
 
 -(void) addProfile:(Profile *)Profile;
 
 -(void) removeProfile:(Profile *)Profile;
 
-- (void) save:(NSArray *) profiles;
+-(void) save:(NSArray *) profiles;
 
 @end

@@ -38,11 +38,13 @@
 #pragma mark Creat profile
 
 
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand vote:(NSNumber *)vote bandWebsite:(NSURL *)bandWebsite songs:(NSArray *)songs{
+-(Profile *)createProfileWithName:(NSString *)name uID:(NSString *)uID password:(NSString *)password bioOfBand:(NSString *)bioOfBand vote:(NSNumber *)vote bandWebsite:(NSURL *)bandWebsite songs:(NSArray *)songs{
     
     //creating a new profile
     Profile *profile = [Profile new];
     //adding data to the profile
+    profile.uID = uID;
+    profile.password = password;
     profile.name = name;
     profile.bioOfBand = bioOfBand;
     profile.vote = vote;
@@ -61,7 +63,6 @@
         return;
     }
     
-    //-------do i need mutableCopy-----------
     NSMutableArray *profileList = self.profiles.mutableCopy;
     [profileList addObject:profile];
     self.profiles = profileList;
@@ -75,7 +76,7 @@
     
     //[[FirebaseController base] childByAppendingPath:@"/profiles/"];
     
-    [[FirebaseController profiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [[FirebaseController base] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         NSMutableArray *profiles = [NSMutableArray new];
         

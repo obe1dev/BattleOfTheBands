@@ -13,7 +13,7 @@
 
 @property (strong,nonatomic,readonly) NSMutableArray *songs;
 
-+ (SongsController *)sharedInstance;
++(SongsController *)sharedInstance;
 
 -(Songs *)createSongWithsongName:(NSString *)songName songData:(NSData *)songData;
 
@@ -21,6 +21,6 @@
 
 -(void) removeSong:(Songs *)song;
 
-- (void) save:(NSArray *) songs;
+-(void) save:(NSArray *) songs;
 
 @end
