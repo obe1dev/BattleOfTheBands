@@ -15,4 +15,6 @@
 
 +(void) creatAccount:(NSString *)userName password:(NSString *)password;
 
++(void) login;
+
 @end

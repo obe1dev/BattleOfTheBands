@@ -26,6 +26,7 @@ static NSString * const songsKey = @"songsKey";
     self.bandImage = [dictionary objectForKey:bandImageKey];
     self.vote = [dictionary objectForKey:voteKey];
     self.bandWebsite = [dictionary objectForKey:bandImageKey];
+    self.songs = [dictionary objectForKey:songsKey];
     
     return self;
 };
@@ -39,6 +40,7 @@ static NSString * const songsKey = @"songsKey";
     [dictionary setObject:self.bandImage forKey:bandImageKey];
     [dictionary setObject:self.vote forKey:voteKey];
     [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
+    [dictionary setObject:self.songs forKey:songsKey];
     
     return dictionary;
     

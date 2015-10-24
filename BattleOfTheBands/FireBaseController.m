@@ -42,5 +42,8 @@
     return [FirebaseController base].authData.uid;
 }
 
++(void) login{
+    
+}
 
 @end
