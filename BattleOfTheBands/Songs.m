@@ -27,9 +27,12 @@ static NSString * const songDataKey = @"songDataKey";
 - (NSDictionary *) dictionaryRepresentation{
     
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
-    
-    [dictionary setObject:self.songName forKey:songNameKey];
-    [dictionary setObject:self.songData forKey:songDataKey];
+    if (self.songName) {
+        [dictionary setObject:self.songName forKey:songNameKey];
+    }
+    if (self.songData) {
+        [dictionary setObject:self.songData forKey:songDataKey];
+    }
     
     return dictionary;
     

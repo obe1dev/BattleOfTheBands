@@ -44,30 +44,30 @@ static NSString * const songsKey = @"songsKey";
     
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
     
-//    if (!uIDKey) {
-//        [dictionary setObject:self.uID forKey:uIDKey];
-//    }
-//    if (!passwordKey) {
-//        [dictionary setObject:self.password forKey:passwordKey];
-//    }
-    if (nameKey) {
+    if (self.uID) {
+        [dictionary setObject:self.uID forKey:uIDKey];
+    }
+    if (self.password) {
+        [dictionary setObject:self.password forKey:passwordKey];
+    }
+    if (self.name) {
         [dictionary setObject:self.name forKey:nameKey];
     }
-//    if (!bioOfBandKey) {
-//        [dictionary setObject:self.bioOfBand forKey:bioOfBandKey];
-//    }
-//    if (!bandImageKey) {
-//        [dictionary setObject:self.bandImage forKey:bandImageKey];
-//    }
-//    if (!voteKey) {
-//        [dictionary setObject:self.vote forKey:voteKey];
-//    }
-//    if (!bandWebsiteKey) {
-//        [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
-//    }
-//    if (!songsKey) {
-//        [dictionary setObject:self.songs forKey:songsKey];
-//    }
+    if (self.bioOfBand) {
+        [dictionary setObject:self.bioOfBand forKey:bioOfBandKey];
+    }
+    if (self.bandImage) {
+        [dictionary setObject:self.bandImage forKey:bandImageKey];
+    }
+    if (self.vote) {
+        [dictionary setObject:self.vote forKey:voteKey];
+    }
+    if (self.bandWebsite) {
+        [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
+    }
+    if (self.songs) {
+        [dictionary setObject:self.songs forKey:songsKey];
+    }
     
     return dictionary;
     

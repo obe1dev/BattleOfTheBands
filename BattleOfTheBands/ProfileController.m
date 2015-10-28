@@ -139,7 +139,6 @@
     Profile *sampleProfile3 = [Profile new];
     sampleProfile3.name = @"the best band";
     
-    //[self addProfile:sampleProfile1];
     
     NSMutableArray *profileList = self.profiles.mutableCopy;
   

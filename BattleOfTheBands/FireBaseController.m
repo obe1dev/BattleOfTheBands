@@ -35,7 +35,7 @@
 
 
 + (Firebase *) userSongBase {
-    return [[[FirebaseController base] childByAppendingPath:@"/songs/"] childByAppendingPath:[FirebaseController currentUserUID]];
+    return [[[FirebaseController base] childByAppendingPath:@"songs/"] childByAppendingPath:[FirebaseController currentUserUID]];
 }
 
 + (NSString *) currentUserUID {
