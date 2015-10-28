@@ -308,6 +308,7 @@
 				TargetAttributes = {
 					4798D5531BD9BF1F00B29346 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = V9Z3VAP3WY;
 					};
 					4798D56C1BD9BF1F00B29346 = {
 						CreatedOnToolsVersion = 7.1;
@@ -504,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BattleOfTheBands",
@@ -519,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BattleOfTheBands",

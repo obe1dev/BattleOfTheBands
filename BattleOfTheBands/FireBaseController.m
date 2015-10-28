@@ -14,7 +14,7 @@
 // Create a reference to a Firebase database URL
 + (Firebase *) base{
 
-    return [[Firebase alloc] initWithUrl:@"https://battleofbands.firebaseIO.com/"];
+    return [[Firebase alloc] initWithUrl:@"https://battleofbands.firebaseio.com/"];
 };
 
 #pragma mark Creat

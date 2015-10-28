@@ -12,8 +12,7 @@
 
 @interface ProfileController ()
 
-@property (strong, nonatomic) NSMutableArray *profiles;
-//@property (strong, nonatomic) Firebase *firebaseRef = [Firebase alloc] initWithUrl:[@"https://battleofbands.firebaseIO.com/entries/"];
+@property (strong, nonatomic) NSArray *profiles;
 
 @end
 
@@ -25,11 +24,11 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [ProfileController new];
         
-        sharedInstance.profiles = [NSMutableArray new];
+        sharedInstance.profiles = [NSArray new];
         
-        //[sharedInstance setUpMockData];
+        [sharedInstance setUpMockData];
         
-        //[sharedInstance loadFromPersistentStorage];
+        [sharedInstance loadFromPersistentStorage];
     });
     return sharedInstance;
 }
@@ -100,6 +99,7 @@
     for (Profile *profile in self.profiles) {
         
         [profileDictionaries addObject:[profile dictionaryRepresentation]];
+        
     }
     
     [[FirebaseController base] setValue:profileDictionaries];
@@ -126,23 +126,29 @@
 }
 
 
-//-(void) setUpMockData {
-//    
-//    Profile *sampleProfile1 = [Profile new];
-//    sampleProfile1.name = @"good band";
-//    
-//    
-//    Profile *sampleProfile2 = [Profile new];
-//    sampleProfile2.name = @"another good band";
-//    
-//    
-//    Profile *sampleProfile3 = [Profile new];
-//    sampleProfile3.name = @"the best band";
-//    
-//    
-//    [self.profile addObjectsFromArray:@[sampleProfile1, sampleProfile2, sampleProfile3]];
-//    
-//    
-//};
+-(void) setUpMockData {
+    
+    Profile *sampleProfile1 = [Profile new];
+    sampleProfile1.name = @"changed good band";
+    
+    
+    Profile *sampleProfile2 = [Profile new];
+    sampleProfile2.name = @"another good band";
+    
+    
+    Profile *sampleProfile3 = [Profile new];
+    sampleProfile3.name = @"the best band";
+    
+    //[self addProfile:sampleProfile1];
+    
+    NSMutableArray *profileList = self.profiles.mutableCopy;
+  
+
+    [profileList addObjectsFromArray:@[sampleProfile1, sampleProfile2, sampleProfile3]];
+    
+    self.profiles = profileList;
+    [self saveToPersistentStorage];
+
+};
 
 @end

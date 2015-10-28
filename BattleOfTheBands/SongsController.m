@@ -23,6 +23,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [SongsController new];
+        
+        sharedInstance.songs = [NSMutableArray new];
+        
+        [sharedInstance loadFromPersistentStorage];
+
     });
     return sharedInstance;
 }
@@ -104,6 +109,24 @@
     [self saveToPersistentStorage];
     
 }
+
+-(void) setUpMockData {
+    
+    Songs *sampleSong1 = [Songs new];
+    sampleSong1.songName = @"song one name";
+    
+    
+    Songs *sampleSong2 = [Songs new];
+    sampleSong2.songName = @"title of song 2";
+    
+    
+    Songs *sampleSong3 = [Songs new];
+    sampleSong3.songName = @"awesome song 3";
+    
+    [self.songs addObjectsFromArray:@[sampleSong1, sampleSong2, sampleSong3]];
+    
+    
+};
 
 
 

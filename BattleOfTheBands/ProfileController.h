@@ -11,7 +11,7 @@
 
 @interface ProfileController : NSObject
 
-@property (strong, nonatomic, readonly) NSMutableArray *profile;
+@property (strong, nonatomic, readonly) NSArray *profiles;
 
 + (ProfileController *)sharedInstance;
 
@@ -22,5 +22,7 @@
 -(void) removeProfile:(Profile *)Profile;
 
 -(void) save:(NSArray *) profiles;
+
+-(void) setUpMockData;
 
 @end

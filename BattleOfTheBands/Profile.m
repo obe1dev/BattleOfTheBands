@@ -1,4 +1,4 @@
-//
+
 //  Profile.m
 //  Battle Of The Bands
 //
@@ -39,18 +39,35 @@ static NSString * const songsKey = @"songsKey";
 
 
 //adding properties to the dictionary 
+
 - (NSDictionary *) dictionaryRepresentation{
     
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
     
-    [dictionary setObject:self.uID forKey:uIDKey];
-    [dictionary setObject:self.password forKey:passwordKey];
-    [dictionary setObject:self.name forKey:nameKey];
-    [dictionary setObject:self.bioOfBand forKey:bioOfBandKey];
-    [dictionary setObject:self.bandImage forKey:bandImageKey];
-    [dictionary setObject:self.vote forKey:voteKey];
-    [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
-    [dictionary setObject:self.songs forKey:songsKey];
+//    if (!uIDKey) {
+//        [dictionary setObject:self.uID forKey:uIDKey];
+//    }
+//    if (!passwordKey) {
+//        [dictionary setObject:self.password forKey:passwordKey];
+//    }
+    if (nameKey) {
+        [dictionary setObject:self.name forKey:nameKey];
+    }
+//    if (!bioOfBandKey) {
+//        [dictionary setObject:self.bioOfBand forKey:bioOfBandKey];
+//    }
+//    if (!bandImageKey) {
+//        [dictionary setObject:self.bandImage forKey:bandImageKey];
+//    }
+//    if (!voteKey) {
+//        [dictionary setObject:self.vote forKey:voteKey];
+//    }
+//    if (!bandWebsiteKey) {
+//        [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
+//    }
+//    if (!songsKey) {
+//        [dictionary setObject:self.songs forKey:songsKey];
+//    }
     
     return dictionary;
     

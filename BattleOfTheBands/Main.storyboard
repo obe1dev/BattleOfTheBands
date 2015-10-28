@@ -363,45 +363,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzT-R0-YSJ">
-                                <rect key="frame" x="0.0" y="268" width="600" height="332"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Songs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFy-j6-ro6">
-                                        <rect key="frame" x="276" y="167" width="49" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w17-09-eLg">
-                                        <rect key="frame" x="8" y="8" width="584" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cab-D7-uQM">
-                                        <rect key="frame" x="0.0" y="196" width="600" height="128"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-L9-Q4N" userLabel="Bio Of Band">
-                                        <rect key="frame" x="0.0" y="37" width="600" height="128"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <animations/>
-                                <connections>
-                                    <outlet property="delegate" destination="e7s-PO-hNN" id="fzO-E9-wMa"/>
-                                </connections>
-                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Votes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8q6-e0-l6f">
                                 <rect key="frame" x="300" y="234" width="280" height="21"/>
                                 <animations/>
@@ -409,27 +370,94 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzT-R0-YSJ">
+                                <rect key="frame" x="-1" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Songs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFy-j6-ro6">
+                                        <rect key="frame" x="276" y="415" width="49" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="4gS-Tg-fhG"/>
+                                            <constraint firstAttribute="width" constant="49" id="hvO-3n-TBi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w17-09-eLg">
+                                        <rect key="frame" x="8" y="256" width="584" height="21"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="K1c-6g-l2L"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cab-D7-uQM">
+                                        <rect key="frame" x="0.0" y="444" width="600" height="128"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="zEQ-VM-H9f"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-L9-Q4N" userLabel="Bio Of Band">
+                                        <rect key="frame" x="0.0" y="285" width="600" height="128"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="dEw-qr-GqF"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="cab-D7-uQM" firstAttribute="leading" secondItem="WvW-L9-Q4N" secondAttribute="leading" id="1Aa-ly-8Kc"/>
+                                    <constraint firstItem="WvW-L9-Q4N" firstAttribute="trailing" secondItem="cab-D7-uQM" secondAttribute="trailing" id="9vA-wT-Knk"/>
+                                    <constraint firstItem="cab-D7-uQM" firstAttribute="leading" secondItem="MzT-R0-YSJ" secondAttribute="leading" id="ADq-LG-aFd"/>
+                                    <constraint firstItem="w17-09-eLg" firstAttribute="leading" secondItem="MzT-R0-YSJ" secondAttribute="leadingMargin" id="Iz2-mX-Rvf"/>
+                                    <constraint firstItem="cab-D7-uQM" firstAttribute="bottom" secondItem="MzT-R0-YSJ" secondAttribute="bottomMargin" id="LOM-CB-9o4"/>
+                                    <constraint firstItem="cab-D7-uQM" firstAttribute="centerX" secondItem="MzT-R0-YSJ" secondAttribute="centerX" id="YU3-cg-ZdV"/>
+                                    <constraint firstItem="w17-09-eLg" firstAttribute="top" secondItem="MzT-R0-YSJ" secondAttribute="top" constant="256" id="dsx-LE-MtL"/>
+                                    <constraint firstItem="w17-09-eLg" firstAttribute="centerX" secondItem="WvW-L9-Q4N" secondAttribute="centerX" id="gKj-NG-Ybw"/>
+                                    <constraint firstItem="WvW-L9-Q4N" firstAttribute="centerX" secondItem="fFy-j6-ro6" secondAttribute="centerX" id="h9i-NI-bod"/>
+                                    <constraint firstItem="fFy-j6-ro6" firstAttribute="top" secondItem="WvW-L9-Q4N" secondAttribute="bottom" constant="2" id="lw8-Mf-H4r"/>
+                                    <constraint firstItem="cab-D7-uQM" firstAttribute="top" secondItem="fFy-j6-ro6" secondAttribute="bottom" constant="8" symbolic="YES" id="nH9-xg-lFl"/>
+                                    <constraint firstAttribute="trailing" secondItem="cab-D7-uQM" secondAttribute="trailing" id="pck-ND-eUj"/>
+                                    <constraint firstItem="WvW-L9-Q4N" firstAttribute="top" secondItem="w17-09-eLg" secondAttribute="bottom" constant="8" symbolic="YES" id="qGZ-lh-Wf4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="e7s-PO-hNN" id="fzO-E9-wMa"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MzT-R0-YSJ" firstAttribute="centerX" secondItem="WZQ-UK-U23" secondAttribute="centerX" id="0Ft-zF-OuE"/>
+                            <constraint firstItem="MzT-R0-YSJ" firstAttribute="top" secondItem="mg7-gN-4oQ" secondAttribute="top" id="0RS-tH-p7s"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="width" secondItem="dRY-Qx-HI1" secondAttribute="width" id="1AH-AO-4Vc"/>
                             <constraint firstItem="6Oh-A8-Rv4" firstAttribute="top" secondItem="WZQ-UK-U23" secondAttribute="bottom" constant="8" id="4Ad-dP-xxd"/>
                             <constraint firstItem="mg7-gN-4oQ" firstAttribute="top" secondItem="K8G-O1-G39" secondAttribute="bottom" id="5EP-0h-VNO"/>
-                            <constraint firstItem="MzT-R0-YSJ" firstAttribute="leading" secondItem="coB-L6-dQO" secondAttribute="leadingMargin" constant="-20" id="6T4-LT-cBQ"/>
-                            <constraint firstAttribute="bottom" secondItem="MzT-R0-YSJ" secondAttribute="bottom" id="6i1-jO-RvG"/>
                             <constraint firstItem="6Oh-A8-Rv4" firstAttribute="centerX" secondItem="coB-L6-dQO" secondAttribute="centerX" id="7dF-JG-WLh"/>
                             <constraint firstItem="ELs-jT-J4h" firstAttribute="top" secondItem="mg7-gN-4oQ" secondAttribute="bottom" constant="60" id="AlY-9R-D8g"/>
                             <constraint firstItem="mg7-gN-4oQ" firstAttribute="leading" secondItem="coB-L6-dQO" secondAttribute="leadingMargin" constant="-20" id="Bsg-Zb-nNv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MzT-R0-YSJ" secondAttribute="trailing" constant="-20" id="D0o-dS-u62"/>
                             <constraint firstItem="ELs-jT-J4h" firstAttribute="leading" secondItem="WZQ-UK-U23" secondAttribute="trailing" constant="8" id="Dhs-Hc-XHJ"/>
                             <constraint firstItem="dRY-Qx-HI1" firstAttribute="top" secondItem="6Oh-A8-Rv4" secondAttribute="bottom" constant="7" id="HxQ-no-Q7E"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="top" secondItem="6Oh-A8-Rv4" secondAttribute="bottom" constant="7" id="PaM-LM-erO"/>
+                            <constraint firstAttribute="bottom" secondItem="MzT-R0-YSJ" secondAttribute="bottom" id="RL9-Qm-Bqo"/>
                             <constraint firstItem="WZQ-UK-U23" firstAttribute="centerX" secondItem="coB-L6-dQO" secondAttribute="centerX" id="UkM-Yk-Mme"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="trailing" secondItem="coB-L6-dQO" secondAttribute="trailingMargin" id="VdM-ej-hqz"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="leading" secondItem="dRY-Qx-HI1" secondAttribute="trailing" id="Vl9-aV-DWb"/>
+                            <constraint firstItem="MzT-R0-YSJ" firstAttribute="leading" secondItem="coB-L6-dQO" secondAttribute="leadingMargin" constant="-21" id="Xno-ui-lnn"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="height" secondItem="dRY-Qx-HI1" secondAttribute="height" id="Z3U-rn-JtI"/>
-                            <constraint firstItem="MzT-R0-YSJ" firstAttribute="top" secondItem="K8G-O1-G39" secondAttribute="bottom" constant="248" id="aOA-B9-lwj"/>
                             <constraint firstItem="ELs-jT-J4h" firstAttribute="centerY" secondItem="WZQ-UK-U23" secondAttribute="centerY" id="gMo-Ze-MFG"/>
                             <constraint firstItem="8q6-e0-l6f" firstAttribute="top" secondItem="ELs-jT-J4h" secondAttribute="bottom" constant="80" id="pqP-jO-SW5"/>
                             <constraint firstItem="dRY-Qx-HI1" firstAttribute="leading" secondItem="coB-L6-dQO" secondAttribute="leadingMargin" id="qyU-mM-Fp4"/>

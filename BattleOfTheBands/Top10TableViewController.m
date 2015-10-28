@@ -9,6 +9,7 @@
 #import "Top10TableViewController.h"
 #import "Top10TableViewCell.h"
 #import "ProfileController.h"
+#import "Profile.h"
 
 
 
@@ -26,6 +27,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,15 +44,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [ProfileController sharedInstance].profile.count;
+    //return [[ProfileController sharedInstance].setUpMockData.count;
+   return [ProfileController sharedInstance].profiles.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Top10TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
+     Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
     
-    cell.textLabel.text = [ProfileController sharedInstance].profile[indexPath.row];
+    cell.textLabel.text = profile.name;
     
     return cell;
 }
