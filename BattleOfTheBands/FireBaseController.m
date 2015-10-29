@@ -6,9 +6,10 @@
 //  Copyright © 2015 Brock Oberhansley. All rights reserved.
 //
 
-#import "FirebaseController.h"
+#import "FireBaseController.h"
+#import "Profile.h"
 
-@implementation FirebaseController
+@implementation FireBaseController
 
 
 // Create a reference to a Firebase database URL
@@ -19,9 +20,9 @@
 
 #pragma mark Creat
 
-+(void) creatAccount:(NSString *)userName password:(NSString *)password{
++(void) creatAccount:(NSString *)userEmail password:(NSString *)password{
     
-    [[self base] createUser:userName password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+    [[self base] createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
             if (error) {
             // There was an error creating the account
             NSLog(@"%@",error);
@@ -35,11 +36,11 @@
 
 
 + (Firebase *) userSongBase {
-    return [[[FirebaseController base] childByAppendingPath:@"songs/"] childByAppendingPath:[FirebaseController currentUserUID]];
+    return [[[FireBaseController base] childByAppendingPath:@"songs/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }
 
 + (NSString *) currentUserUID {
-    return [FirebaseController base].authData.uid;
+    return [FireBaseController base].authData.uid;
 }
 
 +(void) login{

@@ -9,6 +9,7 @@
 #import "Profile.h"
 
 static NSString * const uIDKey = @"uIDKey";
+static NSString * const emailKey = @"emailkey";
 static NSString * const passwordKey = @"passwordKey";
 static NSString * const nameKey = @"nameKey";
 static NSString * const bioOfBandKey = @"bioOfBand";
@@ -26,6 +27,7 @@ static NSString * const songsKey = @"songsKey";
     self = [super init];
     
     self.uID = [dictionary objectForKey:uIDKey];
+    self.email = [dictionary objectForKey:emailKey];
     self.password = [dictionary objectForKey:passwordKey];
     self.name = [dictionary objectForKey:nameKey];
     self.bioOfBand = [dictionary objectForKey:bioOfBandKey];

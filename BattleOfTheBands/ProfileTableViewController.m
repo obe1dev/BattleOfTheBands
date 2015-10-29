@@ -7,6 +7,9 @@
 //
 
 #import "ProfileTableViewController.h"
+#import "FireBaseController.h"
+#import "SongsController.h"
+#import "ProfileController.h"
 
 @interface ProfileTableViewController ()
 
@@ -17,11 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //creating moc data
+    [[ProfileController sharedInstance] createProfileWithName:@"Brocks band" bioOfBand:@"this is the bio" bandWebsite:[NSURL URLWithString:@"google.com"]];
+    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:nil];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {

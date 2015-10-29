@@ -7,7 +7,7 @@
 //
 
 #import "SongsController.h"
-#import "FirebaseController.h"
+#import "FireBaseController.h"
 
 @interface SongsController ()
 
@@ -26,7 +26,7 @@
         
         sharedInstance.songs = [NSMutableArray new];
         
-        [sharedInstance setUpMockData];
+//        [sharedInstance setUpMockData];
         
         [sharedInstance loadFromPersistentStorage];
 
@@ -64,7 +64,7 @@
 
 - (void)loadFromPersistentStorage {
     
-    [[FirebaseController userSongBase] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [[FireBaseController userSongBase] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         NSMutableArray *songs = [NSMutableArray new];
         
@@ -90,7 +90,7 @@
         [songDictionaries addObject:[song dictionaryRepresentation]];
     }
     
-    [[FirebaseController base] setValue:songDictionaries];
+    [[FireBaseController base] setValue:songDictionaries];
 }
 
 - (void) save:(NSArray *) songs{
@@ -112,29 +112,29 @@
     
 }
 
--(void) setUpMockData {
-    
-    Songs *sampleSong1 = [Songs new];
-    sampleSong1.songName = @"song one name";
-    
-    
-    Songs *sampleSong2 = [Songs new];
-    sampleSong2.songName = @"title of song 2";
-    
-    
-    Songs *sampleSong3 = [Songs new];
-    sampleSong3.songName = @"awesome song 3";
-    
-    NSMutableArray *songsList = self.songs.mutableCopy;
-    
-    [songsList addObjectsFromArray:@[sampleSong1, sampleSong2, sampleSong3]];
-    
-    self.songs = songsList;
-    
-    [self saveToPersistentStorage];
-    
-};
-
+//-(void) setUpMockData {
+//    
+//    Songs *sampleSong1 = [Songs new];
+//    sampleSong1.songName = @"song one name";
+//    
+//    
+//    Songs *sampleSong2 = [Songs new];
+//    sampleSong2.songName = @"title of song 2";
+//    
+//    
+//    Songs *sampleSong3 = [Songs new];
+//    sampleSong3.songName = @"awesome song 3";
+//    
+//    NSMutableArray *songsList = self.songs.mutableCopy;
+//    
+//    [songsList addObjectsFromArray:@[sampleSong1, sampleSong2, sampleSong3]];
+//    
+//    self.songs = songsList;
+//    
+//    [self saveToPersistentStorage];
+//    
+//};
+//
 
 
 @end

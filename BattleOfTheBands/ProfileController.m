@@ -8,7 +8,8 @@
 
 #import "ProfileController.h"
 #import "Profile.h"
-#import "FirebaseController.h"
+#import "FireBaseController.h"
+#import "SongsController.h"
 
 @interface ProfileController ()
 
@@ -26,7 +27,7 @@
         
         sharedInstance.profiles = [NSArray new];
         
-        [sharedInstance setUpMockData];
+//      [sharedInstance setUpMockData];
         
         [sharedInstance loadFromPersistentStorage];
     });
@@ -37,18 +38,21 @@
 #pragma mark Creat profile
 
 
--(Profile *)createProfileWithName:(NSString *)name uID:(NSString *)uID password:(NSString *)password bioOfBand:(NSString *)bioOfBand vote:(NSNumber *)vote bandWebsite:(NSURL *)bandWebsite songs:(NSArray *)songs{
+-(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSURL *)bandWebsite {
     
     //creating a new profile
     Profile *profile = [Profile new];
     //adding data to the profile
-    profile.uID = uID;
-    profile.password = password;
-    profile.name = name;
-    profile.bioOfBand = bioOfBand;
-    profile.vote = vote;
-    profile.bandWebsite = bandWebsite;
-    profile.songs = songs;
+    profile.uID = [FireBaseController currentUserUID];
+        if (name) {
+        profile.name = name;
+    }
+    if (bioOfBand) {
+        profile.bioOfBand = bioOfBand;
+    }
+        if (bandWebsite) {
+        profile.bandWebsite = bandWebsite;
+    }
     
     //adding this profile to the array
     [self addProfile:profile];
@@ -73,9 +77,8 @@
 
 - (void)loadFromPersistentStorage {
     
-    //[[FirebaseController base] childByAppendingPath:@"/profiles/"];
     
-    [[FirebaseController base] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [[FireBaseController base] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         NSMutableArray *profiles = [NSMutableArray new];
         
@@ -102,7 +105,7 @@
         
     }
     
-    [[FirebaseController base] setValue:profileDictionaries];
+    [[FireBaseController base] setValue:profileDictionaries];
 }
 
 - (void) save:(NSArray *) profiles{
@@ -126,28 +129,32 @@
 }
 
 
--(void) setUpMockData {
-    
-    Profile *sampleProfile1 = [Profile new];
-    sampleProfile1.name = @"changed good band";
-    
-    
-    Profile *sampleProfile2 = [Profile new];
-    sampleProfile2.name = @"another good band";
-    
-    
-    Profile *sampleProfile3 = [Profile new];
-    sampleProfile3.name = @"the best band";
-    
-    
-    NSMutableArray *profileList = self.profiles.mutableCopy;
-  
-
-    [profileList addObjectsFromArray:@[sampleProfile1, sampleProfile2, sampleProfile3]];
-    
-    self.profiles = profileList;
-    [self saveToPersistentStorage];
-
-};
+//-(void) setUpMockData {
+//    
+//    Profile *sampleProfile1 = [Profile new];
+//    sampleProfile1.name = @"changed good band";
+//    sampleProfile1.uID = @"e9e223cc-1b4d-4842-9350-13624ab3a580";
+//    sampleProfile1.songs = [SongsController sharedInstance].songs;
+//    //[FireBaseController creatAccount:@"brock@gmail.com" password:@"thisisthepassword"];
+//    
+//    
+//    
+//    Profile *sampleProfile2 = [Profile new];
+//    sampleProfile2.name = @"another good band";
+//    
+//    
+//    Profile *sampleProfile3 = [Profile new];
+//    sampleProfile3.name = @"the best band";
+//    
+//    
+//    NSMutableArray *profileList = self.profiles.mutableCopy;
+//  
+//
+//    [profileList addObjectsFromArray:@[sampleProfile1, sampleProfile2, sampleProfile3]];
+//    
+//    self.profiles = profileList;
+//    [self saveToPersistentStorage];
+//
+//};
 
 @end

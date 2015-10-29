@@ -84,7 +84,7 @@
 		4798D5B21BD9C48A00B29346 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4798D5B41BD9C49A00B29346 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		4798D5B61BD9C4A600B29346 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		4798D5BC1BD9C70B00B29346 /* FirebaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseController.h; sourceTree = "<group>"; };
+		4798D5BC1BD9C70B00B29346 /* FireBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireBaseController.h; sourceTree = "<group>"; };
 		4798D5BD1BD9C70B00B29346 /* FireBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireBaseController.m; sourceTree = "<group>"; };
 		4798D5BF1BD9DB5100B29346 /* SongsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsController.h; sourceTree = "<group>"; };
 		4798D5C01BD9DB5100B29346 /* SongsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsController.m; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		4798D5B91BD9C56A00B29346 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4798D5BC1BD9C70B00B29346 /* FirebaseController.h */,
+				4798D5BC1BD9C70B00B29346 /* FireBaseController.h */,
 				4798D5BD1BD9C70B00B29346 /* FireBaseController.m */,
 				4798D58E1BD9BF2D00B29346 /* ProfileController.h */,
 				4798D58F1BD9BF2D00B29346 /* ProfileController.m */,
@@ -620,6 +620,7 @@
 				4798D5831BD9BF2000B29346 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4798D5841BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsTests" */ = {
 			isa = XCConfigurationList;
@@ -628,6 +629,7 @@
 				4798D5861BD9BF2000B29346 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4798D5871BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsUITests" */ = {
 			isa = XCConfigurationList;
@@ -636,6 +638,7 @@
 				4798D5891BD9BF2000B29346 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

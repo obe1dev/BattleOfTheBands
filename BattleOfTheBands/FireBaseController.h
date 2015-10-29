@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
 
-@interface FirebaseController : NSObject
+@interface FireBaseController : NSObject
 
 + (Firebase *) base;
 
 + (Firebase *) userSongBase;
+
++ (NSString *) currentUserUID;
 
 +(void) creatAccount:(NSString *)userName password:(NSString *)password;
 
