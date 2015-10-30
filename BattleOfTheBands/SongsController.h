@@ -15,7 +15,7 @@
 
 +(SongsController *)sharedInstance;
 
--(Songs *)createSongWithsongName:(NSString *)songName songData:(NSData *)songData;
+-(Songs *)createSongWithsongName:(NSString *)songName songData:(NSString *)songData;
 
 -(void) addSong:(Songs *)song;
 

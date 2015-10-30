@@ -36,7 +36,7 @@
 
 #pragma mark creat
 
--(Songs *)createSongWithsongName:(NSString *)songName songData:(NSData *)songData{
+-(Songs *)createSongWithsongName:(NSString *)songName songData:(NSString *)songData{
     
     Songs *song = [Songs new];
     song.songName = songName;
@@ -68,11 +68,12 @@
         
         NSMutableArray *songs = [NSMutableArray new];
         
-        for (NSDictionary *song in snapshot.value) {
-            
-            
-            [songs addObject:[[Songs alloc] initWithDictionary:song]];
+        if (snapshot.value != [NSNull null]) {
+            for (NSDictionary *song in snapshot.value) {
+                [songs addObject:[[Songs alloc] initWithDictionary:song]];
+            }
         }
+
         self.songs = songs;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"loadSongs" object:nil];
@@ -90,7 +91,7 @@
         [songDictionaries addObject:[song dictionaryRepresentation]];
     }
     
-    [[FireBaseController base] setValue:songDictionaries];
+    [[FireBaseController userSongBase] setValue:songDictionaries];
 }
 
 - (void) save:(NSArray *) songs{

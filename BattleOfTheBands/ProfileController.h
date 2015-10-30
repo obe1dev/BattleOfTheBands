@@ -15,7 +15,7 @@
 
 + (ProfileController *)sharedInstance;
 
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSURL *)bandWebsite;
+-(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
 
 -(void) addProfile:(Profile *)Profile;
 

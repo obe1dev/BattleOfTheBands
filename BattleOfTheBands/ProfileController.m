@@ -38,12 +38,11 @@
 #pragma mark Creat profile
 
 
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSURL *)bandWebsite {
+-(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite {
     
     //creating a new profile
     Profile *profile = [Profile new];
     //adding data to the profile
-    profile.uID = [FireBaseController currentUserUID];
         if (name) {
         profile.name = name;
     }
@@ -53,6 +52,7 @@
         if (bandWebsite) {
         profile.bandWebsite = bandWebsite;
     }
+    profile.uID = [FireBaseController currentUserUID];
     
     //adding this profile to the array
     [self addProfile:profile];

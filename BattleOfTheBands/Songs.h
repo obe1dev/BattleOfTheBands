@@ -11,7 +11,7 @@
 @interface Songs : NSObject
 
 @property (strong,nonatomic) NSString *songName;
-@property (strong,nonatomic) NSData *songData;
+@property (strong,nonatomic) NSString *songData;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 

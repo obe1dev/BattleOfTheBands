@@ -21,8 +21,9 @@
     [super viewDidLoad];
     
     //creating moc data
-    [[ProfileController sharedInstance] createProfileWithName:@"Brocks band" bioOfBand:@"this is the bio" bandWebsite:[NSURL URLWithString:@"google.com"]];
-    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:nil];
+    
+    //creating song data for user name and user
+//    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
     
     
     // Uncomment the following line to preserve selection between presentations.

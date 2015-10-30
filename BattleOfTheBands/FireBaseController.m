@@ -9,6 +9,13 @@
 #import "FireBaseController.h"
 #import "Profile.h"
 
+//@interface FireBaseController()
+//
+//@property (strong,nonatomic) NSString *userEmail;
+//@property (strong,nonatomic) NSString *password;
+//
+//@end
+
 @implementation FireBaseController
 
 
@@ -22,13 +29,14 @@
 
 +(void) creatAccount:(NSString *)userEmail password:(NSString *)password{
     
-    [[self base] createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+    [self.base createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
             if (error) {
             // There was an error creating the account
             NSLog(@"%@",error);
             } else {
             NSString *uid = [result objectForKey:@"uid"];
             NSLog(@"Successfully created user account with uid: %@", uid);
+                
             }
     }];
     
@@ -43,8 +51,13 @@
     return [FireBaseController base].authData.uid;
 }
 
-+(void) login{
++(void) login:(NSString *)userEmail password:(NSString *)password {
     
+    [self.base authUser:userEmail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
+        NSLog(@"%@",authData);
+    }];
 }
+
+
 
 @end
