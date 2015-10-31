@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *photoButton;
+@property (weak, nonatomic) IBOutlet UIButton *uploadSongButton;
 
 @end

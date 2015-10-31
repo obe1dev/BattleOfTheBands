@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoTextCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *infoOptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoOptionInput;
 
 @end

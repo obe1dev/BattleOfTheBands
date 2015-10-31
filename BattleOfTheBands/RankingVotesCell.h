@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RankingVotesCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *ranking;
+@property (weak, nonatomic) IBOutlet UILabel *votes;
 
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoPhotoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *bandPhoto;
 
 @end

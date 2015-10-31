@@ -10,8 +10,16 @@
 #import "FireBaseController.h"
 #import "SongsController.h"
 #import "ProfileController.h"
+#import "PhotoCell.h"
+#import "RankingVotesCell.h"
+#import "TextFieldCell.h"
+#import "BandBioCell.h"
+
 
 @interface ProfileTableViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
+@property (assign, nonatomic) BOOL isBand;
 
 @end
 
@@ -19,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isBand = YES;
     
     //creating moc data
     
@@ -30,7 +40,12 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+- (IBAction)logoutButton:(id)sender {
+
+}
+- (IBAction)editButton:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,25 +55,97 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
+//#warning Incomplete implementation, return the number of rows
+    if (self.isBand) {
+        return 5;
+    }
     return 0;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    if (self.isBand) {
+        
+        if (indexPath.row == 0) {
+            
+            PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+            cell.photoButton.titleLabel.text = @"Add Photo";
+            cell.uploadSongButton.titleLabel.text = @"Add Song";
+            return cell;
+            
+        }
+        
+        if (indexPath.row == 1) {
+            
+            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+            cell.infoLabel.text = @"Band Name";
+            cell.infoEntryTextField.placeholder = @"Enter your band Name";
+            return cell;
+            
+        }
+        
+        if (indexPath.row == 2){
+            
+            RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
+            cell.ranking.text = @"";
+            cell.votes.text = @"";
+            return cell;
+            
+        }
+        
+        if (indexPath.row == 3) {
+            
+            BandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BandBioCell" forIndexPath:indexPath];
+            cell.bandBioLabel.text = @"Band Bio";
+            cell.bandBioTextView.text = @"";
+            return cell;
+            
+        }
+        
+        if (indexPath.row == 4) {
+            
+            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+            cell.infoLabel.text = @"Bands Website";
+            cell.infoEntryTextField.placeholder = @"Enter your band Website";
+            return cell;
+            
+        }
+        
+                
+    }
+        
     
     // Configure the cell...
-    
-    return cell;
+    return nil;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 0) {
+        return 250;
+    }
+    if (indexPath.row == 1) {
+        return 85;
+    }
+    if (indexPath.row == 2) {
+        return 46;
+    }
+    
+    if (indexPath.row == 3) {
+        return 150;
+    }
+    if (indexPath.row == 4) {
+        return 85;
+    }
+    return 0;
+}
 
 /*
 // Override to support conditional editing of the table view.

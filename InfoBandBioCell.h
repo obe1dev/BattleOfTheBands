@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoBandBioCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *bioBandEntryLabel;
 
 @end
