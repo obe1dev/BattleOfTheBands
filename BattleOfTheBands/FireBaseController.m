@@ -27,7 +27,7 @@
 
 #pragma mark Creat
 
-+(void) creatAccount:(NSString *)userEmail password:(NSString *)password{
++ (void) creatAccount:(NSString *)userEmail password:(NSString *)password{
     
     [self.base createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
             if (error) {
@@ -42,6 +42,9 @@
     
 };
 
++ (Firebase *) userProfiles {
+    return [[[FireBaseController base] childByAppendingPath:@"Profiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
+}
 
 + (Firebase *) userSongBase {
     return [[[FireBaseController base] childByAppendingPath:@"songs/"] childByAppendingPath:[FireBaseController currentUserUID]];

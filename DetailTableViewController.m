@@ -7,6 +7,12 @@
 //
 
 #import "DetailTableViewController.h"
+#import "Profile.h"
+#import "InfoPhotoCell.h"
+#import "InfoRankingVotesCell.h"
+#import "InfoTextCell.h"
+#import "InfoBandBioCell.h"
+
 
 @interface DetailTableViewController ()
 
@@ -31,25 +37,81 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
+//#warning Incomplete implementation, return the number of rows
+    return 4;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        
+        InfoPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoPhotoCell" forIndexPath:indexPath];
+        
+        cell.bandPhoto.image = [UIImage imageNamed:@"anchorIcon"];
+        cell.bandNameLabel.text = @"";
+        
+        return cell;
+    }
+    
+    if (indexPath.row == 1) {
+        
+        InfoRankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoRankingVotesCell" forIndexPath:indexPath];
+        cell.ranking.text = @"";
+        cell.votes.text = @"";
+        
+        return cell;
+        
+    }
+    
+    if (indexPath.row == 2) {
+    
+        InfoBandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoBandBioCell" forIndexPath:indexPath];
+        
+        
+        cell.bioBandEntryLabel.text = @"";
+        
+        return cell;
+        
+    }
+    
+    if (indexPath.row == 3) {
+        
+        InfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoTextCell" forIndexPath:indexPath];
+        
+        cell.infoOptionLabel.text = @"Band Website";
+        cell.infoOptionInput.text = @"";
+        
+        return cell;
+        
+    }
+    
+    return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 0) {
+        return 275;
+    }
+    if (indexPath.row == 1) {
+        return 46;
+    }
+    if (indexPath.row == 2) {
+        return 150;
+    }
+    if (indexPath.row == 3) {
+        return 75;
+    }
     return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.

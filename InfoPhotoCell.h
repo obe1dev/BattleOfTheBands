@@ -10,5 +10,6 @@
 
 @interface InfoPhotoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *bandPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *bandNameLabel;
 
 @end

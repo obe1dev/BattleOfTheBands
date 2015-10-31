@@ -490,7 +490,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5D-Kr-OXh">
                                             <rect key="frame" x="8" y="224" width="584" height="34"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -499,20 +499,19 @@
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="z5D-Kr-OXh" secondAttribute="bottom" constant="8.5" id="46v-ms-nra"/>
                                         <constraint firstItem="z5D-Kr-OXh" firstAttribute="leading" secondItem="ZSh-ul-U5h" secondAttribute="leadingMargin" id="J0s-eY-fPI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="n4z-lP-sph" secondAttribute="trailing" constant="192" id="cf1-no-N4S"/>
                                         <constraint firstItem="z5D-Kr-OXh" firstAttribute="trailing" secondItem="ZSh-ul-U5h" secondAttribute="trailingMargin" id="pWF-Jh-JAf"/>
                                         <constraint firstItem="n4z-lP-sph" firstAttribute="top" secondItem="ZSh-ul-U5h" secondAttribute="topMargin" constant="8" id="qXv-K9-ouI"/>
-                                        <constraint firstItem="n4z-lP-sph" firstAttribute="leading" secondItem="ZSh-ul-U5h" secondAttribute="leadingMargin" constant="192" id="roV-vn-4fu"/>
+                                        <constraint firstItem="n4z-lP-sph" firstAttribute="centerX" secondItem="ZSh-ul-U5h" secondAttribute="centerX" id="viA-BE-rUU"/>
                                         <constraint firstItem="z5D-Kr-OXh" firstAttribute="top" secondItem="n4z-lP-sph" secondAttribute="bottom" constant="8" id="zGN-G9-RpR"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="bandName" destination="z5D-Kr-OXh" id="Nlj-Bd-6Bs"/>
+                                    <outlet property="bandNameLabel" destination="z5D-Kr-OXh" id="oMC-ld-oHR"/>
                                     <outlet property="bandPhoto" destination="n4z-lP-sph" id="mEb-HO-5Ec"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingVotesCell" rowHeight="46" id="ho1-6u-hdJ" customClass="RankingVotesCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoRankingVotesCell" rowHeight="46" id="ho1-6u-hdJ" customClass="InfoRankingVotesCell">
                                 <rect key="frame" x="0.0" y="367" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ho1-6u-hdJ" id="eUK-el-Vnt">
@@ -525,14 +524,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39M-vc-xpW" userLabel="Ranking Stack View">
                                                     <rect key="frame" x="0.0" y="0.0" width="292" height="30"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Raking: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VI1-l5-Ao6">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raking: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VI1-l5-Ao6">
                                                             <rect key="frame" x="0.0" y="0.0" width="146" height="30"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-N8-Q8n">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fr6-N8-Q8n">
                                                             <rect key="frame" x="146" y="0.0" width="146" height="30"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -556,7 +555,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6V-71-98M">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6V-71-98M">
                                                             <rect key="frame" x="146" y="0.0" width="146" height="30"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -602,6 +601,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="ranking" destination="Fr6-N8-Q8n" id="GfW-8y-34I"/>
+                                    <outlet property="votes" destination="R6V-71-98M" id="xDj-5f-8Ue"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTextCell" rowHeight="75" id="YSP-rt-kwo" customClass="InfoTextCell">
                                 <rect key="frame" x="0.0" y="413" width="600" height="75"/>
@@ -695,7 +698,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTK-Nu-rXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2954" y="67"/>
+            <point key="canvasLocation" x="2966" y="67"/>
         </scene>
         <!--Top 10-->
         <scene sceneID="mNT-DW-3DB">

@@ -13,6 +13,8 @@
 
 + (Firebase *) base;
 
++ (Firebase *) userProfiles;
+
 + (Firebase *) userSongBase;
 
 + (NSString *) currentUserUID;
