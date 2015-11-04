@@ -589,15 +589,9 @@
                                 <action selector="logoutButton:" destination="3Fx-QB-o3r" id="Fbj-cs-SKq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="h9F-hd-EQf">
-                            <connections>
-                                <action selector="editButton:" destination="3Fx-QB-o3r" id="VPf-C9-PaG"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="Edit" destination="h9F-hd-EQf" id="Bch-hk-XMt"/>
                         <outlet property="Logout" destination="Vy2-0y-ds3" id="ieN-0d-Cnp"/>
                     </connections>
                 </tableViewController>
@@ -910,7 +904,7 @@
                                 <connections>
                                     <outlet property="bandImage" destination="8Pn-WU-3Ol" id="E1P-XA-89h"/>
                                     <outlet property="bandName" destination="yCC-ld-EBl" id="fZ8-Hu-81N"/>
-                                    <segue destination="fwB-9Q-EF1" kind="show" id="ELZ-G9-Yeo"/>
+                                    <segue destination="fwB-9Q-EF1" kind="show" identifier="top10ToDetail" id="ELZ-G9-Yeo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1012,6 +1006,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4TZ-4V-rK2"/>
-        <segue reference="LdQ-Ki-47O"/>
+        <segue reference="ELZ-G9-Yeo"/>
     </inferredMetricsTieBreakers>
 </document>

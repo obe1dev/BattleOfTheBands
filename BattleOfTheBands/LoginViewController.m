@@ -10,7 +10,7 @@
 #import "FireBaseController.h"
 #import "ProfileController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailLogin;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLogin;
 
@@ -21,6 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+        self.emailLogin.delegate = self;
+   
+        self.passwordLogin.delegate = self;
+    
     
     //creating moc data
     
@@ -33,6 +38,12 @@
     //creating profile
     [[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.emailLogin resignFirstResponder];
+    [self.passwordLogin resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

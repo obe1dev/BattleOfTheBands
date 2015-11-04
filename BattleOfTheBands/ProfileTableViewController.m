@@ -53,6 +53,7 @@
     
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.Edit = self.editButtonItem;
 }
 
 - (void)updateWithProfile:(Profile *)profile {
@@ -64,32 +65,25 @@
 - (IBAction)logoutButton:(id)sender {
 
 }
-- (IBAction)editButton:(id)sender {
-    
-    if ([self.Edit.title isEqualToString:@"Edit"]) {
-        //changes editbutton to save
-        [self.Edit setTitle:@"Save"];
-        
-//        [self.Edit]
-        
-        if (self.profile) {
-            self.profile.name = self.name;
-            self.profile.bioOfBand = self.bio;
-            self.profile.bandWebsite = self.website;
-        
 
-        }else{
-        
-     self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
-        
-        }
-        
-        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
-        
-    }else{
-        [self.Edit setTitle:@"Edit"];
-        
-    }
+#warning i need to connect to the self.editButtonItem
+
+- (IBAction)editButton:(id)sender{
+//
+//        if (self.profile) {
+//            
+//            self.profile.name = self.name;
+//            self.profile.bioOfBand = self.bio;
+//            self.profile.bandWebsite = self.website;
+//        
+//
+//        }else{
+//        
+//     self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
+//        
+//        }
+//        
+//        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,15 +210,23 @@
     return 0;
 }
 
+
+//this takes away the red delete button next to each row
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleNone;
 }
 
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-//    [super setEditing:editing animated:animated];
-//    
-//    
-//}
+//this take away the indenting while in editing mode
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    return NO;
+}
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:NO];
+    
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

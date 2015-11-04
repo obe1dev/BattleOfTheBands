@@ -9,6 +9,7 @@
 #import "Top10TableViewController.h"
 #import "Top10TableViewCell.h"
 #import "ProfileController.h"
+#import "DetailTableViewController.h"
 #import "Profile.h"
 
 
@@ -33,6 +34,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"top10ToDetail"]) {
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+         DetailTableViewController * detailViewController = segue.destinationViewController;
+        
+        Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
+        
+        detailViewController.profile = profile;
+    }
 }
 
 #pragma mark - Table view data source
