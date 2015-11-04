@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BandBioCell : UITableViewCell <UITextViewDelegate>
+@interface BandBioCell : UITableViewCell 
 @property (weak, nonatomic) IBOutlet UITextView *bandBioTextView;
 @property (weak, nonatomic) IBOutlet UILabel *bandBioLabel;
 
