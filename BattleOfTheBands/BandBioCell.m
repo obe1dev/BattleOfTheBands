@@ -12,12 +12,18 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.bandBioTextView.delegate = self;
+    self.bandBioTextView.enabled = self.editing;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    //self.bandBioTextView.
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    [self.bandBioTextView ];
 }
 
 @end

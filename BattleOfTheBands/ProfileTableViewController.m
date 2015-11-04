@@ -37,23 +37,25 @@
     [super viewDidLoad];
     
     self.isBand = YES;
+    self.profile = [ProfileController sharedInstance].profiles.firstObject;
     
-    [self updateWithEntry:self.profile];
+    //[self updateWithProfile:[ProfileController sharedInstance].profiles.firstObject];
+    [self updateWithProfile:self.profile];
     
     //creating moc data
     
     //creating song data for user name and user
-//    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
+    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
     
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)updateWithEntry:(Profile *)profile {
+- (void)updateWithProfile:(Profile *)profile {
     self.name = profile.name;
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
@@ -63,26 +65,30 @@
 
 }
 - (IBAction)editButton:(id)sender {
-    //disable keyboard after the shaved button is pressed
+    
     if ([self.Edit.title isEqualToString:@"Edit"]) {
+        //changes editbutton to save
         [self.Edit setTitle:@"Save"];
+        
+//        [self.Edit]
+        
         if (self.profile) {
             self.profile.name = self.name;
             self.profile.bioOfBand = self.bio;
             self.profile.bandWebsite = self.website;
-            
+        
 
         }else{
         
-        //setting the name bio and website for this profile
-        [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
+     self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
         
         }
-        //adding this profile to the profiles array
+        
         [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
         
     }else{
         [self.Edit setTitle:@"Edit"];
+        
     }
 }
 
@@ -126,7 +132,7 @@
             TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
             cell.infoLabel.text = @"Band Name";
             cell.infoEntryTextField.placeholder = @"Enter your band Name";
-            self.name = cell.infoEntryTextField.text;
+            cell.infoEntryTextField.text = self.name;
             return cell;
             
         }
@@ -145,7 +151,7 @@
             BandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BandBioCell" forIndexPath:indexPath];
             cell.bandBioLabel.text = @"Band Bio";
             cell.bandBioTextView.text = @"";
-            self.bio = cell.bandBioTextView.text;
+            cell.bandBioTextView.text = self.bio;
             return cell;
             
         }
@@ -155,7 +161,7 @@
             TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
             cell.infoLabel.text = @"Bands Website";
             cell.infoEntryTextField.placeholder = @"Enter your band Website";
-            self.website = cell.infoEntryTextField.text;
+            cell.infoEntryTextField.text = self.website;
             return cell;
             
         }
@@ -209,6 +215,16 @@
     }
     return 0;
 }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleNone;
+}
+
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+//    [super setEditing:editing animated:animated];
+//    
+//    
+//}
 
 /*
 // Override to support conditional editing of the table view.

@@ -8,10 +8,18 @@
 
 #import "TextFieldCell.h"
 
-@implementation TextFieldCell
+@implementation TextFieldCell 
 
 - (void)awakeFromNib {
+    self.infoEntryTextField.delegate = self;
     // Initialization code
+    self.infoEntryTextField.enabled = self.editing;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    self.infoEntryTextField.enabled = self.editing;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,4 +28,8 @@
     // Configure the view for the selected state
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.infoEntryTextField resignFirstResponder];
+    return YES;
+}
 @end

@@ -31,7 +31,7 @@
     [FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
     
     //creating profile
-    [[ProfileController sharedInstance] createProfileWithName:@"Brocks band" bioOfBand:@"this is the bio" bandWebsite:@"google.com"];
+    [[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
     
 }
 

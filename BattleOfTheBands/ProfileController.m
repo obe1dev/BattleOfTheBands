@@ -78,7 +78,7 @@
 - (void)loadFromPersistentStorage {
     
     
-    [[FireBaseController base] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [[FireBaseController BandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         NSMutableArray *profiles = [NSMutableArray new];
         
@@ -105,7 +105,7 @@
         
     }
     //i Need to cange to userProfile instead of base but it errors.
-    [[FireBaseController base] setValue:profileDictionaries];
+    [[FireBaseController BandProfiles] setValue:profileDictionaries];
 }
 
 - (void) save:(NSArray *) profiles{
