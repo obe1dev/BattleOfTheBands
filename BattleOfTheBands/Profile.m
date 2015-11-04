@@ -17,6 +17,8 @@ static NSString * const bandImageKey = @"bandImageKey";
 static NSString * const voteKey = @"voteKey";
 static NSString * const bandWebsiteKey =@"bandWebsiteKey";
 static NSString * const songsKey = @"songsKey";
+static NSString * const likesKey = @"likesKey";
+static NSString * const genreKey = @"genreKey";
 
 
 @implementation Profile
@@ -35,6 +37,8 @@ static NSString * const songsKey = @"songsKey";
     self.vote = [dictionary objectForKey:voteKey];
     self.bandWebsite = [dictionary objectForKey:bandImageKey];
     self.songs = [dictionary objectForKey:songsKey];
+    self.likes = [dictionary objectForKey:likesKey];
+    self.genre = [dictionary objectForKey:genreKey];
     
     return self;
 };
@@ -69,6 +73,12 @@ static NSString * const songsKey = @"songsKey";
     }
     if (self.songs) {
         [dictionary setObject:self.songs forKey:songsKey];
+    }
+    if (self.likes) {
+        [dictionary setObject:self.likes forKey:likesKey];
+    }
+    if (self.genre) {
+        [dictionary setObject:self.genre forKey:genreKey];
     }
     
     return dictionary;

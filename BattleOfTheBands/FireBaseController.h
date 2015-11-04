@@ -13,7 +13,9 @@
 
 + (Firebase *) base;
 
-+ (Firebase *) userProfiles;
++ (Firebase *) listenerProfiles;
+
++ (Firebase *) BandProfiles;
 
 + (Firebase *) userSongBase;
 

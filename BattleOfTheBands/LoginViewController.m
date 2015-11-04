@@ -41,10 +41,11 @@
 }
 
 - (IBAction)loginButton:(id)sender {
+    
+    //[FireBaseController login:self.emailLogin.text password:self.passwordLogin.text];
+    
 }
 
-- (IBAction)signUpButton:(id)sender {
-}
 
 
 /*

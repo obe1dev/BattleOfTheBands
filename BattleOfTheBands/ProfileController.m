@@ -104,7 +104,7 @@
         [profileDictionaries addObject:[profile dictionaryRepresentation]];
         
     }
-    
+    //i Need to cange to userProfile instead of base but it errors.
     [[FireBaseController base] setValue:profileDictionaries];
 }
 

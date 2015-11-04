@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileController.h"
 
 @interface ProfileTableViewController : UITableViewController
+
+@property (strong, nonatomic) Profile *profile;
+
 
 @end

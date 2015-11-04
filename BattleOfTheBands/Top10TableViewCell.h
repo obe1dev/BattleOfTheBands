@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Top10TableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *bandName;
+@property (weak, nonatomic) IBOutlet UIImageView *bandImage;
 
 @end

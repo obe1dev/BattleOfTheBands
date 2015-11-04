@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
 
 @interface DetailTableViewController : UITableViewController
+
+@property (strong, nonatomic) Profile *profile;
 
 @end

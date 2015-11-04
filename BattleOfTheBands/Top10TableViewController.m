@@ -54,11 +54,16 @@
     
      Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
     
-    cell.textLabel.text = profile.name;
+    cell.bandName.text = profile.name;
+
+    cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
     
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
 
 /*
 // Override to support conditional editing of the table view.

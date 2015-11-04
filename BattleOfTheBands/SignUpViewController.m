@@ -7,12 +7,25 @@
 //
 
 #import "SignUpViewController.h"
+#import "FireBaseController.h"
+#import "ProfileTableViewController.h"
 
 @interface SignUpViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITextField *password;
 
 @end
 
 @implementation SignUpViewController
+- (IBAction)SignUpBand:(id)sender {
+    [FireBaseController creatAccount:self.email.text password:self.password.text];
+    //----------set profile isBand to yes--------------
+}
+
+- (IBAction)SignUpListener:(id)sender {
+    [FireBaseController creatAccount:self.email.text password:self.password.text];
+    //----------set profile isBand to No--------------
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

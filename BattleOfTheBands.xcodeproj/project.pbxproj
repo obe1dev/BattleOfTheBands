@@ -15,6 +15,8 @@
 		47701EC81BE3070300FA3371 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701EC71BE3070300FA3371 /* LoginViewController.m */; };
 		47701ECF1BE5243300FA3371 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ECE1BE5243300FA3371 /* SignUpViewController.m */; };
 		47701ED21BE554B800FA3371 /* InfoRankingVotesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ED11BE554B800FA3371 /* InfoRankingVotesCell.m */; };
+		47701ED51BE86C9000FA3371 /* FollowingTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ED41BE86C9000FA3371 /* FollowingTitleCell.m */; };
+		47701ED81BE86CC400FA3371 /* FollowingBandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ED71BE86CC400FA3371 /* FollowingBandCell.m */; };
 		4798D5591BD9BF1F00B29346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5581BD9BF1F00B29346 /* main.m */; };
 		4798D55C1BD9BF1F00B29346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D55B1BD9BF1F00B29346 /* AppDelegate.m */; };
 		4798D5641BD9BF1F00B29346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4798D5631BD9BF1F00B29346 /* Assets.xcassets */; };
@@ -27,7 +29,6 @@
 		4798D5A11BD9BF4500B29346 /* BattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5A01BD9BF4500B29346 /* BattleViewController.m */; };
 		4798D5A41BD9BF5800B29346 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5A31BD9BF5800B29346 /* Profile.m */; };
 		4798D5A71BD9BF8200B29346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4798D5A51BD9BF8100B29346 /* LaunchScreen.storyboard */; };
-		4798D5A81BD9BF8200B29346 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4798D5A61BD9BF8200B29346 /* Main.storyboard */; };
 		4798D5AD1BD9C1BA00B29346 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4798D5AC1BD9C1BA00B29346 /* Firebase.framework */; };
 		4798D5AF1BD9C47400B29346 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4798D5AE1BD9C47400B29346 /* SystemConfiguration.framework */; };
 		4798D5B11BD9C47F00B29346 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4798D5B01BD9C47F00B29346 /* Security.framework */; };
@@ -76,6 +77,10 @@
 		47701ECE1BE5243300FA3371 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		47701ED01BE554B800FA3371 /* InfoRankingVotesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoRankingVotesCell.h; sourceTree = "<group>"; };
 		47701ED11BE554B800FA3371 /* InfoRankingVotesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoRankingVotesCell.m; sourceTree = "<group>"; };
+		47701ED31BE86C9000FA3371 /* FollowingTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingTitleCell.h; sourceTree = "<group>"; };
+		47701ED41BE86C9000FA3371 /* FollowingTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingTitleCell.m; sourceTree = "<group>"; };
+		47701ED61BE86CC400FA3371 /* FollowingBandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingBandCell.h; sourceTree = "<group>"; };
+		47701ED71BE86CC400FA3371 /* FollowingBandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingBandCell.m; sourceTree = "<group>"; };
 		4798D5541BD9BF1F00B29346 /* BattleOfTheBands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleOfTheBands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D5581BD9BF1F00B29346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4798D55A1BD9BF1F00B29346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,7 +106,6 @@
 		4798D5A21BD9BF5800B29346 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		4798D5A31BD9BF5800B29346 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		4798D5A51BD9BF8100B29346 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4798D5A61BD9BF8200B29346 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4798D5AC1BD9C1BA00B29346 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		4798D5AE1BD9C47400B29346 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4798D5B01BD9C47F00B29346 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -209,7 +213,6 @@
 				4798D55A1BD9BF1F00B29346 /* AppDelegate.h */,
 				4798D55B1BD9BF1F00B29346 /* AppDelegate.m */,
 				4798D5631BD9BF1F00B29346 /* Assets.xcassets */,
-				4798D5A61BD9BF8200B29346 /* Main.storyboard */,
 				4798D5A51BD9BF8100B29346 /* LaunchScreen.storyboard */,
 				4798D5681BD9BF1F00B29346 /* Info.plist */,
 				4798D5B81BD9C55400B29346 /* Frameworks */,
@@ -311,6 +314,10 @@
 				47701EB41BE2AC4500FA3371 /* TextFieldCell.m */,
 				47701EBA1BE2B36500FA3371 /* BandBioCell.h */,
 				47701EBB1BE2B36500FA3371 /* BandBioCell.m */,
+				47701ED31BE86C9000FA3371 /* FollowingTitleCell.h */,
+				47701ED41BE86C9000FA3371 /* FollowingTitleCell.m */,
+				47701ED61BE86CC400FA3371 /* FollowingBandCell.h */,
+				47701ED71BE86CC400FA3371 /* FollowingBandCell.m */,
 			);
 			name = "Profile Cells";
 			sourceTree = "<group>";
@@ -419,7 +426,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4798D5A81BD9BF8200B29346 /* Main.storyboard in Resources */,
 				4798D5A71BD9BF8200B29346 /* LaunchScreen.storyboard in Resources */,
 				4798D5641BD9BF1F00B29346 /* Assets.xcassets in Resources */,
 			);
@@ -450,6 +456,7 @@
 				47701EB51BE2AC4500FA3371 /* TextFieldCell.m in Sources */,
 				47701EC51BE2B51600FA3371 /* InfoBandBioCell.m in Sources */,
 				4798D5BE1BD9C70B00B29346 /* FireBaseController.m in Sources */,
+				47701ED81BE86CC400FA3371 /* FollowingBandCell.m in Sources */,
 				4798D59D1BD9BF2D00B29346 /* Top10TableViewController.m in Sources */,
 				4798D5CB1BE15FBA00B29346 /* DetailTableViewController.m in Sources */,
 				47701EBF1BE2B49A00FA3371 /* InfoPhotoCell.m in Sources */,
@@ -464,6 +471,7 @@
 				4798D5A41BD9BF5800B29346 /* Profile.m in Sources */,
 				4798D59C1BD9BF2D00B29346 /* Top10TableViewCell.m in Sources */,
 				4798D5C81BE15F7200B29346 /* ProfileTableViewController.m in Sources */,
+				47701ED51BE86C9000FA3371 /* FollowingTitleCell.m in Sources */,
 				4798D5CE1BE180C000B29346 /* PhotoCell.m in Sources */,
 				4798D5C11BD9DB5100B29346 /* SongsController.m in Sources */,
 				47701ECF1BE5243300FA3371 /* SignUpViewController.m in Sources */,

@@ -14,12 +14,20 @@
 #import "RankingVotesCell.h"
 #import "TextFieldCell.h"
 #import "BandBioCell.h"
+#import "FollowingTitleCell.h"
+#import "FollowingBandCell.h"
 
 
 @interface ProfileTableViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
+
+//this is fake data this will be set in the profile property
 @property (assign, nonatomic) BOOL isBand;
+
+@property (weak, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *bio;
+@property (weak, nonatomic) NSString *website;
 
 @end
 
@@ -29,6 +37,8 @@
     [super viewDidLoad];
     
     self.isBand = YES;
+    
+    [self updateWithEntry:self.profile];
     
     //creating moc data
     
@@ -42,10 +52,38 @@
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)updateWithEntry:(Profile *)profile {
+    self.name = profile.name;
+    self.bio = profile.bioOfBand;
+    self.website = profile.bandWebsite;
+}
+
 - (IBAction)logoutButton:(id)sender {
 
 }
 - (IBAction)editButton:(id)sender {
+    //disable keyboard after the shaved button is pressed
+    if ([self.Edit.title isEqualToString:@"Edit"]) {
+        [self.Edit setTitle:@"Save"];
+        if (self.profile) {
+            self.profile.name = self.name;
+            self.profile.bioOfBand = self.bio;
+            self.profile.bandWebsite = self.website;
+            
+
+        }else{
+        
+        //setting the name bio and website for this profile
+        [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
+        
+        }
+        //adding this profile to the profiles array
+        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
+        
+    }else{
+        [self.Edit setTitle:@"Edit"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,10 +98,11 @@
 //    return 0;
 //}
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
+
     if (self.isBand) {
-        return 5;
+        return  5;
     }
     return 0;
 }
@@ -87,6 +126,7 @@
             TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
             cell.infoLabel.text = @"Band Name";
             cell.infoEntryTextField.placeholder = @"Enter your band Name";
+            self.name = cell.infoEntryTextField.text;
             return cell;
             
         }
@@ -105,6 +145,7 @@
             BandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BandBioCell" forIndexPath:indexPath];
             cell.bandBioLabel.text = @"Band Bio";
             cell.bandBioTextView.text = @"";
+            self.bio = cell.bandBioTextView.text;
             return cell;
             
         }
@@ -114,10 +155,26 @@
             TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
             cell.infoLabel.text = @"Bands Website";
             cell.infoEntryTextField.placeholder = @"Enter your band Website";
+            self.website = cell.infoEntryTextField.text;
             return cell;
             
         }
         
+        //add a genre picker
+        
+        
+        //this is for the liked bands and listener
+        else if (!self.isBand){
+        
+        if (indexPath.row == 0) {
+            
+            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+            cell.infoLabel.text = @"Name";
+            cell.infoEntryTextField.placeholder = @"Enter your Name";
+            return cell;
+            
+         }
+       }
                 
     }
         
@@ -128,21 +185,27 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        return 250;
-    }
-    if (indexPath.row == 1) {
-        return 85;
-    }
-    if (indexPath.row == 2) {
-        return 46;
-    }
+    if (self.isBand) {
+        
+        if (indexPath.row == 0) {
+            return 250;
+        }
+        if (indexPath.row == 1) {
+            return 85;
+        }
+        if (indexPath.row == 2) {
+            return 46;
+        }
     
-    if (indexPath.row == 3) {
-        return 150;
-    }
-    if (indexPath.row == 4) {
-        return 85;
+        if (indexPath.row == 3) {
+            return 150;
+        }
+        if (indexPath.row == 4) {
+            return 85;
+        }
+        
+    }else if(!self.isBand){
+        
     }
     return 0;
 }

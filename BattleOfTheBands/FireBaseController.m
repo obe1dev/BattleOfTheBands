@@ -42,8 +42,12 @@
     
 };
 
-+ (Firebase *) userProfiles {
-    return [[[FireBaseController base] childByAppendingPath:@"Profiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
++ (Firebase *) listenerProfiles {
+    return [[[FireBaseController base] childByAppendingPath:@"ListnerProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
+}
+
++ (Firebase *) BandProfiles {
+    return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }
 
 + (Firebase *) userSongBase {
@@ -61,6 +65,18 @@
     }];
 }
 
+#pragma mark Read
+
+
+
+
+#pragma mark Update
+
+
+
+
+
+#pragma mark delete
 
 
 @end

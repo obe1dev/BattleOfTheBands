@@ -16,12 +16,19 @@
 
 @interface DetailTableViewController ()
 
+@property (weak, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *bio;
+@property (weak, nonatomic) NSString *website;
+
 @end
 
 @implementation DetailTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self updateWithEntry:self.profile];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -33,6 +40,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateWithEntry:(Profile *)profile {
+    self.name = profile.name;
+    self.bio = profile.bioOfBand;
+    self.website = profile.bandWebsite;
 }
 
 #pragma mark - Table view data source
@@ -55,7 +68,7 @@
         InfoPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoPhotoCell" forIndexPath:indexPath];
         
         cell.bandPhoto.image = [UIImage imageNamed:@"anchorIcon"];
-        cell.bandNameLabel.text = @"";
+        cell.bandNameLabel.text = self.name;
         
         return cell;
     }
@@ -75,7 +88,7 @@
         InfoBandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoBandBioCell" forIndexPath:indexPath];
         
         
-        cell.bioBandEntryLabel.text = @"";
+        cell.bioBandEntryLabel.text = self.bio;
         
         return cell;
         
@@ -86,7 +99,7 @@
         InfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoTextCell" forIndexPath:indexPath];
         
         cell.infoOptionLabel.text = @"Band Website";
-        cell.infoOptionInput.text = @"";
+        cell.infoOptionInput.text = self.website;
         
         return cell;
         

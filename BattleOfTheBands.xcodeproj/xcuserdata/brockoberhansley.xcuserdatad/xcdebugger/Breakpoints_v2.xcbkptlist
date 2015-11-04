@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DetailTableViewController.m"
-            timestampString = "468014606.412665"
+            filePath = "BattleOfTheBands/FireBaseController.m"
+            timestampString = "468219412.793629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "+userSongBase"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BattleOfTheBands/ProfileTableViewController.m"
+            timestampString = "468275137.527611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-editButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
