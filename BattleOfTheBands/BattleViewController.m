@@ -34,7 +34,6 @@
     [self.rightButtonDisplay.titleLabel setText:@"right Button"];
     //self.rightButtonDisplay.imageView.image =
     
-    
 }
 
 // TODO: update so the segue will update the detailViewController 
@@ -43,8 +42,9 @@
         
         //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-//        DetailTableViewController * detailViewController = segue.destinationViewController;
-//        
+        
+        DetailTableViewController * detailViewController = segue.destinationViewController;
+        
 //        Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
 //        
 //        detailViewController.profile = profile;
@@ -54,6 +54,7 @@
 - (IBAction)leftButton:(UIButton *)sender {
     self.displayBandName.titleLabel.text = self.leftButtonDisplay.titleLabel.text;
 }
+
 - (IBAction)rightButton:(UIButton *)sender {
     self.displayBandName.titleLabel.text = self.rightButtonDisplay.titleLabel.text;
 }

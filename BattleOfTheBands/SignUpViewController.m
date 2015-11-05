@@ -9,8 +9,9 @@
 #import "SignUpViewController.h"
 #import "FireBaseController.h"
 #import "ProfileTableViewController.h"
+#import "Profile.h"
 
-@interface SignUpViewController ()
+@interface SignUpViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
@@ -20,6 +21,7 @@
 - (IBAction)SignUpBand:(id)sender {
     [FireBaseController creatAccount:self.email.text password:self.password.text];
     //----------set profile isBand to yes--------------
+    //TODO: set isband
 }
 
 - (IBAction)SignUpListener:(id)sender {
@@ -30,11 +32,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.email.delegate = self;
+    self.password.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.email resignFirstResponder];
+    [self.password resignFirstResponder];
+    return YES;
 }
 
 /*

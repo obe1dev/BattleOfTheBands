@@ -20,6 +20,10 @@
     [super setEditing:editing animated:animated];
     
     self.infoEntryTextField.enabled = self.editing;
+    
+//    if (self.editing == NO) {
+//        NSLog(@"I'm turned off");
+//    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

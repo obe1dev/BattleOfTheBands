@@ -10,7 +10,7 @@
 #import "FireBaseController.h"
 #import "ProfileController.h"
 
-@interface LoginViewController ()<UITextFieldDelegate>
+@interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailLogin;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLogin;
 

@@ -120,6 +120,7 @@
             PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
             cell.photoButton.titleLabel.text = @"Add Photo";
             cell.uploadSongButton.titleLabel.text = @"Add Song";
+            
             return cell;
             
         }
@@ -130,6 +131,20 @@
             cell.infoLabel.text = @"Band Name";
             cell.infoEntryTextField.placeholder = @"Enter your band Name";
             cell.infoEntryTextField.text = self.name;
+            
+            //this will save the edits to the profile
+            
+            
+            
+            if(self.tableView.isEditing){
+                
+                self.profile.name = self.name;
+                
+                
+                [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
+
+                
+            }
             return cell;
             
         }
@@ -225,11 +240,11 @@
 }
 
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:NO];
-    
-    
-}
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+//    [super setEditing:editing animated:NO];
+//    
+//    
+//}
 
 /*
 // Override to support conditional editing of the table view.
