@@ -56,6 +56,8 @@
     //self.Edit = self.editButtonItem;
 }
 
+//TODO: setup a picker View for genres
+
 - (void)updateWithProfile:(Profile *)profile {
     self.name = profile.name;
     self.bio = profile.bioOfBand;
@@ -66,6 +68,7 @@
 
 }
 
+    //TODO: connect to the self.editButtonItem
 #warning i need to connect to the self.editButtonItem
 
 - (IBAction)editButton:(id)sender{
