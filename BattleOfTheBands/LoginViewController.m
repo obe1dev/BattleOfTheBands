@@ -36,7 +36,7 @@
     [FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
     
     //creating profile
-    [[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
+    //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
     
 }
 
@@ -53,7 +53,8 @@
 
 - (IBAction)loginButton:(id)sender {
     
-    //[FireBaseController login:self.emailLogin.text password:self.passwordLogin.text];
+    
+    [FireBaseController login:self.emailLogin.text password:self.passwordLogin.text];
     
 }
 

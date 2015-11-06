@@ -88,8 +88,9 @@
             [profiles addObject:[[Profile alloc] initWithDictionary:profile]];
         }
         self.profiles = profiles;
+//        [ProfileController sharedInstance].profiles = profiles;
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"loadProfiles" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:profilesLoadedNotification object:nil];
         
     }];
 }

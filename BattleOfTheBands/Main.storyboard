@@ -221,63 +221,147 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x">
-                                <rect key="frame" x="20" y="446" width="560" height="40"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjI-jR-VuX">
+                                <rect key="frame" x="0.0" y="501" width="600" height="50"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Display Band Name"/>
-                                <connections>
-                                    <segue destination="fwB-9Q-EF1" kind="show" identifier="BattleToDetail" id="bwN-Re-WI9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-25-5vf">
-                                <rect key="frame" x="0.0" y="506" width="600" height="45"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.99607843139999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Vote"/>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GR6-nw-j9k">
-                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DIl-JB-mmd"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Jb0-To-HM3"/>
+                                    <barButtonItem title="Vote" id="KgB-TE-LM2">
+                                        <color key="tintColor" red="0.96862745100000003" green="0.99607843139999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="vote:" destination="Xre-9u-tpY" id="SSj-YD-0XD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Rnp-Yy-bVn"/>
+                                </items>
+                                <color key="barTintColor" red="0.94509803920000002" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-FG-YEW" userLabel="Master Stack View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="436"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="436"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="326"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="9Sv-Lt-RBY"/>
+                                                    <constraint firstAttribute="width" constant="300" id="dgM-e6-3aL"/>
+                                                </constraints>
+                                                <state key="normal" image="anchorIcon"/>
+                                                <connections>
+                                                    <action selector="leftBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="NwV-Zu-7pE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
+                                                <rect key="frame" x="0.0" y="326" width="300" height="45"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="xPk-PH-5vc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <state key="normal" title="Band Name"/>
+                                                <connections>
+                                                    <action selector="leftBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="cBn-Hc-7UM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
+                                                <rect key="frame" x="0.0" y="371" width="300" height="65"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="7bT-Yq-qw7"/>
+                                                    <constraint firstAttribute="height" constant="65" id="Cy8-iB-bc1"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="incomplete"/>
+                                                <connections>
+                                                    <action selector="leftbandCheckBox:" destination="Xre-9u-tpY" eventType="touchUpInside" id="ng4-X0-wlY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <animations/>
-                                        <state key="normal" image="anchorIcon"/>
-                                        <connections>
-                                            <action selector="leftButton:" destination="Xre-9u-tpY" eventType="touchUpInside" id="EYC-lr-yfs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqY-xr-R9u" userLabel="rightButton">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstItem="ugJ-U8-2JB" firstAttribute="top" secondItem="zmT-ve-PDh" secondAttribute="top" id="3We-Cm-xcb"/>
+                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="top" secondItem="ugJ-U8-2JB" secondAttribute="bottom" id="BAH-sh-sW1"/>
+                                            <constraint firstItem="VOI-n4-vXC" firstAttribute="centerX" secondItem="zmT-ve-PDh" secondAttribute="centerX" id="Hx8-hf-W5z"/>
+                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="top" secondItem="ugJ-U8-2JB" secondAttribute="bottom" id="gbZ-lb-nwU"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
+                                        <rect key="frame" x="300" y="0.0" width="300" height="436"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="326"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="eWD-fR-sPf"/>
+                                                    <constraint firstAttribute="width" constant="300" id="rvg-dH-93N"/>
+                                                </constraints>
+                                                <state key="normal" image="anchorIcon"/>
+                                                <connections>
+                                                    <action selector="rightBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="WcS-7d-tkl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
+                                                <rect key="frame" x="0.0" y="326" width="300" height="45"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="n1m-WW-iJA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <state key="normal" title="Band Name"/>
+                                                <connections>
+                                                    <action selector="rightBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="lko-z7-vd8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9n-G6-RaF" userLabel="RightCheckButton">
+                                                <rect key="frame" x="0.0" y="371" width="300" height="65"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="VBX-Ts-j5o"/>
+                                                    <constraint firstAttribute="height" constant="65" id="VRf-Xl-69T"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                <state key="normal" title="Button" image="incomplete"/>
+                                                <connections>
+                                                    <action selector="rightBandCheckBox:" destination="Xre-9u-tpY" eventType="touchUpInside" id="IGy-ke-teq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="anchorIcon"/>
-                                        <connections>
-                                            <action selector="rightButton:" destination="Xre-9u-tpY" eventType="touchUpInside" id="3xK-fI-AKU"/>
-                                        </connections>
-                                    </button>
+                                        <constraints>
+                                            <constraint firstItem="Rcx-5N-8wl" firstAttribute="top" secondItem="tTg-lh-ttc" secondAttribute="bottom" id="AiY-4f-1wj"/>
+                                            <constraint firstItem="r9n-G6-RaF" firstAttribute="centerX" secondItem="toQ-Pg-8Z0" secondAttribute="centerX" id="VCA-gb-J9b"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="EFo-Ey-jyH"/>
+                                    <constraint firstItem="toQ-Pg-8Z0" firstAttribute="width" secondItem="zmT-ve-PDh" secondAttribute="width" id="Zby-Hh-JdA"/>
+                                    <constraint firstItem="toQ-Pg-8Z0" firstAttribute="height" secondItem="zmT-ve-PDh" secondAttribute="height" id="uC0-uA-rGM"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GR6-nw-j9k" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="15Z-s4-rwK"/>
-                            <constraint firstItem="aKb-25-5vf" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="5nS-kv-Qxi"/>
-                            <constraint firstItem="P1J-8R-g4x" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" id="FNo-hC-2Tu"/>
-                            <constraint firstItem="0Jc-Vj-rJn" firstAttribute="top" secondItem="aKb-25-5vf" secondAttribute="bottom" id="GYU-5Q-UFM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GR6-nw-j9k" secondAttribute="trailing" constant="-20" id="JZK-pu-zmY"/>
-                            <constraint firstItem="GR6-nw-j9k" firstAttribute="top" secondItem="Oym-Jg-5HR" secondAttribute="bottom" multiplier="1:1" id="LwI-MZ-Cav"/>
-                            <constraint firstItem="P1J-8R-g4x" firstAttribute="trailing" secondItem="nMo-Cq-s3n" secondAttribute="trailingMargin" id="Oae-Tt-A3z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aKb-25-5vf" secondAttribute="trailing" constant="-20" id="g0E-dw-iVe"/>
-                            <constraint firstItem="aKb-25-5vf" firstAttribute="top" secondItem="P1J-8R-g4x" secondAttribute="bottom" constant="20" id="kCI-4d-tY9"/>
+                            <constraint firstItem="QPm-FG-YEW" firstAttribute="top" secondItem="Oym-Jg-5HR" secondAttribute="bottom" id="3wF-sR-AvB"/>
+                            <constraint firstItem="sjI-jR-VuX" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="Lfz-Qa-MnS"/>
+                            <constraint firstItem="sjI-jR-VuX" firstAttribute="top" secondItem="QPm-FG-YEW" secondAttribute="bottom" id="QCF-ai-vC7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QPm-FG-YEW" secondAttribute="trailing" constant="-20" id="du3-V9-i1O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sjI-jR-VuX" secondAttribute="trailing" constant="-20" id="jS2-kA-2H7"/>
+                            <constraint firstItem="0Jc-Vj-rJn" firstAttribute="top" secondItem="sjI-jR-VuX" secondAttribute="bottom" id="nj6-kQ-em8"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QPm-FG-YEW" secondAttribute="bottom" constant="100" id="qVT-uJ-Rde"/>
+                            <constraint firstItem="QPm-FG-YEW" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="rCK-HS-M4A"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QCF-ai-vC7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Battle" id="SZv-ob-VAI">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="dsn-A4-XfW"/>
@@ -285,9 +369,13 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="displayBandName" destination="P1J-8R-g4x" id="gu1-qL-vjs"/>
-                        <outlet property="leftButtonDisplay" destination="ugJ-U8-2JB" id="b6c-Fk-EeN"/>
-                        <outlet property="rightButtonDisplay" destination="UqY-xr-R9u" id="9Sm-uO-4GZ"/>
+                        <outlet property="leftBandName" destination="P1J-8R-g4x" id="5xU-Qk-vYt"/>
+                        <outlet property="leftBandPlay" destination="ugJ-U8-2JB" id="h0F-rE-C8P"/>
+                        <outlet property="leftbandCheckBox" destination="VOI-n4-vXC" id="vFQ-Sp-PuF"/>
+                        <outlet property="rightBandCheckBox" destination="r9n-G6-RaF" id="9xN-id-9YV"/>
+                        <outlet property="rightBandName" destination="Rcx-5N-8wl" id="eec-cA-zNV"/>
+                        <outlet property="rightBandPlay" destination="tTg-lh-ttc" id="ThL-22-aBL"/>
+                        <outlet property="voteButton" destination="KgB-TE-LM2" id="wRh-fv-SF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xz-6B-XGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,7 +453,7 @@
                                             <rect key="frame" x="8" y="10" width="584" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -390,7 +478,7 @@
                                             <rect key="frame" x="8" y="12" width="584" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -557,7 +645,7 @@
                                             <rect key="frame" x="8" y="8" width="584" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-Zw-rYK">
@@ -643,7 +731,7 @@
                                             <rect key="frame" x="8" y="224" width="584" height="34"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -769,14 +857,14 @@
                                             <rect key="frame" x="8" y="8" width="584" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtz-pW-hQI">
                                             <rect key="frame" x="8" y="36" width="584" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -807,7 +895,7 @@
                                             <rect key="frame" x="8" y="16" width="584" height="22"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIY-Xp-FBw">
@@ -817,7 +905,7 @@
                                                 <constraint firstAttribute="height" constant="96" id="Fmw-QY-rkx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -899,7 +987,7 @@
                                             <rect key="frame" x="8" y="38.5" width="584" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1018,6 +1106,7 @@
     <resources>
         <image name="anchorIcon" width="1024" height="1024"/>
         <image name="anchorLogIn" width="1280" height="2276"/>
+        <image name="incomplete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="737-XE-zL6"/>

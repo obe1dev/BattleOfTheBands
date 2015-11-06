@@ -12,11 +12,19 @@
 #import "Profile.h"
 
 @interface BattleViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *leftButtonDisplay;
+@property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
+@property (weak, nonatomic) IBOutlet UIButton *rightBandPlay;
 
-@property (weak, nonatomic) IBOutlet UIButton *rightButtonDisplay;
 
-@property (weak, nonatomic) IBOutlet UIButton *displayBandName;
+@property (weak, nonatomic) IBOutlet UIButton *leftBandName;
+@property (weak, nonatomic) IBOutlet UIButton *rightBandName;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *leftbandCheckBox;
+@property (weak, nonatomic) IBOutlet UIButton *rightBandCheckBox;
+
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *voteButton;
 
 @end
 
@@ -27,12 +35,45 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //TODO: update the buttons with label and image form randomly selected bands
-    [self.leftButtonDisplay.titleLabel setText:@"left button"];
-   // self.leftButtonDisplay.imageView.image =
+    self.leftBandName.titleLabel.text = @"Left Button";
+    //[self.leftBandName.titleLabel setText:@"left button"];
+    //self.leftBandPlay.imageView.image =
     
     
-    [self.rightButtonDisplay.titleLabel setText:@"right Button"];
-    //self.rightButtonDisplay.imageView.image =
+    [self.rightBandName.titleLabel setText:@"right Button"];
+    //self.rightBandPlay.imageView.image =
+    
+}
+
+//band art play and pause buttons
+- (IBAction)leftBandPlay:(id)sender {
+    
+}
+
+- (IBAction)rightBandPlay:(id)sender {
+    
+}
+
+//name of band and segue to detail of band
+- (IBAction)leftBandName:(id)sender {
+    
+}
+
+- (IBAction)rightBandName:(id)sender {
+    
+}
+
+//check box to vote
+- (IBAction)leftbandCheckBox:(id)sender {
+    
+}
+
+- (IBAction)rightBandCheckBox:(id)sender {
+    
+}
+
+//voting
+- (IBAction)vote:(id)sender {
     
 }
 
@@ -40,23 +81,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"BattleToDetail"]) {
         
-        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
         
-        DetailTableViewController * detailViewController = segue.destinationViewController;
+    DetailTableViewController * detailViewController = segue.destinationViewController;
         
-//        Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
+//    Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
 //        
-//        detailViewController.profile = profile;
+//    detailViewController.profile = profile;
     }
-}
-
-- (IBAction)leftButton:(UIButton *)sender {
-    self.displayBandName.titleLabel.text = self.leftButtonDisplay.titleLabel.text;
-}
-
-- (IBAction)rightButton:(UIButton *)sender {
-    self.displayBandName.titleLabel.text = self.rightButtonDisplay.titleLabel.text;
 }
 
 

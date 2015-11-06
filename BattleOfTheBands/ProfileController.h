@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
+static const NSString *profilesLoadedNotification = @"profilesLoaded";
+
 @interface ProfileController : NSObject
 
 @property (strong, nonatomic, readonly) NSArray *profiles;
 
 + (ProfileController *)sharedInstance;
+
+- (void)loadFromPersistentStorage;
 
 -(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
 

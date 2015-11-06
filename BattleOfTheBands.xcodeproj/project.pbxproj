@@ -42,6 +42,7 @@
 		4798D5CB1BE15FBA00B29346 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5CA1BE15FBA00B29346 /* DetailTableViewController.m */; };
 		4798D5CE1BE180C000B29346 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5CD1BE180C000B29346 /* PhotoCell.m */; };
 		4798D5D11BE180EA00B29346 /* RankingVotesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5D01BE180EA00B29346 /* RankingVotesCell.m */; };
+		47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5852F1BEBF412001453D9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		4798D5CD1BE180C000B29346 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		4798D5CF1BE180EA00B29346 /* RankingVotesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingVotesCell.h; sourceTree = "<group>"; };
 		4798D5D01BE180EA00B29346 /* RankingVotesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingVotesCell.m; sourceTree = "<group>"; };
+		47F5852F1BEBF412001453D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4798D5B71BD9C4A600B29346 /* libicucore.tbd in Frameworks */,
+				47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */,
 				4798D5B51BD9C49A00B29346 /* libc++.tbd in Frameworks */,
 				4798D5B31BD9C48A00B29346 /* CFNetwork.framework in Frameworks */,
 				4798D5B11BD9C47F00B29346 /* Security.framework in Frameworks */,
@@ -188,6 +191,7 @@
 		4798D54B1BD9BF1F00B29346 = {
 			isa = PBXGroup;
 			children = (
+				47F5852F1BEBF412001453D9 /* StoreKit.framework */,
 				4798D5561BD9BF1F00B29346 /* BattleOfTheBands */,
 				4798D5701BD9BF1F00B29346 /* BattleOfTheBandsTests */,
 				4798D57B1BD9BF1F00B29346 /* BattleOfTheBandsUITests */,
@@ -393,6 +397,11 @@
 					4798D5531BD9BF1F00B29346 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = V9Z3VAP3WY;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					4798D56C1BD9BF1F00B29346 = {
 						CreatedOnToolsVersion = 7.1;

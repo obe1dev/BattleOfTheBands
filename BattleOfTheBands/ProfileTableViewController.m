@@ -33,14 +33,17 @@
 
 @implementation ProfileTableViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.isBand = YES;
-    self.profile = [ProfileController sharedInstance].profiles.firstObject;
     
     //[self updateWithProfile:[ProfileController sharedInstance].profiles.firstObject];
-    [self updateWithProfile:self.profile];
+    [self updateWithProfile];
     
     //creating moc data
     
@@ -54,14 +57,29 @@
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //self.Edit = self.editButtonItem;
+    
+    [self registerForNotifications];
 }
 
 //TODO: setup a picker View for genres
 
-- (void)updateWithProfile:(Profile *)profile {
-    self.name = profile.name;
-    self.bio = profile.bioOfBand;
-    self.website = profile.bandWebsite;
+- (void)updateWithProfile {
+    self.profile = [ProfileController sharedInstance].profiles.firstObject;
+
+    if (self.profile ) {
+        self.name = self.profile.name;
+        self.bio = self.profile.bioOfBand;
+        self.website = self.profile.bandWebsite;
+        
+        [self.tableView reloadData];
+        NSLog(@"Updated with profile");
+    } else {
+        NSLog(@"No profile to update");
+    }
+}
+
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithProfile) name:profilesLoadedNotification object:nil];
 }
 
 - (IBAction)logoutButton:(id)sender {
