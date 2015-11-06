@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
-static const NSString *profilesLoadedNotification = @"profilesLoaded";
+static NSString *profilesLoadedNotification = @"profilesLoaded";
 
 @interface ProfileController : NSObject
 
