@@ -20,6 +20,10 @@
 
 @implementation Top10TableViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,6 +33,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [self registerForNotifications];
+}
+
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUpdatedProfiles) name:profilesLoadedNotification object:nil];
+}
+
+- (void)showUpdatedProfiles {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,6 +74,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     //return [[ProfileController sharedInstance].setUpMockData.count;
+    NSLog(@"Displaying profiles: %@", @([ProfileController sharedInstance].profiles.count));
    return [ProfileController sharedInstance].profiles.count;
 }
 
