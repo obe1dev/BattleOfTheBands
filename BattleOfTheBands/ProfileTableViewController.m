@@ -87,24 +87,26 @@
 }
 
     //TODO: connect to the self.editButtonItem
-#warning i need to connect to the self.editButtonItem
 
-- (IBAction)editButton:(id)sender{
-//
-//        if (self.profile) {
-//            
-//            self.profile.name = self.name;
-//            self.profile.bioOfBand = self.bio;
-//            self.profile.bandWebsite = self.website;
-//        
-//
-//        }else{
-//        
-//     self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
-//        
-//        }
-//        
-//        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    if (!editing) {
+        if (self.profile) {
+            
+            self.profile.name = self.name;
+            self.profile.bioOfBand = self.bio;
+            self.profile.bandWebsite = self.website;
+            
+            
+        } else {
+            
+            self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
+            
+        }
+        
+        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
