@@ -32,7 +32,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //this is fake data this will be set in the profile property
 @property (assign, nonatomic) BOOL isBand;
 
-@property (nonatomic, strong) Profile *profile;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *website;
@@ -73,12 +72,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 - (void)updateWithProfile {
     
-    self.profile = [ProfileController sharedInstance].currentProfile;
+    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
 
-    if (self.profile ) {
-        self.name = self.profile.name;
-        self.bio = self.profile.bioOfBand;
-        self.website = self.profile.bandWebsite;
+    if (currentProfile) {
+        self.name = currentProfile.name;
+        self.bio = currentProfile.bioOfBand;
+        self.website = currentProfile.bandWebsite;
         
         [self.tableView reloadData];
         NSLog(@"Updated with profile");
@@ -88,7 +87,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 - (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithProfile) name:profilesLoadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithProfile) name:currentProfileLoadedNotification object:nil];
 }
 
 - (IBAction)logoutButton:(id)sender {
@@ -150,17 +149,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [super setEditing:editing animated:animated];
     
     if (!editing) {
-        
-        if (self.profile) {
-            
-            self.profile.name = self.name;
-            self.profile.bioOfBand = self.bio;
-            self.profile.bandWebsite = self.website;
-            
-            
-        }
-        
-        [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
+        [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
     }
 }
 

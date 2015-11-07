@@ -55,6 +55,9 @@ static NSString * const isBandKey = @"isBandKey";
     if (self.uID) {
         [dictionary setObject:self.uID forKey:uIDKey];
     }
+    if (self.email) {
+        [dictionary setObject:self.email forKey:emailKey];
+    }
     if (self.password) {
         [dictionary setObject:self.password forKey:passwordKey];
     }

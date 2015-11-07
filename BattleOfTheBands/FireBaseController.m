@@ -35,9 +35,7 @@
             // There was an error creating the account
             NSLog(@"%@",error);
             } else {
-            NSString *uid = [result objectForKey:@"uid"];
-            NSLog(@"Successfully created user account with uid: %@", uid);
-                [[ProfileController sharedInstance] createProfile:userEmail uid:uid];
+                [self login:userEmail password:password];
             }
         
     }];
@@ -48,7 +46,11 @@
     return [[[FireBaseController base] childByAppendingPath:@"ListnerProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }
 
-+ (Firebase *) BandProfiles {
++ (Firebase *) allBandProfiles {
+    return [[FireBaseController base] childByAppendingPath:@"BandProfiles/"];
+}
+
++ (Firebase *) currentBandProfile {
     return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }
 
@@ -68,17 +70,24 @@
             // There was an error creating the account
             NSLog(@"%@",error);
         } else {
-            [self fetchCurrentUser];
+            [self fetchCurrentUser: userEmail];
         }
     }];
 }
 
-+ (void)fetchCurrentUser {
-    Firebase *currentUserReference = [FireBaseController BandProfiles];
-    [currentUserReference observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSArray *dictionaryArray = (NSArray *)snapshot.value;
-        NSDictionary *userDictionary = (NSDictionary *)dictionaryArray.firstObject;
-        [[ProfileController sharedInstance] setCurrentUser:userDictionary];
++ (void)fetchCurrentUser:(NSString *)email {
+    [[FireBaseController currentBandProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *profileDictionary;
+        if ([snapshot.value isKindOfClass:[NSNull class]]) {
+            Profile *newBandProfile = [[ProfileController sharedInstance] createProfile:email uid:[self currentUserUID]];
+            profileDictionary = newBandProfile.dictionaryRepresentation;
+        } else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
+            profileDictionary = snapshot.value;
+        }
+        [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
+        [[ProfileController sharedInstance] saveCurrentProfile];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:currentProfileLoadedNotification object:nil];
     } withCancelBlock:^(NSError *error) {
         // Do nothing for now
     }];

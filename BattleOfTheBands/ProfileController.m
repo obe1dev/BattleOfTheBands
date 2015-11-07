@@ -13,8 +13,8 @@
 
 @interface ProfileController ()
 
-@property (strong, nonatomic) NSArray *profiles;
 @property (strong, nonatomic) Profile *currentProfile;
+@property (strong, nonatomic) NSArray *topTenBandProfiles;
 
 @end
 
@@ -25,12 +25,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [ProfileController new];
-        
-        sharedInstance.profiles = [NSArray new];
-        
-//      [sharedInstance setUpMockData];
-        
-        [sharedInstance loadFromPersistentStorage];
     });
     return sharedInstance;
 }
@@ -44,7 +38,6 @@
     Profile *profile = [Profile new];
     profile.email = email;
     profile.uID = uID;
-    [self addProfile:profile];
     
     self.currentProfile = profile;
     
@@ -67,6 +60,8 @@
         self.currentProfile.bandWebsite = bandWebsite;
     }
     
+    [self saveCurrentProfile];
+    
 }
 
 - (void)setCurrentUser:(NSDictionary *)dictionary {
@@ -76,75 +71,28 @@
 }
 
 
--(void) addProfile:(Profile *)profile{
-    
-    if (!profile) {
-        return;
-    }
-    
-    NSMutableArray *profileList = self.profiles.mutableCopy;
-    [profileList addObject:profile];
-    self.profiles = profileList;
-    [self saveToPersistentStorage];
-    
-}
-
-#pragma mark Read
-
-- (void)loadFromPersistentStorage {
-    
-    
-    [[FireBaseController BandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        
-        NSMutableArray *profiles = [NSMutableArray new];
-        
-        for (NSDictionary *profile in snapshot.value) {
-            
-            
-            [profiles addObject:[[Profile alloc] initWithDictionary:profile]];
-        }
-        self.profiles = profiles;
-//        [ProfileController sharedInstance].profiles = profiles;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:profilesLoadedNotification object:nil];
-        
-    }];
-}
-
 #pragma mark Update
 
-- (void) saveToPersistentStorage {
+- (void) saveCurrentProfile {
     
-    NSMutableArray *profileDictionaries = [NSMutableArray new];
-    for (Profile *profile in self.profiles) {
+    [[FireBaseController currentBandProfile] setValue:self.currentProfile.dictionaryRepresentation];
+
+}
+
+#warning Implement this for real to get the top ten bands as sorted by votes
+- (void)loadTopTenBandProfiles {
+    [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSArray *bandDictionaries = (NSArray *)snapshot.value;
+        NSMutableArray *topBandsMutable = [NSMutableArray array];
+        for (NSDictionary *bandDictionary in bandDictionaries) {
+            Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
+            [topBandsMutable addObject:bandProfile];
+        }
+        self.topTenBandProfiles = topBandsMutable;
         
-        [profileDictionaries addObject:[profile dictionaryRepresentation]];
-        
-    }
-    //i Need to cange to userProfile instead of base but it errors.
-    [[FireBaseController BandProfiles] setValue:profileDictionaries];
+        [[NSNotificationCenter defaultCenter] postNotificationName:topBandProfilesLoadedNotification object:nil];
+    }];
 }
-
-- (void) save:(NSArray *) profiles{
-    [self saveToPersistentStorage];
-}
-
-#pragma mark delete
-
--(void) removeProfile:(Profile *)profile{
-    
-    if (!profile) {
-        return;
-    }
-    
-    NSMutableArray *profileList = self.profiles.mutableCopy;
-    [profileList removeObject:profile];
-    self.profiles = profileList;
-    [self saveToPersistentStorage];
-
-    
-}
-
 
 //-(void) setUpMockData {
 //    

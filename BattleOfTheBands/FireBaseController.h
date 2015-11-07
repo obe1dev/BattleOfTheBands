@@ -15,7 +15,9 @@
 
 + (Firebase *) listenerProfiles;
 
-+ (Firebase *) BandProfiles;
++ (Firebase *) allBandProfiles;
+
++ (Firebase *) currentBandProfile;
 
 + (Firebase *) userSongBase;
 

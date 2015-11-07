@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
-static NSString *profilesLoadedNotification = @"profilesLoaded";
+static NSString *currentProfileLoadedNotification = @"currentProfileLoaded";
+static NSString *topBandProfilesLoadedNotification = @"topBandProfilesLoaded";
 
 @interface ProfileController : NSObject
 
-@property (strong, nonatomic, readonly) NSArray *profiles;
 @property (strong, nonatomic, readonly) Profile *currentProfile;
+@property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
 
 + (ProfileController *)sharedInstance;
 
@@ -24,14 +25,12 @@ static NSString *profilesLoadedNotification = @"profilesLoaded";
 
 -(Profile *)createProfile:(NSString *)email uid:(NSString*)uID;
 
+- (void)saveCurrentProfile;
+
 -(void) currentUser:(NSString *)email;
 
 -(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
 
--(void) addProfile:(Profile *)Profile;
-
--(void) removeProfile:(Profile *)Profile;
-
--(void) save:(NSArray *) profiles;
+- (void)loadTopTenBandProfiles;
 
 @end

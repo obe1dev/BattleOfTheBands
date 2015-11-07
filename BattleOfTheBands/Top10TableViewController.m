@@ -37,7 +37,7 @@
 }
 
 - (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUpdatedProfiles) name:profilesLoadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUpdatedProfiles) name:topBandProfilesLoadedNotification object:nil];
 }
 
 - (void)showUpdatedProfiles {
@@ -58,7 +58,7 @@
         
          DetailTableViewController * detailViewController = segue.destinationViewController;
         
-        Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
+        Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
         
         detailViewController.profile = profile;
     }
@@ -73,15 +73,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    NSLog(@"Displaying profiles: %@", @([ProfileController sharedInstance].profiles.count));
-   return [ProfileController sharedInstance].profiles.count;
+    NSLog(@"Displaying profiles: %@", @([ProfileController sharedInstance].topTenBandProfiles.count));
+   return [ProfileController sharedInstance].topTenBandProfiles.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Top10TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-     Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
+     Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
     
     cell.bandName.text = profile.name;
 

@@ -19,9 +19,8 @@
 
 @implementation SignUpViewController
 - (IBAction)SignUpBand:(id)sender {
+    
     [FireBaseController creatAccount:self.email.text password:self.password.text];
-    
-    
     
     //TODO: set isband
 }

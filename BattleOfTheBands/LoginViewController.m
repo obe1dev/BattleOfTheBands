@@ -33,7 +33,8 @@
     //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
-    [FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
+    //[FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
+    //[FireBaseController login:@"signUpSecond@gmail.com" password:@"signup"];
     
     //creating profile
     //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
