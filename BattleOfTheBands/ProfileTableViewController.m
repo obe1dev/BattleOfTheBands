@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //this is fake data this will be set in the profile property
 @property (assign, nonatomic) BOOL isBand;
 
-
+@property (nonatomic, strong) Profile *profile;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *website;
@@ -72,7 +72,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //TODO: setup a picker View for genres
 
 - (void)updateWithProfile {
-    self.profile = [ProfileController sharedInstance].profiles.firstObject;
+    
+    self.profile = [ProfileController sharedInstance].currentProfile;
 
     if (self.profile ) {
         self.name = self.profile.name;
@@ -156,10 +157,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             self.profile.bioOfBand = self.bio;
             self.profile.bandWebsite = self.website;
             
-            
-        } else {
-            
-            self.profile = [[ProfileController sharedInstance] createProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
             
         }
         

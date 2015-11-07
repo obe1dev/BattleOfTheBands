@@ -14,6 +14,7 @@
 @interface ProfileController ()
 
 @property (strong, nonatomic) NSArray *profiles;
+@property (strong, nonatomic) Profile *currentProfile;
 
 @end
 
@@ -37,28 +38,43 @@
 
 #pragma mark Creat profile
 
-
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite {
+-(Profile *)createProfile:(NSString *)email uid:(NSString*)uID{
     
-    //creating a new profile
+    //creating new profile
     Profile *profile = [Profile new];
-    //adding data to the profile
-        if (name) {
-        profile.name = name;
-    }
-    if (bioOfBand) {
-        profile.bioOfBand = bioOfBand;
-    }
-        if (bandWebsite) {
-        profile.bandWebsite = bandWebsite;
-    }
-    profile.uID = [FireBaseController currentUserUID];
-    
-    //adding this profile to the array
+    profile.email = email;
+    profile.uID = uID;
     [self addProfile:profile];
     
+    self.currentProfile = profile;
+    
     return profile;
-};
+}
+
+-(void) currentUser:(NSString *)email{
+    self.currentProfile.email = email;
+}
+
+-(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite {
+    
+        if (name) {
+        self.currentProfile.name = name;
+    }
+        if (bioOfBand) {
+        self.currentProfile.bioOfBand = bioOfBand;
+    }
+        if (bandWebsite) {
+        self.currentProfile.bandWebsite = bandWebsite;
+    }
+    
+}
+
+- (void)setCurrentUser:(NSDictionary *)dictionary {
+    
+    Profile *currentUser = [[Profile alloc] initWithDictionary:dictionary];
+    self.currentProfile = currentUser;
+}
+
 
 -(void) addProfile:(Profile *)profile{
     

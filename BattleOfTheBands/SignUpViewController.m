@@ -9,7 +9,7 @@
 #import "SignUpViewController.h"
 #import "FireBaseController.h"
 #import "ProfileTableViewController.h"
-#import "Profile.h"
+#import "ProfileController.h"
 
 @interface SignUpViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *email;
@@ -20,7 +20,9 @@
 @implementation SignUpViewController
 - (IBAction)SignUpBand:(id)sender {
     [FireBaseController creatAccount:self.email.text password:self.password.text];
-    //----------set profile isBand to yes--------------
+    
+    
+    
     //TODO: set isband
 }
 

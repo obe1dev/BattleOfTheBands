@@ -14,12 +14,19 @@ static NSString *profilesLoadedNotification = @"profilesLoaded";
 @interface ProfileController : NSObject
 
 @property (strong, nonatomic, readonly) NSArray *profiles;
+@property (strong, nonatomic, readonly) Profile *currentProfile;
 
 + (ProfileController *)sharedInstance;
 
 - (void)loadFromPersistentStorage;
 
--(Profile *)createProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
+- (void)setCurrentUser:(NSDictionary *)dictionary;
+
+-(Profile *)createProfile:(NSString *)email uid:(NSString*)uID;
+
+-(void) currentUser:(NSString *)email;
+
+-(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
 
 -(void) addProfile:(Profile *)Profile;
 

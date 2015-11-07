@@ -11,7 +11,6 @@
 @implementation BandBioCell
 
 - (void)awakeFromNib {
-    self.bandBioTextView.delegate = self;
     // Initialization code
     self.bandBioTextView.editable = self.editing;
 }

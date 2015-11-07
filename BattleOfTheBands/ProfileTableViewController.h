@@ -11,7 +11,4 @@
 
 @interface ProfileTableViewController : UITableViewController <UITableViewDelegate>
 
-@property (strong, nonatomic) Profile *profile;
-
-
 @end

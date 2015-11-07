@@ -19,6 +19,7 @@ static NSString * const bandWebsiteKey =@"bandWebsiteKey";
 static NSString * const songsKey = @"songsKey";
 static NSString * const likesKey = @"likesKey";
 static NSString * const genreKey = @"genreKey";
+static NSString * const isBandKey = @"isBandKey";
 
 
 @implementation Profile
@@ -39,6 +40,7 @@ static NSString * const genreKey = @"genreKey";
     self.songs = [dictionary objectForKey:songsKey];
     self.likes = [dictionary objectForKey:likesKey];
     self.genre = [dictionary objectForKey:genreKey];
+    self.isBand = [dictionary objectForKey:isBandKey];
     
     return self;
 };

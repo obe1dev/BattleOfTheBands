@@ -8,6 +8,7 @@
 
 #import "FireBaseController.h"
 #import "Profile.h"
+#import "ProfileController.h"
 
 //@interface FireBaseController()
 //
@@ -36,8 +37,9 @@
             } else {
             NSString *uid = [result objectForKey:@"uid"];
             NSLog(@"Successfully created user account with uid: %@", uid);
-                
+                [[ProfileController sharedInstance] createProfile:userEmail uid:uid];
             }
+        
     }];
     
 };
@@ -62,6 +64,23 @@
     
     [self.base authUser:userEmail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         NSLog(@"%@",authData);
+        if (error) {
+            // There was an error creating the account
+            NSLog(@"%@",error);
+        } else {
+            [self fetchCurrentUser];
+        }
+    }];
+}
+
++ (void)fetchCurrentUser {
+    Firebase *currentUserReference = [FireBaseController BandProfiles];
+    [currentUserReference observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSArray *dictionaryArray = (NSArray *)snapshot.value;
+        NSDictionary *userDictionary = (NSDictionary *)dictionaryArray.firstObject;
+        [[ProfileController sharedInstance] setCurrentUser:userDictionary];
+    } withCancelBlock:^(NSError *error) {
+        // Do nothing for now
     }];
 }
 
