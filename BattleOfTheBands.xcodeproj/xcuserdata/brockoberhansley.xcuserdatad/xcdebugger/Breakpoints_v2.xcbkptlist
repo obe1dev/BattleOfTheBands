@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "468557283.093898"
+            filePath = "BattleOfTheBands/BattleViewController.m"
+            timestampString = "468573437.694932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-leftbandCheckBox:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

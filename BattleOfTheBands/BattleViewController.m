@@ -34,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
+    self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
     //TODO: update the buttons with label and image form randomly selected bands
     [self.leftBandName setTitle:@"left Button" forState:UIControlStateNormal];
     //self.leftBandPlay.imageView.image =
@@ -65,6 +65,12 @@
 
 //check box to vote
 - (IBAction)leftbandCheckBox:(id)sender {
+#warning this won't change images after it's clicked whats wrong
+    if (self.leftbandCheckBox.imageView.image == [UIImage imageNamed:@"incomplete"]) {
+        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
+    } else {
+        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+    }
     
 }
 

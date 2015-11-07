@@ -17,8 +17,15 @@
 #import "FollowingTitleCell.h"
 #import "FollowingBandCell.h"
 
+typedef NS_ENUM(NSUInteger, ProfileRow) {
+    ProfileRowPhoto,
+    ProfileRowName,
+    ProfileRowRankVotes,
+    ProfileRowBio,
+    ProfileRowWebsite,
+};
 
-@interface ProfileTableViewController ()
+@interface ProfileTableViewController () <TextFieldCellDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -26,9 +33,9 @@
 @property (assign, nonatomic) BOOL isBand;
 
 
-@property (weak, nonatomic) NSString *name;
-@property (weak, nonatomic) NSString *bio;
-@property (weak, nonatomic) NSString *website;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *bio;
+@property (strong, nonatomic) NSString *website;
 
 @end
 
@@ -87,6 +94,31 @@
 
 }
 
+-(void) textChangedInCell:(TextFieldCell *)cell{
+    
+    NSString *updatedText = cell.infoEntryTextField.text;
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    ProfileRow row = indexPath.row;
+    
+    switch (row) {
+        case ProfileRowName:
+            self.name = updatedText;
+            break;
+        case ProfileRowWebsite:
+            self.website = updatedText;
+            break;
+        case ProfileRowBio:
+        case ProfileRowRankVotes:
+        case ProfileRowPhoto:
+            break;
+            
+    }
+
+}
+
+
 //this will run after the done button is tapped
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
@@ -138,93 +170,63 @@
     
     if (self.isBand) {
         
-        if (indexPath.row == 0) {
-            
-            PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
-            cell.photoButton.titleLabel.text = @"Add Photo";
-            cell.uploadSongButton.titleLabel.text = @"Add Song";
-            
-            return cell;
-            
-        }
+        ProfileRow row = indexPath.row;
         
-        if (indexPath.row == 1) {
-            
-            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-            cell.infoLabel.text = @"Band Name";
-            cell.infoEntryTextField.placeholder = @"Enter your band Name";
-            cell.infoEntryTextField.text = self.name;
-            
-            //this will save the edits to the profile
-            
-            //self.profile.name = self.name;
-            
-
-            
-            if(self.tableView.isEditing){
+        switch (row) {
+            case ProfileRowPhoto: {
+                PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+                cell.photoButton.titleLabel.text = @"Add Photo";
+                cell.uploadSongButton.titleLabel.text = @"Add Song";
                 
-#warning this will chage the the value of the name but it wont run because of the scope and i reuse the cell so i cant address by the name cell
-                self.name = cell.infoEntryTextField.text;
-                
-                
-                [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];
-
-                
+                return cell;
             }
-            return cell;
-            
+            case ProfileRowName: {
+                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+                cell.infoLabel.text = @"Band Name";
+                cell.infoEntryTextField.placeholder = @"Enter your band Name";
+                cell.infoEntryTextField.text = self.name;
+                cell.delegate = self;
+                
+                return cell;
+            }
+            case ProfileRowRankVotes: {
+                RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
+                cell.ranking.text = @"";
+                cell.votes.text = @"";
+                return cell;
+            }
+            case ProfileRowBio: {
+                BandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BandBioCell" forIndexPath:indexPath];
+                cell.bandBioLabel.text = @"Band Bio";
+                cell.bandBioTextView.text = @"";
+                cell.bandBioTextView.text = self.bio;
+                return cell;
+            }
+            case ProfileRowWebsite: {
+                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+                cell.infoLabel.text = @"Bands Website";
+                cell.infoEntryTextField.placeholder = @"Enter your band Website";
+                cell.infoEntryTextField.text = self.website;
+                return cell;
+            }
         }
         
-        if (indexPath.row == 2){
-            
-            RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
-            cell.ranking.text = @"";
-            cell.votes.text = @"";
-            return cell;
-            
-        }
-        
-        if (indexPath.row == 3) {
-            
-            BandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BandBioCell" forIndexPath:indexPath];
-            cell.bandBioLabel.text = @"Band Bio";
-            cell.bandBioTextView.text = @"";
-            cell.bandBioTextView.text = self.bio;
-            return cell;
-            
-        }
-        
-        if (indexPath.row == 4) {
-            
-            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-            cell.infoLabel.text = @"Bands Website";
-            cell.infoEntryTextField.placeholder = @"Enter your band Website";
-            cell.infoEntryTextField.text = self.website;
-            return cell;
-            
-        }
         
         //add a genre picker
         
         
         //this is for the liked bands and listener
-        else if (!self.isBand){
-        
-        if (indexPath.row == 0) {
-            
-            TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-            cell.infoLabel.text = @"Name";
-            cell.infoEntryTextField.placeholder = @"Enter your Name";
-            return cell;
-            
-         }
-       }
-                
     }
         
+//        if (indexPath.row == 0) {
     
-    // Configure the cell...
-    return nil;
+    TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+    cell.infoLabel.text = @"Name";
+    cell.infoEntryTextField.placeholder = @"Enter your Name";
+    return cell;
+    
+//        }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -240,7 +242,6 @@
         if (indexPath.row == 2) {
             return 46;
         }
-    
         if (indexPath.row == 3) {
             return 150;
         }

@@ -240,12 +240,12 @@
                                 <color key="barTintColor" red="0.94509803920000002" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-FG-YEW" userLabel="Master Stack View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="410"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="401"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="410"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="401"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
                                                 <rect key="frame" x="25" y="0.0" width="250" height="250"/>
                                                 <animations/>
                                                 <constraints>
@@ -258,7 +258,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
-                                                <rect key="frame" x="90" y="250" width="120" height="95"/>
+                                                <rect key="frame" x="90" y="250" width="120" height="86"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="Band Name"/>
@@ -267,28 +267,25 @@
                                                     <segue destination="fwB-9Q-EF1" kind="show" identifier="leftButtonSegue" id="X5a-r6-7pe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
-                                                <rect key="frame" x="118" y="345" width="65" height="65"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
+                                                <rect key="frame" x="118" y="336" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="LaQ-hy-5Ed"/>
                                                     <constraint firstAttribute="height" constant="65" id="gUv-ju-xOo"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="incomplete"/>
+                                                <state key="normal" image="incomplete"/>
                                                 <connections>
                                                     <action selector="leftbandCheckBox:" destination="Xre-9u-tpY" eventType="touchUpInside" id="ng4-X0-wlY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstItem="ugJ-U8-2JB" firstAttribute="top" secondItem="zmT-ve-PDh" secondAttribute="top" id="3We-Cm-xcb"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="410"/>
+                                        <rect key="frame" x="300" y="0.0" width="300" height="401"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
                                                 <rect key="frame" x="25" y="0.0" width="250" height="250"/>
                                                 <animations/>
                                                 <constraints>
@@ -301,7 +298,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
-                                                <rect key="frame" x="90" y="250" width="120" height="95"/>
+                                                <rect key="frame" x="90" y="250" width="120" height="86"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="Band Name"/>
@@ -311,7 +308,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9n-G6-RaF" userLabel="RightCheckButton">
-                                                <rect key="frame" x="118" y="345" width="65" height="65"/>
+                                                <rect key="frame" x="118" y="336" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="JDh-xe-fH9"/>
@@ -325,9 +322,6 @@
                                             </button>
                                         </subviews>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstItem="r9n-G6-RaF" firstAttribute="top" secondItem="Rcx-5N-8wl" secondAttribute="bottom" constant="8" id="xpz-cD-8HR"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <animations/>
@@ -600,6 +594,9 @@
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textChanged:" destination="cOg-te-mm9" eventType="editingChanged" id="def-th-vok"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <animations/>

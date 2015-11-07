@@ -7,6 +7,7 @@
 //
 
 #import "TextFieldCell.h"
+#import "Profile.h"
 
 @implementation TextFieldCell 
 
@@ -15,6 +16,7 @@
     // Initialization code
     self.infoEntryTextField.enabled = self.editing;
 }
+
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
@@ -36,4 +38,11 @@
     [self.infoEntryTextField resignFirstResponder];
     return YES;
 }
+
+- (IBAction)textChanged:(id)sender {
+    if (self.delegate) {
+        [self.delegate textChangedInCell:self];
+    }
+}
+
 @end
