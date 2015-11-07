@@ -34,13 +34,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     //TODO: update the buttons with label and image form randomly selected bands
-    self.leftBandName.titleLabel.text = @"Left Button";
-    //[self.leftBandName.titleLabel setText:@"left button"];
+    [self.leftBandName setTitle:@"left Button" forState:UIControlStateNormal];
     //self.leftBandPlay.imageView.image =
     
     
-    [self.rightBandName.titleLabel setText:@"right Button"];
+    [self.rightBandName setTitle:@"right Button" forState:UIControlStateNormal];
     //self.rightBandPlay.imageView.image =
     
 }
@@ -79,7 +79,7 @@
 
 // TODO: update so the segue will update the detailViewController 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"BattleToDetail"]) {
+    if ([segue.identifier isEqualToString:@"rightButtonSegue"]) {
         
     //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
@@ -90,7 +90,20 @@
 //        
 //    detailViewController.profile = profile;
     }
+    
+    if ([segue.identifier isEqualToString:@"leftButtonSegue"]) {
+        
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        
+        DetailTableViewController * detailViewController = segue.destinationViewController;
+        
+        //    Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
+        //
+        //    detailViewController.profile = profile;
+    }
 }
+
 
 
 - (void)didReceiveMemoryWarning {

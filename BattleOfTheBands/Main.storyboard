@@ -240,17 +240,17 @@
                                 <color key="barTintColor" red="0.94509803920000002" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-FG-YEW" userLabel="Master Stack View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="436"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="410"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="436"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="410"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="326"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
+                                                <rect key="frame" x="25" y="0.0" width="250" height="250"/>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="9Sv-Lt-RBY"/>
-                                                    <constraint firstAttribute="width" constant="300" id="dgM-e6-3aL"/>
+                                                    <constraint firstAttribute="width" constant="250" id="P4T-gu-qef"/>
+                                                    <constraint firstAttribute="height" constant="250" id="svt-59-NiD"/>
                                                 </constraints>
                                                 <state key="normal" image="anchorIcon"/>
                                                 <connections>
@@ -258,23 +258,21 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
-                                                <rect key="frame" x="0.0" y="326" width="300" height="45"/>
+                                                <rect key="frame" x="90" y="250" width="120" height="95"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="xPk-PH-5vc"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="Band Name"/>
                                                 <connections>
                                                     <action selector="leftBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="cBn-Hc-7UM"/>
+                                                    <segue destination="fwB-9Q-EF1" kind="show" identifier="leftButtonSegue" id="X5a-r6-7pe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
-                                                <rect key="frame" x="0.0" y="371" width="300" height="65"/>
+                                                <rect key="frame" x="118" y="345" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="65" id="7bT-Yq-qw7"/>
-                                                    <constraint firstAttribute="height" constant="65" id="Cy8-iB-bc1"/>
+                                                    <constraint firstAttribute="width" constant="65" id="LaQ-hy-5Ed"/>
+                                                    <constraint firstAttribute="height" constant="65" id="gUv-ju-xOo"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="incomplete"/>
                                                 <connections>
@@ -285,20 +283,17 @@
                                         <animations/>
                                         <constraints>
                                             <constraint firstItem="ugJ-U8-2JB" firstAttribute="top" secondItem="zmT-ve-PDh" secondAttribute="top" id="3We-Cm-xcb"/>
-                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="top" secondItem="ugJ-U8-2JB" secondAttribute="bottom" id="BAH-sh-sW1"/>
-                                            <constraint firstItem="VOI-n4-vXC" firstAttribute="centerX" secondItem="zmT-ve-PDh" secondAttribute="centerX" id="Hx8-hf-W5z"/>
-                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="top" secondItem="ugJ-U8-2JB" secondAttribute="bottom" id="gbZ-lb-nwU"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="436"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
+                                        <rect key="frame" x="300" y="0.0" width="300" height="410"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="326"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
+                                                <rect key="frame" x="25" y="0.0" width="250" height="250"/>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="eWD-fR-sPf"/>
-                                                    <constraint firstAttribute="width" constant="300" id="rvg-dH-93N"/>
+                                                    <constraint firstAttribute="height" constant="250" id="kjd-wc-OzX"/>
+                                                    <constraint firstAttribute="width" constant="250" id="oPZ-St-Tci"/>
                                                 </constraints>
                                                 <state key="normal" image="anchorIcon"/>
                                                 <connections>
@@ -306,23 +301,21 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
-                                                <rect key="frame" x="0.0" y="326" width="300" height="45"/>
+                                                <rect key="frame" x="90" y="250" width="120" height="95"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="n1m-WW-iJA"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="Band Name"/>
                                                 <connections>
                                                     <action selector="rightBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="lko-z7-vd8"/>
+                                                    <segue destination="fwB-9Q-EF1" kind="show" identifier="rightButtonSegue" id="wMj-DI-6Uw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9n-G6-RaF" userLabel="RightCheckButton">
-                                                <rect key="frame" x="0.0" y="371" width="300" height="65"/>
+                                                <rect key="frame" x="118" y="345" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="65" id="VBX-Ts-j5o"/>
-                                                    <constraint firstAttribute="height" constant="65" id="VRf-Xl-69T"/>
+                                                    <constraint firstAttribute="height" constant="65" id="JDh-xe-fH9"/>
+                                                    <constraint firstAttribute="width" constant="65" id="z31-xh-3vC"/>
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <state key="normal" title="Button" image="incomplete"/>
@@ -333,8 +326,7 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="Rcx-5N-8wl" firstAttribute="top" secondItem="tTg-lh-ttc" secondAttribute="bottom" id="AiY-4f-1wj"/>
-                                            <constraint firstItem="r9n-G6-RaF" firstAttribute="centerX" secondItem="toQ-Pg-8Z0" secondAttribute="centerX" id="VCA-gb-J9b"/>
+                                            <constraint firstItem="r9n-G6-RaF" firstAttribute="top" secondItem="Rcx-5N-8wl" secondAttribute="bottom" constant="8" id="xpz-cD-8HR"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -354,7 +346,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QPm-FG-YEW" secondAttribute="trailing" constant="-20" id="du3-V9-i1O"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sjI-jR-VuX" secondAttribute="trailing" constant="-20" id="jS2-kA-2H7"/>
                             <constraint firstItem="0Jc-Vj-rJn" firstAttribute="top" secondItem="sjI-jR-VuX" secondAttribute="bottom" id="nj6-kQ-em8"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="QPm-FG-YEW" secondAttribute="bottom" constant="100" id="qVT-uJ-Rde"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QPm-FG-YEW" secondAttribute="bottom" constant="135" id="qVT-uJ-Rde"/>
                             <constraint firstItem="QPm-FG-YEW" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="rCK-HS-M4A"/>
                         </constraints>
                         <variation key="default">
@@ -391,17 +383,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <pickerView key="tableHeaderView" contentMode="scaleToFill" id="Vh2-mi-nA1">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <accessibility key="accessibilityConfiguration" identifier="Genre">
-                                <bool key="isElement" value="NO"/>
-                            </accessibility>
-                        </pickerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="250" id="3T0-mR-HV0" customClass="PhotoCell">
-                                <rect key="frame" x="0.0" y="136" width="600" height="250"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3T0-mR-HV0" id="jLf-9X-rWJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
@@ -443,7 +427,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="followingTitleCell" id="Va5-ed-qD9" customClass="FollowingTitleCell">
-                                <rect key="frame" x="0.0" y="386" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="342" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Va5-ed-qD9" id="HAt-h8-F1q">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -468,7 +452,7 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowingBandCell" id="59U-oO-kWf" customClass="FollowingBandCell">
-                                <rect key="frame" x="0.0" y="430" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="386" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59U-oO-kWf" id="z5r-fc-yOx">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -496,7 +480,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingVotesCell" rowHeight="46" id="a5f-Ut-zhY" customClass="RankingVotesCell">
-                                <rect key="frame" x="0.0" y="474" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="430" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5f-Ut-zhY" id="xLc-NZ-tmy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="46"/>
@@ -598,7 +582,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" rowHeight="85" id="cOg-te-mm9" customClass="TextFieldCell">
-                                <rect key="frame" x="0.0" y="520" width="600" height="85"/>
+                                <rect key="frame" x="0.0" y="476" width="600" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cOg-te-mm9" id="leP-CC-b77">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
@@ -635,7 +619,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BandBioCell" rowHeight="150" id="MLt-HY-gE4" customClass="BandBioCell">
-                                <rect key="frame" x="0.0" y="605" width="600" height="150"/>
+                                <rect key="frame" x="0.0" y="561" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MLt-HY-gE4" id="w7E-TO-3rf">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
@@ -1110,6 +1094,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="737-XE-zL6"/>
-        <segue reference="LdQ-Ki-47O"/>
+        <segue reference="X5a-r6-7pe"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,7 @@
 //this is fake data this will be set in the profile property
 @property (assign, nonatomic) BOOL isBand;
 
+
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *bio;
 @property (weak, nonatomic) NSString *website;
@@ -52,7 +53,7 @@
     
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -86,12 +87,14 @@
 
 }
 
-    //TODO: connect to the self.editButtonItem
-
+//this will run after the done button is tapped
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
     if (!editing) {
+        
+        //[self.tableView reloadData];
+        
         if (self.profile) {
             
             self.profile.name = self.name;
@@ -154,11 +157,14 @@
             
             //this will save the edits to the profile
             
+            //self.profile.name = self.name;
             
+
             
             if(self.tableView.isEditing){
                 
-                self.profile.name = self.name;
+#warning this will chage the the value of the name but it wont run because of the scope and i reuse the cell so i cant address by the name cell
+                self.name = cell.infoEntryTextField.text;
                 
                 
                 [[ProfileController sharedInstance] save:[ProfileController sharedInstance].profiles];

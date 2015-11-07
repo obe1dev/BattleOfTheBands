@@ -28,7 +28,7 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -73,7 +73,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    //return [[ProfileController sharedInstance].setUpMockData.count;
     NSLog(@"Displaying profiles: %@", @([ProfileController sharedInstance].profiles.count));
    return [ProfileController sharedInstance].profiles.count;
 }

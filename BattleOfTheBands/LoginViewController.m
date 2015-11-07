@@ -30,7 +30,7 @@
     //creating moc data
     
     //creating user
-    //[FireBaseController creatAccount:@"brockBandUid@gmail.com" password:@"happybirthday"];
+    //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
     [FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
