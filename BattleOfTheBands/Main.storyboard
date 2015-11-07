@@ -636,6 +636,9 @@
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="MLt-HY-gE4" id="3nV-yB-UzQ"/>
+                                            </connections>
                                         </textView>
                                     </subviews>
                                     <animations/>
@@ -652,7 +655,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="bandBioLabel" destination="Hsu-7L-N8q" id="22H-Fb-mE6"/>
-                                    <outlet property="bandBioTextView" destination="sXu-Zw-rYK" id="9Kd-Ra-hN6"/>
+                                    <outlet property="bandBioTextView" destination="sXu-Zw-rYK" id="pnF-Sp-dVd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1091,6 +1094,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="737-XE-zL6"/>
-        <segue reference="X5a-r6-7pe"/>
+        <segue reference="LdQ-Ki-47O"/>
     </inferredMetricsTieBreakers>
 </document>

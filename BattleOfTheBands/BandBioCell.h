@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BandBioCell : UITableViewCell 
+
+@protocol BandBioCellDelegate;
+
+@interface BandBioCell : UITableViewCell <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *bandBioTextView;
 @property (weak, nonatomic) IBOutlet UILabel *bandBioLabel;
+
+@property (weak, nonatomic) id<BandBioCellDelegate> delegate;
+@end
+
+@protocol BandBioCellDelegate
+
+-(void) bioChangedInCell:(BandBioCell *) cell;
 
 @end

@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowWebsite,
 };
 
-@interface ProfileTableViewController () <TextFieldCellDelegate>;
+@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -94,6 +94,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 }
 
+
+//update text for name and website (textField)
 -(void) textChangedInCell:(TextFieldCell *)cell{
     
     NSString *updatedText = cell.infoEntryTextField.text;
@@ -119,13 +121,34 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 
+//update text for bio (textView)
+- (void)bioChangedInCell:(BandBioCell *)cell{
+    
+    NSString *updatedText = cell.bandBioTextView.text;
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    ProfileRow row = indexPath.row;
+    
+    switch (row) {
+        case ProfileRowName:
+        case ProfileRowWebsite:
+        case ProfileRowBio:
+            self.bio = updatedText;
+            break;
+        case ProfileRowRankVotes:
+        case ProfileRowPhoto:
+            break;
+    }
+    
+}
+
+
 //this will run after the done button is tapped
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
     if (!editing) {
-        
-        //[self.tableView reloadData];
         
         if (self.profile) {
             
@@ -200,6 +223,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.bandBioLabel.text = @"Band Bio";
                 cell.bandBioTextView.text = @"";
                 cell.bandBioTextView.text = self.bio;
+                cell.delegate = self;
                 return cell;
             }
             case ProfileRowWebsite: {
@@ -207,6 +231,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.infoLabel.text = @"Bands Website";
                 cell.infoEntryTextField.placeholder = @"Enter your band Website";
                 cell.infoEntryTextField.text = self.website;
+                cell.delegate = self;
                 return cell;
             }
         }
