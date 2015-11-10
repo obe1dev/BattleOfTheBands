@@ -94,32 +94,4 @@
     }];
 }
 
-//-(void) setUpMockData {
-//    
-//    Profile *sampleProfile1 = [Profile new];
-//    sampleProfile1.name = @"changed good band";
-//    sampleProfile1.uID = @"e9e223cc-1b4d-4842-9350-13624ab3a580";
-//    sampleProfile1.songs = [SongsController sharedInstance].songs;
-//    //[FireBaseController creatAccount:@"brock@gmail.com" password:@"thisisthepassword"];
-//    
-//    
-//    
-//    Profile *sampleProfile2 = [Profile new];
-//    sampleProfile2.name = @"another good band";
-//    
-//    
-//    Profile *sampleProfile3 = [Profile new];
-//    sampleProfile3.name = @"the best band";
-//    
-//    
-//    NSMutableArray *profileList = self.profiles.mutableCopy;
-//  
-//
-//    [profileList addObjectsFromArray:@[sampleProfile1, sampleProfile2, sampleProfile3]];
-//    
-//    self.profiles = profileList;
-//    [self saveToPersistentStorage];
-//
-//};
-
 @end

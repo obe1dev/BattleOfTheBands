@@ -62,6 +62,7 @@
     return [FireBaseController base].authData.uid;
 }
 
+
 +(void) login:(NSString *)userEmail password:(NSString *)password {
     
     [self.base authUser:userEmail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {

@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowWebsite,
 };
 
-@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate>;
+@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *website;
+@property (strong, nonatomic) NSData *bandImage;
 
 @end
 
@@ -91,6 +92,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 - (IBAction)logoutButton:(id)sender {
+    //TODO: log out user with .unauth()
 
 }
 
@@ -277,6 +279,42 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     return NO;
 }
 
+#pragma band photo
+
+- (void)photoCellButtonTapped {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    imagePicker.delegate = self;
+    
+    UIAlertController *photoActionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cameraRollAction = [UIAlertAction actionWithTitle:@"From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }];
+    [photoActionSheet addAction:cameraRollAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [photoActionSheet addAction:cancelAction];
+    
+    
+    [self presentViewController:photoActionSheet animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    self.bandImage = UIImageJPEGRepresentation(image, 0.8);
+    
+    [self.tableView reloadData];
+    
+    //save to server or firebase
+    //[self.bandImage ];
+}
 
 //- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 //    [super setEditing:editing animated:NO];

@@ -20,4 +20,7 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)buttonTapped:(id)sender {
+    [self.delegate photoCellButtonTapped];
+}
 @end

@@ -33,7 +33,7 @@
     //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
-    //[FireBaseController login:@"brockBandUid@gmail.com" password:@"happybirthday"];
+    //[FireBaseController login:@"test1@gmail.com" password:@"test"];
     //[FireBaseController login:@"signUpSecond@gmail.com" password:@"signup"];
     
     //creating profile
@@ -55,6 +55,7 @@
 - (IBAction)loginButton:(id)sender {
     
     [FireBaseController login:self.emailLogin.text password:self.passwordLogin.text];
+    
     
 }
 

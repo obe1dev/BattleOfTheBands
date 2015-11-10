@@ -26,6 +26,7 @@
 @property (strong,nonatomic) NSArray *likes;
 @property (strong,nonatomic) NSString *genre;
 
+
 @property (assign,nonatomic) BOOL isBand;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;

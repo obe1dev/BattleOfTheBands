@@ -397,6 +397,9 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.48956620065789475" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="3T0-mR-HV0" eventType="touchUpInside" id="M74-XH-rAA"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMU-fh-Qp7">
                                             <rect key="frame" x="8" y="203.5" width="584" height="30"/>
@@ -668,6 +671,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="Vy2-0y-ds3">
                             <connections>
                                 <action selector="logoutButton:" destination="3Fx-QB-o3r" id="Fbj-cs-SKq"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="logOut" id="p9t-MW-GNm"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="MbO-ys-sAw">
