@@ -10,6 +10,7 @@
 #import "DetailTableViewController.h"
 #import "ProfileController.h"
 #import "Profile.h"
+#import "LoginViewController.h"
 
 @interface BattleViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
@@ -26,9 +27,19 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *voteButton;
 
+
 @end
 
 @implementation BattleViewController
+
++ (BattleViewController *)sharedInstance {
+    static BattleViewController *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [BattleViewController new];
+    });
+    return sharedInstance;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +54,19 @@
     [self.rightBandName setTitle:@"right Button" forState:UIControlStateNormal];
     //self.rightBandPlay.imageView.image =
     
+#warning login cehck is not working
+    //login check
+//    if (!self.islogin) {
+//        
+//        LoginViewController * loginView = [LoginViewController new];
+//        
+//        [self presentViewController:loginView animated:NO completion:nil];
+//    }
+    
+}
+
+//change to the next battle
+- (IBAction)next:(id)sender {
 }
 
 //band art play and pause buttons
@@ -66,11 +90,13 @@
 //check box to vote
 - (IBAction)leftbandCheckBox:(id)sender {
 #warning this won't change images after it's clicked whats wrong
-    if (self.leftbandCheckBox.imageView.image == [UIImage imageNamed:@"incomplete"]) {
+    self.leftbandCheckBox.selected = YES;
+    self.rightBandCheckBox.selected = NO;
+    if (self.leftbandCheckBox.selected) {
         self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
-    } else {
-        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+        self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
     }
+    
     
 }
 
@@ -92,9 +118,9 @@
         
     DetailTableViewController * detailViewController = segue.destinationViewController;
         
-//    Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
-//        
-//    detailViewController.profile = profile;
+    //Profile *profile = [ProfileController sharedInstance].topTenBandProfiles;
+        
+    //detailViewController.profile = profile;
     }
     
     if ([segue.identifier isEqualToString:@"leftButtonSegue"]) {
@@ -106,7 +132,7 @@
         
         //    Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
         //
-        //    detailViewController.profile = profile;
+        //detailViewController.profile = profile;
     }
 }
 

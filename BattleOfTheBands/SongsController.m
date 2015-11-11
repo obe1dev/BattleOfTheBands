@@ -26,8 +26,6 @@
         
         sharedInstance.songs = [NSMutableArray new];
         
-//        [sharedInstance setUpMockData];
-        
         [sharedInstance loadFromPersistentStorage];
 
     });
@@ -112,30 +110,5 @@
     [self saveToPersistentStorage];
     
 }
-
-//-(void) setUpMockData {
-//    
-//    Songs *sampleSong1 = [Songs new];
-//    sampleSong1.songName = @"song one name";
-//    
-//    
-//    Songs *sampleSong2 = [Songs new];
-//    sampleSong2.songName = @"title of song 2";
-//    
-//    
-//    Songs *sampleSong3 = [Songs new];
-//    sampleSong3.songName = @"awesome song 3";
-//    
-//    NSMutableArray *songsList = self.songs.mutableCopy;
-//    
-//    [songsList addObjectsFromArray:@[sampleSong1, sampleSong2, sampleSong3]];
-//    
-//    self.songs = songsList;
-//    
-//    [self saveToPersistentStorage];
-//    
-//};
-//
-
 
 @end

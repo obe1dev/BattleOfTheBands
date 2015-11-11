@@ -10,4 +10,8 @@
 
 @interface LoginViewController : UIViewController
 
++ (LoginViewController *)sharedInstance;
+
+-(void)loginError;
+
 @end

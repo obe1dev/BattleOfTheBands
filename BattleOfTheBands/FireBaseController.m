@@ -9,6 +9,8 @@
 #import "FireBaseController.h"
 #import "Profile.h"
 #import "ProfileController.h"
+#import "LoginViewController.h"
+#import "BattleViewController.h"
 
 //@interface FireBaseController()
 //
@@ -69,6 +71,11 @@
         NSLog(@"%@",authData);
         if (error) {
             // There was an error creating the account
+#warning this is not working
+            //[[LoginViewController sharedInstance] loginError];
+            
+            //[BattleViewController sharedInstance].islogin = NO;
+            
             NSLog(@"%@",error);
         } else {
             [self fetchCurrentUser: userEmail];

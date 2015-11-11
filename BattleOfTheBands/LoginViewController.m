@@ -18,6 +18,16 @@
 
 @implementation LoginViewController
 
+//testing to see if this loginError Method works.
++ (LoginViewController *)sharedInstance {
+    static LoginViewController *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [LoginViewController new];
+    });
+    return sharedInstance;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -59,7 +69,18 @@
     
 }
 
+#warning login check is not working
+-(void)loginError{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there is no user with that profile or password" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 
+}
 
 /*
 #pragma mark - Navigation
