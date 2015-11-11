@@ -82,13 +82,18 @@
 #warning Implement this for real to get the top ten bands as sorted by votes
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSArray *bandDictionaries = (NSArray *)snapshot.value;
+        NSDictionary *bandDictionaries = snapshot.value;
         NSMutableArray *topBandsMutable = [NSMutableArray array];
-        for (NSDictionary *bandDictionary in bandDictionaries) {
+        for (NSString *bandDictionaryKey in bandDictionaries) {
+            NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
             [topBandsMutable addObject:bandProfile];
         }
-        self.topTenBandProfiles = topBandsMutable;
+        NSArray *sortedBands = [topBandsMutable sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"vote" ascending:NO]]];
+        if (sortedBands.count > 10) {
+            sortedBands = [sortedBands subarrayWithRange:NSMakeRange(0, 10)];
+        }
+        self.topTenBandProfiles = sortedBands;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:topBandProfilesLoadedNotification object:nil];
     }];
