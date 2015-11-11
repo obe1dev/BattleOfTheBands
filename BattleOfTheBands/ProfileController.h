@@ -11,15 +11,17 @@
 
 static NSString *currentProfileLoadedNotification = @"currentProfileLoaded";
 static NSString *topBandProfilesLoadedNotification = @"topBandProfilesLoaded";
+static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 @interface ProfileController : NSObject
 
 @property (strong, nonatomic, readonly) Profile *currentProfile;
 @property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
+@property (strong, nonatomic, readonly) NSArray *randomBand;
 
 + (ProfileController *)sharedInstance;
 
-- (void)loadFromPersistentStorage;
+//- (void)loadFromPersistentStorage;
 
 - (void)setCurrentUser:(NSDictionary *)dictionary;
 
@@ -30,6 +32,10 @@ static NSString *topBandProfilesLoadedNotification = @"topBandProfilesLoaded";
 -(void) currentUser:(NSString *)email;
 
 -(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
+
+-(void) voteUpdate;
+
+- (void)loadRandomBands;
 
 - (void)loadTopTenBandProfiles;
 

@@ -41,18 +41,36 @@
     return sharedInstance;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUpdatedProfiles) name:randomBandProfileLoadedNotification object:nil];
+}
+
+- (void)showUpdatedProfiles {
+    Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
+    Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
+    
+    self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+    //TODO: update the buttons with label and image form randomly selected bands
+    [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
+    //self.leftBandPlay.imageView.image =
+    
+    
+    [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
+    //self.rightBandPlay.imageView.image =
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
-    //TODO: update the buttons with label and image form randomly selected bands
-    [self.leftBandName setTitle:@"left Button" forState:UIControlStateNormal];
-    //self.leftBandPlay.imageView.image =
+    [[ProfileController sharedInstance] loadRandomBands];
     
-    
-    [self.rightBandName setTitle:@"right Button" forState:UIControlStateNormal];
-    //self.rightBandPlay.imageView.image =
+    [self registerForNotifications];
     
 #warning login cehck is not working
     //login check
@@ -107,6 +125,7 @@
 //voting
 - (IBAction)vote:(id)sender {
     
+    [[ProfileController sharedInstance] voteUpdate];
 }
 
 // TODO: update so the segue will update the detailViewController 

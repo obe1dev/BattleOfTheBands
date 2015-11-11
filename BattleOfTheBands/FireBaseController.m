@@ -56,6 +56,10 @@
     return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }
 
++ (Firebase *) voteForband{
+    return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/Votes/"] childByAppendingPath:[FireBaseController currentUserUID]];
+}
+
 + (Firebase *) userSongBase {
     return [[[FireBaseController base] childByAppendingPath:@"songs/"] childByAppendingPath:[FireBaseController currentUserUID]];
 }

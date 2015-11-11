@@ -19,6 +19,8 @@
 
 + (Firebase *) currentBandProfile;
 
++ (Firebase *) voteForband;
+
 + (Firebase *) userSongBase;
 
 + (NSString *) currentUserUID;

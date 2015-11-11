@@ -10,11 +10,13 @@
 #import "Profile.h"
 #import "FireBaseController.h"
 #import "SongsController.h"
+#import "BattleViewController.h"
 
 @interface ProfileController ()
 
 @property (strong, nonatomic) Profile *currentProfile;
 @property (strong, nonatomic) NSArray *topTenBandProfiles;
+@property (strong, nonatomic) NSArray *randomBand;
 
 @end
 
@@ -64,6 +66,17 @@
     
 }
 
+-(void) voteUpdate{
+    
+    NSNumber *newVote =[NSNumber numberWithInt:1];
+    
+    //adding a vote to currentProfile
+    self.currentProfile.vote = [NSNumber numberWithInt:([newVote intValue] + [self.currentProfile.vote intValue])];
+    
+    [self saveCurrentProfile];
+    
+}
+
 - (void)setCurrentUser:(NSDictionary *)dictionary {
     
     Profile *currentUser = [[Profile alloc] initWithDictionary:dictionary];
@@ -79,7 +92,29 @@
 
 }
 
-#warning Implement this for real to get the top ten bands as sorted by votes
+- (void) saveVoteToProfile{
+    [[FireBaseController voteForband] setValue:self.currentProfile.vote];
+}
+
+- (void)loadRandomBands{
+    [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *bandDictionaries = snapshot.value;
+        NSMutableArray *topBandsMutable = [NSMutableArray array];
+        for (NSString *bandDictionaryKey in bandDictionaries) {
+            NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
+            Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
+            [topBandsMutable addObject:bandProfile];
+        }
+        NSInteger random = arc4random() % [topBandsMutable count];
+        
+        //start here
+        self.randomBand = topBandsMutable[random];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:randomBandProfileLoadedNotification object:nil];
+    }];
+
+}
+
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *bandDictionaries = snapshot.value;
