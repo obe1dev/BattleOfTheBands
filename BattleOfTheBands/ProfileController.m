@@ -105,13 +105,19 @@
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
             [topBandsMutable addObject:bandProfile];
         }
-        NSInteger random = arc4random() % [topBandsMutable count];
+        NSInteger random1 = arc4random() % [topBandsMutable count];
+        
+        NSInteger random2 = 0;
+        
+        do {
+            random2 = arc4random() % [topBandsMutable count];
+        } while (random2 != random1 && [topBandsMutable count] > 1);
         
         NSMutableArray *randomArray = topBandsMutable.mutableCopy;
        
         //NSMutableDictionary *randomDictionary =
         
- //       self.randomBand = randomArray[random];
+        self.randomBand = @[ randomArray[0], randomArray[1] ];
         
         
         

@@ -30,6 +30,9 @@
 @property (strong, nonatomic) Profile *leftProfile;
 @property (strong, nonatomic) Profile *rightPrfile;
 
+@property (strong, nonatomic) UIImage *completeImage;
+@property (strong, nonatomic) UIImage *incompleteImage;
+
 
 @end
 
@@ -72,6 +75,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.completeImage = [UIImage imageNamed:@"complete"];
+    self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
     [[ProfileController sharedInstance] loadRandomBands];
     
@@ -120,14 +126,27 @@
     self.leftbandCheckBox.selected = YES;
     self.rightBandCheckBox.selected = NO;
     if (self.leftbandCheckBox.selected) {
-        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
-        self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+//        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
+        
+        [self.leftbandCheckBox setImage:self.completeImage forState:UIControlStateNormal];
+        [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+        //self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
     }
-    
+
     
 }
 
 - (IBAction)rightBandCheckBox:(id)sender {
+    
+    self.rightBandCheckBox.selected = YES;
+    self.leftbandCheckBox.selected = NO;
+    if (self.rightBandCheckBox.selected) {
+        //        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
+        
+        [self.rightBandCheckBox setImage:self.completeImage forState:UIControlStateNormal];
+        [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+        //self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+    }
     
 }
 
@@ -139,7 +158,7 @@
     [self viewDidLoad];
 }
 
-// TODO: update so the segue will update the detailViewController 
+//segues to detail view
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"rightButtonSegue"]) {
         
@@ -153,14 +172,11 @@
     
     else if ([segue.identifier isEqualToString:@"leftButtonSegue"]) {
         
-        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        
-        
         DetailTableViewController * detailViewController = segue.destinationViewController;
         
-        //    Profile *profile = [ProfileController sharedInstance].profiles[indexPath.row];
-        //
-        //detailViewController.profile = profile;
+        Profile *profile = self.leftProfile;
+        
+        detailViewController.profile = profile;
     }
 }
 

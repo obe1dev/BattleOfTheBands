@@ -267,7 +267,7 @@
                                                     <segue destination="fwB-9Q-EF1" kind="show" identifier="leftButtonSegue" id="X5a-r6-7pe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
                                                 <rect key="frame" x="118" y="336" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
