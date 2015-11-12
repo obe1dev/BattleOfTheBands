@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) UIImage *completeImage;
 @property (strong, nonatomic) UIImage *incompleteImage;
+//@property (strong, nonatomic) Profile *selectedProfile;
 
 
 @end
@@ -61,8 +62,10 @@
     Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
     self.rightPrfile = profile2;
     
-    self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
-    //TODO: update the buttons with label and image form randomly selected bands
+    NSLog(@"Updating random bands, first: %@, second %@", profile1.name, profile2.name);
+    
+   
+    
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     //self.leftBandPlay.imageView.image =
     
@@ -126,11 +129,12 @@
     self.leftbandCheckBox.selected = YES;
     self.rightBandCheckBox.selected = NO;
     if (self.leftbandCheckBox.selected) {
-//        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
-        
+        //checking left box and unchecking right box
         [self.leftbandCheckBox setImage:self.completeImage forState:UIControlStateNormal];
         [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-        //self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+        
+        self.selectedProfile = self.leftProfile;
+
     }
 
     
@@ -141,11 +145,11 @@
     self.rightBandCheckBox.selected = YES;
     self.leftbandCheckBox.selected = NO;
     if (self.rightBandCheckBox.selected) {
-        //        self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"complete"];
         
         [self.rightBandCheckBox setImage:self.completeImage forState:UIControlStateNormal];
         [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-        //self.rightBandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
+        
+        self.selectedProfile = self.rightPrfile;
     }
     
 }
@@ -153,9 +157,9 @@
 //TODO: voting
 - (IBAction)vote:(id)sender {
     
-    [[ProfileController sharedInstance] voteUpdate];
+    [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];
     
-    [self viewDidLoad];
+//    [[ProfileController sharedInstance] loadRandomBands];
 }
 
 //segues to detail view

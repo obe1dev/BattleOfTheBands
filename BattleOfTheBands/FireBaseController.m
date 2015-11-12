@@ -52,8 +52,16 @@
     return [[FireBaseController base] childByAppendingPath:@"BandProfiles/"];
 }
 
++ (Firebase *) bandProfile:(Profile *)profile {
+    return [self bandProfileWithUID:profile.uID];
+}
+
++ (Firebase *) bandProfileWithUID:(NSString *)uid {
+    return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/"] childByAppendingPath:uid];
+}
+
 + (Firebase *) currentBandProfile {
-    return [[[FireBaseController base] childByAppendingPath:@"BandProfiles/"] childByAppendingPath:[FireBaseController currentUserUID]];
+    return [self bandProfileWithUID:self.currentUserUID];
 }
 
 + (Firebase *) voteForband{
@@ -75,11 +83,7 @@
         NSLog(@"%@",authData);
         if (error) {
             // There was an error creating the account
-#warning this is not working
-            //[[LoginViewController sharedInstance] loginError];
-            
-            //[BattleViewController sharedInstance].islogin = NO;
-            
+
             NSLog(@"%@",error);
         } else {
             [self fetchCurrentUser: userEmail];
@@ -97,7 +101,7 @@
             profileDictionary = snapshot.value;
         }
         [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
-        [[ProfileController sharedInstance] saveCurrentProfile];
+        [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:currentProfileLoadedNotification object:nil];
     } withCancelBlock:^(NSError *error) {

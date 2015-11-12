@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Firebase/Firebase.h>
 
+@class Profile;
+
 @interface FireBaseController : NSObject
 
 + (Firebase *) base;
@@ -17,7 +19,7 @@
 
 + (Firebase *) allBandProfiles;
 
-+ (Firebase *) currentBandProfile;
++ (Firebase *) bandProfile:(Profile *)profile;
 
 + (Firebase *) voteForband;
 

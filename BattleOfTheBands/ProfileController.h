@@ -27,13 +27,13 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 -(Profile *)createProfile:(NSString *)email uid:(NSString*)uID;
 
-- (void)saveCurrentProfile;
+- (void) saveProfile:(Profile *)profile;
 
 -(void) currentUser:(NSString *)email;
 
 -(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
 
--(void) voteUpdate;
+-(void) updateVoteForProfile:(Profile *)profile;
 
 - (void)loadRandomBands;
 

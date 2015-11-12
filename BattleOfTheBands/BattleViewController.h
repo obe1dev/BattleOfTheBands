@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
 
 @interface BattleViewController : UIViewController
 
@@ -14,6 +15,7 @@
 + (BattleViewController *)sharedInstance;
 
 @property (assign, nonatomic) BOOL islogin;
+@property (strong, nonatomic) Profile *selectedProfile;
 
 @end
 

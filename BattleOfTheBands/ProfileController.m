@@ -10,7 +10,6 @@
 #import "Profile.h"
 #import "FireBaseController.h"
 #import "SongsController.h"
-#import "BattleViewController.h"
 
 @interface ProfileController ()
 
@@ -62,18 +61,22 @@
         self.currentProfile.bandWebsite = bandWebsite;
     }
     
-    [self saveCurrentProfile];
+    [self saveProfile:self.currentProfile];
     
 }
 
--(void) voteUpdate{
+-(void) updateVoteForProfile:(Profile *)profile {
     
-    NSNumber *newVote =[NSNumber numberWithInt:1];
+    //adding a vote to selectedProfile
+    //this need to be selectedProfile
     
-    //adding a vote to currentProfile
-    self.currentProfile.vote = [NSNumber numberWithInt:([newVote intValue] + [self.currentProfile.vote intValue])];
+    profile.vote = @(1 + [profile.vote intValue]);
     
-    [self saveCurrentProfile];
+    //start here
+    [self saveProfile:profile];
+    
+//    [self saveProfile:self.currentProfile];
+//    [self saveCurrentProfile];
     
 }
 
@@ -86,9 +89,9 @@
 
 #pragma mark Update
 
-- (void) saveCurrentProfile {
+- (void) saveProfile:(Profile *)profile {
     
-    [[FireBaseController currentBandProfile] setValue:self.currentProfile.dictionaryRepresentation];
+    [[FireBaseController bandProfile:profile] setValue:profile.dictionaryRepresentation];
 
 }
 
@@ -111,13 +114,13 @@
         
         do {
             random2 = arc4random() % [topBandsMutable count];
-        } while (random2 != random1 && [topBandsMutable count] > 1);
+        } while (random2 == random1 && [topBandsMutable count] > 1);
         
         NSMutableArray *randomArray = topBandsMutable.mutableCopy;
        
         //NSMutableDictionary *randomDictionary =
         
-        self.randomBand = @[ randomArray[0], randomArray[1] ];
+        self.randomBand = @[ randomArray[random1], randomArray[random2] ];
         
         
         
