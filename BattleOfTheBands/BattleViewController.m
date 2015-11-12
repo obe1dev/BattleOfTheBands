@@ -84,6 +84,9 @@
     
     [[ProfileController sharedInstance] loadRandomBands];
     
+    [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+    [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+    
     [self registerForNotifications];
     
 #warning login cehck is not working
@@ -99,7 +102,7 @@
 
 //change to the next battle
 - (IBAction)next:(id)sender {
-#warning will this reload my bands?
+
     [self viewDidLoad];
 }
 
@@ -158,6 +161,10 @@
 - (IBAction)vote:(id)sender {
     
     [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];
+    
+    [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+    [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+
     
 //    [[ProfileController sharedInstance] loadRandomBands];
 }
