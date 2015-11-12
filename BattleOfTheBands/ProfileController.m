@@ -107,8 +107,18 @@
         }
         NSInteger random = arc4random() % [topBandsMutable count];
         
-        //start here
-        self.randomBand = topBandsMutable[random];
+        NSMutableArray *randomArray = topBandsMutable.mutableCopy;
+       
+        //NSMutableDictionary *randomDictionary =
+        
+ //       self.randomBand = randomArray[random];
+        
+        
+        
+//        NSMutableArray *entryList = self.entries.mutableCopy;
+//        [entryList addObject:entry];
+//        self.entries = entryList;
+//        [self saveToPersistentStorage];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:randomBandProfileLoadedNotification object:nil];
     }];

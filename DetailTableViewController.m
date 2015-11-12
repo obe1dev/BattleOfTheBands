@@ -19,6 +19,7 @@
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *bio;
 @property (weak, nonatomic) NSString *website;
+@property (weak, nonatomic) NSNumber *vote;
 
 @end
 
@@ -46,6 +47,7 @@
     self.name = profile.name;
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
+    self.vote = profile.vote;
 }
 
 #pragma mark - Table view data source
@@ -77,7 +79,7 @@
         
         InfoRankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoRankingVotesCell" forIndexPath:indexPath];
         cell.ranking.text = @"";
-        cell.votes.text = @"";
+        cell.votes.text = [self.vote stringValue];
         
         return cell;
         

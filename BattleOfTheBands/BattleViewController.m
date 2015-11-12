@@ -27,6 +27,9 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *voteButton;
 
+@property (strong, nonatomic) Profile *leftProfile;
+@property (strong, nonatomic) Profile *rightPrfile;
+
 
 @end
 
@@ -51,7 +54,9 @@
 
 - (void)showUpdatedProfiles {
     Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
+    self.leftProfile = profile1;
     Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
+    self.rightPrfile = profile2;
     
     self.leftbandCheckBox.imageView.image = [UIImage imageNamed:@"incomplete"];
     //TODO: update the buttons with label and image form randomly selected bands
@@ -85,6 +90,8 @@
 
 //change to the next battle
 - (IBAction)next:(id)sender {
+#warning will this reload my bands?
+    [self viewDidLoad];
 }
 
 //band art play and pause buttons
@@ -99,11 +106,13 @@
 //name of band and segue to detail of band
 - (IBAction)leftBandName:(id)sender {
     
+    
 }
 
 - (IBAction)rightBandName:(id)sender {
     
 }
+
 
 //check box to vote
 - (IBAction)leftbandCheckBox:(id)sender {
@@ -122,27 +131,27 @@
     
 }
 
-//voting
+//TODO: voting
 - (IBAction)vote:(id)sender {
     
     [[ProfileController sharedInstance] voteUpdate];
+    
+    [self viewDidLoad];
 }
 
 // TODO: update so the segue will update the detailViewController 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"rightButtonSegue"]) {
         
-    //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        
-        
     DetailTableViewController * detailViewController = segue.destinationViewController;
         
-    //Profile *profile = [ProfileController sharedInstance].topTenBandProfiles;
+    Profile *profile = self.rightPrfile;
         
-    //detailViewController.profile = profile;
+    detailViewController.profile = profile;
+        
     }
     
-    if ([segue.identifier isEqualToString:@"leftButtonSegue"]) {
+    else if ([segue.identifier isEqualToString:@"leftButtonSegue"]) {
         
         //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         

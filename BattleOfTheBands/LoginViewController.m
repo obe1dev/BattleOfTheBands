@@ -43,7 +43,7 @@
     //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
-    //[FireBaseController login:@"test1@gmail.com" password:@"test"];
+    [FireBaseController login:@"test@test.com" password:@"test"];
     //[FireBaseController login:@"signUpSecond@gmail.com" password:@"signup"];
     
     //creating profile
