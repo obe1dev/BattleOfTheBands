@@ -68,7 +68,7 @@
 -(void) updateVoteForProfile:(Profile *)profile {
     
     //adding a vote to selectedProfile
-#warning this method is not working
+#warning this method is not working for updating profile votes
 //    [[FireBaseController bandProfile:profile] runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
 //        profile.vote = @(1 + [profile.vote intValue]);
 //    }];

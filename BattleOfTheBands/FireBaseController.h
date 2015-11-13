@@ -29,6 +29,6 @@
 
 +(void) creatAccount:(NSString *)userName password:(NSString *)password;
 
-+(void) login:(NSString *)userEmail password:(NSString *)password;
++(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
 
 @end

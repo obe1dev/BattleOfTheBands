@@ -80,10 +80,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    if (![[ProfileController sharedInstance]currentProfile]) {
-        [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
-    }
-    
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
@@ -94,6 +90,15 @@
     
     [self registerForNotifications];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (![[ProfileController sharedInstance]currentProfile]) {
+        [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+        //[[LoginViewController sharedInstance] loginError];
+    }
 }
 
 //change to the next battle
@@ -153,7 +158,7 @@
     
 }
 
-//TODO: voting
+
 - (IBAction)vote:(id)sender {
     
     [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];

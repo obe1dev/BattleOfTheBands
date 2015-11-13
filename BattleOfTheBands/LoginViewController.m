@@ -18,7 +18,7 @@
 
 @implementation LoginViewController
 
-//testing to see if this loginError Method works.
+
 + (LoginViewController *)sharedInstance {
     static LoginViewController *sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -45,7 +45,7 @@
     
     //login user
     //[FireBaseController login:@"test@test.com" password:@"test"];
-    [FireBaseController login:@"signUpSecond@gmail.com" password:@"test"];
+    //[FireBaseController login:@"signUpSecond@gmail.com" password:@"test"];
     
     //creating profile
     //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
@@ -65,12 +65,18 @@
 
 - (IBAction)loginButton:(id)sender {
     
-    [FireBaseController login:self.emailLogin.text password:self.passwordLogin.text];
-    
-    
+    [FireBaseController login:self.emailLogin.text password:self.passwordLogin.text completion:^(bool success) {
+        
+        if (success) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            
+            [self loginError];
+        }
+    }];
 }
 
-#warning login check is not working
+
 -(void)loginError{
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there is no user with that profile or password" preferredStyle:UIAlertControllerStyleAlert];

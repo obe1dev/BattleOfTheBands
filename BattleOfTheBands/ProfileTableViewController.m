@@ -90,14 +90,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 - (IBAction)logoutButton:(id)sender {
-#warning check to see if logOut is working
+
 //    TODO: check to see if this is working and segue back to login view.
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     [[FireBaseController bandProfile:currentProfile] unauth];
-    [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
-
     
-
+    
 }
 
 
@@ -192,6 +190,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
                 cell.photoButton.titleLabel.text = @"Add Photo";
                 cell.uploadSongButton.titleLabel.text = @"Add Song";
+                cell.delegate = self;
                 
                 return cell;
             }

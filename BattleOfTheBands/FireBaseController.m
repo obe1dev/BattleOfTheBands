@@ -37,7 +37,7 @@
             // There was an error creating the account
             NSLog(@"%@",error);
             } else {
-                [self login:userEmail password:password];
+                [self login:userEmail password:password completion:nil];
             }
         
     }];
@@ -77,7 +77,7 @@
 }
 
 
-+(void) login:(NSString *)userEmail password:(NSString *)password {
++(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion{
     
     [self.base authUser:userEmail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         NSLog(@"%@",authData);
@@ -86,11 +86,15 @@
             
             [ProfileController sharedInstance].currentProfile.isLoggedIn = NO;
             
+            completion(false);
+            
             NSLog(@"%@",error);
         } else {
             [self fetchCurrentUser: userEmail];
             
             [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
+            
+            completion(true);
         }
     }];
 }
