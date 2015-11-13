@@ -83,10 +83,14 @@
         NSLog(@"%@",authData);
         if (error) {
             // There was an error creating the account
-
+            
+            [ProfileController sharedInstance].currentProfile.isLoggedIn = NO;
+            
             NSLog(@"%@",error);
         } else {
             [self fetchCurrentUser: userEmail];
+            
+            [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
         }
     }];
 }

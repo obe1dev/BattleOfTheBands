@@ -11,10 +11,8 @@
 
 @interface BattleViewController : UIViewController
 
-#warning login is not working
 + (BattleViewController *)sharedInstance;
 
-@property (assign, nonatomic) BOOL islogin;
 @property (strong, nonatomic) Profile *selectedProfile;
 
 @end

@@ -20,6 +20,7 @@
 @property (strong,nonatomic) UIImage *bandImage;
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSNumber *vote;
+@property (strong,nonatomic) NSNumber *ranking;
 @property (strong,nonatomic) NSString *bioOfBand;
 @property (strong,nonatomic) NSString *bandWebsite;
 @property (strong,nonatomic) NSArray *songs;
@@ -28,6 +29,7 @@
 
 
 @property (assign,nonatomic) BOOL isBand;
+@property (assign, nonatomic) BOOL isLoggedIn;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 

@@ -19,6 +19,8 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 @property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
 @property (strong, nonatomic, readonly) NSArray *randomBand;
 
+
+
 + (ProfileController *)sharedInstance;
 
 //- (void)loadFromPersistentStorage;

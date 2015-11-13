@@ -31,7 +31,7 @@
 }
 
 
-#pragma mark Creat profile
+#pragma mark Create profile
 
 -(Profile *)createProfile:(NSString *)email uid:(NSString*)uID{
     
@@ -68,15 +68,15 @@
 -(void) updateVoteForProfile:(Profile *)profile {
     
     //adding a vote to selectedProfile
-    //this need to be selectedProfile
+#warning this method is not working
+//    [[FireBaseController bandProfile:profile] runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+//        profile.vote = @(1 + [profile.vote intValue]);
+//    }];
     
     profile.vote = @(1 + [profile.vote intValue]);
     
     //start here
     [self saveProfile:profile];
-    
-//    [self saveProfile:self.currentProfile];
-//    [self saveCurrentProfile];
     
 }
 
@@ -134,6 +134,8 @@
 
 }
 
+#warning i need to add a ranking in here or in top 10 view?
+//TODO:i need to add a ranking in here or in top 10 view?
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *bandDictionaries = snapshot.value;

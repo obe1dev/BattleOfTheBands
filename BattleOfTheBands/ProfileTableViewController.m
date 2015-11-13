@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *website;
+@property (strong, nonatomic) NSNumber *votes;
 @property (strong, nonatomic) NSData *bandImage;
 
 @end
@@ -50,10 +51,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     self.isBand = YES;
     
-    //[self updateWithProfile:[ProfileController sharedInstance].profiles.firstObject];
     [self updateWithProfile];
-    
-    //creating moc data
     
     //creating song data for user name and user
     [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
@@ -64,7 +62,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
      //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //self.Edit = self.editButtonItem;
     
     [self registerForNotifications];
 }
@@ -79,6 +76,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         self.name = currentProfile.name;
         self.bio = currentProfile.bioOfBand;
         self.website = currentProfile.bandWebsite;
+        self.votes = currentProfile.vote;
         
         [self.tableView reloadData];
         NSLog(@"Updated with profile");
@@ -92,12 +90,18 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 - (IBAction)logoutButton:(id)sender {
-    //TODO: log out user with .unauth()
+#warning check to see if logOut is working
+//    TODO: check to see if this is working and segue back to login view.
+    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+    [[FireBaseController bandProfile:currentProfile] unauth];
+    [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+
+    
 
 }
 
 
-//update text for name and website (textField)
+//update text for name and website (textFields)
 -(void) textChangedInCell:(TextFieldCell *)cell{
     
     NSString *updatedText = cell.infoEntryTextField.text;
@@ -203,7 +207,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             case ProfileRowRankVotes: {
                 RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
                 cell.ranking.text = @"";
-                cell.votes.text = @"";
+                cell.votes.text = [self.votes stringValue];
                 return cell;
             }
             case ProfileRowBio: {
@@ -225,7 +229,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         }
         
         
-        //add a genre picker
+        //TODO:add a genre picker
         
         
         //this is for the liked bands and listener
@@ -280,6 +284,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 #pragma band photo
+#warning Photos are not working.
 
 - (void)photoCellButtonTapped {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];

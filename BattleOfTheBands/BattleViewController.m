@@ -57,6 +57,7 @@
 }
 
 - (void)showUpdatedProfiles {
+//TODO: debug this is being call alot 
     Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
     self.leftProfile = profile1;
     Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
@@ -79,6 +80,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    if (![[ProfileController sharedInstance]currentProfile]) {
+        [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+    }
+    
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
@@ -89,20 +94,11 @@
     
     [self registerForNotifications];
     
-#warning login cehck is not working
-    //login check
-//    if (!self.islogin) {
-//        
-//        LoginViewController * loginView = [LoginViewController new];
-//        
-//        [self presentViewController:loginView animated:NO completion:nil];
-//    }
-    
 }
 
 //change to the next battle
 - (IBAction)next:(id)sender {
-
+#warning this is update multiple time why?
     [self viewDidLoad];
 }
 
@@ -128,7 +124,7 @@
 
 //check box to vote
 - (IBAction)leftbandCheckBox:(id)sender {
-#warning this won't change images after it's clicked whats wrong
+
     self.leftbandCheckBox.selected = YES;
     self.rightBandCheckBox.selected = NO;
     if (self.leftbandCheckBox.selected) {

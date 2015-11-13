@@ -36,6 +36,7 @@
    
         self.passwordLogin.delegate = self;
     
+        
     
     //creating moc data
     
@@ -43,8 +44,8 @@
     //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
-    [FireBaseController login:@"test@test.com" password:@"test"];
-    //[FireBaseController login:@"signUpSecond@gmail.com" password:@"signup"];
+    //[FireBaseController login:@"test@test.com" password:@"test"];
+    [FireBaseController login:@"signUpSecond@gmail.com" password:@"test"];
     
     //creating profile
     //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
