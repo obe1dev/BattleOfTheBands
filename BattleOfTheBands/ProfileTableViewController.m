@@ -95,6 +95,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     [[FireBaseController bandProfile:currentProfile] unauth];
     
+    // navigate to the tab bar controller's first view
+    [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+    
     
 }
 
@@ -283,7 +286,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 #pragma band photo
-#warning Photos are not working.
+
 
 - (void)photoCellButtonTapped {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];

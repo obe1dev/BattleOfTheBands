@@ -29,7 +29,7 @@
 };
 
 #pragma mark Creat
-
+#warning signUp error check
 + (void) creatAccount:(NSString *)userEmail password:(NSString *)password{
     
     [self.base createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
@@ -86,7 +86,9 @@
             
             [ProfileController sharedInstance].currentProfile.isLoggedIn = NO;
             
-            completion(false);
+            if (completion) {
+                completion(false);
+            }
             
             NSLog(@"%@",error);
         } else {
@@ -94,7 +96,9 @@
             
             [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
             
-            completion(true);
+            if (completion) {
+                completion(true);
+            }
         }
     }];
 }
