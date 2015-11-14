@@ -15,5 +15,8 @@
 
 @property (strong, nonatomic) Profile *selectedProfile;
 
+-(void)setTabBarIndexTo0;
+-(void)setTabbarIndexTo2;
+
 @end
 

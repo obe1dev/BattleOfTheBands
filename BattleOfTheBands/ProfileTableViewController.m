@@ -16,6 +16,7 @@
 #import "BandBioCell.h"
 #import "FollowingTitleCell.h"
 #import "FollowingBandCell.h"
+#import "S3Manager.h"
 
 typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowPhoto,
@@ -64,6 +65,15 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self registerForNotifications];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+#warning signUp stuff
+    if ([ProfileController sharedInstance].needsToFillOutProfile) {
+        [self.tabBarController setSelectedIndex:2];
+    };
+    
 }
 
 //TODO: setup a picker View for genres
@@ -156,6 +166,13 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [super setEditing:editing animated:animated];
     
     if (!editing) {
+#warning signUp stuff
+        if (self.name == nil) {
+            [self errorAlert];
+        }else{
+            [ProfileController sharedInstance].needsToFillOutProfile = NO;
+        }
+        
         [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
     }
 }
@@ -319,58 +336,30 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     [self.tableView reloadData];
     
+    [S3Manager uploadImage:image withName:@"image.jpg"];
+    
     //save to server or firebase
     //[self.bandImage ];
 }
+
+#warning signUp stuff
+-(void)errorAlert{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry you have to enter a name" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
 
 //- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 //    [super setEditing:editing animated:NO];
 //    
 //    
 //}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

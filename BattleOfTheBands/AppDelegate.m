@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SongsController.h"
+#import <AWSCore/AWSCore.h>
 
 @interface AppDelegate ()
 
@@ -20,6 +21,17 @@
     // Override point for customization after application launch.
     
 //    [[SongsController sharedInstance] setUpMockData];
+    
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                          initWithRegionType:AWSRegionUSEast1
+                                                          identityPoolId:@"us-east-1:43b82160-38d3-4b86-bab9-48d8b0081826"];
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+    
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+    
     return YES;
 }
 

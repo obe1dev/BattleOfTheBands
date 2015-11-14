@@ -29,15 +29,22 @@
 };
 
 #pragma mark Creat
-#warning signUp error check
-+ (void) creatAccount:(NSString *)userEmail password:(NSString *)password{
+
++ (void) creatAccount:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion{
     
     [self.base createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
             if (error) {
             // There was an error creating the account
+                if (completion) {
+                    completion(false);
+                }
+                
             NSLog(@"%@",error);
             } else {
                 [self login:userEmail password:password completion:nil];
+                if (completion) {
+                    completion(true);
+                }
             }
         
     }];

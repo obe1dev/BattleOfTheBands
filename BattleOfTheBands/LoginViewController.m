@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "FireBaseController.h"
 #import "ProfileController.h"
+#import "SignUpViewController.h"
+#import "BattleViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailLogin;
@@ -36,7 +38,6 @@
    
         self.passwordLogin.delegate = self;
     
-        
     
     //creating moc data
     
@@ -44,13 +45,15 @@
     //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
     
     //login user
-    //[FireBaseController login:@"test@test.com" password:@"test"];
+    //[FireBaseController login:@"test@test.com" password:@"test" completion:nil];
+    
     //[FireBaseController login:@"signUpSecond@gmail.com" password:@"test"];
     
     //creating profile
     //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
     
 }
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.emailLogin resignFirstResponder];
@@ -68,7 +71,9 @@
     [FireBaseController login:self.emailLogin.text password:self.passwordLogin.text completion:^(bool success) {
         
         if (success) {
+            
             [self dismissViewControllerAnimated:true completion:nil];
+            
         } else {
             
             [self loginError];

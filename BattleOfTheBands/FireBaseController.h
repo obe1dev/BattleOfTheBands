@@ -27,7 +27,7 @@
 
 + (NSString *) currentUserUID;
 
-+(void) creatAccount:(NSString *)userName password:(NSString *)password;
++ (void) creatAccount:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
 
 +(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
 

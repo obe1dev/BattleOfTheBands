@@ -95,10 +95,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+#warning  signUp stuff work on this this loads and sets to index2 every time
+    if ([ProfileController sharedInstance].needsToFillOutProfile) {
+        [self.tabBarController setSelectedIndex:2];
+    };
+    
+    
+    //this is part of the loging out process
     if (![[ProfileController sharedInstance]currentProfile]) {
         [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
-        //[[LoginViewController sharedInstance] loginError];
     }
+    
+
 }
 
 //change to the next battle
@@ -197,6 +205,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//setting tabBar to index when loging in or signing up.
+
+-(void)setTabBarIndexTo0{
+    [self.tabBarController setSelectedIndex:0];
+}
+-(void)setTabbarIndexTo2{
+    [self.tabBarController setSelectedIndex:2];
 }
 
 @end

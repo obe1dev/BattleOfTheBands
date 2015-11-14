@@ -41,6 +41,8 @@
     profile.uID = uID;
     
     self.currentProfile = profile;
+#warning signUp stuff
+    self.needsToFillOutProfile = YES;
     
     return profile;
 }
@@ -133,7 +135,7 @@
     }];
 
 }
-
+#warning if the band has no data in the profile it will still add them to the battle rounds
 #warning i need to add a ranking in here or in top 10 view?
 //TODO:i need to add a ranking in here or in top 10 view?
 - (void)loadTopTenBandProfiles {

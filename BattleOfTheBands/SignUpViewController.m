@@ -10,23 +10,43 @@
 #import "FireBaseController.h"
 #import "ProfileTableViewController.h"
 #import "ProfileController.h"
+#import "LoginViewController.h"
+#import "BattleViewController.h"
 
 @interface SignUpViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
+
 @end
 
 @implementation SignUpViewController
+
 - (IBAction)SignUpBand:(id)sender {
-    
-    [FireBaseController creatAccount:self.email.text password:self.password.text];
+//the completion block will run true if the creatAccount method is properly ran if there was an error it'll be false
+    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
+        if (success) {
+            
+            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+ 
+        } else {
+            
+            [self signUpError];
+        }
+    }];
     
     //TODO: set isband
 }
 
 - (IBAction)SignUpListener:(id)sender {
-    [FireBaseController creatAccount:self.email.text password:self.password.text];
+//    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
+//        if (success) {
+//            [self dismissViewControllerAnimated:true completion:nil];
+//        } else {
+//            
+//            [self signUpError];
+//        }
+//    }];
     //----------set profile isBand to No--------------
 }
 
@@ -47,6 +67,18 @@
     [self.email resignFirstResponder];
     [self.password resignFirstResponder];
     return YES;
+}
+
+-(void)signUpError{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there was an error logging in" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 /*
