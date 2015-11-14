@@ -38,6 +38,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSString *website;
 @property (strong, nonatomic) NSNumber *votes;
 @property (strong, nonatomic) NSData *bandImage;
+@property (strong, nonatomic) NSNumber *rank;
 
 @end
 
@@ -87,6 +88,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         self.bio = currentProfile.bioOfBand;
         self.website = currentProfile.bandWebsite;
         self.votes = currentProfile.vote;
+        
+        [[ProfileController sharedInstance] rankForProfile:currentProfile completion:^(NSNumber *rank) {
+            self.rank = rank;
+            [self.tableView reloadData];
+        }];
+
         
         [self.tableView reloadData];
         NSLog(@"Updated with profile");
@@ -225,7 +232,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             }
             case ProfileRowRankVotes: {
                 RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
-                cell.ranking.text = @"";
+                cell.ranking.text = [self.rank stringValue];
                 cell.votes.text = [self.votes stringValue];
                 return cell;
             }

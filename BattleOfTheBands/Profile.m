@@ -95,5 +95,16 @@ static NSString * const isBandKey = @"isBandKey";
     
 };
 
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    } else {
+        
+        Profile *otherProfile = other;
+        return [self.name isEqualToString:otherProfile.name];
+    }
+}
+
 
 @end

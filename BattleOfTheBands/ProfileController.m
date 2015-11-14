@@ -101,6 +101,28 @@
     [[FireBaseController voteForband] setValue:self.currentProfile.vote];
 }
 
+-(void)rankForProfile:(Profile *)profile completion:(void (^)(NSNumber *rank))completion {
+    [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *bandDictionaries = snapshot.value;
+        NSMutableArray *topBandsMutable = [NSMutableArray array];
+        for (NSString *bandDictionaryKey in bandDictionaries) {
+            NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
+            Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
+            [topBandsMutable addObject:bandProfile];
+        }
+        NSArray *sortedBands = [topBandsMutable sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"vote" ascending:NO]]];
+       
+        
+        NSInteger index = [sortedBands indexOfObject:profile];
+        index++;
+        NSNumber *number = [NSNumber numberWithInteger:index];
+        
+        
+        
+        completion(number);
+    }];
+}
+
 - (void)loadRandomBands{
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *bandDictionaries = snapshot.value;

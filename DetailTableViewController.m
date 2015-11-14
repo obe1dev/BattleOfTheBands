@@ -12,6 +12,7 @@
 #import "InfoRankingVotesCell.h"
 #import "InfoTextCell.h"
 #import "InfoBandBioCell.h"
+#import "ProfileController.h"
 
 
 @interface DetailTableViewController ()
@@ -19,7 +20,9 @@
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *bio;
 @property (weak, nonatomic) NSString *website;
-@property (weak, nonatomic) NSNumber *vote;
+@property (strong, nonatomic) NSNumber *vote;
+@property (strong, nonatomic) NSNumber *rank;
+
 
 @end
 
@@ -48,6 +51,12 @@
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
     self.vote = profile.vote;
+    
+    [[ProfileController sharedInstance] rankForProfile:profile completion:^(NSNumber *rank) {
+        self.rank = rank;
+        [self.tableView reloadData];
+    }];
+    
 }
 
 #pragma mark - Table view data source
@@ -78,7 +87,7 @@
     if (indexPath.row == 1) {
         
         InfoRankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoRankingVotesCell" forIndexPath:indexPath];
-        cell.ranking.text = @"";
+        cell.ranking.text = [self.rank stringValue];
         cell.votes.text = [self.vote stringValue];
         
         return cell;

@@ -40,6 +40,8 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 - (void)loadRandomBands;
 
+-(void)rankForProfile:(Profile *)profile completion:(void (^)(NSNumber *rank))completion;
+
 - (void)loadTopTenBandProfiles;
 
 @end
