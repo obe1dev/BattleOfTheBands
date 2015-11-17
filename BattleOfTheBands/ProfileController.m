@@ -41,7 +41,7 @@
     profile.uID = uID;
     
     self.currentProfile = profile;
-#warning signUp stuff
+
     self.needsToFillOutProfile = YES;
     
     return profile;
@@ -130,9 +130,9 @@
         for (NSString *bandDictionaryKey in bandDictionaries) {
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
-            
+#warning empty name will still go into battle. same with top 10
             //this will check to see if the band has a name and song
-            if (bandProfile.name) {
+            if (bandProfile.name || ![bandProfile.name  isEqual: @""]) {
                 [topBandsMutable addObject:bandProfile];
             }
         }
@@ -146,23 +146,15 @@
         
         NSMutableArray *randomArray = topBandsMutable.mutableCopy;
        
-        //NSMutableDictionary *randomDictionary =
         
         self.randomBand = @[ randomArray[random1], randomArray[random2] ];
         
-        
-        
-//        NSMutableArray *entryList = self.entries.mutableCopy;
-//        [entryList addObject:entry];
-//        self.entries = entryList;
-//        [self saveToPersistentStorage];
-        
+
         [[NSNotificationCenter defaultCenter] postNotificationName:randomBandProfileLoadedNotification object:nil];
     }];
 
 }
 #warning if the band has no data in the profile it will still add them to the battle rounds
-//TODO:i need to add a ranking in here or in top 10 view?
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *bandDictionaries = snapshot.value;

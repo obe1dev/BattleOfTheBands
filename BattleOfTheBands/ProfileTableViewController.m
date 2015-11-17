@@ -70,7 +70,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 -(void)viewDidAppear:(BOOL)animated{
     
-#warning signUp stuff
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
         [self.tabBarController setSelectedIndex:2];
     };
@@ -173,7 +172,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [super setEditing:editing animated:animated];
     
     if (!editing) {
-#warning signUp stuff
         if (self.name == nil) {
             [self errorAlert];
         }else{
@@ -257,6 +255,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.delegate = self;
                 return cell;
             }
+#warning add delete account button
+//TODO: add delete account
         }
         
         
@@ -354,7 +354,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     //[self.bandImage ];
 }
 
-#warning signUp stuff
+
 -(void)errorAlert{
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry you have to enter a name" preferredStyle:UIAlertControllerStyleAlert];

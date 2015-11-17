@@ -27,6 +27,7 @@
     [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
         if (success) {
             
+        //    [ProfileController sharedInstance].currentProfile.isBand = YES;
             [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
  
         } else {
@@ -58,6 +59,11 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    self.email.text = nil;
+    self.password.text = nil;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -67,6 +73,9 @@
     [self.email resignFirstResponder];
     [self.password resignFirstResponder];
     return YES;
+}
+- (IBAction)backToLogIn:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 -(void)signUpError{

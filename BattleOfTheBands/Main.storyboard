@@ -184,7 +184,7 @@
                                     <color key="titleColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToLogIn" id="MNM-9x-CJ4"/>
+                                    <action selector="backToLogIn:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="QbE-mZ-uug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1127,6 +1127,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LdQ-Ki-47O"/>
-        <segue reference="MNM-9x-CJ4"/>
     </inferredMetricsTieBreakers>
 </document>

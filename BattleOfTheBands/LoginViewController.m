@@ -20,6 +20,8 @@
 
 @implementation LoginViewController
 
+#warning add dismiss keyboard with tap outside
+//TODO: add dismiss keyboard with tap outside
 
 + (LoginViewController *)sharedInstance {
     static LoginViewController *sharedInstance = nil;
@@ -52,6 +54,11 @@
     //creating profile
     //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    self.emailLogin.text = nil;
+    self.passwordLogin.text = nil;
 }
 
 
