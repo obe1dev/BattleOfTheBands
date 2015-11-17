@@ -42,6 +42,7 @@
             NSLog(@"%@",error);
             } else {
                 [self login:userEmail password:password completion:nil];
+                sleep(1);
                 if (completion) {
                     completion(true);
                 }
@@ -102,7 +103,7 @@
             [self fetchCurrentUser: userEmail];
             
             [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
-            
+        
             if (completion) {
                 completion(true);
             }

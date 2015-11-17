@@ -87,6 +87,11 @@
     if (indexPath.row == 1) {
         
         InfoRankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoRankingVotesCell" forIndexPath:indexPath];
+        
+        if ([self.rank intValue] <= 0) {
+            self.rank = nil;
+        }
+        
         cell.ranking.text = [self.rank stringValue];
         cell.votes.text = [self.vote stringValue];
         
@@ -109,8 +114,12 @@
         
         InfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoTextCell" forIndexPath:indexPath];
         
+        NSMutableAttributedString *website = [[NSMutableAttributedString alloc] initWithString:self.website];
+        [website addAttribute:NSLinkAttributeName value:self.website range:NSMakeRange(0,website.length)];
+        
         cell.infoOptionLabel.text = @"Band Website";
-        cell.infoOptionInput.text = self.website;
+        cell.infoOptionInput.textColor = [UIColor lightGrayColor];
+        cell.infoOptionInput.attributedText = website;
         
         return cell;
         

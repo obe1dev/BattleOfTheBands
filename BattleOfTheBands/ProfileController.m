@@ -130,7 +130,11 @@
         for (NSString *bandDictionaryKey in bandDictionaries) {
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
-            [topBandsMutable addObject:bandProfile];
+            
+            //this will check to see if the band has a name and song
+            if (bandProfile.name) {
+                [topBandsMutable addObject:bandProfile];
+            }
         }
         NSInteger random1 = arc4random() % [topBandsMutable count];
         
@@ -158,7 +162,6 @@
 
 }
 #warning if the band has no data in the profile it will still add them to the battle rounds
-#warning i need to add a ranking in here or in top 10 view?
 //TODO:i need to add a ranking in here or in top 10 view?
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -167,7 +170,12 @@
         for (NSString *bandDictionaryKey in bandDictionaries) {
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
-            [topBandsMutable addObject:bandProfile];
+            
+            //this will check to see if the band has a name and song
+            if (bandProfile.name) {
+                [topBandsMutable addObject:bandProfile];
+            }
+            
         }
         NSArray *sortedBands = [topBandsMutable sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"vote" ascending:NO]]];
         if (sortedBands.count > 10) {

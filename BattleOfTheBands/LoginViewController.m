@@ -84,9 +84,9 @@
 
 -(void)loginError{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there is no user with that profile or password" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry no user with that profile or password. It could also be that you are not connected to the internet" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     
     [alertController addAction:dismissAction];
     

@@ -232,6 +232,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             }
             case ProfileRowRankVotes: {
                 RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
+               
+                if ([self.rank intValue] <= 0) {
+                    self.rank = nil;
+                }
+                
                 cell.ranking.text = [self.rank stringValue];
                 cell.votes.text = [self.votes stringValue];
                 return cell;

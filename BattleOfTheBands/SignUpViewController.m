@@ -71,9 +71,9 @@
 
 -(void)signUpError{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there was an error logging in" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there was an error logging in. This accout may exist already" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     
     [alertController addAction:dismissAction];
     
