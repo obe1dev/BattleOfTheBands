@@ -149,22 +149,28 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     NSString *updatedText = cell.infoEntryTextField.text;
     
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
+    if (self.isBand) {
+        
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
     ProfileRow row = indexPath.row;
     
-    switch (row) {
-        case ProfileRowName:
-            self.name = updatedText;
-            break;
-        case ProfileRowWebsite:
-            self.website = updatedText;
-            break;
-        case ProfileRowBio:
-        case ProfileRowRankVotes:
-        case ProfileRowPhoto:
-            break;
-            
+        switch (row) {
+            case ProfileRowName:
+                self.name = updatedText;
+                break;
+            case ProfileRowWebsite:
+                self.website = updatedText;
+                break;
+            case ProfileRowBio:
+            case ProfileRowRankVotes:
+            case ProfileRowPhoto:
+                break;
+                
+        }
+    }else if (!self.isBand){
+        self.name = updatedText;
     }
     
 }
@@ -306,40 +312,52 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         //this is for the liked bands and listener
     }else{
         
-        ProfileRow row = indexPath.row;
+        TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+        
+        cell.infoLabel.text = @"Name";
+        cell.infoEntryTextField.placeholder = @"Enter your Name";
+        cell.infoEntryTextField.text = self.name;
+        cell.delegate = self;
+        return cell;
         
         
-        
-        switch (row) {
-            case ProfileRowName:{
-                
-                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+//        ProfileRow row = indexPath.row;
+//
+//        TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+//
+//        
+//        switch (row) {
+//                
+//                
+//            case ProfileRowName:{
+//                
+//                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+//
+//                cell.infoLabel.text = @"Name";
+//                cell.infoEntryTextField.placeholder = @"Enter your Name";
+//                cell.infoEntryTextField.text = self.name;
+//                cell.delegate = self;
+//                return cell;
+//                
+//            }
+//            case ProfileRowBio:{
+//                return cell;
+//                break;
+//            }
+//            case ProfileRowPhoto:{
+//                return cell;
+//                break;
+//            }
+//            case ProfileRowWebsite:{
+//                return cell;
+//                break;
+//            }
+//            case ProfileRowRankVotes:{
+//                return cell;
+//                break;
+//            }
+//        }
 
-                cell.infoLabel.text = @"Name";
-                cell.infoEntryTextField.placeholder = @"Enter your Name";
-                cell.infoEntryTextField.text = self.name;
-                cell.delegate = self;
-                return cell;
-                
-            }
-            case ProfileRowBio:{
-                return nil;
-                break;
-            }
-            case ProfileRowPhoto:{
-                return nil;
-                break;
-            }
-            case ProfileRowWebsite:{
-                return nil;
-                break;
-            }
-            case ProfileRowRankVotes:{
-                return nil;
-                break;
-            }
-        }
-        
     }
 }
 

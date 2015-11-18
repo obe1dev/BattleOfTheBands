@@ -118,17 +118,7 @@
         } else {
             
             [self fetchUser:userEmail];
-           // [self fetchCurrentUser:userEmail];
             
-//            if ([ProfileController sharedInstance].currentProfile.isBand == YES) {
-//                [self fetchCurrentUser: userEmail];
-//                [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
-//            }
-//            else if ([ProfileController sharedInstance].currentProfile.isBand == NO){
-//                [self fetchCurrentListener: userEmail];
-//                [ProfileController sharedInstance].currentProfile.isLoggedIn = YES;
-//            }
-        
             if (completion) {
                 completion(true);
             }
@@ -136,23 +126,6 @@
     }];
 }
 
-//+ (void)fetchCurrentUser:(NSString *)email {
-//    [[FireBaseController currentBandProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSDictionary *profileDictionary;
-//        if ([snapshot.value isKindOfClass:[NSNull class]]) {
-//            Profile *newBandProfile = [[ProfileController sharedInstance] createBandProfile:email uid:[self currentUserUID]];
-//            profileDictionary = newBandProfile.dictionaryRepresentation;
-//        } else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
-//            profileDictionary = snapshot.value;
-//        }
-//        [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
-//        [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
-//        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:currentBandProfileLoadedNotification object:nil];
-//    } withCancelBlock:^(NSError *error) {
-//        // Do nothing for now
-//    }];
-//}
 
 + (void)fetchUser:(NSString *)email {
     [[FireBaseController currentProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -189,24 +162,6 @@
     }];
 }
 
-
-//+ (void)fetchCurrentListener:(NSString *)email {
-//    [[FireBaseController currentListenerProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSDictionary *profileDictionary;
-//        if ([snapshot.value isKindOfClass:[NSNull class]]) {
-//            Profile *newListenerProfile = [[ProfileController sharedInstance] createListenerProfile:email uid:[self currentUserUID]];
-//            profileDictionary = newListenerProfile.dictionaryRepresentation;
-//        } else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
-//            profileDictionary = snapshot.value;
-//        }
-//        [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
-//        [[ProfileController sharedInstance] saveListenerProfile:[ProfileController sharedInstance].currentProfile];
-//        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:currentListenerProfileLoadedNotification object:nil];
-//    } withCancelBlock:^(NSError *error) {
-//        // Do nothing for now
-//    }];
-//}
 
 #pragma mark Read
 

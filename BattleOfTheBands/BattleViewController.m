@@ -82,12 +82,12 @@
     
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
-    
+
     [[ProfileController sharedInstance] loadRandomBands];
     
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-    
+
     [self registerForNotifications];
     
 }
@@ -176,7 +176,7 @@
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
 
     
-//    [[ProfileController sharedInstance] loadRandomBands];
+    [[ProfileController sharedInstance] loadRandomBands];
 }
 
 //segues to detail view
