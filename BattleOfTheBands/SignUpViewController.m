@@ -27,9 +27,9 @@
     [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
         if (success) {
             
-        //    [ProfileController sharedInstance].currentProfile.isBand = YES;
+            [ProfileController sharedInstance].isBand = YES;
             [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
- 
+
         } else {
             
             [self signUpError];
@@ -40,14 +40,18 @@
 }
 
 - (IBAction)SignUpListener:(id)sender {
-//    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
-//        if (success) {
-//            [self dismissViewControllerAnimated:true completion:nil];
-//        } else {
-//            
-//            [self signUpError];
-//        }
-//    }];
+    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
+        if (success) {
+            
+            [ProfileController sharedInstance].isBand = NO;
+            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+            //[self dismissViewControllerAnimated:true completion:nil];
+            
+        } else {
+            
+            [self signUpError];
+        }
+    }];
     //----------set profile isBand to No--------------
 }
 

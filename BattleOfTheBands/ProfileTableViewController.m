@@ -51,19 +51,27 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isBand = YES;
+    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     
-    [self updateWithProfile];
+    if (currentProfile.isBand == YES) {
+        [self updateBandProfile];
+        self.isBand = YES;
+    }else if (currentProfile.isBand == NO) {
+        [self updateListenerProfile];
+        self.isBand = NO;
+    }
+    
+    
     
     //creating song data for user name and user
     [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
     
     
     // Uncomment the following line to preserve selection between presentations.
-     self.clearsSelectionOnViewWillAppear = NO;
+    self.clearsSelectionOnViewWillAppear = NO;
     
-     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self registerForNotifications];
 }
@@ -78,10 +86,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 //TODO: setup a picker View for genres
 
-- (void)updateWithProfile {
+- (void)updateBandProfile {
     
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
-
+    
     if (currentProfile) {
         self.name = currentProfile.name;
         self.bio = currentProfile.bioOfBand;
@@ -92,7 +100,21 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             self.rank = rank;
             [self.tableView reloadData];
         }];
+        
+        
+        [self.tableView reloadData];
+        NSLog(@"Updated with profile");
+    } else {
+        NSLog(@"No profile to update");
+    }
+}
 
+- (void)updateListenerProfile {
+    
+    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+    
+    if (currentProfile) {
+        self.name = currentProfile.name;
         
         [self.tableView reloadData];
         NSLog(@"Updated with profile");
@@ -102,14 +124,18 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 - (void)registerForNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithProfile) name:currentProfileLoadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBandProfile) name:currentBandProfileLoadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateListenerProfile) name:currentListenerProfileLoadedNotification object:nil];
 }
 
 - (IBAction)logoutButton:(id)sender {
-
-//    TODO: check to see if this is working and segue back to login view.
+    
+    //    TODO: check to see if this is working and segue back to login view.
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
-    [[FireBaseController bandProfile:currentProfile] unauth];
+    if (currentProfile.isBand == YES) {
+        [[FireBaseController bandProfile:currentProfile] unauth];
+    }else if (currentProfile.isBand == NO)
+        [[FireBaseController listenerProfile:currentProfile] unauth];
     
     // navigate to the tab bar controller's first view
     [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
@@ -140,7 +166,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             break;
             
     }
-
+    
 }
 
 
@@ -171,14 +197,25 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
-    if (!editing) {
-        if (self.name == nil) {
-            [self errorAlert];
-        }else{
-            [ProfileController sharedInstance].needsToFillOutProfile = NO;
+    if (self.isBand) {
+        if (!editing) {
+            if (self.name == nil) {
+                [self errorAlert];
+            }else{
+                [ProfileController sharedInstance].needsToFillOutProfile = NO;
+            }
+            
+            [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
         }
-        
-        [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
+    }else if (!self.isBand){
+        if (!editing) {
+            if (self.name == nil) {
+                [self errorAlert];
+            }else{
+                [ProfileController sharedInstance].needsToFillOutProfile = NO;
+            }
+            [[ProfileController sharedInstance]  updateListenerWithName:self.name];
+        }
     }
 }
 
@@ -196,9 +233,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     if (self.isBand) {
         return  5;
+    } else if (!self.isBand){
+        return 1;
+        //for now only have name add favorite bands later
     }
     return 0;
 }
@@ -230,7 +270,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             }
             case ProfileRowRankVotes: {
                 RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
-               
+                
                 if ([self.rank intValue] <= 0) {
                     self.rank = nil;
                 }
@@ -256,7 +296,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 return cell;
             }
 #warning add delete account button
-//TODO: add delete account
+                //TODO: add delete account
         }
         
         
@@ -264,17 +304,43 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         
         
         //this is for the liked bands and listener
-    }
+    }else{
         
-//        if (indexPath.row == 0) {
-    
-    TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-    cell.infoLabel.text = @"Name";
-    cell.infoEntryTextField.placeholder = @"Enter your Name";
-    return cell;
-    
-//        }
-    
+        ProfileRow row = indexPath.row;
+        
+        
+        
+        switch (row) {
+            case ProfileRowName:{
+                
+                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+
+                cell.infoLabel.text = @"Name";
+                cell.infoEntryTextField.placeholder = @"Enter your Name";
+                cell.infoEntryTextField.text = self.name;
+                cell.delegate = self;
+                return cell;
+                
+            }
+            case ProfileRowBio:{
+                return nil;
+                break;
+            }
+            case ProfileRowPhoto:{
+                return nil;
+                break;
+            }
+            case ProfileRowWebsite:{
+                return nil;
+                break;
+            }
+            case ProfileRowRankVotes:{
+                return nil;
+                break;
+            }
+        }
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -282,25 +348,28 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     if (self.isBand) {
         
         if (indexPath.row == 0) {
-            return 250;
+            return 250.0;
         }
         if (indexPath.row == 1) {
-            return 85;
+            return 85.0;
         }
         if (indexPath.row == 2) {
-            return 46;
+            return 46.0;
         }
         if (indexPath.row == 3) {
-            return 150;
+            return 150.0;
         }
         if (indexPath.row == 4) {
-            return 85;
+            return 85.0;
         }
         
     }else if(!self.isBand){
+        if (indexPath.row == 0) {
+            return 85.0;
+        }
         
     }
-    return 0;
+    return 0.0;
 }
 
 

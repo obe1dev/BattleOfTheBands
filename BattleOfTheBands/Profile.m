@@ -42,7 +42,9 @@ static NSString * const isBandKey = @"isBandKey";
     self.songs = [dictionary objectForKey:songsKey];
     self.likes = [dictionary objectForKey:likesKey];
     self.genre = [dictionary objectForKey:genreKey];
-    self.isBand = [dictionary objectForKey:isBandKey];
+    
+    NSNumber *isBand = [dictionary objectForKey:isBandKey];
+    self.isBand = isBand.boolValue;
     
     return self;
 };
@@ -90,7 +92,9 @@ static NSString * const isBandKey = @"isBandKey";
     if (self.genre) {
         [dictionary setObject:self.genre forKey:genreKey];
     }
-    
+
+    [dictionary setObject:[NSNumber numberWithBool:self.isBand] forKey:isBandKey];
+
     return dictionary;
     
 };

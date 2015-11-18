@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
-static NSString *currentProfileLoadedNotification = @"currentProfileLoaded";
+static NSString *currentListenerProfileLoadedNotification = @"currentListenerProfileLoaded";
+static NSString *currentBandProfileLoadedNotification = @"currentBandProfileLoaded";
 static NSString *topBandProfilesLoadedNotification = @"topBandProfilesLoaded";
 static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
@@ -20,7 +21,8 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 @property (strong, nonatomic, readonly) NSArray *randomBand;
 @property (assign, nonatomic) BOOL needsToFillOutProfile;
 
-
+//change if needed
+@property (assign, nonatomic) BOOL isBand;
 
 + (ProfileController *)sharedInstance;
 
@@ -28,13 +30,21 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 - (void)setCurrentUser:(NSDictionary *)dictionary;
 
--(Profile *)createProfile:(NSString *)email uid:(NSString*)uID;
+-(Profile *)createProfile:(NSString *)email uid:(NSString*)uID isband:(BOOL)isBand;
+
+-(Profile *)createBandProfile:(NSString *)email uid:(NSString*)uID;
+
+-(Profile *)createListenerProfile:(NSString *)email uid:(NSString*)uID;
+
+-(void) saveListenerProfile:(Profile *)profile;
 
 - (void) saveProfile:(Profile *)profile;
 
 -(void) currentUser:(NSString *)email;
 
 -(void)updateProfileWithName:(NSString *)name bioOfBand:(NSString *)bioOfBand bandWebsite:(NSString *)bandWebsite;
+
+-(void)updateListenerWithName:(NSString *)name;
 
 -(void) updateVoteForProfile:(Profile *)profile;
 

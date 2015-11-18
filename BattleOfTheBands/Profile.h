@@ -28,7 +28,7 @@
 @property (strong,nonatomic) NSString *genre;
 
 
-@property (assign,nonatomic) BOOL isBand;
+@property (assign, nonatomic) BOOL isBand;
 @property (assign, nonatomic) BOOL isLoggedIn;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;

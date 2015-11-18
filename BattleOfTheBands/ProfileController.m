@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSArray *topTenBandProfiles;
 @property (strong, nonatomic) NSArray *randomBand;
 
+
 @end
 
 @implementation ProfileController
@@ -33,15 +34,50 @@
 
 #pragma mark Create profile
 
--(Profile *)createProfile:(NSString *)email uid:(NSString*)uID{
+-(Profile *)createProfile:(NSString *)email uid:(NSString*)uID isband:(BOOL)isBand {
     
     //creating new profile
     Profile *profile = [Profile new];
     profile.email = email;
     profile.uID = uID;
+    profile.isBand = isBand;
     
     self.currentProfile = profile;
+    
+    
+    self.needsToFillOutProfile = YES;
+    
+    return profile;
+}
 
+
+-(Profile *)createBandProfile:(NSString *)email uid:(NSString*)uID{
+    
+    //creating new profile
+    Profile *profile = [Profile new];
+    profile.email = email;
+    profile.uID = uID;
+    profile.isBand = YES;
+    
+    self.currentProfile = profile;
+    
+
+    self.needsToFillOutProfile = YES;
+    
+    return profile;
+}
+
+-(Profile *)createListenerProfile:(NSString *)email uid:(NSString*)uID{
+    
+    //creating new profile
+    Profile *profile = [Profile new];
+    profile.email = email;
+    profile.uID = uID;
+    profile.isBand = NO;
+    
+    self.currentProfile = profile;
+    
+    
     self.needsToFillOutProfile = YES;
     
     return profile;
@@ -67,6 +103,14 @@
     
 }
 
+-(void)updateListenerWithName:(NSString *)name{
+    if (name) {
+        self.currentProfile.name = name;
+    }
+    
+    [self saveListenerProfile:self.currentProfile];
+}
+
 -(void) updateVoteForProfile:(Profile *)profile {
     
     //adding a vote to selectedProfile
@@ -90,6 +134,11 @@
 
 
 #pragma mark Update
+
+-(void) saveListenerProfile:(Profile *)profile{
+    [[FireBaseController listenerProfile:profile] setValue:profile.dictionaryRepresentation];
+    
+}
 
 - (void) saveProfile:(Profile *)profile {
     

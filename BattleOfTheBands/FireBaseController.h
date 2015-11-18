@@ -15,7 +15,7 @@
 
 + (Firebase *) base;
 
-+ (Firebase *) listenerProfiles;
++ (Firebase *) listenerProfile:(Profile *)profile;
 
 + (Firebase *) allBandProfiles;
 
@@ -27,8 +27,8 @@
 
 + (NSString *) currentUserUID;
 
-+ (void) creatAccount:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
-
 +(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
+
++ (void) creatAccount:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;
 
 @end
