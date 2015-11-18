@@ -12,6 +12,6 @@
 
 + (LoginViewController *)sharedInstance;
 
--(void)loginError;
+-(void)loginErrorWithAlert:(NSString *)alert message:(NSString *)message;
 
 @end

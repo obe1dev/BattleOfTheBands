@@ -35,6 +35,7 @@
     [self.base createUser:userEmail password:password withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
             if (error) {
             // There was an error creating the account
+                [ProfileController sharedInstance].signUpMessage = [NSString stringWithFormat:@"%@",error];
                 if (completion) {
                     completion(false);
                 }
@@ -58,6 +59,10 @@
 //currentProfile
 + (Firebase *) ProfileWithUID:(NSString *)uid {
     return [[[FireBaseController base] childByAppendingPath:@"AllProfiles/"] childByAppendingPath:uid];
+}
+//currentProfile
++ (Firebase *) allProfiles:(Profile *)profile{
+    return [self ProfileWithUID:profile.uID];
 }
 //listener
 + (Firebase *) listenerProfilesWithUID:(NSString *)uid {
@@ -105,6 +110,34 @@
     
     [self.base authUser:userEmail password:password withCompletionBlock:^(NSError *error, FAuthData *authData) {
         NSLog(@"%@",authData);
+        
+        if (error != nil) {
+            // an error occurred while attempting login
+            switch(error.code) {
+                case FAuthenticationErrorUserDoesNotExist:
+                    // Handle invalid user
+                    [ProfileController sharedInstance].loginAlert = @"Invalid User";
+                    [ProfileController sharedInstance].loginMessage = @"The specified user does not exist.";
+                    break;
+                    
+                case FAuthenticationErrorInvalidEmail:
+                    // Handle invalid email
+                    [ProfileController sharedInstance].loginAlert = @"Invalid User";
+                    [ProfileController sharedInstance].loginMessage = @"The specified user does not exist.";
+                    break;
+                    
+                case FAuthenticationErrorInvalidPassword:
+                    // Handle invalid password
+                    [ProfileController sharedInstance].loginAlert = @"Invalid Password";
+                    [ProfileController sharedInstance].loginMessage = @"The password does not match the user.";
+                    break;
+                default:
+                    //you may not be connected to the internet.
+                    [ProfileController sharedInstance].loginAlert = @"Error";
+                    [ProfileController sharedInstance].loginMessage = @"An error occurred while attempting to connect.";
+                    break;
+            }
+        }
         if (error) {
             // There was an error creating the account
             
@@ -128,14 +161,16 @@
 
 
 + (void)fetchUser:(NSString *)email {
+
     [[FireBaseController currentProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
         NSDictionary *profileDictionary;
         
         if ([snapshot.value isKindOfClass:[NSNull class]]) {
             
-            Profile *newProfile = [[ProfileController sharedInstance] createProfile:email uid:[self currentUserUID] isband:[ProfileController sharedInstance].isBand];
+            Profile *newProfiles = [[ProfileController sharedInstance] createProfile:email uid:[self currentUserUID] isband:[ProfileController sharedInstance].isBand];
             
-            profileDictionary = newProfile.dictionaryRepresentation;
+            profileDictionary = newProfiles.dictionaryRepresentation;
             
         } else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
             
@@ -144,24 +179,78 @@
         
         [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
         
+        [[ProfileController sharedInstance] saveAllProfile:[ProfileController sharedInstance].currentProfile];
+        
         if ([ProfileController sharedInstance].currentProfile.isBand == YES) {
             
-            [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
+            [self fetchBand:email];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:currentBandProfileLoadedNotification object:nil];
-        
         } else if ([ProfileController sharedInstance].currentProfile.isBand == NO){
             
-            [[ProfileController sharedInstance] saveListenerProfile:[ProfileController sharedInstance].currentProfile];
+            [self fetchListener:email];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:currentListenerProfileLoadedNotification object:nil];
         }
         
     } withCancelBlock:^(NSError *error) {
         // Do nothing for now
     }];
+
 }
 
++ (void)fetchBand:(NSString *)email{
+    
+    [[FireBaseController currentBandProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        
+        NSDictionary *profileDictionary;
+        
+        if ([snapshot.value isKindOfClass:[NSNull class]]) {
+            
+            Profile *newProfiles = [[ProfileController sharedInstance] createProfile:email uid:[self currentUserUID] isband:[ProfileController sharedInstance].isBand];
+            
+            profileDictionary = newProfiles.dictionaryRepresentation;
+            
+        }else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
+            
+            profileDictionary = snapshot.value;
+        
+        }
+        
+        [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
+        
+        [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:currentBandProfileLoadedNotification object:nil];
+    
+    }];
+    
+}
+
++ (void)fetchListener:(NSString *)email{
+    
+    [[FireBaseController currentListenerProfile] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+
+        NSDictionary *profileDictionary;
+        
+        if ([snapshot.value isKindOfClass:[NSNull class]]) {
+            
+            Profile *newProfiles = [[ProfileController sharedInstance] createProfile:email uid:[self currentUserUID] isband:[ProfileController sharedInstance].isBand];
+            
+            profileDictionary = newProfiles.dictionaryRepresentation;
+            
+        }else if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
+            
+            profileDictionary = snapshot.value;
+        }
+        
+        [[ProfileController sharedInstance] setCurrentUser:profileDictionary];
+        
+        [[ProfileController sharedInstance] saveListenerProfile:[ProfileController sharedInstance].currentProfile];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:currentListenerProfileLoadedNotification object:nil];
+    
+    }];
+    
+}
 
 #pragma mark Read
 

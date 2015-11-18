@@ -135,6 +135,10 @@
 
 #pragma mark Update
 
+-(void) saveAllProfile:(Profile *)profile{
+    [[FireBaseController allProfiles:profile] setValue:profile.dictionaryRepresentation];
+}
+
 -(void) saveListenerProfile:(Profile *)profile{
     [[FireBaseController listenerProfile:profile] setValue:profile.dictionaryRepresentation];
     

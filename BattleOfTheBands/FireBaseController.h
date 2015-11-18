@@ -15,6 +15,8 @@
 
 + (Firebase *) base;
 
++ (Firebase *) allProfiles:(Profile *)profile;
+
 + (Firebase *) listenerProfile:(Profile *)profile;
 
 + (Firebase *) allBandProfiles;

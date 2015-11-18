@@ -16,6 +16,12 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 @interface ProfileController : NSObject
 
+@property (weak,nonatomic) NSString *signUpMessage;
+
+@property (weak,nonatomic) NSString *loginAlert;
+
+@property (weak,nonatomic) NSString *loginMessage;
+
 @property (strong, nonatomic, readonly) Profile *currentProfile;
 @property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
 @property (strong, nonatomic, readonly) NSArray *randomBand;
@@ -35,6 +41,8 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 -(Profile *)createBandProfile:(NSString *)email uid:(NSString*)uID;
 
 -(Profile *)createListenerProfile:(NSString *)email uid:(NSString*)uID;
+
+-(void) saveAllProfile:(Profile *)profile;
 
 -(void) saveListenerProfile:(Profile *)profile;
 

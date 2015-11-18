@@ -32,7 +32,7 @@
 
         } else {
             
-            [self signUpError];
+            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
         }
     }];
     
@@ -49,7 +49,7 @@
             
         } else {
             
-            [self signUpError];
+            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
         }
     }];
     //----------set profile isBand to No--------------
@@ -82,9 +82,9 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
--(void)signUpError{
+-(void)signUpErrorMessage:(NSString *)message{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry there was an error logging in. This accout may exist already" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     

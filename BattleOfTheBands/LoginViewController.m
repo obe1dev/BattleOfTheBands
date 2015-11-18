@@ -40,20 +40,6 @@
    
         self.passwordLogin.delegate = self;
     
-    
-    //creating moc data
-    
-    //creating user
-    //[FireBaseController creatAccount:@"brocktest@gmail.com" password:@"happybirthday"];
-    
-    //login user
-    //[FireBaseController login:@"test@test.com" password:@"test" completion:nil];
-    
-    //[FireBaseController login:@"signUpSecond@gmail.com" password:@"test"];
-    
-    //creating profile
-    //[[ProfileController sharedInstance] createProfileWithName:@"Another bands" bioOfBand:@"bio" bandWebsite:@"twitter.com"];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -82,16 +68,17 @@
             [self dismissViewControllerAnimated:true completion:nil];
             
         } else {
+#warning the shared instance is not assigning.
+            [self loginErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
             
-            [self loginError];
         }
     }];
 }
 
 
--(void)loginError{
+-(void)loginErrorWithAlert:(NSString *)alert message:(NSString *)message{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Sorry no user with that profile or password. It could also be that you are not connected to the internet" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alert message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     
