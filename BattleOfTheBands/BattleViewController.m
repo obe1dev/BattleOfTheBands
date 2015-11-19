@@ -103,8 +103,11 @@
     
     //this is part of the loging out process
     if (![[ProfileController sharedInstance]currentProfile]) {
-        [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
-        NSLog(@"user is not logged in");
+        if ([ProfileController sharedInstance].isListener == NO) {
+            [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+            NSLog(@"user is not logged in");
+
+        }
     }
     
 

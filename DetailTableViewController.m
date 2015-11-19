@@ -117,6 +117,10 @@
         NSMutableAttributedString *website = [[NSMutableAttributedString alloc] initWithString:self.website];
         [website addAttribute:NSLinkAttributeName value:self.website range:NSMakeRange(0,website.length)];
         
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(infoTapped)];
+        cell.infoOptionInput.gestureRecognizers = @[];
+        cell.infoOptionInput.userInteractionEnabled = YES;
+        [cell.infoOptionInput addGestureRecognizer:recognizer];
         cell.infoOptionLabel.text = @"Band Website";
         cell.infoOptionInput.textColor = [UIColor lightGrayColor];
         cell.infoOptionInput.attributedText = website;
@@ -126,6 +130,13 @@
     }
     
     return nil;
+}
+
+- (void)infoTapped {
+    
+    NSString *website =[NSString stringWithFormat:@"http:%@",self.website];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:website]];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

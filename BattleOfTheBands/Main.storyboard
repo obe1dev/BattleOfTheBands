@@ -33,21 +33,21 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up A Band"/>
                                 <connections>
-                                    <segue destination="2vs-Fz-hSo" kind="show" identifier="Sign Up" id="eud-MG-9W5"/>
+                                    <action selector="signUpband:" destination="BYZ-38-t0r" eventType="touchUpInside" id="toU-iG-Dez"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEb-x7-SnX">
-                                <rect key="frame" x="0.0" y="450" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="500" width="600" height="50"/>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="bn6-NP-Vbg"/>
+                                    <constraint firstAttribute="height" constant="50" id="bn6-NP-Vbg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" red="0.98026727828594706" green="0.99642955694316593" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Log In"/>
+                                <color key="tintColor" red="0.96470588235294119" green="0.0" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log In for bands"/>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nZC-Ae-Vg8"/>
                                 </connections>
@@ -76,21 +76,39 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewx-La-Mij">
+                                <rect key="frame" x="0.0" y="400" width="600" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="pq8-2T-dH0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Just Listen">
+                                    <color key="titleColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="justListen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LKN-xU-ruH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Jps-xz-Ks4" secondAttribute="trailing" constant="-20" id="2i2-UB-0j8"/>
                             <constraint firstItem="Jps-xz-Ks4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="AEu-vn-Qzr"/>
+                            <constraint firstItem="VEb-x7-SnX" firstAttribute="top" secondItem="ewx-La-Mij" secondAttribute="bottom" id="D1Q-3V-zV4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jps-xz-Ks4" secondAttribute="bottom" id="EzQ-B3-lxw"/>
                             <constraint firstItem="cH7-RK-4gG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="H3I-2Z-uwK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7IV-lk-a2H" secondAttribute="trailing" constant="-20" id="L5N-Oe-7oK"/>
+                            <constraint firstItem="ewx-La-Mij" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Luu-CY-FPE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VEb-x7-SnX" secondAttribute="trailing" constant="-20" id="PTa-QG-G4u"/>
                             <constraint firstItem="VEb-x7-SnX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="QB3-gd-qop"/>
+                            <constraint firstItem="ewx-La-Mij" firstAttribute="top" secondItem="7IV-lk-a2H" secondAttribute="bottom" constant="71" id="Td7-4q-R6R"/>
                             <constraint firstItem="cH7-RK-4gG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VEv-iH-mVh"/>
                             <constraint firstItem="Jps-xz-Ks4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WLB-5e-xyj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VEb-x7-SnX" secondAttribute="bottom" constant="50" id="Xg1-wZ-Nvk"/>
-                            <constraint firstItem="VEb-x7-SnX" firstAttribute="top" secondItem="7IV-lk-a2H" secondAttribute="bottom" constant="121" id="g9q-Ju-obi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ewx-La-Mij" secondAttribute="trailing" constant="-20" id="kmt-bQ-0lI"/>
                             <constraint firstItem="7IV-lk-a2H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="mQ5-wX-NlE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cH7-RK-4gG" secondAttribute="bottom" id="r6r-tj-wJD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cH7-RK-4gG" secondAttribute="trailing" constant="-20" id="yg8-1a-OFm"/>
@@ -370,7 +388,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Battle" id="SZv-ob-VAI">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="dsn-A4-XfW">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="dsn-A4-XfW">
                             <connections>
                                 <action selector="next:" destination="Xre-9u-tpY" id="VuS-gN-D3f"/>
                             </connections>
@@ -717,7 +735,7 @@
         <scene sceneID="xvC-cX-JvK">
             <objects>
                 <tableViewController title="Band Info" id="fwB-9Q-EF1" customClass="DetailTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Da6-iF-hRF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Da6-iF-hRF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -949,7 +967,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTK-Nu-rXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2985" y="67"/>
+            <point key="canvasLocation" x="2981" y="67"/>
         </scene>
         <!--Top 10-->
         <scene sceneID="mNT-DW-3DB">
@@ -961,30 +979,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="zlr-OI-mcC">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C4E-V8-MZ8">
-                                    <rect key="frame" x="8" y="8" width="584" height="29"/>
-                                    <animations/>
-                                    <segments>
-                                        <segment title="Local"/>
-                                        <segment title="All"/>
-                                    </segments>
-                                </segmentedControl>
-                            </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="C4E-V8-MZ8" firstAttribute="leading" secondItem="zlr-OI-mcC" secondAttribute="leading" constant="8" id="Ccj-pN-SIP"/>
-                                <constraint firstAttribute="trailing" secondItem="C4E-V8-MZ8" secondAttribute="trailing" constant="8" id="Cjm-bZ-NZV"/>
-                                <constraint firstItem="C4E-V8-MZ8" firstAttribute="top" secondItem="zlr-OI-mcC" secondAttribute="top" constant="8" id="EeG-lC-xhl"/>
-                                <constraint firstAttribute="bottom" secondItem="C4E-V8-MZ8" secondAttribute="bottom" constant="8" id="emB-9W-UPW"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="100" id="hX8-LH-0sD" customClass="Top10TableViewCell">
-                                <rect key="frame" x="0.0" y="136" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="93" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hX8-LH-0sD" id="lot-pp-u8Y">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -1033,10 +1035,10 @@
             </objects>
             <point key="canvasLocation" x="1581" y="1411"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="03b-5b-xwA">
             <objects>
-                <tabBarController id="cva-kg-bBU" sceneMemberID="viewController">
+                <tabBarController id="cva-kg-bBU" customClass="TabBarViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="4dC-W3-AvC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1052,7 +1054,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nv8-zs-NnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863" y="363"/>
+            <point key="canvasLocation" x="863" y="377"/>
         </scene>
         <!--Navigation Battle-->
         <scene sceneID="Gie-of-GkE">

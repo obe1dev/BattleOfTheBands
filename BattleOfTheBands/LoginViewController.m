@@ -58,6 +58,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)justListen:(id)sender {
+    [ProfileController sharedInstance].isListener = YES;
+    self.didSelectListen();
+}
 
 - (IBAction)loginButton:(id)sender {
     
@@ -65,14 +69,29 @@
         
         if (success) {
             
-            [self dismissViewControllerAnimated:true completion:nil];
+            self.didLogIn(success);
             
         } else {
-#warning the shared instance is not assigning.
+            
             [self loginErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
             
         }
     }];
+}
+- (IBAction)signUpband:(id)sender {
+    //the completion block will run true if the creatAccount method is properly ran if there was an error it'll be false
+    [FireBaseController creatAccount:self.emailLogin.text password:self.passwordLogin.text completion:^(bool success) {
+        if (success) {
+            
+            [ProfileController sharedInstance].isBand = YES;
+            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+            
+        } else {
+
+            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
+        }
+    }];
+    
 }
 
 
@@ -86,6 +105,18 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
 
+}
+
+-(void)signUpErrorMessage:(NSString *)message{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 /*

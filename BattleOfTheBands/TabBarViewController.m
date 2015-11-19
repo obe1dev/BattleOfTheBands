@@ -1,0 +1,58 @@
+//
+//  TabBarViewController.m
+//  BattleOfTheBands
+//
+//  Created by Brock Oberhansley on 11/18/15.
+//  Copyright © 2015 Brock Oberhansley. All rights reserved.
+//
+
+#import "TabBarViewController.h"
+#import "LoginViewController.h"
+
+@interface TabBarViewController ()
+
+@end
+
+@implementation TabBarViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"notLoggedIn"]) {
+        LoginViewController *controller = (LoginViewController *)segue.destinationViewController;
+        controller.didSelectListen = ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+            // TODO: Disable tab bar
+            // Remove the third tab from a tab bar controlled by a tab bar controller
+//            NSMutableArray * vcs = [NSMutableArray
+//                                    arrayWithArray:[self.tabBarController viewControllers]];
+//            [vcs removeObjectAtIndex:2];
+//            [self.tabBarController setViewControllers:vcs];
+            [[[[self tabBar] items] objectAtIndex:2] setEnabled:NO];
+        };
+        
+        controller.didLogIn = ^(BOOL success){
+            if (success) {
+                // YAY!
+            } else {
+                // handle it
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
+    }
+}
+
+
+@end

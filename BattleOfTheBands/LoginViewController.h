@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import <Firebase/Firebase.h>
+
 @interface LoginViewController : UIViewController
 
 + (LoginViewController *)sharedInstance;
 
 -(void)loginErrorWithAlert:(NSString *)alert message:(NSString *)message;
+
+@property (nonatomic, copy) void (^didSelectListen)();
+@property (nonatomic, copy) void (^didLogIn)(BOOL success);
 
 @end

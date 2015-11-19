@@ -18,6 +18,7 @@
 		47701ED51BE86C9000FA3371 /* FollowingTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ED41BE86C9000FA3371 /* FollowingTitleCell.m */; };
 		47701ED81BE86CC400FA3371 /* FollowingBandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47701ED71BE86CC400FA3371 /* FollowingBandCell.m */; };
 		47701EDA1BE983FF00FA3371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47701ED91BE983FF00FA3371 /* Main.storyboard */; };
+		47794C9B1BFD6B0F00AA0065 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47794C9A1BFD6B0F00AA0065 /* TabBarViewController.m */; };
 		47889B5F1BF7A11C00D55AFF /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B5E1BF7A11C00D55AFF /* AWSS3.framework */; };
 		47889B611BF7A13200D55AFF /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B601BF7A13200D55AFF /* AWSCore.framework */; };
 		47889B631BF7A15700D55AFF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B621BF7A15700D55AFF /* libsqlite3.tbd */; };
@@ -90,6 +91,8 @@
 		47701ED61BE86CC400FA3371 /* FollowingBandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowingBandCell.h; sourceTree = "<group>"; };
 		47701ED71BE86CC400FA3371 /* FollowingBandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowingBandCell.m; sourceTree = "<group>"; };
 		47701ED91BE983FF00FA3371 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		47794C991BFD6B0F00AA0065 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		47794C9A1BFD6B0F00AA0065 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		47889B5E1BF7A11C00D55AFF /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		47889B601BF7A13200D55AFF /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCore.framework; sourceTree = "<group>"; };
 		47889B621BF7A15700D55AFF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -320,6 +323,8 @@
 				4798D5C71BE15F7200B29346 /* ProfileTableViewController.m */,
 				4798D5C91BE15FBA00B29346 /* DetailTableViewController.h */,
 				4798D5CA1BE15FBA00B29346 /* DetailTableViewController.m */,
+				47794C991BFD6B0F00AA0065 /* TabBarViewController.h */,
+				47794C9A1BFD6B0F00AA0065 /* TabBarViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 			files = (
 				47701EBC1BE2B36500FA3371 /* BandBioCell.m in Sources */,
 				47701EB51BE2AC4500FA3371 /* TextFieldCell.m in Sources */,
+				47794C9B1BFD6B0F00AA0065 /* TabBarViewController.m in Sources */,
 				47701EC51BE2B51600FA3371 /* InfoBandBioCell.m in Sources */,
 				4798D5BE1BD9C70B00B29346 /* FireBaseController.m in Sources */,
 				47701ED81BE86CC400FA3371 /* FollowingBandCell.m in Sources */,
@@ -637,6 +643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BattleOfTheBands",
@@ -654,6 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BattleOfTheBands",
