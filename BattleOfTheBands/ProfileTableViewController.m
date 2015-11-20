@@ -85,6 +85,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 -(void)viewDidAppear:(BOOL)animated{
     
+    if ([ProfileController sharedInstance].isListener) {
+        [self.tabBarController setSelectedIndex:0];
+    }
+    
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
         [self editButtonError];
         [self.tabBarController setSelectedIndex:2];
