@@ -22,6 +22,7 @@
 @property (weak, nonatomic) NSString *website;
 @property (strong, nonatomic) NSNumber *vote;
 @property (strong, nonatomic) NSNumber *rank;
+@property (strong, nonatomic) NSData *bandImage;
 
 
 @end
@@ -33,12 +34,14 @@
     
     [self updateWithEntry:self.profile];
 
+        
+     //Uncomment the following line to preserve selection between presentations.
+     //self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +54,10 @@
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
     self.vote = profile.vote;
+    
+    if (profile.bandImage) {
+        self.bandImage = profile.bandImage;
+    }
     
     [[ProfileController sharedInstance] rankForProfile:profile completion:^(NSNumber *rank) {
         self.rank = rank;
@@ -78,7 +85,16 @@
         
         InfoPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoPhotoCell" forIndexPath:indexPath];
         
+        if (self.bandImage) {
+            
+            cell.bandPhoto.image = [UIImage imageWithData:self.bandImage];
+       
+        }else{
+        
         cell.bandPhoto.image = [UIImage imageNamed:@"anchorIcon"];
+            
+        }
+        
         cell.bandNameLabel.text = self.name;
         
         return cell;

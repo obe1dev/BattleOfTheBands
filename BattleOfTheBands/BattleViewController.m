@@ -66,7 +66,7 @@
     NSLog(@"Updating random bands, first: %@, second %@", profile1.name, profile2.name);
     
    
-    
+    //self.leftBandName.titleLabel.text = [NSString stringWithString:profile1.name];
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     //self.leftBandPlay.imageView.image =
     
@@ -94,6 +94,19 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    if ([ProfileController sharedInstance].isListener) {
+#warning this is where the error is 
+        if ([self.tabBarController viewControllers].count == 3) {
+            
+        
+        //Remove the third tab from a tab bar controlled by a tab bar controller
+        NSMutableArray * vcs = [NSMutableArray
+                                arrayWithArray:[self.tabBarController viewControllers]];
+        [vcs removeObjectAtIndex:2];
+        [self.tabBarController setViewControllers:vcs];
+        }
+    }
     
 #warning  signUp stuff work on this this loads and sets to index2 every time
     if ([ProfileController sharedInstance].needsToFillOutProfile) {

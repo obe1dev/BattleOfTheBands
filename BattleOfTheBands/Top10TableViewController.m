@@ -86,9 +86,17 @@
      Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
     
     cell.bandName.text = profile.name;
-
-    cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
     
+    if (profile.bandImage) {
+        
+        cell.bandImage.image = [UIImage imageWithData:profile.bandImage];
+        
+    }else{
+        
+    cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
+        
+    }
+        
     return cell;
 }
 

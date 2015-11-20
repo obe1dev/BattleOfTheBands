@@ -33,17 +33,14 @@
     if ([segue.identifier isEqualToString:@"notLoggedIn"]) {
         LoginViewController *controller = (LoginViewController *)segue.destinationViewController;
         controller.didSelectListen = ^{
+#warning i need to find a way to remove profile form tabBar
             [self dismissViewControllerAnimated:YES completion:nil];
-            // TODO: Disable tab bar
-            // Remove the third tab from a tab bar controlled by a tab bar controller
-//            NSMutableArray * vcs = [NSMutableArray
-//                                    arrayWithArray:[self.tabBarController viewControllers]];
-//            [vcs removeObjectAtIndex:2];
-//            [self.tabBarController setViewControllers:vcs];
-            [[[[self tabBar] items] objectAtIndex:2] setEnabled:NO];
+             //TODO: Disable tab bar
+            
+//            [[[[self tabBar] items] objectAtIndex:2] setEnabled:NO];
         };
         
-        controller.didLogIn = ^(BOOL success){
+        controller.isProfile = ^(BOOL success){
             if (success) {
                 // YAY!
             } else {

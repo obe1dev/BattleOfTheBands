@@ -30,7 +30,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
-//this is fake data this will be set in the profile property
 @property (assign, nonatomic) BOOL isBand;
 
 @property (strong, nonatomic) NSString *name;
@@ -51,15 +50,23 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+    self.isBand = YES;
+    [self updateBandProfile];
     
-    if (currentProfile.isBand == YES) {
-        [self updateBandProfile];
-        self.isBand = YES;
-    }else if (currentProfile.isBand == NO) {
-        [self updateListenerProfile];
-        self.isBand = NO;
-    }
+    
+//this if for adding listeners
+    
+//    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+    
+    
+//    if (currentProfile.isBand == YES) {
+//        [self updateBandProfile];
+//        self.isBand = YES;
+//    }
+//    else if (currentProfile.isBand == NO) {
+//        [self updateListenerProfile];
+//        self.isBand = NO;
+//    }
     
     
     
@@ -79,6 +86,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 -(void)viewDidAppear:(BOOL)animated{
     
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
+        [self editButtonError];
         [self.tabBarController setSelectedIndex:2];
     };
     
@@ -95,6 +103,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         self.bio = currentProfile.bioOfBand;
         self.website = currentProfile.bandWebsite;
         self.votes = currentProfile.vote;
+#warning come back here
+        self.bandImage = currentProfile.bandImage;
         
         [[ProfileController sharedInstance] rankForProfile:currentProfile completion:^(NSNumber *rank) {
             self.rank = rank;
@@ -109,35 +119,35 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     }
 }
 
-- (void)updateListenerProfile {
-    
-    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
-    
-    if (currentProfile) {
-        self.name = currentProfile.name;
-        
-        [self.tableView reloadData];
-        NSLog(@"Updated with profile");
-    } else {
-        NSLog(@"No profile to update");
-    }
-}
+//- (void)updateListenerProfile {
+//    
+//    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+//    
+//    if (currentProfile) {
+//        self.name = currentProfile.name;
+//        
+//        [self.tableView reloadData];
+//        NSLog(@"Updated with profile");
+//    } else {
+//        NSLog(@"No profile to update");
+//    }
+//}
 
 - (void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBandProfile) name:currentBandProfileLoadedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateListenerProfile) name:currentListenerProfileLoadedNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateListenerProfile) name:currentListenerProfileLoadedNotification object:nil];
 }
 
 - (IBAction)logoutButton:(id)sender {
     
-    //    TODO: check to see if this is working and segue back to login view.
+    
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     if (currentProfile.isBand == YES) {
         [[FireBaseController bandProfile:currentProfile] unauth];
     }else if (currentProfile.isBand == NO)
         [[FireBaseController listenerProfile:currentProfile] unauth];
     
-    // navigate to the tab bar controller's first view
+    // navigate to the login view
     [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
     
     
@@ -149,13 +159,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     NSString *updatedText = cell.infoEntryTextField.text;
     
-    
     if (self.isBand) {
         
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-    ProfileRow row = indexPath.row;
-    
+        ProfileRow row = indexPath.row;
+        
         switch (row) {
             case ProfileRowName:
                 self.name = updatedText;
@@ -213,16 +222,17 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             
             [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
         }
-    }else if (!self.isBand){
-        if (!editing) {
-            if (self.name == nil) {
-                [self errorAlert];
-            }else{
-                [ProfileController sharedInstance].needsToFillOutProfile = NO;
-            }
-            [[ProfileController sharedInstance]  updateListenerWithName:self.name];
-        }
     }
+//    else if (!self.isBand){
+//        if (!editing) {
+//            if (self.name == nil) {
+//                [self errorAlert];
+//            }else{
+//                [ProfileController sharedInstance].needsToFillOutProfile = NO;
+//            }
+//            [[ProfileController sharedInstance]  updateListenerWithName:self.name];
+//        }
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -242,10 +252,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     if (self.isBand) {
         return  5;
-    } else if (!self.isBand){
-        return 1;
-        //for now only have name add favorite bands later
     }
+//     else if (!self.isBand){
+//        return 1;
+//        //for now only have name add favorite bands later
+//    }
     return 0;
 }
 
@@ -259,6 +270,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         switch (row) {
             case ProfileRowPhoto: {
                 PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
+                
+                UIImage *profileImage;
+                
+                profileImage = [UIImage imageWithData:self.bandImage];
+                [cell.photoButton setImage:profileImage forState:UIControlStateNormal];
+                
                 cell.photoButton.titleLabel.text = @"Add Photo";
                 cell.uploadSongButton.titleLabel.text = @"Add Song";
                 cell.delegate = self;
@@ -308,23 +325,25 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         
         //TODO:add a genre picker
         
-        
+#warning this if for setting up listeners in future
         //this is for the liked bands and listener
-    }else{
         
-        TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-        
-        cell.infoLabel.text = @"Name";
-        cell.infoEntryTextField.placeholder = @"Enter your Name";
-        cell.infoEntryTextField.text = self.name;
-        cell.delegate = self;
-        return cell;
-        
-        
-//        ProfileRow row = indexPath.row;
-//
+    }
+//    else{
+//        
 //        TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-//
+//        
+//        cell.infoLabel.text = @"Name";
+//        cell.infoEntryTextField.placeholder = @"Enter your Name";
+//        cell.infoEntryTextField.text = self.name;
+//        cell.delegate = self;
+//        return cell;
+//        
+//        
+//        ProfileRow row = indexPath.row;
+//        
+//        TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
+//        
 //        
 //        switch (row) {
 //                
@@ -332,7 +351,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //            case ProfileRowName:{
 //                
 //                TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
-//
+//                
 //                cell.infoLabel.text = @"Name";
 //                cell.infoEntryTextField.placeholder = @"Enter your Name";
 //                cell.infoEntryTextField.text = self.name;
@@ -357,8 +376,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //                break;
 //            }
 //        }
-
-    }
+//        
+//        
+//    }
+    
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -380,13 +402,14 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         if (indexPath.row == 4) {
             return 85.0;
         }
-        
-    }else if(!self.isBand){
-        if (indexPath.row == 0) {
-            return 85.0;
-        }
-        
     }
+    
+    //    else if(!self.isBand){
+    //        if (indexPath.row == 0) {
+    //            return 85.0;
+    //        }
+    //
+    //    }
     return 0.0;
 }
 
@@ -433,14 +456,25 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     self.bandImage = UIImageJPEGRepresentation(image, 0.8);
     
+    //    [ProfileController sharedInstance].currentProfile.bandImage = self.bandImage;
+    
     [self.tableView reloadData];
     
     [S3Manager uploadImage:image withName:@"image.jpg"];
     
-    //save to server or firebase
+    //TODO:save to server or firebase
     //[self.bandImage ];
 }
 
+-(void)editButtonError{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tap Edit Button" message:@"Tap the edit button to begin editing your profile, and tab done when complete" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 -(void)errorAlert{
     
@@ -457,8 +491,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 //- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 //    [super setEditing:editing animated:NO];
-//    
-//    
+//
+//
 //}
 
 @end

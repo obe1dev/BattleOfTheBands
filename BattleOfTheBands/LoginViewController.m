@@ -69,7 +69,7 @@
         
         if (success) {
             
-            self.didLogIn(success);
+            self.isProfile(success);
             
         } else {
             
@@ -84,7 +84,7 @@
         if (success) {
             
             [ProfileController sharedInstance].isBand = YES;
-            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+            self.isProfile(success);
             
         } else {
 

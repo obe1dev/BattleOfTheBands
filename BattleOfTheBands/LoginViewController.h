@@ -17,6 +17,6 @@
 -(void)loginErrorWithAlert:(NSString *)alert message:(NSString *)message;
 
 @property (nonatomic, copy) void (^didSelectListen)();
-@property (nonatomic, copy) void (^didLogIn)(BOOL success);
+@property (nonatomic, copy) void (^isProfile)(BOOL success);
 
 @end

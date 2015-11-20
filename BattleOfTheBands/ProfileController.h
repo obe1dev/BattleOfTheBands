@@ -26,6 +26,7 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 @property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
 @property (strong, nonatomic, readonly) NSArray *randomBand;
 @property (assign, nonatomic) BOOL needsToFillOutProfile;
+
 @property (assign, nonatomic) BOOL isListener;
 
 //change if needed

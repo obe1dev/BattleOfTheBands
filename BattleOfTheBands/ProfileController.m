@@ -185,8 +185,14 @@
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
 #warning empty name will still go into battle. same with top 10
             //this will check to see if the band has a name and song
-            if (bandProfile.name || ![bandProfile.name  isEqual: @""]) {
-                [topBandsMutable addObject:bandProfile];
+            if (bandProfile.name) {
+                
+                if (![bandProfile.name isEqualToString:@""]) {
+                    
+                    [topBandsMutable addObject:bandProfile];
+                    
+                }
+                
             }
         }
         NSInteger random1 = arc4random() % [topBandsMutable count];
@@ -218,7 +224,13 @@
             
             //this will check to see if the band has a name and song
             if (bandProfile.name) {
-                [topBandsMutable addObject:bandProfile];
+                
+                if (![bandProfile.name isEqualToString:@""]) {
+                    
+                    [topBandsMutable addObject:bandProfile];
+                    
+                }
+                
             }
             
         }

@@ -10,6 +10,6 @@
 
 @interface Top10TableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *bandName;
-@property (weak, nonatomic) IBOutlet UIImageView *bandImage;
+@property (strong, nonatomic) IBOutlet UIImageView *bandImage;
 
 @end
