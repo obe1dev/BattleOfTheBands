@@ -11,6 +11,8 @@
 
 @interface SongsController : NSObject
 
+@property(strong,nonatomic) Songs *currentSong;
+
 @property (strong,nonatomic,readonly) NSMutableArray *songs;
 
 +(SongsController *)sharedInstance;

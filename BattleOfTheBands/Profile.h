@@ -23,7 +23,7 @@
 @property (strong,nonatomic) NSNumber *ranking;
 @property (strong,nonatomic) NSString *bioOfBand;
 @property (strong,nonatomic) NSString *bandWebsite;
-@property (strong,nonatomic) NSArray *songs;
+@property (strong,nonatomic) NSString *songs;
 @property (strong,nonatomic) NSArray *likes;
 @property (strong,nonatomic) NSString *genre;
 

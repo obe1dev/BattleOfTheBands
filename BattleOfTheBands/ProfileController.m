@@ -183,7 +183,6 @@
         for (NSString *bandDictionaryKey in bandDictionaries) {
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
-#warning empty name will still go into battle. same with top 10
             //this will check to see if the band has a name and song
             if (bandProfile.name) {
                 
@@ -213,7 +212,7 @@
     }];
 
 }
-#warning if the band has no data in the profile it will still add them to the battle rounds
+
 - (void)loadTopTenBandProfiles {
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *bandDictionaries = snapshot.value;

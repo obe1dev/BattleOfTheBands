@@ -105,6 +105,27 @@
     return [FireBaseController base].authData.uid;
 }
 
++(void) deleteProfile:(NSString *)email password:(NSString*)password completion:(void (^)(bool success))completion{
+    [self.base removeUser:email password:password withCompletionBlock:^(NSError *error) {
+        if (error) {
+            // There was an error processing the request
+            [ProfileController sharedInstance].loginAlert = @"Error";
+            [ProfileController sharedInstance].loginMessage = @"Something went wrong your account didnt delete.";
+            if (completion) {
+                completion(false);
+            }
+        } else {
+            // User deleted
+            [ProfileController sharedInstance].loginAlert = @"Deleted";
+            [ProfileController sharedInstance].loginMessage = @"You have successfully deleted your account.";
+            [ProfileController sharedInstance].currentProfile.isLoggedIn = NO;
+            if (completion) {
+                completion(true);
+            }
+        }
+    }];
+}
+
 
 +(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion{
     

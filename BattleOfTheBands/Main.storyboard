@@ -298,7 +298,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-n4-vXC" userLabel="LeftCheckBox">
-                                                <rect key="frame" x="117" y="336" width="65" height="65"/>
+                                                <rect key="frame" x="118" y="336" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="65" id="LaQ-hy-5Ed"/>
@@ -342,7 +342,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9n-G6-RaF" userLabel="RightCheckButton">
-                                                <rect key="frame" x="117" y="336" width="65" height="65"/>
+                                                <rect key="frame" x="118" y="336" width="65" height="65"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="JDh-xe-fH9"/>
@@ -414,7 +414,7 @@
         <scene sceneID="Ihk-6G-vgD">
             <objects>
                 <tableViewController title="Profile" id="3Fx-QB-o3r" customClass="ProfileTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rep-tr-XUb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rep-tr-XUb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -446,6 +446,9 @@
                                             <rect key="frame" x="8" y="203.5" width="584" height="30"/>
                                             <animations/>
                                             <state key="normal" title="Add Song"/>
+                                            <connections>
+                                                <action selector="uploadSong:" destination="3T0-mR-HV0" eventType="touchUpInside" id="2um-zd-b3h"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
@@ -700,6 +703,39 @@
                                 <connections>
                                     <outlet property="bandBioLabel" destination="Hsu-7L-N8q" id="22H-Fb-mE6"/>
                                     <outlet property="bandBioTextView" destination="sXu-Zw-rYK" id="pnF-Sp-dVd"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteProfileCell" id="YjU-b4-UIH" userLabel="DeleteProfile Cell" customClass="DeleteProfileCell">
+                                <rect key="frame" x="0.0" y="711" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YjU-b4-UIH" id="8Oa-fL-9GA">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f08-Lc-Nvq">
+                                            <rect key="frame" x="-12" y="8" width="624" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <state key="normal" title="Delete Profile">
+                                                <color key="titleColor" red="0.97647058819999999" green="0.99607843139999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteProfileButton:" destination="YjU-b4-UIH" eventType="touchUpInside" id="5x7-vf-T8f"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="f08-Lc-Nvq" secondAttribute="trailing" constant="-20" id="1U0-J0-ydd"/>
+                                        <constraint firstItem="f08-Lc-Nvq" firstAttribute="leading" secondItem="8Oa-fL-9GA" secondAttribute="leadingMargin" constant="-20" id="NGJ-OZ-14j"/>
+                                        <constraint firstItem="f08-Lc-Nvq" firstAttribute="top" secondItem="8Oa-fL-9GA" secondAttribute="topMargin" id="a8I-TM-TAj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="f08-Lc-Nvq" secondAttribute="bottom" id="tnd-33-t8S"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="deleteProfile" destination="f08-Lc-Nvq" id="veO-az-zu0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

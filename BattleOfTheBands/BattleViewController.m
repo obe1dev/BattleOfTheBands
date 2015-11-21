@@ -11,6 +11,7 @@
 #import "ProfileController.h"
 #import "Profile.h"
 #import "LoginViewController.h"
+#import "soundController.h"
 
 @interface BattleViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) UIImage *completeImage;
 @property (strong, nonatomic) UIImage *incompleteImage;
 //@property (strong, nonatomic) Profile *selectedProfile;
+
+@property (nonatomic, strong) soundController *soundController;
 
 
 @end
@@ -96,7 +99,7 @@
     [super viewDidAppear:animated];
     
     if ([ProfileController sharedInstance].isListener) {
-#warning this is where the error is 
+
         if ([self.tabBarController viewControllers].count == 3) {
             
         
@@ -135,6 +138,10 @@
 //band art play and pause buttons
 - (IBAction)leftBandPlay:(id)sender {
     
+    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"mp3"];
+    
+    [self.soundController playAudioFileAtURL:urlForSong];
+
 }
 
 - (IBAction)rightBandPlay:(id)sender {

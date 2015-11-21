@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface Songs : NSObject
 
 @property (strong,nonatomic) NSString *songName;
-@property (strong,nonatomic) NSString *songData;
+@property (strong,nonatomic) NSData *songData;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 

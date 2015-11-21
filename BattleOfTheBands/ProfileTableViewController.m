@@ -16,6 +16,7 @@
 #import "BandBioCell.h"
 #import "FollowingTitleCell.h"
 #import "FollowingBandCell.h"
+#import "DeleteProfileCell.h"
 #import "S3Manager.h"
 
 typedef NS_ENUM(NSUInteger, ProfileRow) {
@@ -24,9 +25,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowRankVotes,
     ProfileRowBio,
     ProfileRowWebsite,
+    ProfileRowDelete,
 };
 
-@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>;
+@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MPMediaPickerControllerDelegate,DeleteProfileDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -38,6 +40,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSNumber *votes;
 @property (strong, nonatomic) NSData *bandImage;
 @property (strong, nonatomic) NSNumber *rank;
+@property (strong, nonatomic) NSData *song;
 
 @end
 
@@ -101,14 +104,16 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)updateBandProfile {
     
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+    Songs *currentSong = [SongsController sharedInstance].currentSong;
     
     if (currentProfile) {
         self.name = currentProfile.name;
         self.bio = currentProfile.bioOfBand;
         self.website = currentProfile.bandWebsite;
         self.votes = currentProfile.vote;
-#warning come back here
+
         self.bandImage = currentProfile.bandImage;
+        self.song = currentSong.songData;
         
         [[ProfileController sharedInstance] rankForProfile:currentProfile completion:^(NSNumber *rank) {
             self.rank = rank;
@@ -179,6 +184,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             case ProfileRowBio:
             case ProfileRowRankVotes:
             case ProfileRowPhoto:
+            case ProfileRowDelete:
                 break;
                 
         }
@@ -206,6 +212,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             break;
         case ProfileRowRankVotes:
         case ProfileRowPhoto:
+        case ProfileRowDelete:
             break;
     }
     
@@ -255,8 +262,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (self.isBand) {
-        return  5;
+        
+        return 6;
     }
+    
 //     else if (!self.isBand){
 //        return 1;
 //        //for now only have name add favorite bands later
@@ -322,8 +331,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.delegate = self;
                 return cell;
             }
-#warning add delete account button
-                //TODO: add delete account
+            case ProfileRowDelete: {
+                DeleteProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DeleteProfileCell" forIndexPath:indexPath];
+                cell.delegate = self;
+                return cell;
+            }
+               
         }
         
         
@@ -406,6 +419,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         if (indexPath.row == 4) {
             return 85.0;
         }
+        if (indexPath.row == 5) {
+            return 50.0;
+        }
     }
     
     //    else if(!self.isBand){
@@ -426,6 +442,40 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //this take away the indenting while in editing mode
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
+}
+
+#pragma songs
+
+-(void)uploadSongButtonTapped{
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    mediaPicker.delegate = self;
+    mediaPicker.allowsPickingMultipleItems = NO;
+    mediaPicker.prompt = @"Select your song.";
+    
+    //MPMediaItemCollection *mediaItem = [[MPMediaItemCollection alloc] init];
+    
+    //[self mediaPicker:mediaPicker didPickMediaItems:<#(nonnull MPMediaItemCollection *)#>];
+    [self presentViewController:mediaPicker animated:YES completion:nil];
+    
+}
+
+-(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
+    
+    if (mediaItemCollection) {
+        
+        [self.tableView reloadData];
+
+        //self.song = mediaItemCollection;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
+   
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma band photo
@@ -468,6 +518,64 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     //TODO:save to server or firebase
     //[self.bandImage ];
+}
+
+#pragma delete Profile
+
+-(void)deleteProfileButtonTapped{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Account" message:@"Enter Your email and password to delete your account" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Email";
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Password";
+        textField.secureTextEntry = YES;
+    }];
+    
+    UIAlertAction *deleteProfile = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *email = alertController.textFields[0].text;
+        NSString *password = alertController.textFields[1].text;
+        
+        [FireBaseController deleteProfile:email password:password completion:^(bool success) {
+            if (success) {
+                
+                [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+                [self viewDidLoad];
+                
+            } else {
+                
+                [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+                
+            }
+        }];
+        
+    }];
+    
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:cancelAction];
+#warning calling this method is breaking it.
+    [alertController addAction:deleteProfile];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+   
+}
+
+#pragma errors
+
+-(void)ErrorWithAlert:(NSString *)alert message:(NSString *)message{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alert message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 -(void)editButtonError{

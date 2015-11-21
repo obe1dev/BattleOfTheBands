@@ -33,7 +33,7 @@
     if ([segue.identifier isEqualToString:@"notLoggedIn"]) {
         LoginViewController *controller = (LoginViewController *)segue.destinationViewController;
         controller.didSelectListen = ^{
-#warning i need to find a way to remove profile form tabBar
+
             [self dismissViewControllerAnimated:YES completion:nil];
              //TODO: Disable tab bar
             

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "ProfileController.h"
 
 @interface ProfileTableViewController : UITableViewController <UITableViewDelegate>
