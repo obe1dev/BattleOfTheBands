@@ -107,8 +107,6 @@
     
     if ([ProfileController sharedInstance].isListener) {
         
-        
-        
         UIBarButtonItem *logout = [[UIBarButtonItem alloc]initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:self action:@selector(segue)];
         
         self.navigationItem.leftBarButtonItem = logout;
@@ -125,7 +123,7 @@
         }
     }
     
-#warning  signUp stuff work on this this loads and sets to index2 every time
+#warning  signUp stuff 
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
         [self.tabBarController setSelectedIndex:2];
     };
@@ -144,12 +142,21 @@
 
 - (void) segue{
     [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+    [ProfileController sharedInstance].isListener = NO;
 }
 
 //change to the next battle
 - (IBAction)next:(id)sender {
-#warning this is update multiple time why?
-    [self viewDidLoad];
+    
+    self.completeImage = [UIImage imageNamed:@"complete"];
+    self.incompleteImage = [UIImage imageNamed:@"incomplete"];
+    
+    [[ProfileController sharedInstance] loadRandomBands];
+    
+    [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+    [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
+    
+    
 }
 
 //band art play and pause buttons

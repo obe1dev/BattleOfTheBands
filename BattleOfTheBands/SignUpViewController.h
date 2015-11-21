@@ -10,5 +10,7 @@
 
 @interface SignUpViewController : UIViewController
 
+@property (nonatomic, copy) void (^didSelectListen)();
+@property (nonatomic, copy) void (^isProfile)(BOOL success);
 
 @end

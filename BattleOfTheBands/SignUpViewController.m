@@ -23,36 +23,56 @@
 @implementation SignUpViewController
 
 - (IBAction)SignUpBand:(id)sender {
-//the completion block will run true if the creatAccount method is properly ran if there was an error it'll be false
+    
+    //the completion block will run true if the creatAccount method is properly ran if there was an error it'll be false
     [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
         if (success) {
             
             [ProfileController sharedInstance].isBand = YES;
+#warning ask parker why this isnt working
+            //TODO: ask parker why this isnt working
+            //self.isProfile(success);
             [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
-
+            
         } else {
             
             [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
+        }
+    }];
+
+}
+
+//set listener in future
+//    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
+//        if (success) {
+//
+//            [ProfileController sharedInstance].isBand = NO;
+//            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+//            //[self dismissViewControllerAnimated:true completion:nil];
+//
+//        } else {
+//
+//            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
+//        }
+//    }];
+
+- (IBAction)logInBand:(id)sender {
+    
+    [FireBaseController login:self.email.text password:self.password.text completion:^(bool success) {
+        
+        if (success) {
+            
+            //TODO: ask parker why this isnt working
+            //self.isProfile(success);
+            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
+            
+        } else {
+            
+            [self loginErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+            
         }
     }];
     
-    //TODO: set isband
-}
-
-- (IBAction)SignUpListener:(id)sender {
-    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
-        if (success) {
-            
-            [ProfileController sharedInstance].isBand = NO;
-            [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
-            //[self dismissViewControllerAnimated:true completion:nil];
-            
-        } else {
-            
-            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
-        }
-    }];
-    //----------set profile isBand to No--------------
 }
 
 - (void)viewDidLoad {
@@ -80,6 +100,18 @@
 }
 - (IBAction)backToLogIn:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+-(void)loginErrorWithAlert:(NSString *)alert message:(NSString *)message{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alert message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:dismissAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 -(void)signUpErrorMessage:(NSString *)message{

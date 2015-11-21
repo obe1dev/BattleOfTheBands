@@ -8,6 +8,7 @@
 
 #import "TabBarViewController.h"
 #import "LoginViewController.h"
+#import "SignUpViewController.h"
 
 @interface TabBarViewController ()
 
@@ -31,16 +32,16 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"notLoggedIn"]) {
+        SignUpViewController *dismiss = (SignUpViewController *)segue.destinationViewController;
         LoginViewController *controller = (LoginViewController *)segue.destinationViewController;
         controller.didSelectListen = ^{
 
             [self dismissViewControllerAnimated:YES completion:nil];
-             //TODO: Disable tab bar
             
-//            [[[[self tabBar] items] objectAtIndex:2] setEnabled:NO];
+
         };
         
-        controller.isProfile = ^(BOOL success){
+        dismiss.isProfile = ^(BOOL success){
             if (success) {
                 // YAY!
             } else {
@@ -50,6 +51,8 @@
         };
     }
 }
+
+
 
 
 @end

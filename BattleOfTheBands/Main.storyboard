@@ -25,57 +25,19 @@
                                 <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-xz-Ks4">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1Sz-Ad-5IY"/>
+                                    <constraint firstAttribute="height" constant="100" id="1Sz-Ad-5IY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up A Band"/>
+                                <state key="normal" title="Sign Up or Login"/>
                                 <connections>
-                                    <action selector="signUpband:" destination="BYZ-38-t0r" eventType="touchUpInside" id="toU-iG-Dez"/>
+                                    <segue destination="2vs-Fz-hSo" kind="presentation" identifier="signUp" id="rx8-ug-DXP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEb-x7-SnX">
-                                <rect key="frame" x="0.0" y="500" width="600" height="50"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="bn6-NP-Vbg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" red="0.96470588235294119" green="0.0" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Log In for bands"/>
-                                <connections>
-                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nZC-Ae-Vg8"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-lk-a2H">
-                                <rect key="frame" x="0.0" y="273" width="600" height="56"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-ou-GUw">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="28"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7J1-9v-EqV">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="28"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                    </textField>
-                                </subviews>
-                                <animations/>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewx-La-Mij">
                                 <rect key="frame" x="0.0" y="400" width="600" height="100"/>
                                 <animations/>
@@ -97,27 +59,17 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Jps-xz-Ks4" secondAttribute="trailing" constant="-20" id="2i2-UB-0j8"/>
                             <constraint firstItem="Jps-xz-Ks4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="AEu-vn-Qzr"/>
-                            <constraint firstItem="VEb-x7-SnX" firstAttribute="top" secondItem="ewx-La-Mij" secondAttribute="bottom" id="D1Q-3V-zV4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jps-xz-Ks4" secondAttribute="bottom" id="EzQ-B3-lxw"/>
                             <constraint firstItem="cH7-RK-4gG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="H3I-2Z-uwK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7IV-lk-a2H" secondAttribute="trailing" constant="-20" id="L5N-Oe-7oK"/>
                             <constraint firstItem="ewx-La-Mij" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Luu-CY-FPE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VEb-x7-SnX" secondAttribute="trailing" constant="-20" id="PTa-QG-G4u"/>
-                            <constraint firstItem="VEb-x7-SnX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="QB3-gd-qop"/>
-                            <constraint firstItem="ewx-La-Mij" firstAttribute="top" secondItem="7IV-lk-a2H" secondAttribute="bottom" constant="71" id="Td7-4q-R6R"/>
                             <constraint firstItem="cH7-RK-4gG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VEv-iH-mVh"/>
                             <constraint firstItem="Jps-xz-Ks4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WLB-5e-xyj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VEb-x7-SnX" secondAttribute="bottom" constant="50" id="Xg1-wZ-Nvk"/>
+                            <constraint firstItem="Jps-xz-Ks4" firstAttribute="top" secondItem="ewx-La-Mij" secondAttribute="bottom" id="XVn-kY-7dV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ewx-La-Mij" secondAttribute="trailing" constant="-20" id="kmt-bQ-0lI"/>
-                            <constraint firstItem="7IV-lk-a2H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="mQ5-wX-NlE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cH7-RK-4gG" secondAttribute="bottom" id="r6r-tj-wJD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cH7-RK-4gG" secondAttribute="trailing" constant="-20" id="yg8-1a-OFm"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="emailLogin" destination="T8Y-ou-GUw" id="Zeh-sM-UCs"/>
-                        <outlet property="passwordLogin" destination="7J1-9v-EqV" id="xYK-Rs-wqr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -148,11 +100,11 @@
                                     <constraint firstAttribute="height" constant="100" id="dwc-O4-grF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Sign Up As A Listener">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="SignUpListener:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="SKQ-D2-tgQ"/>
+                                    <action selector="logInBand:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="e25-Eo-hx3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJD-pe-X0Q">
@@ -163,7 +115,7 @@
                                     <constraint firstAttribute="height" constant="100" id="kdk-XR-Ta6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Sign Up A Band">
+                                <state key="normal" title="Sign Up Band">
                                     <color key="titleColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -715,7 +667,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f08-Lc-Nvq">
                                             <rect key="frame" x="-12" y="8" width="624" height="27.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <state key="normal" title="Delete Profile">
                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -1162,6 +1114,6 @@
         <image name="incomplete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wMj-DI-6Uw"/>
+        <segue reference="LdQ-Ki-47O"/>
     </inferredMetricsTieBreakers>
 </document>

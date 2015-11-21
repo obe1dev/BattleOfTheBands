@@ -174,6 +174,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     NSString *updatedText = cell.infoEntryTextField.text;
     
+       
     if (self.isBand) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -246,6 +247,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 [self errorAlert];
             }else{
                 [ProfileController sharedInstance].needsToFillOutProfile = NO;
+            }
+            if (self.website == nil) {
+                self.website = @"";
             }
             
             [[ProfileController sharedInstance] updateProfileWithName:self.name bioOfBand:self.bio bandWebsite:self.website];
@@ -347,7 +351,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             case ProfileRowWebsite: {
                 TextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextFieldCell" forIndexPath:indexPath];
                 cell.infoLabel.text = @"Bands Website";
-                cell.infoEntryTextField.placeholder = @"Enter your band Website";
+                cell.infoEntryTextField.placeholder = @"yourbandswebsite.com";
                 cell.infoEntryTextField.text = self.website;
                 cell.delegate = self;
                 return cell;
@@ -520,7 +524,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [photoActionSheet addAction:cameraRollAction];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+
     }];
     [photoActionSheet addAction:cancelAction];
     
@@ -542,7 +546,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [S3Manager uploadImage:image withName:@"image.jpg"];
     
     //TODO:save to server or firebase
-    //[self.bandImage ];
+  
 }
 
 #pragma delete Profile
