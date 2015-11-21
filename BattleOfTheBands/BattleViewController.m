@@ -12,6 +12,7 @@
 #import "Profile.h"
 #import "LoginViewController.h"
 #import "soundController.h"
+#import "FireBaseController.h"
 
 @interface BattleViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
@@ -71,10 +72,12 @@
    
     //self.leftBandName.titleLabel.text = [NSString stringWithString:profile1.name];
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
+    self.leftBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
     //self.leftBandPlay.imageView.image =
     
     
     [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
+    self.rightBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
     //self.rightBandPlay.imageView.image =
 }
 
@@ -85,6 +88,10 @@
     
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
+    
+    
+    
+    
 
     [[ProfileController sharedInstance] loadRandomBands];
     
@@ -99,15 +106,22 @@
     [super viewDidAppear:animated];
     
     if ([ProfileController sharedInstance].isListener) {
-
+        
+        
+        
+        UIBarButtonItem *logout = [[UIBarButtonItem alloc]initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:self action:@selector(segue)];
+        
+        self.navigationItem.leftBarButtonItem = logout;
+        
+        
         if ([self.tabBarController viewControllers].count == 3) {
             
-        
-        //Remove the third tab from a tab bar controlled by a tab bar controller
-        NSMutableArray * vcs = [NSMutableArray
-                                arrayWithArray:[self.tabBarController viewControllers]];
-        [vcs removeObjectAtIndex:2];
-        [self.tabBarController setViewControllers:vcs];
+            
+            //Remove the third tab from a tab bar controlled by a tab bar controller
+            NSMutableArray * vcs = [NSMutableArray
+                                    arrayWithArray:[self.tabBarController viewControllers]];
+            [vcs removeObjectAtIndex:2];
+            [self.tabBarController setViewControllers:vcs];
         }
     }
     
@@ -125,8 +139,11 @@
 
         }
     }
-    
 
+}
+
+- (void) segue{
+    [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
 }
 
 //change to the next battle

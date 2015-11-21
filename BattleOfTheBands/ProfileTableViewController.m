@@ -34,13 +34,15 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 @property (assign, nonatomic) BOOL isBand;
 
+@property (assign, nonatomic) BOOL isEditting;
+
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *bio;
 @property (strong, nonatomic) NSString *website;
 @property (strong, nonatomic) NSNumber *votes;
 @property (strong, nonatomic) NSData *bandImage;
 @property (strong, nonatomic) NSNumber *rank;
-@property (strong, nonatomic) NSData *song;
+@property (strong, nonatomic) MPMediaItem *song;
 
 @end
 
@@ -54,6 +56,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [super viewDidLoad];
     
     self.isBand = YES;
+    
+   
+    
     [self updateBandProfile];
     
     
@@ -153,7 +158,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     if (currentProfile.isBand == YES) {
         [[FireBaseController bandProfile:currentProfile] unauth];
-    }else if (currentProfile.isBand == NO)
+    }
+    //else if (currentProfile.isBand == NO)
         [[FireBaseController listenerProfile:currentProfile] unauth];
     
     // navigate to the login view
@@ -223,6 +229,17 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
+    if (editing) {
+      self.isEditting = YES;
+    }else{
+        self.isEditting = NO;
+    }
+    
+    
+    [self.tableView reloadData];
+    
+    
+    
     if (self.isBand) {
         if (!editing) {
             if (self.name == nil) {
@@ -260,11 +277,15 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (self.isBand) {
-        
+    if (self.isEditting == YES) {
         return 6;
+    } else {
+        return 5;
     }
+    
+    
+    
+    
     
 //     else if (!self.isBand){
 //        return 1;
@@ -464,6 +485,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     if (mediaItemCollection) {
         
         [self.tableView reloadData];
+        
+        MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
+        NSString *string = [item valueForProperty:MPMediaItemPropertyTitle];
+        NSLog(@"%@", string);
 
         //self.song = mediaItemCollection;
     }
@@ -523,6 +548,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 #pragma delete Profile
 
 -(void)deleteProfileButtonTapped{
+#warning it does not delete the users data from firebase.
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Account" message:@"Enter Your email and password to delete your account" preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
@@ -544,6 +570,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
                 [self viewDidLoad];
                 
+                [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+                
             } else {
                 
                 [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
@@ -557,7 +585,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [alertController addAction:cancelAction];
-#warning calling this method is breaking it.
+
     [alertController addAction:deleteProfile];
     [self presentViewController:alertController animated:YES completion:nil];
     

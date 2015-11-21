@@ -287,7 +287,7 @@
                                                     <action selector="leftBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="NwV-Zu-7pE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
                                                 <rect key="frame" x="8" y="250" width="284" height="86"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -331,7 +331,7 @@
                                                     <action selector="rightBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="WcS-7d-tkl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
                                                 <rect key="frame" x="8" y="250" width="284" height="86"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -717,7 +717,7 @@
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <state key="normal" title="Delete Profile">
-                                                <color key="titleColor" red="0.97647058819999999" green="0.99607843139999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="deleteProfileButton:" destination="YjU-b4-UIH" eventType="touchUpInside" id="5x7-vf-T8f"/>
@@ -733,7 +733,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="deleteProfile" destination="f08-Lc-Nvq" id="veO-az-zu0"/>
                                 </connections>
@@ -1163,6 +1162,6 @@
         <image name="incomplete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LdQ-Ki-47O"/>
+        <segue reference="wMj-DI-6Uw"/>
     </inferredMetricsTieBreakers>
 </document>
