@@ -282,7 +282,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isEditting == YES) {
-        return 6;
+        return 7;
     } else {
         return 5;
     }
@@ -550,6 +550,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 #pragma delete Profile
+
+-(void)resetPasswordButtonTapped{
+    
+    
+    
+}
 
 -(void)deleteProfileButtonTapped{
 #warning it does not delete the users data from firebase.

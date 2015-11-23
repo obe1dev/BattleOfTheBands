@@ -105,6 +105,8 @@
     return [FireBaseController base].authData.uid;
 }
 
+
+
 +(void) resetPassword:(NSString *)email completion:(void (^)(bool success))completion{
     [self.base resetPasswordForUser:email withCompletionBlock:^(NSError *error) {
         if (error) {

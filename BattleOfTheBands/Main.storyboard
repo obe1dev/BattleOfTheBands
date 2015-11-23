@@ -458,8 +458,38 @@
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowingBandCell" id="59U-oO-kWf" customClass="FollowingBandCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResetPasswordCell" id="Jrg-k5-uxC" customClass="ResetPasswordCell">
                                 <rect key="frame" x="0.0" y="386" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jrg-k5-uxC" id="0f7-0S-Thj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Y6-DG-fPL">
+                                            <rect key="frame" x="-12" y="8" width="624" height="27.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <state key="normal" title="Reset Password"/>
+                                            <connections>
+                                                <action selector="resetPasswordButton:" destination="Jrg-k5-uxC" eventType="touchUpInside" id="GRm-ic-TPl"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="0Y6-DG-fPL" firstAttribute="leading" secondItem="0f7-0S-Thj" secondAttribute="leadingMargin" constant="-20" id="5Vn-GS-7cd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Y6-DG-fPL" secondAttribute="bottom" id="HEh-Dn-onT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="0Y6-DG-fPL" secondAttribute="trailing" constant="-20" id="VPq-lB-ByA"/>
+                                        <constraint firstItem="0Y6-DG-fPL" firstAttribute="top" secondItem="0f7-0S-Thj" secondAttribute="topMargin" id="k59-yw-XJ9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="resetPassword" destination="0Y6-DG-fPL" id="0br-AR-Lgc"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FollowingBandCell" id="59U-oO-kWf" customClass="FollowingBandCell">
+                                <rect key="frame" x="0.0" y="430" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59U-oO-kWf" id="z5r-fc-yOx">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -487,7 +517,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankingVotesCell" rowHeight="46" id="a5f-Ut-zhY" customClass="RankingVotesCell">
-                                <rect key="frame" x="0.0" y="430" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="474" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5f-Ut-zhY" id="xLc-NZ-tmy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45.5"/>
@@ -589,7 +619,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" rowHeight="85" id="cOg-te-mm9" customClass="TextFieldCell">
-                                <rect key="frame" x="0.0" y="476" width="600" height="85"/>
+                                <rect key="frame" x="0.0" y="520" width="600" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cOg-te-mm9" id="leP-CC-b77">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
@@ -629,7 +659,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BandBioCell" rowHeight="150" id="MLt-HY-gE4" customClass="BandBioCell">
-                                <rect key="frame" x="0.0" y="561" width="600" height="150"/>
+                                <rect key="frame" x="0.0" y="605" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MLt-HY-gE4" id="w7E-TO-3rf">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
@@ -672,7 +702,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteProfileCell" id="YjU-b4-UIH" userLabel="DeleteProfile Cell" customClass="DeleteProfileCell">
-                                <rect key="frame" x="0.0" y="711" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="755" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YjU-b4-UIH" id="8Oa-fL-9GA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>

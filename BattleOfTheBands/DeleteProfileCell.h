@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
 
-@protocol DeleteProfileDelegate;;
+@protocol DeleteProfileDelegate;
 
 @interface DeleteProfileCell : UITableViewCell
 

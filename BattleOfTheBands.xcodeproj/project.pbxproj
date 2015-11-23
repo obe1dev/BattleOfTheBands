@@ -51,6 +51,7 @@
 		4798D5D11BE180EA00B29346 /* RankingVotesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5D01BE180EA00B29346 /* RankingVotesCell.m */; };
 		47EF21891BFFE7FE00EF5186 /* soundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF21881BFFE7FE00EF5186 /* soundController.m */; };
 		47EF218C1C000E7D00EF5186 /* DeleteProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */; };
+		47EF218F1C03B15200EF5186 /* ResetPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */; };
 		47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5852F1BEBF412001453D9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +150,8 @@
 		47EF21881BFFE7FE00EF5186 /* soundController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = soundController.m; sourceTree = "<group>"; };
 		47EF218A1C000E7D00EF5186 /* DeleteProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteProfileCell.h; sourceTree = "<group>"; };
 		47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteProfileCell.m; sourceTree = "<group>"; };
+		47EF218D1C03B15200EF5186 /* ResetPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordCell.h; sourceTree = "<group>"; };
+		47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordCell.m; sourceTree = "<group>"; };
 		47F5852F1BEBF412001453D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -363,6 +366,8 @@
 				47701ED41BE86C9000FA3371 /* FollowingTitleCell.m */,
 				47701ED61BE86CC400FA3371 /* FollowingBandCell.h */,
 				47701ED71BE86CC400FA3371 /* FollowingBandCell.m */,
+				47EF218D1C03B15200EF5186 /* ResetPasswordCell.h */,
+				47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */,
 				47EF218A1C000E7D00EF5186 /* DeleteProfileCell.h */,
 				47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */,
 			);
@@ -518,6 +523,7 @@
 				47701EC21BE2B4E300FA3371 /* InfoTextCell.m in Sources */,
 				4798D55C1BD9BF1F00B29346 /* AppDelegate.m in Sources */,
 				4798D5591BD9BF1F00B29346 /* main.m in Sources */,
+				47EF218F1C03B15200EF5186 /* ResetPasswordCell.m in Sources */,
 				47EF21891BFFE7FE00EF5186 /* soundController.m in Sources */,
 				47701ED21BE554B800FA3371 /* InfoRankingVotesCell.m in Sources */,
 				47701EC81BE3070300FA3371 /* LoginViewController.m in Sources */,
