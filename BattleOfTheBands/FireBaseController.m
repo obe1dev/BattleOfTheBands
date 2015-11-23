@@ -105,12 +105,33 @@
     return [FireBaseController base].authData.uid;
 }
 
++(void) resetPassword:(NSString *)email completion:(void (^)(bool success))completion{
+    [self.base resetPasswordForUser:email withCompletionBlock:^(NSError *error) {
+        if (error) {
+            // There was an error processing the request
+            [ProfileController sharedInstance].loginAlert = @"Error";
+            [ProfileController sharedInstance].loginMessage = @"Something went wrong. Reset password email has not been sent.";
+            if (completion) {
+                completion(false);
+            }
+            
+        } else {
+            // Password reset sent successfully
+            [ProfileController sharedInstance].loginAlert = @"Success!";
+            [ProfileController sharedInstance].loginMessage = @"Check your email to reset your accounts password.";
+            if (completion) {
+                completion(true);
+            }
+        }
+    }];
+}
+
 +(void) deleteProfile:(NSString *)email password:(NSString*)password completion:(void (^)(bool success))completion{
     [self.base removeUser:email password:password withCompletionBlock:^(NSError *error) {
         if (error) {
             // There was an error processing the request
             [ProfileController sharedInstance].loginAlert = @"Error";
-            [ProfileController sharedInstance].loginMessage = @"Something went wrong your account didnt delete.";
+            [ProfileController sharedInstance].loginMessage = @"Something went wrong. Your account has not been delete.";
             if (completion) {
                 completion(false);
             }

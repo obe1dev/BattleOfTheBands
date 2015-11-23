@@ -29,6 +29,8 @@
 
 + (NSString *) currentUserUID;
 
++(void) resetPassword:(NSString *)email completion:(void (^)(bool success))completion;
+
 +(void) deleteProfile:(NSString *)email password:(NSString*)password completion:(void (^)(bool success))completion;
 
 +(void) login:(NSString *)userEmail password:(NSString *)password completion:(void (^)(bool success))completion;

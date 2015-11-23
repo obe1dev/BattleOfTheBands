@@ -107,7 +107,7 @@
     
     if ([ProfileController sharedInstance].isListener) {
         
-        UIBarButtonItem *logout = [[UIBarButtonItem alloc]initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:self action:@selector(segue)];
+        UIBarButtonItem *logout = [[UIBarButtonItem alloc]initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(segue)];
         
         self.navigationItem.leftBarButtonItem = logout;
         

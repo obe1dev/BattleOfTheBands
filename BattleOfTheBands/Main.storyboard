@@ -27,7 +27,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-xz-Ks4">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.2413121352" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="1Sz-Ad-5IY"/>
                                 </constraints>
@@ -95,7 +95,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-GQ-ugi">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.176036641785973" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="dwc-O4-grF"/>
                                 </constraints>
@@ -125,7 +125,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F06-wW-iBh">
                                 <rect key="frame" x="0.0" y="273" width="600" height="56"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Sign Up Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ue8-V5-6gB" userLabel="Sign Up Email">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ue8-V5-6gB" userLabel="Sign Up Email">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="28"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,7 +134,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Sign Up Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-yv-FeT" userLabel="Sign Up Password">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-yv-FeT" userLabel="Sign Up Password">
                                         <rect key="frame" x="0.0" y="28" width="600" height="28"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
@@ -147,14 +147,25 @@
                                 <animations/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bje-38-GeR">
-                                <rect key="frame" x="244" y="348" width="112" height="33"/>
+                                <rect key="frame" x="246" y="348" width="108" height="33"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back To Log In">
+                                <state key="normal" title="Back To Login">
                                     <color key="titleColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backToLogIn:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="QbE-mZ-uug"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-4o-Eb3">
+                                <rect key="frame" x="509" y="348" width="59" height="33"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Forgot?">
+                                    <color key="titleColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPassword:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="MBk-xl-Gbr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -162,6 +173,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="zrb-GQ-ugi" secondAttribute="trailing" constant="-20" id="0Kl-XX-GEW"/>
+                            <constraint firstItem="ya8-4o-Eb3" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="19" id="1XD-HH-zmV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ya8-4o-Eb3" secondAttribute="trailing" constant="12" id="4Ns-Oa-fYz"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="70j-Ch-XYU"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="71" id="9IG-T5-pBF"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="CRs-Cn-eHR"/>
@@ -173,6 +186,7 @@
                             <constraint firstItem="U1p-8P-vZq" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="ZKY-Jn-MTP"/>
                             <constraint firstItem="bje-38-GeR" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="bdw-mJ-ILy"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="dKH-uh-goJ"/>
+                            <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="ya8-4o-Eb3" secondAttribute="bottom" constant="19" id="hg3-Ko-myf"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="zrb-GQ-ugi" secondAttribute="bottom" id="kEM-WS-CAT"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="U1p-8P-vZq" secondAttribute="bottom" id="kKE-du-LVq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U1p-8P-vZq" secondAttribute="trailing" constant="-20" id="pRv-Dc-tWC"/>
