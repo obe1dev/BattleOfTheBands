@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/FireBaseController.m"
-            timestampString = "470002832.997761"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "+login:password:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/FireBaseController.m"
-            timestampString = "470002832.997761"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "+login:password:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469826344.351327"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-logoutButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/FireBaseController.m"
-            timestampString = "470002832.997761"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "+login:password:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/FireBaseController.m"
-            timestampString = "470002832.997761"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "+login:password:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470015477.895211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470016935.675983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "-uploadSongButtonTapped"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470016935.675983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
             landmarkName = "-deleteProfileButtonTapped"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/FireBaseController.m"
-            timestampString = "470002832.997761"
+            timestampString = "470014941.364156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "+deleteProfile:password:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470016935.675983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "572"
-            endingLineNumber = "572"
+            startingLineNumber = "629"
+            endingLineNumber = "629"
             landmarkName = "-deleteProfileButtonTapped"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470016935.675983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
             landmarkName = "-mediaPicker:didPickMediaItems:"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470015477.895211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-setEditing:animated:"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "469841812.431459"
+            timestampString = "470015477.895211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-setEditing:animated:"
             landmarkType = "5">
          </BreakpointContent>

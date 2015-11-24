@@ -105,7 +105,30 @@
     return [FireBaseController base].authData.uid;
 }
 
-
++(void) changePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(void (^)(bool success))completion{
+    
+    [self.base changePasswordForUser:[ProfileController sharedInstance].currentProfile.email fromOld:oldPassword
+                               toNew:newPassword withCompletionBlock:^(NSError *error) {
+                                   if (error) {
+                                       // There was an error processing the request
+                                       [ProfileController sharedInstance].loginAlert = @"Error";
+                                       [ProfileController sharedInstance].loginMessage = @"Something went wrong. Your password has not been changed.";
+                                       if (completion) {
+                                           completion(false);
+                                       }
+                                       
+                                   } else {
+                                       // Password changed successfully
+                                       [ProfileController sharedInstance].loginAlert = @"Success!";
+                                       [ProfileController sharedInstance].loginMessage = @"Your password has been changed.";
+                                       if (completion) {
+                                           completion(true);
+                                       }
+                                       
+                                   }
+                               }];
+    
+}
 
 +(void) resetPassword:(NSString *)email completion:(void (^)(bool success))completion{
     [self.base resetPasswordForUser:email withCompletionBlock:^(NSError *error) {

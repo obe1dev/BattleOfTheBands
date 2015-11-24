@@ -17,6 +17,7 @@
 #import "FollowingTitleCell.h"
 #import "FollowingBandCell.h"
 #import "DeleteProfileCell.h"
+#import "ResetPasswordCell.h"
 #import "S3Manager.h"
 
 typedef NS_ENUM(NSUInteger, ProfileRow) {
@@ -26,9 +27,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowBio,
     ProfileRowWebsite,
     ProfileRowDelete,
+    ProfileRowReset,
 };
 
-@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MPMediaPickerControllerDelegate,DeleteProfileDelegate>;
+@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MPMediaPickerControllerDelegate,DeleteProfileDelegate,ResetPasswordDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -191,6 +193,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             case ProfileRowBio:
             case ProfileRowRankVotes:
             case ProfileRowPhoto:
+            case ProfileRowReset:
             case ProfileRowDelete:
                 break;
                 
@@ -219,6 +222,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             break;
         case ProfileRowRankVotes:
         case ProfileRowPhoto:
+        case ProfileRowReset:
         case ProfileRowDelete:
             break;
     }
@@ -356,6 +360,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.delegate = self;
                 return cell;
             }
+#warning this is showing as the last cell in the table view.
+            case ProfileRowReset: {
+                ResetPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResetPasswordCell" forIndexPath:indexPath];
+                    cell.delegate = self;
+                    return cell;
+            }
             case ProfileRowDelete: {
                 DeleteProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DeleteProfileCell" forIndexPath:indexPath];
                 cell.delegate = self;
@@ -445,6 +455,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             return 85.0;
         }
         if (indexPath.row == 5) {
+            return 50.0;
+        }
+        if (indexPath.row == 6) {
             return 50.0;
         }
     }
@@ -552,8 +565,46 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 #pragma delete Profile
 
 -(void)resetPasswordButtonTapped{
+  
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Reset Password" message:@"Enter in your current or temporary password. And then enter in your new password" preferredStyle:UIAlertControllerStyleAlert];
     
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Current Password";
+        textField.secureTextEntry = YES;
+    }];
     
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"New Password";
+        textField.secureTextEntry = YES;
+    }];
+    
+    UIAlertAction *resetPassword = [UIAlertAction actionWithTitle:@"Change" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString *oldPassword = alertController.textFields[0].text;
+        NSString *newPassword = alertController.textFields[1].text;
+        
+        [FireBaseController changePassword:oldPassword newPassword:newPassword completion:^(bool success) {
+           
+            if (success) {
+                
+            [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+            
+            
+        } else {
+            
+            [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+        }
+
+        }];
+        
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:cancelAction];
+    
+    [alertController addAction:resetPassword];
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
