@@ -52,6 +52,7 @@
 		47EF21891BFFE7FE00EF5186 /* soundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF21881BFFE7FE00EF5186 /* soundController.m */; };
 		47EF218C1C000E7D00EF5186 /* DeleteProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */; };
 		47EF218F1C03B15200EF5186 /* ResetPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */; };
+		47EF21921C03E81100EF5186 /* AppearanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF21911C03E81100EF5186 /* AppearanceController.m */; };
 		47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5852F1BEBF412001453D9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,8 @@
 		47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteProfileCell.m; sourceTree = "<group>"; };
 		47EF218D1C03B15200EF5186 /* ResetPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordCell.h; sourceTree = "<group>"; };
 		47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordCell.m; sourceTree = "<group>"; };
+		47EF21901C03E81100EF5186 /* AppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppearanceController.h; sourceTree = "<group>"; };
+		47EF21911C03E81100EF5186 /* AppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceController.m; sourceTree = "<group>"; };
 		47F5852F1BEBF412001453D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -322,6 +325,8 @@
 		4798D5BA1BD9C58600B29346 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				47EF21901C03E81100EF5186 /* AppearanceController.h */,
+				47EF21911C03E81100EF5186 /* AppearanceController.m */,
 				47701EC61BE3070300FA3371 /* LoginViewController.h */,
 				47701EC71BE3070300FA3371 /* LoginViewController.m */,
 				47701ECD1BE5243300FA3371 /* SignUpViewController.h */,
@@ -511,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47701EBC1BE2B36500FA3371 /* BandBioCell.m in Sources */,
+				47EF21921C03E81100EF5186 /* AppearanceController.m in Sources */,
 				47701EB51BE2AC4500FA3371 /* TextFieldCell.m in Sources */,
 				47EF218C1C000E7D00EF5186 /* DeleteProfileCell.m in Sources */,
 				47794C9B1BFD6B0F00AA0065 /* TabBarViewController.m in Sources */,
