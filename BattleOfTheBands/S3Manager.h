@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 @import UIKit;
+
 
 @interface S3Manager : NSObject
 
 + (void) uploadImage:(UIImage *)image withName:(NSString *)name;
+
++ (void) uploadSong:(MPMediaItem *)song withName:(NSString *)name;
 
 @end

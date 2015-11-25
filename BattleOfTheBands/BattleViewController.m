@@ -64,6 +64,8 @@
 //TODO: debug this is being call alot 
     Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
     self.leftProfile = profile1;
+    
+    
     Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
     self.rightPrfile = profile2;
     

@@ -556,7 +556,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     [self.tableView reloadData];
     
-    [S3Manager uploadImage:image withName:@"image.jpg"];
+    NSString *imageName = [ProfileController sharedInstance].currentProfile.uID;
+    
+    [S3Manager uploadImage:image withName:imageName];
     
     //TODO:save to server or firebase
   
