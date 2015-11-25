@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SongsController.h"
+#import "AppearanceController.h"
 #import <AWSCore/AWSCore.h>
 
 @interface AppDelegate ()
@@ -31,6 +32,8 @@
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     
     [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+    
+   // [AppearanceController initializeAppearanceDefaults];
     
     return YES;
 }

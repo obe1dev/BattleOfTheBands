@@ -33,7 +33,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up or Login"/>
+                                <state key="normal" title="Band Sign Up / Login"/>
                                 <connections>
                                     <segue destination="2vs-Fz-hSo" kind="presentation" identifier="signUp" id="rx8-ug-DXP"/>
                                 </connections>
@@ -95,13 +95,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-GQ-ugi">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.176036641785973" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.24313725490196078" green="0.24313725490196078" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="dwc-O4-grF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Login Band">
+                                    <color key="titleColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logInBand:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="e25-Eo-hx3"/>
@@ -147,10 +147,10 @@
                                 <animations/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bje-38-GeR">
-                                <rect key="frame" x="246" y="348" width="108" height="33"/>
+                                <rect key="frame" x="32" y="348" width="38" height="33"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back To Login">
+                                <state key="normal" title="Back">
                                     <color key="titleColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -184,11 +184,11 @@
                             <constraint firstItem="F06-wW-iBh" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="WIq-9K-bxj"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="bje-38-GeR" secondAttribute="bottom" constant="19" id="Y4x-9k-2WJ"/>
                             <constraint firstItem="U1p-8P-vZq" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="ZKY-Jn-MTP"/>
-                            <constraint firstItem="bje-38-GeR" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="bdw-mJ-ILy"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="dKH-uh-goJ"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="ya8-4o-Eb3" secondAttribute="bottom" constant="19" id="hg3-Ko-myf"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="zrb-GQ-ugi" secondAttribute="bottom" id="kEM-WS-CAT"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="U1p-8P-vZq" secondAttribute="bottom" id="kKE-du-LVq"/>
+                            <constraint firstItem="bje-38-GeR" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="12" id="mSP-qV-zML"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U1p-8P-vZq" secondAttribute="trailing" constant="-20" id="pRv-Dc-tWC"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="rMX-bA-EKS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F06-wW-iBh" secondAttribute="trailing" constant="-20" id="vCu-bd-sVX"/>

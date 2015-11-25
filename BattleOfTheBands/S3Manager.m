@@ -10,8 +10,11 @@
 #import <AWSCore/AWSCore.h>
 #import <AWSS3/AWSS3.h>
 #import <AWSCognito/AWSCognito.h>
+#import "ProfileController.h"
+
 
 @implementation S3Manager
+
 
 + (void) uploadImage:(UIImage *)image withName:(NSString *)name {
 
@@ -31,15 +34,17 @@
             // Do something e.g. Alert a user for transfer completion.
             // On failed uploads, `error` contains the error object.
             
-            NSLog(@"%@", error.description);
+            NSLog(@"Task: %@", task);
+            NSLog(@"Error: %@", error.description);
             
         });
     };
     
     AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+    NSString *imageKey = [ProfileController sharedInstance].currentProfile.uID;
     [[transferUtility uploadData:dataToUpload
-                          bucket:@"battleofthebandsimages"
-                             key:@"image.jpg"
+                          bucket:@"battleofthebands-images"
+                             key:imageKey
                      contentType:@"image/jpeg"
                       expression:expression
                 completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
@@ -52,7 +57,7 @@
         if (task.result) {
             AWSS3TransferUtilityUploadTask *uploadTask = task.result;
             
-            [uploadTask resume];
+//            [uploadTask resume];
             
             NSLog(@"%@", uploadTask.aws_properties);
         }
