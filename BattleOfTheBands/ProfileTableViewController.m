@@ -559,7 +559,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset: songAsset
                                                                       presetName:AVAssetExportPresetAppleM4A];
  //what do i put here
-    exporter.outputFileType =   @"com.apple.m4a-audio";
+    exporter.outputFileType = @"com.apple.m4a-audio";
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString * myDocumentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
