@@ -87,9 +87,10 @@
     
     cell.bandName.text = profile.name;
     
-    if (profile.bandImage) {
+    if (profile.bandImagePath) {
         
-        cell.bandImage.image = [UIImage imageWithData:profile.bandImage];
+        // TODO: come back to this
+//        cell.bandImage.image = [UIImage imageWithData:profile.bandImage];
         
     }else{
         

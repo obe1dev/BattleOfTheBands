@@ -145,7 +145,6 @@
 }
 
 - (void) saveProfile:(Profile *)profile {
-    
     [[FireBaseController bandProfile:profile] setValue:profile.dictionaryRepresentation];
 
 }

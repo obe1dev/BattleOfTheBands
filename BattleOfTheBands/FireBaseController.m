@@ -65,17 +65,17 @@
     return [self ProfileWithUID:profile.uID];
 }
 //listener
-+ (Firebase *) listenerProfilesWithUID:(NSString *)uid {
-    return [[[FireBaseController base] childByAppendingPath:@"ListnerProfiles/"] childByAppendingPath:uid];
-}
-//listener
-+ (Firebase *) currentListenerProfile {
-    return [self listenerProfilesWithUID:self.currentUserUID];
-}
-//listener
-+ (Firebase *) listenerProfile:(Profile *)profile {
-    return [self listenerProfilesWithUID:profile.uID];
-}
+//+ (Firebase *) listenerProfilesWithUID:(NSString *)uid {
+//    return [[[FireBaseController base] childByAppendingPath:@"ListnerProfiles/"] childByAppendingPath:uid];
+//}
+////listener
+//+ (Firebase *) currentListenerProfile {
+//    return [self listenerProfilesWithUID:self.currentUserUID];
+//}
+////listener
+//+ (Firebase *) listenerProfile:(Profile *)profile {
+//    return [self listenerProfilesWithUID:profile.uID];
+//}
 
 + (Firebase *) allBandProfiles {
     return [[FireBaseController base] childByAppendingPath:@"BandProfiles/"];

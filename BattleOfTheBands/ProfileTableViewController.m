@@ -20,6 +20,7 @@
 #import "ResetPasswordCell.h"
 #import "S3Manager.h"
 
+
 typedef NS_ENUM(NSUInteger, ProfileRow) {
     ProfileRowPhoto,
     ProfileRowName,
@@ -119,8 +120,26 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         self.website = currentProfile.bandWebsite;
         self.votes = currentProfile.vote;
 
-        self.bandImage = currentProfile.bandImage;
-        self.song = currentSong.songData;
+        [S3Manager downloadImageWithName:currentProfile.uID dataPath:currentProfile.uID completion:^(NSData *data) {
+            if (data) {
+                self.bandImage = data;
+                [self.tableView reloadData];
+            } else {
+                // TODO: Alert the user?
+            }
+        }];
+
+//
+        [S3Manager downloadSongWithName:currentProfile.uID dataPath:currentProfile.uID completion:^(NSData *data) {
+            if (data) {
+                self.song = data;
+                [self.tableView reloadData];
+            } else {
+                // TODO: Alert the user?
+            }
+        }];
+
+        
         
         [[ProfileController sharedInstance] rankForProfile:currentProfile completion:^(NSNumber *rank) {
             self.rank = rank;
@@ -504,10 +523,21 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         [self.tableView reloadData];
         
         MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
-        NSString *string = [item valueForProperty:MPMediaItemPropertyTitle];
-        NSLog(@"%@", string);
+        NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+        
+        [self mediaItemToData:item];
+//        NSString *name = [item valueForKey:MPMediaItemPropertyTitle];
+        NSData *data = [NSData dataWithContentsOfURL:URL];
+        NSLog(@"%@", URL);
+        
+        NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
 
         //self.song = mediaItemCollection;
+        [S3Manager uploadSong:item withName:songKey completion:^(BOOL success) {
+            if (success) {
+                // Save to firebase?
+            }
+        }];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -518,6 +548,81 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
    
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+-(void)mediaItemToData : (MPMediaItem * ) curItem
+{
+    NSURL *url = [curItem valueForProperty: MPMediaItemPropertyAssetURL];
+    
+    AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL: url options:nil];
+    
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset: songAsset
+                                                                      presetName:AVAssetExportPresetAppleM4A];
+ //what do i put here
+    exporter.outputFileType =   @"com.apple.m4a-audio";
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * myDocumentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+    [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval seconds = [[NSDate date] timeIntervalSince1970];
+    NSString *intervalSeconds = [NSString stringWithFormat:@"%0.0f",seconds];
+    
+    NSString * fileName = [NSString stringWithFormat:@"%@.m4a",intervalSeconds];
+    
+    NSString *exportFile = [myDocumentsDirectory stringByAppendingPathComponent:fileName];
+    
+    NSURL *exportURL = [NSURL fileURLWithPath:exportFile];
+    exporter.outputURL = exportURL;
+    
+    // do the export
+    // (completion handler block omitted)
+    [exporter exportAsynchronouslyWithCompletionHandler:
+     ^{
+         int exportStatus = exporter.status;
+         
+         switch (exportStatus)
+         {
+             case AVAssetExportSessionStatusFailed:
+             {
+                 NSError *exportError = exporter.error;
+                 NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
+                 break;
+             }
+             case AVAssetExportSessionStatusCompleted:
+             {
+                 NSLog (@"AVAssetExportSessionStatusCompleted");
+                 
+                 NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
+                                                                 stringByAppendingPathComponent:fileName]];
+                 
+                 //DLog(@"Data %@",data);
+                 data = nil;
+                 
+                 break;
+             }
+             case AVAssetExportSessionStatusUnknown:
+             {
+                 NSLog (@"AVAssetExportSessionStatusUnknown"); break;
+             }
+             case AVAssetExportSessionStatusExporting:
+             {
+                 NSLog (@"AVAssetExportSessionStatusExporting"); break;
+             }
+             case AVAssetExportSessionStatusCancelled:
+             {
+                 NSLog (@"AVAssetExportSessionStatusCancelled"); break;
+             }
+             case AVAssetExportSessionStatusWaiting:
+             {
+                 NSLog (@"AVAssetExportSessionStatusWaiting"); break;
+             }
+             default:
+             {
+                 NSLog (@"didn't get export status"); break;
+             }
+         }
+     }];
 }
 
 #pragma band photo
@@ -552,13 +657,18 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     self.bandImage = UIImageJPEGRepresentation(image, 0.8);
     
-    //    [ProfileController sharedInstance].currentProfile.bandImage = self.bandImage;
+
     
     [self.tableView reloadData];
     
     NSString *imageName = [ProfileController sharedInstance].currentProfile.uID;
     
-    [S3Manager uploadImage:image withName:imageName];
+    [S3Manager uploadImage:image withName:imageName completion:^(BOOL success){
+        if (success) {
+//            [ProfileController sharedInstance].currentProfile.bandImagePath = imageName;
+//            [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
+        }
+    }];
     
     //TODO:save to server or firebase
   

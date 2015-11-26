@@ -10,11 +10,17 @@
 #import <MediaPlayer/MediaPlayer.h>
 @import UIKit;
 
+typedef void (^DownloadDataBlock)(NSData *data);
+typedef void (^UploadDataBlock)(BOOL success);
 
 @interface S3Manager : NSObject
 
-+ (void) uploadImage:(UIImage *)image withName:(NSString *)name;
++ (void) uploadImage:(UIImage *)image withName:(NSString *)name completion:(UploadDataBlock)block;
 
-+ (void) uploadSong:(MPMediaItem *)song withName:(NSString *)name;
++ (void) uploadSong:(MPMediaItem *)song withName:(NSString *)name completion:(UploadDataBlock)block;
+
++ (void)downloadImageWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
+
++ (void)downloadSongWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
 
 @end

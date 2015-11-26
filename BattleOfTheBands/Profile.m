@@ -17,7 +17,7 @@ static NSString * const bandImageKey = @"bandImageKey";
 static NSString * const voteKey = @"voteKey";
 static NSString * const rankingKey = @"rankingKey";
 static NSString * const bandWebsiteKey =@"bandWebsiteKey";
-static NSString * const songsKey = @"songsKey";
+static NSString * const songKey = @"songKey";
 static NSString * const likesKey = @"likesKey";
 static NSString * const genreKey = @"genreKey";
 static NSString * const isBandKey = @"isBandKey";
@@ -35,11 +35,11 @@ static NSString * const isBandKey = @"isBandKey";
     self.password = [dictionary objectForKey:passwordKey];
     self.name = [dictionary objectForKey:nameKey];
     self.bioOfBand = [dictionary objectForKey:bioOfBandKey];
-    self.bandImage = [dictionary objectForKey:bandImageKey];
+    self.bandImagePath = [dictionary objectForKey:bandImageKey];
     self.vote = [dictionary objectForKey:voteKey];
     self.ranking = [dictionary objectForKey:rankingKey];
     self.bandWebsite = [dictionary objectForKey:bandWebsiteKey];
-    self.songs = [dictionary objectForKey:songsKey];
+    self.songPath = [dictionary objectForKey:songKey];
     self.likes = [dictionary objectForKey:likesKey];
     self.genre = [dictionary objectForKey:genreKey];
     
@@ -71,8 +71,8 @@ static NSString * const isBandKey = @"isBandKey";
     if (self.bioOfBand) {
         [dictionary setObject:self.bioOfBand forKey:bioOfBandKey];
     }
-    if (self.bandImage) {
-        [dictionary setObject:self.bandImage forKey:bandImageKey];
+    if (self.bandImagePath) {
+        [dictionary setObject:self.bandImagePath forKey:bandImageKey];
     }
     if (self.vote) {
         [dictionary setObject:self.vote forKey:voteKey];
@@ -83,8 +83,8 @@ static NSString * const isBandKey = @"isBandKey";
     if (self.bandWebsite) {
         [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
     }
-    if (self.songs) {
-        [dictionary setObject:self.songs forKey:songsKey];
+    if (self.songPath) {
+        [dictionary setObject:self.songs forKey:songKey];
     }
     if (self.likes) {
         [dictionary setObject:self.likes forKey:likesKey];

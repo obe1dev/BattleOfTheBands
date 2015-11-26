@@ -54,10 +54,11 @@
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
     self.vote = profile.vote;
-    
-    if (profile.bandImage) {
-        self.bandImage = profile.bandImage;
-    }
+
+    // TODO: Come back to this
+//    if (profile.bandImage) {
+//        self.bandImage = profile.bandImage;
+//    }
     
     [[ProfileController sharedInstance] rankForProfile:profile completion:^(NSNumber *rank) {
         self.rank = rank;
