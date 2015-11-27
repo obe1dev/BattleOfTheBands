@@ -131,9 +131,9 @@
     
 }
 
-+ (void) uploadSong:(MPMediaItem *)song withName:(NSString *)name completion:(UploadDataBlock)block{
++ (void) uploadSong:(NSData *)song withName:(NSString *)name completion:(UploadDataBlock)block{
     
-    NSData *dataToUpload = [NSData dataWithContentsOfURL:[song valueForProperty:MPMediaItemPropertyAssetURL]];
+   // NSData *dataToUpload = [NSData dataWithContentsOfURL:[song valueForProperty:MPMediaItemPropertyAssetURL]];
    // NSData *dataToUpload = [NSData dataWithContentsOfURL:[song valueForProperty:MPMediaItemPropertyAssetURL]];
     
     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
@@ -158,7 +158,7 @@
     
     AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
     
-    [[transferUtility uploadData:dataToUpload
+    [[transferUtility uploadData:song
                           bucket:@"battleofthebands-songs"
                              key:name
                      contentType:@"song/m4a"

@@ -11,6 +11,7 @@
 #import "ProfileController.h"
 #import "DetailTableViewController.h"
 #import "Profile.h"
+#import "S3Manager.h"
 
 
 
@@ -90,7 +91,16 @@
     if (profile.bandImagePath) {
         
         // TODO: come back to this
-//        cell.bandImage.image = [UIImage imageWithData:profile.bandImage];
+        [S3Manager downloadImageWithName:profile.uID dataPath:profile.bandImagePath completion:^(NSData *data) {
+            if (data) {
+                
+                cell.bandImage.image = [UIImage imageWithData:data];
+
+              //  [self.tableView reloadData];
+            } else {
+                // TODO: Alert the user?
+            }
+        }];
         
     }else{
         

@@ -248,7 +248,6 @@
                                                     <constraint firstAttribute="width" constant="250" id="P4T-gu-qef"/>
                                                     <constraint firstAttribute="height" constant="250" id="svt-59-NiD"/>
                                                 </constraints>
-                                                <state key="normal" image="anchorIcon"/>
                                                 <connections>
                                                     <action selector="leftBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="NwV-Zu-7pE"/>
                                                 </connections>
@@ -292,7 +291,6 @@
                                                     <constraint firstAttribute="height" constant="250" id="kjd-wc-OzX"/>
                                                     <constraint firstAttribute="width" constant="250" id="oPZ-St-Tci"/>
                                                 </constraints>
-                                                <state key="normal" image="anchorIcon"/>
                                                 <connections>
                                                     <action selector="rightBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="WcS-7d-tkl"/>
                                                 </connections>
@@ -1153,11 +1151,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="anchorIcon" width="1024" height="1024"/>
         <image name="anchorLogIn" width="1280" height="2276"/>
         <image name="incomplete" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LdQ-Ki-47O"/>
+        <segue reference="wMj-DI-6Uw"/>
     </inferredMetricsTieBreakers>
 </document>

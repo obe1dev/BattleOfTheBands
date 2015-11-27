@@ -17,7 +17,7 @@ typedef void (^UploadDataBlock)(BOOL success);
 
 + (void) uploadImage:(UIImage *)image withName:(NSString *)name completion:(UploadDataBlock)block;
 
-+ (void) uploadSong:(MPMediaItem *)song withName:(NSString *)name completion:(UploadDataBlock)block;
++ (void) uploadSong:(NSData *)song withName:(NSString *)name completion:(UploadDataBlock)block;
 
 + (void)downloadImageWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
 

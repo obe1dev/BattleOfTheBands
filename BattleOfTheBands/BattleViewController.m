@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "soundController.h"
 #import "FireBaseController.h"
+#import "S3Manager.h"
 
 @interface BattleViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
@@ -61,7 +62,7 @@
 }
 
 - (void)showUpdatedProfiles {
-//TODO: debug this is being call alot 
+
     Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
     self.leftProfile = profile1;
     
@@ -75,12 +76,44 @@
     //self.leftBandName.titleLabel.text = [NSString stringWithString:profile1.name];
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     self.leftBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
-    //self.leftBandPlay.imageView.image =
+    [S3Manager downloadImageWithName:profile1.uID dataPath:profile1.uID completion:^(NSData *data) {
+        if (data) {
+            
+            UIImage *profileImage = [UIImage imageWithData:data];
+            
+            [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+            //self.leftBandPlay.imageView.image = [UIImage imageWithData:data];
+            
+        } else {
+           
+            UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+            [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+            //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        }
+    }];
+
+    
     
     
     [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
     self.rightBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
-    //self.rightBandPlay.imageView.image =
+    [S3Manager downloadImageWithName:profile2.uID dataPath:profile2.uID completion:^(NSData *data) {
+        if (data) {
+            
+            UIImage *profileImage = [UIImage imageWithData:data];
+            
+            [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+
+            //self.rightBandPlay.imageView.image = [UIImage imageWithData:data];
+            
+        } else {
+            
+            UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+            [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+            //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        }
+    }];
+
 }
 
 

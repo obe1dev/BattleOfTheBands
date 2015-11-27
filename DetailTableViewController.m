@@ -13,6 +13,7 @@
 #import "InfoTextCell.h"
 #import "InfoBandBioCell.h"
 #import "ProfileController.h"
+#import "S3Manager.h"
 
 
 @interface DetailTableViewController ()
@@ -54,6 +55,16 @@
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
     self.vote = profile.vote;
+    
+    [S3Manager downloadImageWithName:profile.uID dataPath:profile.uID completion:^(NSData *data) {
+        if (data) {
+            self.bandImage = data;
+            [self.tableView reloadData];
+        } else {
+            // TODO: Alert the user?
+        }
+    }];
+
 
     // TODO: Come back to this
 //    if (profile.bandImage) {

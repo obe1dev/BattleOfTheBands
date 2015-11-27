@@ -527,17 +527,17 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         
         [self mediaItemToData:item];
 //        NSString *name = [item valueForKey:MPMediaItemPropertyTitle];
-        NSData *data = [NSData dataWithContentsOfURL:URL];
-        NSLog(@"%@", URL);
+//        NSData *data = [NSData dataWithContentsOfURL:URL];
+//        NSLog(@"%@", URL);
         
-        NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
+        //NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
 
         //self.song = mediaItemCollection;
-        [S3Manager uploadSong:item withName:songKey completion:^(BOOL success) {
-            if (success) {
-                // Save to firebase?
-            }
-        }];
+//        [S3Manager uploadSong:item withName:songKey completion:^(BOOL success) {
+//            if (success) {
+//                // Save to firebase?
+//            }
+//        }];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -558,7 +558,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset: songAsset
                                                                       presetName:AVAssetExportPresetAppleM4A];
- //what do i put here
+ 
     exporter.outputFileType = @"com.apple.m4a-audio";
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -576,6 +576,17 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     exporter.outputURL = exportURL;
     
     // do the export
+    
+    NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
+                                                    stringByAppendingPathComponent:fileName]];
+    
+    NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
+    
+    [S3Manager uploadSong:data withName:songKey completion:^(BOOL success) {
+        if (success) {
+            // Save to firebase?
+        }
+    }];
     // (completion handler block omitted)
     [exporter exportAsynchronouslyWithCompletionHandler:
      ^{
@@ -595,6 +606,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                  
                  NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
                                                                  stringByAppendingPathComponent:fileName]];
+                 
+                 
                  
                  //DLog(@"Data %@",data);
                  data = nil;
