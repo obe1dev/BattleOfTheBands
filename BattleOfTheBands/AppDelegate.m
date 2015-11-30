@@ -33,7 +33,7 @@
     
     [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
     
-   // [AppearanceController initializeAppearanceDefaults];
+    [AppearanceController initializeAppearanceDefaults];
     
     return YES;
 }

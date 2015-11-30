@@ -46,7 +46,7 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 -(void) saveAllProfile:(Profile *)profile;
 
--(void) saveListenerProfile:(Profile *)profile;
+//-(void) saveListenerProfile:(Profile *)profile;
 
 - (void) saveProfile:(Profile *)profile;
 

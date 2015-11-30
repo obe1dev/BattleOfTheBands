@@ -89,21 +89,21 @@
     cell.bandName.text = profile.name;
     
     if (profile.bandImagePath) {
-        
+    
         // TODO: come back to this
         [S3Manager downloadImageWithName:profile.uID dataPath:profile.bandImagePath completion:^(NSData *data) {
             if (data) {
                 
                 cell.bandImage.image = [UIImage imageWithData:data];
 
-              //  [self.tableView reloadData];
             } else {
-                // TODO: Alert the user?
+                
+                
             }
         }];
         
     }else{
-        
+    
     cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
         
     }

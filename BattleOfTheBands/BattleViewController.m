@@ -39,6 +39,8 @@
 
 @property (nonatomic, strong) soundController *soundController;
 
+@property (assign, nonatomic) BOOL okToSkip;
+
 
 @end
 
@@ -82,10 +84,11 @@
             UIImage *profileImage = [UIImage imageWithData:data];
             
             [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+            
             //self.leftBandPlay.imageView.image = [UIImage imageWithData:data];
             
         } else {
-           
+            
             UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
             [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
             //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
@@ -183,6 +186,7 @@
 //change to the next battle
 - (IBAction)next:(id)sender {
     
+        
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
@@ -190,7 +194,6 @@
     
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-    
     
 }
 

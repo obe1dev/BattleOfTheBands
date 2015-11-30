@@ -180,8 +180,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     if (currentProfile.isBand == YES) {
         [[FireBaseController bandProfile:currentProfile] unauth];
     }
-    //else if (currentProfile.isBand == NO)
-        [[FireBaseController listenerProfile:currentProfile] unauth];
+    else if (currentProfile.isBand == NO)
+//        [[FireBaseController listenerProfile:currentProfile] unauth];
     
     // navigate to the login view
     [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
@@ -678,8 +678,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     [S3Manager uploadImage:image withName:imageName completion:^(BOOL success){
         if (success) {
-//            [ProfileController sharedInstance].currentProfile.bandImagePath = imageName;
-//            [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
+            [ProfileController sharedInstance].currentProfile.bandImagePath = imageName;
+            [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
         }
     }];
     

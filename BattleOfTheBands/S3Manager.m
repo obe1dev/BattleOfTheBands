@@ -121,7 +121,7 @@
                                                                    AWSS3TransferManagerDownloadOutput *downloadOutput = task.result;
                                                                    NSData *data = [NSData dataWithContentsOfFile:downloadOutput.body];
                                                                    block(data);
-//                                                                   downloadOutput.body
+                                                                   //downloadOutput.body
                                                                    //File downloaded successfully.
                                                                    NSLog(@"%@",downloadOutput);
                                                                }

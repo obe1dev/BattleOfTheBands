@@ -108,7 +108,7 @@
         self.currentProfile.name = name;
     }
     
-    [self saveListenerProfile:self.currentProfile];
+//    [self saveListenerProfile:self.currentProfile];
 }
 
 -(void) updateVoteForProfile:(Profile *)profile {
@@ -139,10 +139,9 @@
     [[FireBaseController allProfiles:profile] setValue:profile.dictionaryRepresentation];
 }
 
--(void) saveListenerProfile:(Profile *)profile{
-    [[FireBaseController listenerProfile:profile] setValue:profile.dictionaryRepresentation];
-    
-}
+//-(void) saveListenerProfile:(Profile *)profile{
+//    [[FireBaseController listenerProfile:profile] setValue:profile.dictionaryRepresentation];
+//}
 
 - (void) saveProfile:(Profile *)profile {
     [[FireBaseController bandProfile:profile] setValue:profile.dictionaryRepresentation];
