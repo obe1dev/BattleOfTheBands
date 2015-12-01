@@ -14,43 +14,47 @@
     
     //this method will be called in the AppDelegate
     
+
+    UIColor *tableViewColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+    UIColor *barColor = [UIColor colorWithRed:12/255.0 green:12/255.0 blue:12/255.0 alpha:.7];
+    UIColor *textColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
+    NSString *font = @"Helvetica Neue";
+    
     
     //TabBar
     //this is setting the tabBar color with the RGB format and the transparent (alpha)
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:12/255.0f green:12/255.0f blue:12/255.0f alpha:.8]];
+    [[UITabBar appearance] setBarTintColor:barColor];
     //sets the TitleTextAttributes include font color and font name and size. this has to be done in a dictionary
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSBackgroundColorAttributeName:[UIColor colorWithRed:1.0
-                                                                                                       green:1.0
-                                                                                                        blue:1.0
-                                                                                                       alpha:1],
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:textColor,
                                                         
-                                                        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light"
+                                                        NSFontAttributeName:[UIFont fontWithName:font
                                                                                              size:20]}
                                                                                         forState:UIControlStateNormal];
     //selected tabBar
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:255/255
-                                                                                                       green:0/255
-                                                                                                        blue:0/255
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:255/255.0
+                                                                                                       green:0/255.0
+                                                                                                        blue:0/255.0
                                                                                                        alpha:1],
                                                         
-                                                        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light"
+                                                        NSFontAttributeName: [UIFont fontWithName:font
                                                                                              size:20]}
                                                                                         forState:UIControlStateSelected];
-  
     
-//    //navagation bar
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:12/255.0 green:12/255.0 blue:12/255.0 alpha:.8]];
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:237/255 green:237/255 blue:237/255 alpha:.8]];
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:170/255
-//                                                                                                         green:170/255
-//                                                                                                          blue:170/255
-//                                                                                                         alpha:.8],
-//                                                          NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light"
-//                                                                                               size:20]}];
-//    
+    //navagation bar
+    [[UINavigationBar appearance] setBarTintColor:barColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:textColor,
+                                                           NSFontAttributeName:[UIFont fontWithName:@"Helvetica Neue" size:20]}];
+    [[UINavigationBar appearance] setTintColor:textColor];
+    
+    
+    
+    //viewcontroller
+    //[[UIView appearance] setTintColor:viewColor];
+    
 //    //tabeView
-//    [[UITableView appearance] setBackgroundColor:[UIColor colorWithRed:120/255 green:120/255 blue:120/255 alpha:1]];
-//    //[[UITableView appearance]  = [UIColor colorWithRed:155/255 green:155/255 blue:155/255 alpha:1] ];
+    [[UITableViewCell appearance] setBackgroundColor:tableViewColor];
+    [[UITableView appearance] setBackgroundColor:tableViewColor];
+    [[UITextView appearance] setBackgroundColor:tableViewColor];
     
      
                                                           

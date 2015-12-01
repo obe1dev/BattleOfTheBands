@@ -27,13 +27,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-xz-Ks4">
                                 <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.1760366418" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="1Sz-Ad-5IY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="tintColor" red="0.97647058823529409" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Band Sign Up / Login"/>
+                                <state key="normal" title="Band Sign Up / Login">
+                                    <color key="titleColor" red="0.96862745098039216" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="2vs-Fz-hSo" kind="presentation" identifier="signUp" id="rx8-ug-DXP"/>
                                 </connections>
@@ -238,7 +240,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPm-FG-YEW" userLabel="Master Stack View">
                                 <rect key="frame" x="0.0" y="64" width="600" height="401"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zmT-ve-PDh" userLabel="Left Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="401"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugJ-U8-2JB" userLabel="leftButton">
@@ -252,11 +254,27 @@
                                                     <action selector="leftBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="NwV-Zu-7pE"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q18-Gs-i27">
+                                                <rect key="frame" x="128" y="260" width="45" height="45"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="Wip-CM-VF5"/>
+                                                    <constraint firstAttribute="height" constant="45" id="cQy-id-mbY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" image="play-468292_1280"/>
+                                                <state key="selected" image="8308-200"/>
+                                                <connections>
+                                                    <action selector="leftPalyPause:" destination="Xre-9u-tpY" eventType="touchUpInside" id="eH0-wH-lIe"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="P1J-8R-g4x" userLabel="Left Band Name">
-                                                <rect key="frame" x="8" y="250" width="284" height="86"/>
+                                                <rect key="frame" x="15" y="315" width="270" height="11"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <state key="normal" title="Band Name"/>
+                                                <state key="normal" title="Band Name">
+                                                    <color key="titleColor" red="0.047058823529411764" green="0.047058823529411764" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="leftBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="cBn-Hc-7UM"/>
                                                     <segue destination="fwB-9Q-EF1" kind="show" identifier="leftButtonSegue" id="X5a-r6-7pe"/>
@@ -277,11 +295,11 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="leading" secondItem="zmT-ve-PDh" secondAttribute="leading" constant="8" id="MLt-QU-Y0X"/>
-                                            <constraint firstAttribute="trailing" secondItem="P1J-8R-g4x" secondAttribute="trailing" constant="8" id="VJs-ms-rOr"/>
+                                            <constraint firstItem="P1J-8R-g4x" firstAttribute="leading" secondItem="zmT-ve-PDh" secondAttribute="leading" constant="15" id="iiT-re-cbm"/>
+                                            <constraint firstAttribute="trailing" secondItem="P1J-8R-g4x" secondAttribute="trailing" constant="15" id="oYb-L8-Cg8"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="toQ-Pg-8Z0" userLabel="Right Stack View">
                                         <rect key="frame" x="300" y="0.0" width="300" height="401"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTg-lh-ttc" userLabel="RightButton">
@@ -295,11 +313,26 @@
                                                     <action selector="rightBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="WcS-7d-tkl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
-                                                <rect key="frame" x="8" y="250" width="284" height="86"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-IY-QVU">
+                                                <rect key="frame" x="128" y="260" width="45" height="45"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="fwQ-EL-oE2"/>
+                                                    <constraint firstAttribute="height" constant="45" id="uJT-NI-P5v"/>
+                                                </constraints>
+                                                <state key="normal" image="play-468292_1280"/>
+                                                <state key="selected" image="8308-200"/>
+                                                <connections>
+                                                    <action selector="rightPlayPuase:" destination="Xre-9u-tpY" eventType="touchUpInside" id="9Ad-Eb-K3V"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
+                                                <rect key="frame" x="15" y="315" width="270" height="11"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <state key="normal" title="Band Name"/>
+                                                <state key="normal" title="Band Name">
+                                                    <color key="titleColor" red="0.047058823529411764" green="0.047058823529411764" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="rightBandName:" destination="Xre-9u-tpY" eventType="touchUpInside" id="lko-z7-vd8"/>
                                                     <segue destination="fwB-9Q-EF1" kind="show" identifier="rightButtonSegue" id="wMj-DI-6Uw"/>
@@ -321,8 +354,8 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Rcx-5N-8wl" secondAttribute="trailing" constant="8" id="EHK-Th-wR5"/>
-                                            <constraint firstItem="Rcx-5N-8wl" firstAttribute="leading" secondItem="toQ-Pg-8Z0" secondAttribute="leading" constant="8" id="eEP-fM-1Lg"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rcx-5N-8wl" secondAttribute="trailing" constant="15" id="0QA-RE-dGD"/>
+                                            <constraint firstItem="Rcx-5N-8wl" firstAttribute="leading" secondItem="toQ-Pg-8Z0" secondAttribute="leading" constant="15" id="zIh-aV-lXc"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -334,7 +367,7 @@
                             </stackView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QPm-FG-YEW" firstAttribute="top" secondItem="Oym-Jg-5HR" secondAttribute="bottom" id="3wF-sR-AvB"/>
                             <constraint firstItem="sjI-jR-VuX" firstAttribute="leading" secondItem="nMo-Cq-s3n" secondAttribute="leadingMargin" constant="-20" id="Lfz-Qa-MnS"/>
@@ -363,10 +396,12 @@
                     <connections>
                         <outlet property="leftBandName" destination="P1J-8R-g4x" id="5xU-Qk-vYt"/>
                         <outlet property="leftBandPlay" destination="ugJ-U8-2JB" id="h0F-rE-C8P"/>
+                        <outlet property="leftPlayPause" destination="Q18-Gs-i27" id="jF2-RW-ehE"/>
                         <outlet property="leftbandCheckBox" destination="VOI-n4-vXC" id="vFQ-Sp-PuF"/>
                         <outlet property="rightBandCheckBox" destination="r9n-G6-RaF" id="9xN-id-9YV"/>
                         <outlet property="rightBandName" destination="Rcx-5N-8wl" id="eec-cA-zNV"/>
                         <outlet property="rightBandPlay" destination="tTg-lh-ttc" id="ThL-22-aBL"/>
+                        <outlet property="rightPlayPause" destination="oMb-IY-QVU" id="Iaf-21-4Pm"/>
                         <outlet property="voteButton" destination="KgB-TE-LM2" id="wRh-fv-SF2"/>
                     </connections>
                 </viewController>
@@ -426,6 +461,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="photoButton" destination="ycX-QE-0Ff" id="Xib-I1-Buu"/>
                                     <outlet property="uploadSongButton" destination="kMU-fh-Qp7" id="Cc9-1u-2Fs"/>
@@ -1024,10 +1060,10 @@
                                             <rect key="frame" x="0.0" y="8" width="600" height="83.5"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCC-ld-EBl">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCC-ld-EBl">
                                             <rect key="frame" x="8" y="38" width="584" height="24"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" white="0.1760366418" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1151,10 +1187,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="8308-200" width="200" height="200"/>
         <image name="anchorLogIn" width="1280" height="2276"/>
         <image name="incomplete" width="512" height="512"/>
+        <image name="play-468292_1280" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ELZ-G9-Yeo"/>
+        <segue reference="wMj-DI-6Uw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -299,13 +299,19 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Incomplete implementation, return the number of sections
-//    return 0;
+//    if (self.isEditting == YES) {
+//        return 2;
+//    }else{
+//    return 1;
+//    }
 //}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isEditting == YES) {
+        
         return 7;
+        
     } else {
         return 5;
     }
@@ -327,6 +333,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     if (self.isBand) {
         
         ProfileRow row = indexPath.row;
+        
         
         switch (row) {
             case ProfileRowPhoto: {
@@ -377,8 +384,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.infoEntryTextField.placeholder = @"yourbandswebsite.com";
                 cell.infoEntryTextField.text = self.website;
                 cell.delegate = self;
-                return cell;
+                 return cell;
             }
+        
 #warning this is showing as the last cell in the table view.
             case ProfileRowReset: {
                 ResetPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResetPasswordCell" forIndexPath:indexPath];
@@ -390,6 +398,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.delegate = self;
                 return cell;
             }
+        
                
         }
         

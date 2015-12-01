@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftBandPlay;
 @property (weak, nonatomic) IBOutlet UIButton *rightBandPlay;
 
+@property (weak, nonatomic) IBOutlet UIButton *leftPlayPause;
+@property (weak, nonatomic) IBOutlet UIButton *rightPlayPause;
 
 @property (weak, nonatomic) IBOutlet UIButton *leftBandName;
 @property (weak, nonatomic) IBOutlet UIButton *rightBandName;
@@ -203,12 +205,47 @@
     NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"mp3"];
     
     [self.soundController playAudioFileAtURL:urlForSong];
+    
+    self.leftPlayPause.selected = YES;
+    self.rightPlayPause.selected = NO;
 
 }
+- (IBAction)leftPalyPause:(id)sender {
+    
+    if (self.leftBandPlay.selected) {
+        //pause audio
+    }
+    
+    self.leftPlayPause.selected = YES;
+    self.rightPlayPause.selected = NO;
+    
+    [self leftBandPlay];
+    
+}
+
 
 - (IBAction)rightBandPlay:(id)sender {
     
+    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"mp3"];
+    
+    [self.soundController playAudioFileAtURL:urlForSong];
+    
+    self.leftPlayPause.selected = NO;
+    self.rightPlayPause.selected = YES;
+
+    
 }
+- (IBAction)rightPlayPuase:(id)sender {
+    
+    if (self.rightPlayPause.selected) {
+        //pause audio
+    }
+    
+    self.leftPlayPause.selected = NO;
+    self.rightPlayPause.selected = YES;
+    [self rightBandPlay];
+}
+
 
 //name of band and segue to detail of band
 - (IBAction)leftBandName:(id)sender {

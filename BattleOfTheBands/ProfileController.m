@@ -118,7 +118,9 @@
 //    [[FireBaseController bandProfile:profile] runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
 //        profile.vote = @(1 + [profile.vote intValue]);
 //    }];
-    
+    if (profile.vote==nil) {
+        return;
+    }
     profile.vote = @(1 + [profile.vote intValue]);
     
     //start here
