@@ -197,6 +197,9 @@
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     
+    self.leftPlayPause.selected=NO;
+    self.rightPlayPause.selected=NO;
+    
 }
 
 //band art play and pause buttons
@@ -238,12 +241,15 @@
 - (IBAction)rightPlayPuase:(id)sender {
     
     if (self.rightPlayPause.selected) {
-        //pause audio
+        //TODO:pause audio
+        
     }
     
     self.leftPlayPause.selected = NO;
     self.rightPlayPause.selected = YES;
+    
     [self rightBandPlay];
+    
 }
 
 
@@ -296,7 +302,9 @@
     
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-
+    
+    self.leftPlayPause.selected = NO;
+    self.rightPlayPause.selected = NO;
     
     [[ProfileController sharedInstance] loadRandomBands];
 }

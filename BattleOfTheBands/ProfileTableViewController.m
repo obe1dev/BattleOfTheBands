@@ -179,10 +179,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
     if (currentProfile.isBand == YES) {
         [[FireBaseController bandProfile:currentProfile] unauth];
+        
     }
-    else if (currentProfile.isBand == NO)
+    else if (currentProfile.isBand == NO){
 //        [[FireBaseController listenerProfile:currentProfile] unauth];
-    
+    }
     // navigate to the login view
     [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
     
