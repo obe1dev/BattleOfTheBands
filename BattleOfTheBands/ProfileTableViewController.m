@@ -617,8 +617,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                  NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
                                                                  stringByAppendingPathComponent:fileName]];
                  
-                 
-                 
                  //DLog(@"Data %@",data);
                  data = nil;
                  

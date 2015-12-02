@@ -87,7 +87,8 @@
             
             [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
             
-            //self.leftBandPlay.imageView.image = [UIImage imageWithData:data];
+            
+            
             
         } else {
             
@@ -188,7 +189,6 @@
 //change to the next battle
 - (IBAction)next:(id)sender {
     
-        
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
@@ -205,7 +205,7 @@
 //band art play and pause buttons
 - (IBAction)leftBandPlay:(id)sender {
     
-    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"mp3"];
+    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"m4a"];
     
     [self.soundController playAudioFileAtURL:urlForSong];
     
@@ -215,11 +215,16 @@
 }
 - (IBAction)leftPalyPause:(id)sender {
     
-    if (self.leftBandPlay.selected) {
-        //pause audio
+    if (self.leftPlayPause.selected == YES) {
+        //TODO:pause audio
+        self.leftPlayPause.selected=NO;
+        
+    }else{
+        
+        self.leftPlayPause.selected = YES;
+        
     }
     
-    self.leftPlayPause.selected = YES;
     self.rightPlayPause.selected = NO;
     
     [self leftBandPlay];
@@ -229,7 +234,7 @@
 
 - (IBAction)rightBandPlay:(id)sender {
     
-    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"mp3"];
+    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"m4a"];
     
     [self.soundController playAudioFileAtURL:urlForSong];
     
@@ -242,11 +247,16 @@
     
     if (self.rightPlayPause.selected) {
         //TODO:pause audio
+        self.rightPlayPause.selected=NO;
         
+    }else{
+        
+        self.rightPlayPause.selected = YES;
+    
     }
     
     self.leftPlayPause.selected = NO;
-    self.rightPlayPause.selected = YES;
+    
     
     [self rightBandPlay];
     

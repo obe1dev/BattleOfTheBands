@@ -41,7 +41,8 @@
             
         } else {
             
-            [self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
+            //[self signUpErrorMessage:[ProfileController sharedInstance].signUpMessage];
+            [self loginErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
         }
     }];
 

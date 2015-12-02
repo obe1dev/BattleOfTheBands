@@ -313,7 +313,7 @@
                                                     <action selector="rightBandPlay:" destination="Xre-9u-tpY" eventType="touchUpInside" id="WcS-7d-tkl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-IY-QVU">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-IY-QVU">
                                                 <rect key="frame" x="128" y="260" width="45" height="45"/>
                                                 <animations/>
                                                 <constraints>
@@ -326,7 +326,7 @@
                                                     <action selector="rightPlayPuase:" destination="Xre-9u-tpY" eventType="touchUpInside" id="9Ad-Eb-K3V"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rcx-5N-8wl" userLabel="Right Band Name">
                                                 <rect key="frame" x="15" y="315" width="270" height="11"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -1193,6 +1193,6 @@
         <image name="play-468292_1280" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LdQ-Ki-47O"/>
+        <segue reference="wMj-DI-6Uw"/>
     </inferredMetricsTieBreakers>
 </document>
