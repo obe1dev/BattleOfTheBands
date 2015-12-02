@@ -88,13 +88,20 @@
             [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
             
             
-            
-            
         } else {
             
             UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
             [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
             //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        }
+    }];
+    
+    [S3Manager downloadSongWithName:profile1.uID dataPath:profile1.uID completion:^(NSData *data) {
+        if (data) {
+            
+            
+            
+            [self.soundController ]
         }
     }];
 
@@ -117,6 +124,11 @@
             UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
             [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
             //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        }
+    }];
+    [S3Manager downloadSongWithName:profile2.uID dataPath:profile2.uID completion:^(NSData *data) {
+        if (data) {
+            //
         }
     }];
 
@@ -207,6 +219,7 @@
     
     NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"m4a"];
     
+    [self.soundController
     [self.soundController playAudioFileAtURL:urlForSong];
     
     self.leftPlayPause.selected = YES;

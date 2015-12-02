@@ -574,7 +574,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString * myDocumentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     
-    [[NSDate date] timeIntervalSince1970];
     NSTimeInterval seconds = [[NSDate date] timeIntervalSince1970];
     NSString *intervalSeconds = [NSString stringWithFormat:@"%0.0f",seconds];
     
@@ -586,18 +585,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     exporter.outputURL = exportURL;
     
     // do the export
-    
-    NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
-                                                    stringByAppendingPathComponent:fileName]];
-    
-    NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
-    
-    [S3Manager uploadSong:data withName:songKey completion:^(BOOL success) {
-        if (success) {
-            // Save to firebase?
-        }
-    }];
-    // (completion handler block omitted)
     [exporter exportAsynchronouslyWithCompletionHandler:
      ^{
          int exportStatus = exporter.status;
@@ -614,11 +601,16 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
              {
                  NSLog (@"AVAssetExportSessionStatusCompleted");
                  
-                 NSData *data = [NSData dataWithContentsOfFile: [myDocumentsDirectory
-                                                                 stringByAppendingPathComponent:fileName]];
+                 NSData *data = [NSData dataWithContentsOfFile: exportFile];
                  
-                 //DLog(@"Data %@",data);
-                 data = nil;
+                 NSString *songKey = [NSString stringWithFormat:@"%@.m4a", [ProfileController sharedInstance].currentProfile.uID];
+                 
+                 [S3Manager uploadSong:data withName:songKey completion:^(BOOL success) {
+                     if (success) {
+                         // Save to firebase?
+                         
+                     }
+                 }];
                  
                  break;
              }
