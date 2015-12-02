@@ -12,8 +12,6 @@
 
 @interface BattleViewController : UIViewController
 
-+ (BattleViewController *)sharedInstance;
-
 @property (strong, nonatomic) Profile *selectedProfile;
 
 -(void)setTabBarIndexTo0;

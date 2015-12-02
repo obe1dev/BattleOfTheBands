@@ -64,4 +64,6 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 - (void)loadTopTenBandProfiles;
 
+- (NSURL *)songURLForProfile:(Profile *)profile;
+
 @end

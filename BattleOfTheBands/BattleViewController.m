@@ -41,21 +41,14 @@
 
 @property (nonatomic, strong) soundController *soundController;
 
+@property (strong, nonatomic) AVAudioPlayer *player;
+
 @property (assign, nonatomic) BOOL okToSkip;
 
 
 @end
 
 @implementation BattleViewController
-
-+ (BattleViewController *)sharedInstance {
-    static BattleViewController *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [BattleViewController new];
-    });
-    return sharedInstance;
-}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -96,12 +89,12 @@
         }
     }];
     
-    [S3Manager downloadSongWithName:profile1.uID dataPath:profile1.uID completion:^(NSData *data) {
+    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile1.uID] dataPath:profile1.uID completion:^(NSData *data) {
         if (data) {
             
+            NSURL *profile1SongURL = [[ProfileController sharedInstance] songURLForProfile:profile1];
+            [data writeToURL:profile1SongURL atomically:YES];
             
-            
-            [self.soundController ]
         }
     }];
 
@@ -126,9 +119,10 @@
             //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
         }
     }];
-    [S3Manager downloadSongWithName:profile2.uID dataPath:profile2.uID completion:^(NSData *data) {
+    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile2.uID] dataPath:profile2.uID completion:^(NSData *data) {
         if (data) {
-            //
+            NSURL *profile2SongURL = [[ProfileController sharedInstance] songURLForProfile:profile2];
+            [data writeToURL:profile2SongURL atomically:YES];
         }
     }];
 
@@ -152,6 +146,7 @@
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
 
     [self registerForNotifications];
+    self.soundController = [[soundController alloc] init];
     
 }
 
@@ -216,11 +211,13 @@
 
 //band art play and pause buttons
 - (IBAction)leftBandPlay:(id)sender {
+
+    NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
+    [self.soundController playAudioFileAtURL:songURL];
     
-    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"m4a"];
-    
-    [self.soundController
-    [self.soundController playAudioFileAtURL:urlForSong];
+    if (self.leftPlayPause.selected == YES) {
+        
+    }
     
     self.leftPlayPause.selected = YES;
     self.rightPlayPause.selected = NO;
@@ -230,6 +227,7 @@
     
     if (self.leftPlayPause.selected == YES) {
         //TODO:pause audio
+        [self.player pause];
         self.leftPlayPause.selected=NO;
         
     }else{
@@ -247,9 +245,8 @@
 
 - (IBAction)rightBandPlay:(id)sender {
     
-    NSURL *urlForSong = [[NSBundle mainBundle] URLForResource:@"song" withExtension:@"m4a"];
-    
-    [self.soundController playAudioFileAtURL:urlForSong];
+    NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
+    [self.soundController playAudioFileAtURL:songURL];
     
     self.leftPlayPause.selected = NO;
     self.rightPlayPause.selected = YES;
@@ -260,6 +257,7 @@
     
     if (self.rightPlayPause.selected) {
         //TODO:pause audio
+        [self.player pause];
         self.rightPlayPause.selected=NO;
         
     }else{

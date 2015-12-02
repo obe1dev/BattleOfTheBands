@@ -243,4 +243,17 @@
     }];
 }
 
+- (NSURL *)songURLForProfile:(Profile *)profile {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * myDocumentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+    NSString * fileName = [NSString stringWithFormat:@"%@.m4a", profile.uID];
+    
+    NSString *exportFile = [myDocumentsDirectory stringByAppendingPathComponent:fileName];
+    
+    NSURL *exportURL = [NSURL fileURLWithPath:exportFile];
+    
+    return exportURL;
+}
+
 @end
