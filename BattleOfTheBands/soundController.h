@@ -12,6 +12,13 @@
 
 @interface soundController : NSObject
 
-- (void)playAudioFileAtURL:(NSURL *)url;
+@property (assign, nonatomic) BOOL prepareSong;
+
+
+
+- (instancetype)initWithURL:(NSURL *)url;
+
+- (void)playAudioFile;
+-(void)pauseAudioFile;
 
 @end

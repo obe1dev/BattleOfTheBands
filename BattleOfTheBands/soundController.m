@@ -11,16 +11,42 @@
 @interface soundController()
 
 @property (strong, nonatomic) AVAudioPlayer *player;
+@property (assign, nonatomic) BOOL playing;
+
 
 @end
 
 
 @implementation soundController
 
-- (void)playAudioFileAtURL:(NSURL *)url{
-    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-    self.player.numberOfLoops = 1;
+//+ (soundController *)sharedInstance {
+//    static soundController *sharedInstance = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        sharedInstance = [soundController new];
+//    });
+//    return sharedInstance;
+//}
+
+- (instancetype)initWithURL:(NSURL *)url
+{
+    self = [super init];
+    if (self) {
+        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+        self.player.numberOfLoops = 1;
+    }
+    return self;
+}
+
+- (void)playAudioFile {
     [self.player play];
+    
+}
+
+-(void)pauseAudioFile{
+    
+    [self.player pause];
+    
 }
 
 @end

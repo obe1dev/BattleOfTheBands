@@ -39,11 +39,14 @@
 @property (strong, nonatomic) UIImage *incompleteImage;
 //@property (strong, nonatomic) Profile *selectedProfile;
 
-@property (nonatomic, strong) soundController *soundController;
+@property (nonatomic, strong) soundController *leftSoundController;
+@property (nonatomic, strong) soundController *rightSoundController;
 
 @property (strong, nonatomic) AVAudioPlayer *player;
 
 @property (assign, nonatomic) BOOL okToSkip;
+@property (assign, nonatomic) BOOL leftBandLoad;
+@property (assign, nonatomic) BOOL rightbandLoad;
 
 
 @end
@@ -74,18 +77,20 @@
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     self.leftBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
     [S3Manager downloadImageWithName:profile1.uID dataPath:profile1.uID completion:^(NSData *data) {
-        if (data) {
-            
-            UIImage *profileImage = [UIImage imageWithData:data];
-            
-            [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
-            
-            
-        } else {
-            
-            UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
-            [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
-            //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        if ([profile1.uID isEqualToString: self.leftProfile.uID]) {
+            if (data) {
+                
+                UIImage *profileImage = [UIImage imageWithData:data];
+                
+                [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+                
+                
+            } else {
+                
+                UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+                [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+                //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+            }
         }
     }];
     
@@ -104,19 +109,21 @@
     [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
     self.rightBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
     [S3Manager downloadImageWithName:profile2.uID dataPath:profile2.uID completion:^(NSData *data) {
-        if (data) {
-            
-            UIImage *profileImage = [UIImage imageWithData:data];
-            
-            [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
-
-            //self.rightBandPlay.imageView.image = [UIImage imageWithData:data];
-            
-        } else {
-            
-            UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
-            [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
-            //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+        if ([profile2.uID isEqualToString: self.rightPrfile.uID]) {
+            if (data) {
+                
+                UIImage *profileImage = [UIImage imageWithData:data];
+                
+                [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                
+                //self.rightBandPlay.imageView.image = [UIImage imageWithData:data];
+                
+            } else {
+                
+                UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+                [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+            }
         }
     }];
     [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile2.uID] dataPath:profile2.uID completion:^(NSData *data) {
@@ -137,7 +144,8 @@
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
     
-    
+    self.leftSoundController = nil;
+    self.rightSoundController = nil;
     
 
     [[ProfileController sharedInstance] loadRandomBands];
@@ -146,7 +154,7 @@
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
 
     [self registerForNotifications];
-    self.soundController = [[soundController alloc] init];
+//    self.soundController = [[soundController alloc] init];
     
 }
 
@@ -207,38 +215,37 @@
     self.leftPlayPause.selected=NO;
     self.rightPlayPause.selected=NO;
     
+    self.rightSoundController = nil;
+    self.leftSoundController = nil;
+    
 }
 
 //band art play and pause buttons
 - (IBAction)leftBandPlay:(id)sender {
 
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
-    [self.soundController playAudioFileAtURL:songURL];
+    if (!self.leftSoundController) {
+        self.leftSoundController = [[soundController alloc] initWithURL:songURL];
+    }
     
     if (self.leftPlayPause.selected == YES) {
         
+        self.leftPlayPause.selected=NO;
+        [self.leftSoundController pauseAudioFile];
+    }
+    else{
+        self.leftPlayPause.selected = YES;
+        [self.rightSoundController pauseAudioFile];
+        [self.leftSoundController playAudioFile];
     }
     
-    self.leftPlayPause.selected = YES;
+    
     self.rightPlayPause.selected = NO;
 
 }
 - (IBAction)leftPalyPause:(id)sender {
     
-    if (self.leftPlayPause.selected == YES) {
-        //TODO:pause audio
-        [self.player pause];
-        self.leftPlayPause.selected=NO;
-        
-    }else{
-        
-        self.leftPlayPause.selected = YES;
-        
-    }
-    
-    self.rightPlayPause.selected = NO;
-    
-    [self leftBandPlay];
+    [self leftBandPlay:(id)sender];
     
 }
 
@@ -246,30 +253,41 @@
 - (IBAction)rightBandPlay:(id)sender {
     
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
-    [self.soundController playAudioFileAtURL:songURL];
+//    [self.soundController playAudioFileAtURL:songURL];
+    
+    if (!self.rightSoundController) {
+        self.rightSoundController = [[soundController alloc] initWithURL:songURL];
+    }
+    if (self.rightPlayPause.selected == YES) {
+        
+        self.rightPlayPause.selected=NO;
+        [self.rightSoundController pauseAudioFile];
+    }
+    else{
+        self.rightPlayPause.selected = YES;
+        [self.leftSoundController pauseAudioFile];
+        [self.rightSoundController playAudioFile];
+    }
+
+    //ended
+//    if (self.rightPlayPause.selected == YES) {
+//        self.rightPlayPause.selected=NO;
+////        [self.soundController pauseAudioFile];
+//        
+//    }else{
+//        self.rightPlayPause.selected=YES;
+////        [self.soundController playAudioFileAtURL:songURL];
+//        
+//    }
     
     self.leftPlayPause.selected = NO;
-    self.rightPlayPause.selected = YES;
+    
 
     
 }
 - (IBAction)rightPlayPuase:(id)sender {
     
-    if (self.rightPlayPause.selected) {
-        //TODO:pause audio
-        [self.player pause];
-        self.rightPlayPause.selected=NO;
-        
-    }else{
-        
-        self.rightPlayPause.selected = YES;
-    
-    }
-    
-    self.leftPlayPause.selected = NO;
-    
-    
-    [self rightBandPlay];
+    [self rightBandPlay:(id)sender];
     
 }
 
@@ -326,6 +344,11 @@
     
     self.leftPlayPause.selected = NO;
     self.rightPlayPause.selected = NO;
+    
+    //setting this to nil will reset
+    self.rightSoundController = nil;
+    self.leftSoundController = nil;
+    
     
     [[ProfileController sharedInstance] loadRandomBands];
 }
