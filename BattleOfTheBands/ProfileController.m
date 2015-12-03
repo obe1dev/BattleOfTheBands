@@ -185,10 +185,10 @@
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
             //this will check to see if the band has a name and song
-            if (bandProfile.name ) {
-                //&& bandProfile.songPath
-                if (![bandProfile.name isEqualToString:@""] ) {
-                    //&& ![bandProfile.songPath isEqualToString:@""]
+            if (bandProfile.name && bandProfile.songPath) {
+                
+                if (![bandProfile.name isEqualToString:@""] && ![bandProfile.songPath isEqualToString:@""]) {
+                    
                     [topBandsMutable addObject:bandProfile];
                     
                 }

@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSNumber *vote;
 @property (strong, nonatomic) NSNumber *rank;
 @property (strong, nonatomic) NSData *bandImage;
+@property (strong, nonatomic) NSData *bandSong;
 
 
 @end
@@ -64,12 +65,18 @@
             // TODO: Alert the user?
         }
     }];
-
-
-    // TODO: Come back to this
-//    if (profile.bandImage) {
-//        self.bandImage = profile.bandImage;
-//    }
+    
+    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile.uID] dataPath:profile.uID completion:^(NSData *data) {
+        
+        if (data) {
+            
+            self.bandSong = data;
+            [self.tableView reloadData];
+        
+        }else{
+            
+        }
+     }];
     
     [[ProfileController sharedInstance] rankForProfile:profile completion:^(NSNumber *rank) {
         self.rank = rank;
