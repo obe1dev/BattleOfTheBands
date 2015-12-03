@@ -47,6 +47,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSNumber *rank;
 @property (strong, nonatomic) MPMediaItem *song;
 
+@property (assign, nonatomic) BOOL failure;
+@property (assign, nonatomic) BOOL success;
+
 @end
 
 @implementation ProfileTableViewController
@@ -349,6 +352,19 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.uploadSongButton.titleLabel.text = @"Add Song";
                 cell.delegate = self;
                 
+                if (self.success) {
+
+                    [self ErrorWithAlert:@"Success" message:@"You have successfully loaded your song!"];
+                    self.success = NO;
+
+                }
+                
+                if (self.failure) {
+                    
+                    [self ErrorWithAlert:@"Failure" message:@"There was an error loading your song."];
+                    self.failure = NO;
+                }
+                
                 return cell;
             }
             case ProfileRowName: {
@@ -533,7 +549,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         [self.tableView reloadData];
         
         MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
-        NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+     //   NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
         
         [self mediaItemToData:item];
 //        NSString *name = [item valueForKey:MPMediaItemPropertyTitle];
@@ -584,6 +600,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     NSURL *exportURL = [NSURL fileURLWithPath:exportFile];
     exporter.outputURL = exportURL;
     
+    if (!exporter) {
+        
+        self.failure = YES;
+        
+    }
+    
     // do the export
     [exporter exportAsynchronouslyWithCompletionHandler:
      ^{
@@ -595,6 +617,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
              {
                  NSError *exportError = exporter.error;
                  NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
+                 
+                 self.failure = YES;
+                 
                  break;
              }
              case AVAssetExportSessionStatusCompleted:
@@ -607,7 +632,14 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                  
                  [S3Manager uploadSong:data withName:songKey completion:^(BOOL success) {
                      if (success) {
-                         // Save to firebase?
+                         // Save to firebase.
+                         [ProfileController sharedInstance].currentProfile.songPath = songKey;
+                         [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
+                         NSLog(@"Got to success block");
+                         
+                         self.success = YES;
+                         [self.tableView reloadData];
+                     } else {
                          
                      }
                  }];
@@ -632,7 +664,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
              }
              default:
              {
-                 NSLog (@"didn't get export status"); break;
+                 NSLog (@"didn't get export status");
+                 
+                 self.failure = YES;
+                 
+                 break;
              }
          }
      }];

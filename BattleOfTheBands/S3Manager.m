@@ -34,7 +34,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // Do something e.g. Alert a user for transfer completion.
             // On failed uploads, `error` contains the error object.
-            
+            if (error) {
+                block(NO);
+            } else {
+                block(YES);
+            }
             NSLog(@"Task: %@", task);
             NSLog(@"Error: %@", error.description);
             
@@ -50,18 +54,18 @@
                       expression:expression
                 completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
-            block(NO);
+//            block(NO);
             NSLog(@"Error: %@", task.error);
         }
         if (task.exception) {
-            block(NO);
+//            block(NO);
             NSLog(@"Exception: %@", task.exception);
         }
         if (task.result) {
             AWSS3TransferUtilityUploadTask *uploadTask = task.result;
             
 //            [uploadTask resume];
-            block(YES);
+//            block(YES);
             
             NSLog(@"%@", uploadTask.aws_properties);
         }
@@ -149,10 +153,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // Do something e.g. Alert a user for transfer completion.
             // On failed uploads, `error` contains the error object.
-            
-            NSLog(@"Task: %@", task);
+            if (error) {
+                block(NO);
+            } else {
+                block(YES);
+            }
+            NSLog(@"Task: %@", task.aws_properties);
             NSLog(@"Error: %@", error.description);
-            
         });
     };
     
@@ -166,18 +173,18 @@
                 completionHander:completionHandler] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"Error: %@", task.error);
-            block(NO);
+//            block(NO);
         }
         if (task.exception) {
             NSLog(@"Exception: %@", task.exception);
-            block(NO);
+//            block(NO);
         }
         if (task.result) {
             AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-            block(YES);
             //            [uploadTask resume];
             
-            NSLog(@"%@", uploadTask.aws_properties);
+//            NSLog(@"%@", uploadTask.aws_properties);
+//            block(YES);
         }
         
         return nil;

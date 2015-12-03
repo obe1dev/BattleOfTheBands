@@ -256,29 +256,26 @@
 //    [self.soundController playAudioFileAtURL:songURL];
     
     if (!self.rightSoundController) {
+        
         self.rightSoundController = [[soundController alloc] initWithURL:songURL];
     }
+    
     if (self.rightPlayPause.selected == YES) {
         
         self.rightPlayPause.selected=NO;
+        
         [self.rightSoundController pauseAudioFile];
+        
     }
     else{
+        
         self.rightPlayPause.selected = YES;
+        
         [self.leftSoundController pauseAudioFile];
+        
         [self.rightSoundController playAudioFile];
     }
 
-    //ended
-//    if (self.rightPlayPause.selected == YES) {
-//        self.rightPlayPause.selected=NO;
-////        [self.soundController pauseAudioFile];
-//        
-//    }else{
-//        self.rightPlayPause.selected=YES;
-////        [self.soundController playAudioFileAtURL:songURL];
-//        
-//    }
     
     self.leftPlayPause.selected = NO;
     
@@ -345,7 +342,7 @@
     self.leftPlayPause.selected = NO;
     self.rightPlayPause.selected = NO;
     
-    //setting this to nil will reset
+    //this will reset its value so the next bands called will be able to send its url to the player.
     self.rightSoundController = nil;
     self.leftSoundController = nil;
     

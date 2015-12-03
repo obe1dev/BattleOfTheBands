@@ -146,6 +146,7 @@
 //}
 
 - (void) saveProfile:(Profile *)profile {
+    NSLog(@"Saving profile");
     [[FireBaseController bandProfile:profile] setValue:profile.dictionaryRepresentation];
 
 }
@@ -184,10 +185,10 @@
             NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
             Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
             //this will check to see if the band has a name and song
-            if (bandProfile.name) {
-                
-                if (![bandProfile.name isEqualToString:@""]) {
-                    
+            if (bandProfile.name ) {
+                //&& bandProfile.songPath
+                if (![bandProfile.name isEqualToString:@""] ) {
+                    //&& ![bandProfile.songPath isEqualToString:@""]
                     [topBandsMutable addObject:bandProfile];
                     
                 }

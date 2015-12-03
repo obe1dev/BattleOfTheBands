@@ -84,7 +84,7 @@ static NSString * const isBandKey = @"isBandKey";
         [dictionary setObject:self.bandWebsite forKey:bandWebsiteKey];
     }
     if (self.songPath) {
-        [dictionary setObject:self.songs forKey:songKey];
+        [dictionary setObject:self.songPath forKey:songKey];
     }
     if (self.likes) {
         [dictionary setObject:self.likes forKey:likesKey];
