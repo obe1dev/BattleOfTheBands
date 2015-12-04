@@ -53,6 +53,7 @@
 		47EF218C1C000E7D00EF5186 /* DeleteProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218B1C000E7D00EF5186 /* DeleteProfileCell.m */; };
 		47EF218F1C03B15200EF5186 /* ResetPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */; };
 		47EF21921C03E81100EF5186 /* AppearanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF21911C03E81100EF5186 /* AppearanceController.m */; };
+		47F011B11C111FBA0087C7C4 /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F011B01C111FBA0087C7C4 /* SongCell.m */; };
 		47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5852F1BEBF412001453D9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +156,8 @@
 		47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordCell.m; sourceTree = "<group>"; };
 		47EF21901C03E81100EF5186 /* AppearanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppearanceController.h; sourceTree = "<group>"; };
 		47EF21911C03E81100EF5186 /* AppearanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceController.m; sourceTree = "<group>"; };
+		47F011AF1C111FBA0087C7C4 /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
+		47F011B01C111FBA0087C7C4 /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
 		47F5852F1BEBF412001453D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -217,6 +220,8 @@
 				4798D5C51BE15C2700B29346 /* Profile Cells */,
 				4798D5921BD9BF2D00B29346 /* Top10TableViewCell.h */,
 				4798D5931BD9BF2D00B29346 /* Top10TableViewCell.m */,
+				47F011AF1C111FBA0087C7C4 /* SongCell.h */,
+				47F011B01C111FBA0087C7C4 /* SongCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				4798D5A11BD9BF4500B29346 /* BattleViewController.m in Sources */,
 				4798D5D11BE180EA00B29346 /* RankingVotesCell.m in Sources */,
 				4798D59A1BD9BF2D00B29346 /* ProfileController.m in Sources */,
+				47F011B11C111FBA0087C7C4 /* SongCell.m in Sources */,
 				4798D5A41BD9BF5800B29346 /* Profile.m in Sources */,
 				4798D59C1BD9BF2D00B29346 /* Top10TableViewCell.m in Sources */,
 				4798D5C81BE15F7200B29346 /* ProfileTableViewController.m in Sources */,

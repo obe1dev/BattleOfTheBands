@@ -14,9 +14,11 @@
 #import "InfoBandBioCell.h"
 #import "ProfileController.h"
 #import "S3Manager.h"
+#import "SongCell.h"
+#import "soundController.h"
 
 
-@interface DetailTableViewController ()
+@interface DetailTableViewController () <SongCellDelegate>
 
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *bio;
@@ -25,6 +27,8 @@
 @property (strong, nonatomic) NSNumber *rank;
 @property (strong, nonatomic) NSData *bandImage;
 @property (strong, nonatomic) NSData *bandSong;
+
+@property (nonatomic, strong) soundController *soundController;
 
 
 @end
@@ -94,7 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete implementation, return the number of rows
-    return 4;
+    return 5;
 }
 
 
@@ -120,6 +124,15 @@
     }
     
     if (indexPath.row == 1) {
+        SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songCell" forIndexPath:indexPath];
+        
+        cell.delegate = self;
+        
+        return cell;
+        
+    }
+    
+    if (indexPath.row == 2) {
         
         InfoRankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoRankingVotesCell" forIndexPath:indexPath];
         
@@ -134,7 +147,7 @@
         
     }
     
-    if (indexPath.row == 2) {
+    if (indexPath.row == 3) {
     
         InfoBandBioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoBandBioCell" forIndexPath:indexPath];
         
@@ -145,7 +158,7 @@
         
     }
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         
         InfoTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InfoTextCell" forIndexPath:indexPath];
         
@@ -164,6 +177,8 @@
         
     }
     
+    
+    
     return nil;
 }
 
@@ -180,17 +195,42 @@
         return 275;
     }
     if (indexPath.row == 1) {
-        return 46;
+        return 65;
     }
     if (indexPath.row == 2) {
-        return 150;
+        return 46;
     }
     if (indexPath.row == 3) {
+        return 150;
+    }
+    if (indexPath.row == 4) {
         return 75;
     }
+    
     return 0;
 }
 
+#pragma song play
+
+-(void)playButtonTapped:(SongCell *)cell{
+    
+    NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.profile];
+    
+    if (!self.soundController) {
+        self.soundController = [[soundController alloc] initWithURL:songURL];
+    }
+    
+    if (cell.playPauseButton.selected == YES) {
+        
+        cell.playPauseButton.selected=NO;
+        [self.soundController pauseAudioFile];
+    }
+    else{
+        cell.playPauseButton.selected = YES;
+        [self.soundController playAudioFile];
+    }
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

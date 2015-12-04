@@ -19,15 +19,6 @@
 
 @implementation soundController
 
-//+ (soundController *)sharedInstance {
-//    static soundController *sharedInstance = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        sharedInstance = [soundController new];
-//    });
-//    return sharedInstance;
-//}
-
 - (instancetype)initWithURL:(NSURL *)url
 {
     self = [super init];

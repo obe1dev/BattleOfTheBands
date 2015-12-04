@@ -19,19 +19,22 @@
 #import "DeleteProfileCell.h"
 #import "ResetPasswordCell.h"
 #import "S3Manager.h"
+#import "SongCell.h"
+#import "soundController.h"
 
 
 typedef NS_ENUM(NSUInteger, ProfileRow) {
-    ProfileRowPhoto,
+    ProfileRowPhoto = 0,
     ProfileRowName,
+    profileRowSong,
     ProfileRowRankVotes,
     ProfileRowBio,
     ProfileRowWebsite,
-    ProfileRowDelete,
     ProfileRowReset,
+    ProfileRowDelete,
 };
 
-@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MPMediaPickerControllerDelegate,DeleteProfileDelegate,ResetPasswordDelegate>;
+@interface ProfileTableViewController () <TextFieldCellDelegate,BandBioCellDelegate,PhotoCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MPMediaPickerControllerDelegate,DeleteProfileDelegate,ResetPasswordDelegate,SongCellDelegate>;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Logout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Edit;
 
@@ -45,10 +48,13 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 @property (strong, nonatomic) NSNumber *votes;
 @property (strong, nonatomic) NSData *bandImage;
 @property (strong, nonatomic) NSNumber *rank;
-@property (strong, nonatomic) MPMediaItem *song;
+@property (strong, nonatomic) NSData *song;
 
 @property (assign, nonatomic) BOOL failure;
 @property (assign, nonatomic) BOOL success;
+
+@property (nonatomic, strong) soundController *soundController;
+
 
 @end
 
@@ -133,7 +139,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         }];
 
 //
-        [S3Manager downloadSongWithName:currentProfile.uID dataPath:currentProfile.uID completion:^(NSData *data) {
+        [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", currentProfile.uID] dataPath:currentProfile.uID completion:^(NSData *data) {
             if (data) {
                 self.song = data;
                 [self.tableView reloadData];
@@ -216,6 +222,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             case ProfileRowBio:
             case ProfileRowRankVotes:
             case ProfileRowPhoto:
+            case profileRowSong:
             case ProfileRowReset:
             case ProfileRowDelete:
                 break;
@@ -245,6 +252,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             break;
         case ProfileRowRankVotes:
         case ProfileRowPhoto:
+        case profileRowSong:
         case ProfileRowReset:
         case ProfileRowDelete:
             break;
@@ -314,10 +322,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isEditting == YES) {
         
-        return 7;
+        return 8;
         
     } else {
-        return 5;
+        return 6;
     }
     
     
@@ -376,6 +384,13 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 
                 return cell;
             }
+            case profileRowSong: {
+                SongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"songCell" forIndexPath:indexPath];
+                
+                cell.delegate = self;
+                return cell;
+                
+            }
             case ProfileRowRankVotes: {
                 RankingVotesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RankingVotesCell" forIndexPath:indexPath];
                 
@@ -403,6 +418,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.delegate = self;
                  return cell;
             }
+            
         
 #warning this is showing as the last cell in the table view.
             case ProfileRowReset: {
@@ -491,18 +507,21 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             return 85.0;
         }
         if (indexPath.row == 2) {
-            return 46.0;
+            return 65.0;
         }
         if (indexPath.row == 3) {
-            return 150.0;
+            return 46.0;
         }
         if (indexPath.row == 4) {
-            return 85.0;
+            return 150.0;
         }
         if (indexPath.row == 5) {
-            return 50.0;
+            return 85.0;
         }
         if (indexPath.row == 6) {
+            return 50.0;
+        }
+        if (indexPath.row == 7) {
             return 50.0;
         }
     }
@@ -672,6 +691,27 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
              }
          }
      }];
+}
+
+#pragma song play
+
+-(void)playButtonTapped:(SongCell *)cell{
+    
+    NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:[ProfileController sharedInstance].currentProfile];
+    if (!self.soundController) {
+        self.soundController = [[soundController alloc] initWithURL:songURL];
+    }
+    
+    if (cell.playPauseButton.selected == YES) {
+        
+        cell.playPauseButton.selected=NO;
+        [self.soundController pauseAudioFile];
+    }
+    else{
+        cell.playPauseButton.selected = YES;
+        [self.soundController pauseAudioFile];
+    }
+    
 }
 
 #pragma band photo
