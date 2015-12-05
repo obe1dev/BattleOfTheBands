@@ -116,6 +116,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    //TODO: this needs to be triggered. and add stop to the soundController
+    [self.soundController pauseAudioFile];
+    
+}
 //TODO: setup a picker View for genres
 
 - (void)updateBandProfile {
@@ -552,7 +557,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = NO;
-    mediaPicker.prompt = @"Select your song.";
+    mediaPicker.prompt = @"Select your song";
     
     //MPMediaItemCollection *mediaItem = [[MPMediaItemCollection alloc] init];
     
@@ -698,6 +703,11 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 -(void)playButtonTapped:(SongCell *)cell{
     
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:[ProfileController sharedInstance].currentProfile];
+    
+    if (!songURL) {
+        
+    }
+    
     if (!self.soundController) {
         self.soundController = [[soundController alloc] initWithURL:songURL];
     }
@@ -709,7 +719,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     }
     else{
         cell.playPauseButton.selected = YES;
-        [self.soundController pauseAudioFile];
+        [self.soundController playAudioFile];
     }
     
 }

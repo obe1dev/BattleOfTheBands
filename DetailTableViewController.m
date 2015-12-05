@@ -50,6 +50,11 @@
 
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+#warning this needs to be stop instead of pause
+    [self.soundController pauseAudioFile];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
