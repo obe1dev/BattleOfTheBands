@@ -754,15 +754,35 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    self.bandImage = UIImageJPEGRepresentation(image, 0.8);
     
+    // shrink image to 40% of the size
+    
+    CGSize size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.2, 0.2));
+    BOOL hasAlpha = false;
+    CGFloat scale = 0.0;
+    
+    CGRect rect = CGRectMake(0, 0, 0, 0);
+    
+    rect.size = size;
+    rect.origin = CGPointZero;
+    
+    UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale);
+    [image drawInRect:rect];
 
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // compress image
+    
+    self.bandImage = UIImageJPEGRepresentation(scaledImage, 0.6);
+
+    UIImage *compressedImage = [UIImage imageWithData:self.bandImage];
     
     [self.tableView reloadData];
     
     NSString *imageName = [ProfileController sharedInstance].currentProfile.uID;
     
-    [S3Manager uploadImage:image withName:imageName completion:^(BOOL success){
+    [S3Manager uploadImage:compressedImage withName:imageName completion:^(BOOL success){
         if (success) {
             [ProfileController sharedInstance].currentProfile.bandImagePath = imageName;
             [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];

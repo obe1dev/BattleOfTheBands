@@ -31,7 +31,7 @@
     
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
     
-    [AWSLogger defaultLogger].logLevel = AWSLogLevelVerbose;
+    [AWSLogger defaultLogger].logLevel = AWSLogLevelError;
     
     [AppearanceController initializeAppearanceDefaults];
     

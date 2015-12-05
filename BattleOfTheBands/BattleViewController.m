@@ -62,49 +62,58 @@
 }
 
 - (void)showUpdatedProfiles {
-
-    Profile *profile1 = [ProfileController sharedInstance].randomBand[0];
-    self.leftProfile = profile1;
     
+    Profile *profile1;
+    Profile *profile2;
     
-    Profile *profile2 = [ProfileController sharedInstance].randomBand[1];
-    self.rightPrfile = profile2;
+    if (![ProfileController sharedInstance].randomBand) {
+        
+        self.rightPrfile = [[Profile alloc] init];
+        self.leftProfile = [[Profile alloc] init];
+        
+    }else{
+        
+        profile1 = [ProfileController sharedInstance].randomBand[0];
+        self.leftProfile = profile1;
+        
+        
+        profile2 = [ProfileController sharedInstance].randomBand[1];
+        self.rightPrfile = profile2;
+    }
     
     NSLog(@"Updating random bands, first: %@, second %@", profile1.name, profile2.name);
     
-   
+    
+    // LEFT BAND PROFILE
+    
     //self.leftBandName.titleLabel.text = [NSString stringWithString:profile1.name];
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     self.leftBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
     [S3Manager downloadImageWithName:profile1.uID dataPath:profile1.uID completion:^(NSData *data) {
         if ([profile1.uID isEqualToString: self.leftProfile.uID]) {
             if (data) {
                 
-                UIImage *profileImage = [UIImage imageWithData:data];
-                
-                [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    NSLog(@"%@", [NSDate date]);
+                    
+                    UIImage *profileImage = [UIImage imageWithData:data];
+                    [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+                });
                 
             } else {
                 
-                UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
-                [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
-                //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+                    [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+                    //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                });
             }
         }
     }];
     
-    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile1.uID] dataPath:profile1.uID completion:^(NSData *data) {
-        if (data) {
-            
-            NSURL *profile1SongURL = [[ProfileController sharedInstance] songURLForProfile:profile1];
-            [data writeToURL:profile1SongURL atomically:YES];
-            
-        }
-    }];
-
-    
-    
+    // RIGHT BAND PROFILE
     
     [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
     self.rightBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -112,27 +121,23 @@
         if ([profile2.uID isEqualToString: self.rightPrfile.uID]) {
             if (data) {
                 
-                UIImage *profileImage = [UIImage imageWithData:data];
-                
-                [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImage *profileImage = [UIImage imageWithData:data];
+                    [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                });
                 
                 //self.rightBandPlay.imageView.image = [UIImage imageWithData:data];
                 
             } else {
                 
-                UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
-                [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
-                //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
+                    [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                    //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                });
             }
         }
     }];
-    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", profile2.uID] dataPath:profile2.uID completion:^(NSData *data) {
-        if (data) {
-            NSURL *profile2SongURL = [[ProfileController sharedInstance] songURLForProfile:profile2];
-            [data writeToURL:profile2SongURL atomically:YES];
-        }
-    }];
-
 }
 
 
@@ -147,14 +152,14 @@
     self.leftSoundController = nil;
     self.rightSoundController = nil;
     
-
+    
     [[ProfileController sharedInstance] loadRandomBands];
     
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
-
+    
     [self registerForNotifications];
-//    self.soundController = [[soundController alloc] init];
+    //    self.soundController = [[soundController alloc] init];
     
 }
 
@@ -179,7 +184,7 @@
         }
     }
     
-#warning  signUp stuff 
+#warning  signUp stuff
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
         [self.tabBarController setSelectedIndex:2];
     };
@@ -190,10 +195,20 @@
         if ([ProfileController sharedInstance].isListener == NO) {
             [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
             NSLog(@"user is not logged in");
-
+            
         }
     }
+    
+}
 
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    [self.leftSoundController pauseAudioFile];
+    [self.rightSoundController pauseAudioFile];
+    
+    self.leftPlayPause.selected= NO;
+    self.rightPlayPause.selected = NO;
+    
 }
 
 - (void) segue{
@@ -222,7 +237,7 @@
 
 //band art play and pause buttons
 - (IBAction)leftBandPlay:(id)sender {
-
+    
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
     if (!self.leftSoundController) {
         self.leftSoundController = [[soundController alloc] initWithURL:songURL];
@@ -241,7 +256,7 @@
     
     
     self.rightPlayPause.selected = NO;
-
+    
 }
 - (IBAction)leftPalyPause:(id)sender {
     
@@ -253,7 +268,7 @@
 - (IBAction)rightBandPlay:(id)sender {
     
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
-//    [self.soundController playAudioFileAtURL:songURL];
+    //    [self.soundController playAudioFileAtURL:songURL];
     
     if (!self.rightSoundController) {
         
@@ -275,11 +290,11 @@
         
         [self.rightSoundController playAudioFile];
     }
-
+    
     
     self.leftPlayPause.selected = NO;
     
-
+    
     
 }
 - (IBAction)rightPlayPuase:(id)sender {
@@ -302,7 +317,7 @@
 
 //check box to vote
 - (IBAction)leftbandCheckBox:(id)sender {
-
+    
     self.leftbandCheckBox.selected = YES;
     self.rightBandCheckBox.selected = NO;
     if (self.leftbandCheckBox.selected) {
@@ -311,9 +326,9 @@
         [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
         
         self.selectedProfile = self.leftProfile;
-
+        
     }
-
+    
     
 }
 
@@ -334,7 +349,10 @@
 
 - (IBAction)vote:(id)sender {
     
-    [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];
+    if (self.selectedProfile) {
+        [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];
+    }
+    
     
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
@@ -346,6 +364,7 @@
     self.rightSoundController = nil;
     self.leftSoundController = nil;
     
+    self.selectedProfile = nil;
     
     [[ProfileController sharedInstance] loadRandomBands];
 }
@@ -354,11 +373,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"rightButtonSegue"]) {
         
-    DetailTableViewController * detailViewController = segue.destinationViewController;
+        DetailTableViewController * detailViewController = segue.destinationViewController;
         
-    Profile *profile = self.rightPrfile;
+        Profile *profile = self.rightPrfile;
         
-    detailViewController.profile = profile;
+        detailViewController.profile = profile;
         
     }
     

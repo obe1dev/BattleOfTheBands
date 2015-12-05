@@ -179,39 +179,45 @@
 
 - (void)loadRandomBands{
     [[FireBaseController allBandProfiles] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSDictionary *bandDictionaries = snapshot.value;
-        NSMutableArray *topBandsMutable = [NSMutableArray array];
-        for (NSString *bandDictionaryKey in bandDictionaries) {
-            NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
-            Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
-            //this will check to see if the band has a name and song
-            if (bandProfile.name && bandProfile.songPath) {
-                
-                if (![bandProfile.name isEqualToString:@""] && ![bandProfile.songPath isEqualToString:@""]) {
+        
+        if (snapshot.value != [NSNull null]) {
+            NSDictionary *bandDictionaries = snapshot.value;
+            NSMutableArray *topBandsMutable = [NSMutableArray array];
+            for (NSString *bandDictionaryKey in bandDictionaries) {
+                NSDictionary *bandDictionary = bandDictionaries[bandDictionaryKey];
+                Profile *bandProfile = [[Profile alloc] initWithDictionary:bandDictionary];
+                //this will check to see if the band has a name and song
+                if (bandProfile.name && bandProfile.songPath) {
                     
-                    [topBandsMutable addObject:bandProfile];
+                    if (![bandProfile.name isEqualToString:@""] && ![bandProfile.songPath isEqualToString:@""]) {
+                        
+                        [topBandsMutable addObject:bandProfile];
+                        
+                    }
                     
                 }
+            }
+            
+            if (topBandsMutable.count > 0) {
+                NSInteger random1 = arc4random() % [topBandsMutable count];
                 
+                NSInteger random2 = 0;
+                
+                do {
+                    random2 = arc4random() % [topBandsMutable count];
+                } while (random2 == random1 && [topBandsMutable count] > 1);
+                
+                NSMutableArray *randomArray = topBandsMutable.mutableCopy;
+                
+                
+                self.randomBand = @[ randomArray[random1], randomArray[random2] ];
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:randomBandProfileLoadedNotification object:nil];
+
             }
         }
-        NSInteger random1 = arc4random() % [topBandsMutable count];
-        
-        NSInteger random2 = 0;
-        
-        do {
-            random2 = arc4random() % [topBandsMutable count];
-        } while (random2 == random1 && [topBandsMutable count] > 1);
-        
-        NSMutableArray *randomArray = topBandsMutable.mutableCopy;
-       
-        
-        self.randomBand = @[ randomArray[random1], randomArray[random2] ];
-        
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:randomBandProfileLoadedNotification object:nil];
     }];
-
 }
 
 - (void)loadTopTenBandProfiles {

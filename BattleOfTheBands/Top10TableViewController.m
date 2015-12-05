@@ -82,20 +82,25 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"Loading cell for row: %ld in section: %ld", (long)indexPath.row, (long)indexPath.section);
+    
     Top10TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-     Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
+    Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
     
     cell.bandName.text = profile.name;
     
     if (profile.bandImagePath) {
-    
+        
         // TODO: come back to this
         [S3Manager downloadImageWithName:profile.uID dataPath:profile.bandImagePath completion:^(NSData *data) {
             if (data) {
                 
-                cell.bandImage.image = [UIImage imageWithData:data];
-
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.bandImage.image = [UIImage imageWithData:data];
+                });
+                
             } else {
                 
                 
@@ -103,11 +108,11 @@
         }];
         
     }else{
-    
-    cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
+        
+        cell.bandImage.image = [UIImage imageNamed:@"anchorIcon"];
         
     }
-        
+    
     return cell;
 }
 

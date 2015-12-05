@@ -54,6 +54,7 @@
 		47EF218F1C03B15200EF5186 /* ResetPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF218E1C03B15200EF5186 /* ResetPasswordCell.m */; };
 		47EF21921C03E81100EF5186 /* AppearanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF21911C03E81100EF5186 /* AppearanceController.m */; };
 		47F011B11C111FBA0087C7C4 /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F011B01C111FBA0087C7C4 /* SongCell.m */; };
+		47F011B21C1353420087C7C4 /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47889B691BF7A29300D55AFF /* S3Manager.m */; };
 		47F585301BEBF412001453D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F5852F1BEBF412001453D9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -559,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4798D5721BD9BF1F00B29346 /* BattleOfTheBandsTests.m in Sources */,
+				47F011B21C1353420087C7C4 /* S3Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

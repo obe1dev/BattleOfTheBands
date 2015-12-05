@@ -24,7 +24,7 @@
     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
     expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            // Do something e.g. Update a progress bar.
+            //TODO: Do something e.g. Update a progress bar.
             
             NSLog(@"%lld of %lld uploaded", totalBytesSent, totalBytesExpectedToSend);
         });
@@ -91,8 +91,6 @@
     NSString *downloadingFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:savingDataPath];
     NSURL *downloadingFileURL = [NSURL fileURLWithPath:downloadingFilePath];
     
-    NSLog(@"%@", downloadingFileURL);
-    
     // Construct the download request.
     AWSS3TransferManagerDownloadRequest *downloadRequest = [AWSS3TransferManagerDownloadRequest new];
     
@@ -122,12 +120,15 @@
                                                                }
                                                                
                                                                if (task.result) {
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+
                                                                    AWSS3TransferManagerDownloadOutput *downloadOutput = task.result;
                                                                    NSData *data = [NSData dataWithContentsOfFile:downloadOutput.body];
                                                                    block(data);
                                                                    //downloadOutput.body
                                                                    //File downloaded successfully.
                                                                    NSLog(@"%@",downloadOutput);
+                                                                   });
                                                                }
                                                                return nil;
                                                            }];
@@ -143,7 +144,7 @@
     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
     expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            // Do something e.g. Update a progress bar.
+            //TODO: Do something e.g. Update a progress bar.
             
             NSLog(@"%lld of %lld uploaded", totalBytesSent, totalBytesExpectedToSend);
         });

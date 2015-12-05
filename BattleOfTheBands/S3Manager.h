@@ -19,6 +19,8 @@ typedef void (^UploadDataBlock)(BOOL success);
 
 + (void) uploadSong:(NSData *)song withName:(NSString *)name completion:(UploadDataBlock)block;
 
++ (void)downloadImageViaHTTPWithName:(NSString *)name completion:(void (^)(UIImage *image))completion;
+
 + (void)downloadImageWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
 
 + (void)downloadSongWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
