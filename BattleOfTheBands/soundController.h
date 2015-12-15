@@ -13,6 +13,7 @@
 @interface soundController : NSObject
 
 @property (assign, nonatomic) BOOL prepareSong;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 
 

@@ -89,11 +89,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //    }
     
     
-    
-    //creating song data for user name and user
-    [[SongsController sharedInstance] createSongWithsongName:@"song that is good" songData:@""];
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
@@ -126,7 +121,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 - (void)updateBandProfile {
     
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
-    Songs *currentSong = [SongsController sharedInstance].currentSong;
+//    Songs *currentSong = [SongsController sharedInstance].currentSong;
     
     if (currentProfile) {
         self.name = currentProfile.name;
@@ -557,11 +552,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = NO;
+    mediaPicker.showsCloudItems = NO;
     mediaPicker.prompt = @"Select your song";
     
-    //MPMediaItemCollection *mediaItem = [[MPMediaItemCollection alloc] init];
-    
-    //[self mediaPicker:mediaPicker didPickMediaItems:<#(nonnull MPMediaItemCollection *)#>];
     [self presentViewController:mediaPicker animated:YES completion:nil];
     
 }
@@ -705,6 +698,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:[ProfileController sharedInstance].currentProfile];
     
     if (!songURL) {
+        
+        NSLog(@"ERROR songURL is nil");
         
     }
     

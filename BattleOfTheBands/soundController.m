@@ -10,8 +10,10 @@
 
 @interface soundController()
 
-@property (strong, nonatomic) AVAudioPlayer *player;
+
 @property (assign, nonatomic) BOOL playing;
+
+//@property(strong, nonatomic) NSError* error;
 
 
 @end
@@ -19,12 +21,23 @@
 
 @implementation soundController
 
-- (instancetype)initWithURL:(NSURL *)url
-{
+- (instancetype)initWithURL:(NSURL *)url{
+    
     self = [super init];
+    
     if (self) {
-        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+        
+        NSError *error=nil;
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        //self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
         self.player.numberOfLoops = 1;
+        
+        if (error) {
+            NSLog(@"this is the error %@",[error localizedDescription]);
+        }else{
+            NSLog(@"complete!!!!!!");
+        }
+        
     }
     return self;
 }

@@ -239,6 +239,7 @@
 - (IBAction)leftBandPlay:(id)sender {
     
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
+    
     if (!self.leftSoundController) {
         self.leftSoundController = [[soundController alloc] initWithURL:songURL];
     }
