@@ -113,6 +113,17 @@
         }
     }];
     
+    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", self.leftProfile.uID] dataPath:self.leftProfile.uID completion:^(NSData *data) {
+        if (data) {
+            NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
+            [data writeToURL:songURL atomically:YES];
+            // TODO: Enable play button
+        } else {
+            // TODO: Alert the user?
+        }
+    }];
+
+    
     // RIGHT BAND PROFILE
     
     [self.rightBandName setTitle:profile2.name forState:UIControlStateNormal];
@@ -136,6 +147,16 @@
                     //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
                 });
             }
+        }
+    }];
+
+    [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", self.rightPrfile.uID] dataPath:self.rightPrfile.uID completion:^(NSData *data) {
+        if (data) {
+            NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
+            [data writeToURL:songURL atomically:YES];
+            // TODO: Enable play button
+        } else {
+            // TODO: Alert the user?
         }
     }];
 }
