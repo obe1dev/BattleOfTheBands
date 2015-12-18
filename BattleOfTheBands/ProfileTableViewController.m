@@ -548,6 +548,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 #pragma songs
 
+
 -(void)uploadSongButtonTapped{
     MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
     mediaPicker.delegate = self;
@@ -595,6 +596,28 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 -(void)mediaItemToData : (MPMediaItem * ) curItem
 {
+    UILabel *loading = [[UILabel alloc] initWithFrame:CGRectMake(60, 110 , 100, 25)];
+    loading.text = @"Uploading..";
+    loading.textColor= [UIColor whiteColor];
+    
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2 - 100, self.view.frame.size.height/2 - 75 - 130, 200, 150)];
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    spinner.backgroundColor = [UIColor colorWithWhite:.333 alpha:.98];
+    //[spinner centerXAnchor];
+    //spinner.center = self.view.center;
+    
+    [spinner addSubview:loading];
+    //spinner.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    
+    [spinner layer].cornerRadius = 8.0;
+    [spinner layer].masksToBounds = YES;
+    spinner.color = [UIColor redColor];
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
+    
+    [spinner startAnimating];
+    
     NSURL *url = [curItem valueForProperty: MPMediaItemPropertyAssetURL];
     
     AVURLAsset *songAsset = [AVURLAsset URLAssetWithURL: url options:nil];
@@ -626,6 +649,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     // do the export
     [exporter exportAsynchronouslyWithCompletionHandler:
      ^{
+         
+         
          int exportStatus = exporter.status;
          
          switch (exportStatus)
@@ -635,12 +660,15 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                  NSError *exportError = exporter.error;
                  NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
                  
+                 [spinner stopAnimating];
+                 
                  self.failure = YES;
                  
                  break;
              }
              case AVAssetExportSessionStatusCompleted:
              {
+                 
                  NSLog (@"AVAssetExportSessionStatusCompleted");
                  
                  NSData *data = [NSData dataWithContentsOfFile: exportFile];
@@ -653,6 +681,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                          [ProfileController sharedInstance].currentProfile.songPath = songKey;
                          [[ProfileController sharedInstance] saveProfile:[ProfileController sharedInstance].currentProfile];
                          NSLog(@"Got to success block");
+                         
+                         [spinner stopAnimating];
                          
                          self.success = YES;
                          [self.tableView reloadData];

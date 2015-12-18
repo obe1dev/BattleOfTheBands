@@ -28,8 +28,9 @@
     if (self) {
         
         NSError *error=nil;
+        
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        //self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+
         self.player.numberOfLoops = 1;
         
         if (error) {
