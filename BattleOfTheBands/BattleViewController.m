@@ -286,6 +286,13 @@
     
 }
 
+- (IBAction)leftPerviousSong:(id)sender {
+    
+    self.leftPlayPause.selected=NO;
+    
+    [self.leftSoundController perviousAudioFile];
+    
+}
 
 - (IBAction)rightBandPlay:(id)sender {
     
@@ -325,6 +332,13 @@
     
 }
 
+- (IBAction)rightPerviousSong:(id)sender {
+    
+    self.rightPlayPause.selected=NO;
+    
+    [self.rightSoundController perviousAudioFile];
+    
+}
 
 //name of band and segue to detail of band
 - (IBAction)leftBandName:(id)sender {

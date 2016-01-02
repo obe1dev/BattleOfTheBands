@@ -83,6 +83,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+//    UILabel *loading = [[UILabel alloc] initWithFrame:CGRectMake(60, 110 , 100, 25)];
+//    loading.text = @"Uploading..";
+//    loading.textColor= [UIColor whiteColor];
+    
+//    CGRectMake(self.view.frame.size.width/2 - 100, self.view.frame.size.height/2 - 75 - 130, 200, 150)
+    
+//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
+//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+//    spinner.backgroundColor = [UIColor colorWithWhite:.333 alpha:.98];
+//    [spinner centerXAnchor];
+//    spinner.center = self.view.center;
+    
+    //[spinner addSubview:loading];
+    //spinner.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    
+//    [spinner layer].cornerRadius = 8.0;
+//    [spinner layer].masksToBounds = YES;
+//    spinner.color = [UIColor redColor];
+//    spinner.hidesWhenStopped = YES;
+//    [tableView. addSubview:spinner];
+//    [spinner startAnimating];
+//
+    
     NSLog(@"Loading cell for row: %ld in section: %ld", (long)indexPath.row, (long)indexPath.section);
     
     Top10TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
@@ -90,6 +114,7 @@
     Profile *profile = [ProfileController sharedInstance].topTenBandProfiles[indexPath.row];
     
     cell.bandName.text = profile.name;
+    
     
     if (profile.bandImagePath) {
         
@@ -99,6 +124,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     cell.bandImage.image = [UIImage imageWithData:data];
+                
                 });
                 
             } else {

@@ -54,4 +54,10 @@
     
 }
 
+-(void)perviousAudioFile{
+    self.player.currentTime = 0;
+    
+    [self.player pause];
+}
+
 @end

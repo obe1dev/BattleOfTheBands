@@ -526,13 +526,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         }
     }
     
-    //    else if(!self.isBand){
-    //        if (indexPath.row == 0) {
-    //            return 85.0;
-    //        }
-    //
-    //    }
-    return 0.0;
+       return 0.0;
 }
 
 
@@ -747,6 +741,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         [self.soundController playAudioFile];
     }
     
+}
+
+-(void)perviousButton:(SongCell *)cell{
+    
+    cell.playPauseButton.selected=NO;
+    [self.soundController perviousAudioFile];
 }
 
 #pragma band photo

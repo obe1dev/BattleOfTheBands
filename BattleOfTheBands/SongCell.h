@@ -13,6 +13,7 @@
 @interface SongCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *playPauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *perviousButton;
 @property (weak, nonatomic) id<SongCellDelegate> delegate;
 
 @end
@@ -20,5 +21,7 @@
 @protocol SongCellDelegate <NSObject>
 
 -(void)playButtonTapped:(SongCell*)cell;
+
+-(void)perviousButton:(SongCell*)cell;
 
 @end

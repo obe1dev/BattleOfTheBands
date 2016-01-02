@@ -21,5 +21,6 @@
 
 - (void)playAudioFile;
 -(void)pauseAudioFile;
+-(void)perviousAudioFile;
 
 @end

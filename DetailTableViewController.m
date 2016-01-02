@@ -102,7 +102,7 @@
 //}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
+
     return 5;
 }
 
@@ -235,6 +235,12 @@
         [self.soundController playAudioFile];
     }
     
+}
+
+-(void)perviousButton:(SongCell *)cell{
+    
+    cell.playPauseButton.selected=NO;
+    [self.soundController perviousAudioFile];
 }
 
 /*

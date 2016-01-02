@@ -23,6 +23,11 @@
     [self.delegate playButtonTapped:self];
 }
 
+- (IBAction)perviousSong:(id)sender {
+    [self.delegate perviousButton:self];
+}
+
+
 @end
 
 
