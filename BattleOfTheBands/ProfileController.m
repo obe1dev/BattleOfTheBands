@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) Profile *currentProfile;
 @property (strong, nonatomic) NSArray *topTenBandProfiles;
+@property (strong, nonatomic) NSArray *searchProfiles;
 @property (strong, nonatomic) NSArray *randomBand;
 
 
@@ -241,6 +242,7 @@
             
         }
         NSArray *sortedBands = [topBandsMutable sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"vote" ascending:NO]]];
+        self.searchProfiles = sortedBands;
         if (sortedBands.count > 10) {
             sortedBands = [sortedBands subarrayWithRange:NSMakeRange(0, 10)];
         }

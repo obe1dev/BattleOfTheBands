@@ -924,7 +924,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 -(void)editButtonError{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tap Edit Button" message:@"Tap the edit button to begin editing your profile, and tab done when complete" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tap Edit Button" message:@"Tap the edit button to edit your profile, and tap done when complete" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     

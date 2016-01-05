@@ -24,6 +24,7 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 @property (strong, nonatomic, readonly) Profile *currentProfile;
 @property (strong, nonatomic, readonly) NSArray *topTenBandProfiles;
+@property (strong, nonatomic, readonly) NSArray *searchProfiles;
 @property (strong, nonatomic, readonly) NSArray *randomBand;
 @property (assign, nonatomic) BOOL needsToFillOutProfile;
 
