@@ -124,7 +124,7 @@
 //    }
     profile.vote = @(1 + [profile.vote intValue]);
     
-    //start here
+    
     [self saveProfile:profile];
     
 }

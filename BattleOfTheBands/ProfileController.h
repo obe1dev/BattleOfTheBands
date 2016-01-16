@@ -35,8 +35,6 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 + (ProfileController *)sharedInstance;
 
-//- (void)loadFromPersistentStorage;
-
 - (void)setCurrentUser:(NSDictionary *)dictionary;
 
 -(Profile *)createProfile:(NSString *)email uid:(NSString*)uID isband:(BOOL)isBand;

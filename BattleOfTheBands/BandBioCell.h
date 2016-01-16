@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bandBioLabel;
 
 @property (weak, nonatomic) id<BandBioCellDelegate> delegate;
+
 @end
 
 @protocol BandBioCellDelegate

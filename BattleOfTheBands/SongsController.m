@@ -38,7 +38,7 @@
     
     Songs *song = [Songs new];
     song.songName = songName;
-    song.songData = songData;
+    song.songData = [NSData dataWithContentsOfFile:songData];
     
     [self addSong:song];
     

@@ -26,6 +26,7 @@
     [super setSelected:selected animated:animated];
 }
 
+
 - (void)textViewDidChange:(UITextView *)textView {
     if (self.delegate) {
         [self.delegate bioChangedInCell:self];

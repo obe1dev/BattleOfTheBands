@@ -20,9 +20,6 @@
 
 @implementation LoginViewController
 
-#warning add dismiss keyboard with tap outside
-//TODO: add dismiss keyboard with tap outside
-
 + (LoginViewController *)sharedInstance {
     static LoginViewController *sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -34,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
         self.emailLogin.delegate = self;
    
@@ -62,6 +58,7 @@
     [ProfileController sharedInstance].isListener = YES;
     self.didSelectListen();
 }
+
 
 - (IBAction)loginButton:(id)sender {
     
@@ -118,15 +115,5 @@
     [self presentViewController:alertController animated:YES completion:nil];
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

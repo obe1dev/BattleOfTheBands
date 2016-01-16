@@ -24,7 +24,6 @@
     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
     expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            //TODO: Do something e.g. Update a progress bar.
             
             NSLog(@"%lld of %lld uploaded", totalBytesSent, totalBytesExpectedToSend);
         });
@@ -74,6 +73,15 @@
     }];
     
 }
+
++ (void) deleteImage:(NSString *)name dataPath:(NSString *)deletingDatapath completion:(DownloadDataBlock)block {
+    
+}
+
++ (void) deleteSong:(NSString *)name dataPath:(NSString *)deletingDatapath completion:(DownloadDataBlock)block {
+    
+}
+
 
 + (void)downloadImageWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block {
     [self downLoadData:@"battleofthebands-images" WithName:name dataPath:savingDataPath completion:block];
@@ -136,6 +144,14 @@
     
 }
 
++ (void) deleteData:(NSString *)bucketPath WithName:(NSString *)dataName dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block{
+    
+    AWSS3DeletedObject *deleteObject = [AWSS3DeletedObject new];
+    
+    
+    
+}
+
 + (void) uploadSong:(NSData *)song withName:(NSString *)name completion:(UploadDataBlock)block{
     
    // NSData *dataToUpload = [NSData dataWithContentsOfURL:[song valueForProperty:MPMediaItemPropertyAssetURL]];
@@ -144,9 +160,9 @@
     AWSS3TransferUtilityUploadExpression *expression = [AWSS3TransferUtilityUploadExpression new];
     expression.uploadProgress = ^(AWSS3TransferUtilityTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            //TODO: Do something e.g. Update a progress bar.
             
             NSLog(@"%lld of %lld uploaded", totalBytesSent, totalBytesExpectedToSend);
+            
         });
     };
     
@@ -182,7 +198,7 @@
         }
         if (task.result) {
             AWSS3TransferUtilityUploadTask *uploadTask = task.result;
-            //            [uploadTask resume];
+                        [uploadTask resume];
             
 //            NSLog(@"%@", uploadTask.aws_properties);
 //            block(YES);

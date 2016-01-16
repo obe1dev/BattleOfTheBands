@@ -39,6 +39,7 @@
     return YES;
 }
 
+
 - (IBAction)textChanged:(id)sender {
     if (self.delegate) {
         [self.delegate textChangedInCell:self];

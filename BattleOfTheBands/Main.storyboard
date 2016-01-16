@@ -1123,20 +1123,23 @@
                                             <rect key="frame" x="0.0" y="8" width="600" height="83.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCC-ld-EBl">
-                                            <rect key="frame" x="8" y="38" width="584" height="24"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <rect key="frame" x="0.0" y="54.5" width="600" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="AYs-ra-n9e"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <color key="textColor" white="0.1760366418" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="yCC-ld-EBl" firstAttribute="trailing" secondItem="lot-pp-u8Y" secondAttribute="trailingMargin" id="4HF-7B-Xcc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yCC-ld-EBl" secondAttribute="trailing" constant="-8" id="3mQ-TK-fSq"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="8Pn-WU-3Ol" secondAttribute="trailing" constant="-8" id="566-sa-pKj"/>
                                         <constraint firstItem="8Pn-WU-3Ol" firstAttribute="leading" secondItem="lot-pp-u8Y" secondAttribute="leadingMargin" constant="-8" id="DDb-Fo-1Xd"/>
                                         <constraint firstItem="8Pn-WU-3Ol" firstAttribute="top" secondItem="lot-pp-u8Y" secondAttribute="topMargin" id="LrQ-cZ-y17"/>
-                                        <constraint firstItem="yCC-ld-EBl" firstAttribute="leading" secondItem="lot-pp-u8Y" secondAttribute="leadingMargin" id="NpV-DL-2In"/>
                                         <constraint firstItem="yCC-ld-EBl" firstAttribute="centerX" secondItem="lot-pp-u8Y" secondAttribute="centerX" id="TLj-1J-cdc"/>
-                                        <constraint firstItem="yCC-ld-EBl" firstAttribute="centerY" secondItem="lot-pp-u8Y" secondAttribute="centerY" id="eva-2v-2p9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yCC-ld-EBl" secondAttribute="bottom" constant="-8" id="gKy-fz-CpO"/>
+                                        <constraint firstItem="yCC-ld-EBl" firstAttribute="leading" secondItem="lot-pp-u8Y" secondAttribute="leadingMargin" constant="-8" id="kNL-jz-d49"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="8Pn-WU-3Ol" secondAttribute="bottom" id="oB5-np-FW7"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1248,6 +1251,6 @@
         <image name="play-468292_1280" width="1280" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wMj-DI-6Uw"/>
+        <segue reference="ELZ-G9-Yeo"/>
     </inferredMetricsTieBreakers>
 </document>

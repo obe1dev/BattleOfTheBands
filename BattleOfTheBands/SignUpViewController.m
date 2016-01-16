@@ -48,7 +48,7 @@
 
 }
 
-//set listener in future
+// TODO: set listener in future
 //    [FireBaseController creatAccount:self.email.text password:self.password.text completion:^(bool success) {
 //        if (success) {
 //
@@ -68,7 +68,6 @@
         
         if (success) {
             
-            //TODO: ask parker why this isnt working
             //self.isProfile(success);
             [self performSegueWithIdentifier:@"signUpComplete" sender:nil];
             
@@ -83,7 +82,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     self.email.delegate = self;
     self.password.delegate = self;
     
@@ -104,9 +109,16 @@
     [self.password resignFirstResponder];
     return YES;
 }
+
+-(void)dismissKeyboard {
+    [self.email resignFirstResponder];
+    [self.password resignFirstResponder];
+}
+
 - (IBAction)backToLogIn:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
+
 
 #pragma alerts
 
@@ -186,14 +198,5 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

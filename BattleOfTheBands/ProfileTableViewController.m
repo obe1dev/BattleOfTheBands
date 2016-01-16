@@ -52,6 +52,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 @property (assign, nonatomic) BOOL failure;
 @property (assign, nonatomic) BOOL success;
+@property (assign, nonatomic) BOOL loggedOut;
 
 @property (nonatomic, strong) soundController *soundController;
 
@@ -69,11 +70,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     self.isBand = YES;
     
-   
+    self.loggedOut = NO;
     
     [self updateBandProfile];
-    
-    
 //this if for adding listeners
     
 //    Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
@@ -98,6 +97,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [self registerForNotifications];
 }
 
+
+
 -(void)viewDidAppear:(BOOL)animated{
     
     if ([ProfileController sharedInstance].isListener) {
@@ -112,16 +113,15 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    //TODO: this needs to be triggered. and add stop to the soundController
+    
     [self.soundController pauseAudioFile];
     
 }
-//TODO: setup a picker View for genres
+
 
 - (void)updateBandProfile {
     
     Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
-//    Songs *currentSong = [SongsController sharedInstance].currentSong;
     
     if (currentProfile) {
         self.name = currentProfile.name;
@@ -138,7 +138,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             }
         }];
 
-//
+
         [S3Manager downloadSongWithName:[NSString stringWithFormat:@"%@.m4a", currentProfile.uID] dataPath:currentProfile.uID completion:^(NSData *data) {
             if (data) {
                 self.song = data;
@@ -309,15 +309,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    if (self.isEditting == YES) {
-//        return 2;
-//    }else{
-//    return 1;
-//    }
-//}
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isEditting == YES) {
@@ -382,6 +373,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 cell.infoEntryTextField.text = self.name;
                 cell.delegate = self;
                 
+                
                 return cell;
             }
             case profileRowSong: {
@@ -420,7 +412,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             }
             
         
-#warning this is showing as the last cell in the table view.
             case ProfileRowReset: {
                 ResetPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResetPasswordCell" forIndexPath:indexPath];
                     cell.delegate = self;
@@ -561,21 +552,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         [self.tableView reloadData];
         
         MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
-     //   NSURL *URL = [item valueForProperty:MPMediaItemPropertyAssetURL];
         
         [self mediaItemToData:item];
-//        NSString *name = [item valueForKey:MPMediaItemPropertyTitle];
-//        NSData *data = [NSData dataWithContentsOfURL:URL];
-//        NSLog(@"%@", URL);
-        
-        //NSString *songKey = [ProfileController sharedInstance].currentProfile.uID;
 
-        //self.song = mediaItemCollection;
-//        [S3Manager uploadSong:item withName:songKey completion:^(BOOL success) {
-//            if (success) {
-//                // Save to firebase?
-//            }
-//        }];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -598,11 +577,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2 - 100, self.view.frame.size.height/2 - 75 - 130, 200, 150)];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     spinner.backgroundColor = [UIColor colorWithWhite:.333 alpha:.98];
-    //[spinner centerXAnchor];
-    //spinner.center = self.view.center;
     
     [spinner addSubview:loading];
-    //spinner.transform = CGAffineTransformMakeScale(1.0, 1.0);
     
     [spinner layer].cornerRadius = 8.0;
     [spinner layer].masksToBounds = YES;
@@ -814,7 +790,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         }
     }];
     
-    //TODO:save to server or firebase
   
 }
 
@@ -844,7 +819,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
             if (success) {
                 
             [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
-            
+                
+                self.loggedOut = YES;
+                
             
         } else {
             
@@ -887,12 +864,14 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
                 [self viewDidLoad];
                 
-                [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+                self.loggedOut = YES;
+//                [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
                 
             } else {
                 
                 [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
                 
+                self.loggedOut = NO;
             }
         }];
         
@@ -914,6 +893,10 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 -(void)ErrorWithAlert:(NSString *)alert message:(NSString *)message{
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alert message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    if (self.loggedOut) {
+        [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+    }
     
     UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     
@@ -945,11 +928,5 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
 }
 
-
-//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-//    [super setEditing:editing animated:NO];
-//
-//
-//}
 
 @end

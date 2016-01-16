@@ -45,8 +45,10 @@
 @property (strong, nonatomic) AVAudioPlayer *player;
 
 @property (assign, nonatomic) BOOL okToSkip;
-@property (assign, nonatomic) BOOL leftBandLoad;
-@property (assign, nonatomic) BOOL rightbandLoad;
+@property (assign, nonatomic) BOOL leftBandPhotoLoad;
+@property (assign, nonatomic) BOOL leftBandSongLoad;
+@property (assign, nonatomic) BOOL rightbandPhotoLoad;
+@property (assign, nonatomic) BOOL rightbandSongLoad;
 
 
 @end
@@ -86,7 +88,6 @@
     
     // LEFT BAND PROFILE
     
-    //self.leftBandName.titleLabel.text = [NSString stringWithString:profile1.name];
     [self.leftBandName setTitle:profile1.name forState:UIControlStateNormal];
     self.leftBandName.titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -100,6 +101,9 @@
                     
                     UIImage *profileImage = [UIImage imageWithData:data];
                     [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
+                    
+                    self.leftBandPhotoLoad = YES;
+                    
                 });
                 
             } else {
@@ -108,6 +112,9 @@
                     UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
                     [self.leftBandPlay setImage:profileImage forState:UIControlStateNormal];
                     //self.leftBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                    
+                    self.leftBandPhotoLoad = YES;
+                    
                 });
             }
         }
@@ -117,9 +124,13 @@
         if (data) {
             NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.leftProfile];
             [data writeToURL:songURL atomically:YES];
-            // TODO: Enable play button
+            
+            self.leftBandSongLoad = YES;
+            
         } else {
             // TODO: Alert the user?
+            self.leftBandSongLoad = YES;
+
         }
     }];
 
@@ -135,9 +146,11 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIImage *profileImage = [UIImage imageWithData:data];
                     [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
+                    
+                    self.rightbandPhotoLoad = YES;
+                    
                 });
                 
-                //self.rightBandPlay.imageView.image = [UIImage imageWithData:data];
                 
             } else {
                 
@@ -145,6 +158,8 @@
                     UIImage *profileImage = [UIImage imageNamed:@"anchorIcon"];
                     [self.rightBandPlay setImage:profileImage forState:UIControlStateNormal];
                     //self.rightBandPlay.imageView.image = [UIImage imageNamed:@"anchorIcon"];
+                    
+                    self.rightbandPhotoLoad = YES;
                 });
             }
         }
@@ -154,9 +169,12 @@
         if (data) {
             NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
             [data writeToURL:songURL atomically:YES];
-            // TODO: Enable play button
+            
+            self.rightbandSongLoad = YES;
+            
         } else {
             // TODO: Alert the user?
+            self.rightbandSongLoad = YES;
         }
     }];
 }
@@ -205,7 +223,6 @@
         }
     }
     
-#warning  signUp stuff
     if ([ProfileController sharedInstance].needsToFillOutProfile) {
         [self.tabBarController setSelectedIndex:2];
     };
@@ -239,6 +256,7 @@
 
 //change to the next battle
 - (IBAction)next:(id)sender {
+
     
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
@@ -253,6 +271,7 @@
     
     self.rightSoundController = nil;
     self.leftSoundController = nil;
+    
     
 }
 
@@ -297,7 +316,6 @@
 - (IBAction)rightBandPlay:(id)sender {
     
     NSURL *songURL = [[ProfileController sharedInstance] songURLForProfile:self.rightPrfile];
-    //    [self.soundController playAudioFileAtURL:songURL];
     
     if (!self.rightSoundController) {
         

@@ -35,17 +35,16 @@
     // Uncomment the following line to preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [[ProfileController sharedInstance] loadTopTenBandProfiles];
     
-    
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     searchController.searchResultsUpdater = self;
     searchController.searchBar.delegate = self;
     searchController.dimsBackgroundDuringPresentation = NO;
+    searchController.obscuresBackgroundDuringPresentation = NO;
+    
     
     [searchController.searchBar sizeToFit];
     
@@ -95,11 +94,6 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     NSLog(@"Displaying profiles: %@", @([ProfileController sharedInstance].topTenBandProfiles.count));
@@ -110,29 +104,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    UILabel *loading = [[UILabel alloc] initWithFrame:CGRectMake(60, 110 , 100, 25)];
-//    loading.text = @"Uploading..";
-//    loading.textColor= [UIColor whiteColor];
-    
-//    CGRectMake(self.view.frame.size.width/2 - 100, self.view.frame.size.height/2 - 75 - 130, 200, 150)
-    
-//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
-//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-//    spinner.backgroundColor = [UIColor colorWithWhite:.333 alpha:.98];
-//    [spinner centerXAnchor];
-//    spinner.center = self.view.center;
-    
-    //[spinner addSubview:loading];
-    //spinner.transform = CGAffineTransformMakeScale(1.0, 1.0);
-    
-//    [spinner layer].cornerRadius = 8.0;
-//    [spinner layer].masksToBounds = YES;
-//    spinner.color = [UIColor redColor];
-//    spinner.hidesWhenStopped = YES;
-//    [tableView. addSubview:spinner];
-//    [spinner startAnimating];
-//
     
     NSLog(@"Loading cell for row: %ld in section: %ld", (long)indexPath.row, (long)indexPath.section);
     
@@ -142,11 +113,12 @@
     Profile *profile = self.displayedItems[indexPath.row];
     
     cell.bandName.text = profile.name;
+    cell.bandName.backgroundColor = [UIColor colorWithRed:12/255.0 green:12/255.0 blue:12/255.0 alpha:.7];
+    cell.bandName.textColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:.9];
     
     
     if (profile.bandImagePath) {
         
-        // TODO: come back to this
         [S3Manager downloadImageWithName:profile.uID dataPath:profile.bandImagePath completion:^(NSData *data) {
             if (data) {
                 
@@ -196,6 +168,7 @@
     [self.tableView reloadData];
     
 }
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -230,14 +203,5 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
