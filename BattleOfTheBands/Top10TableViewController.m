@@ -15,11 +15,11 @@
 
 
 
-@interface Top10TableViewController () <UISearchResultsUpdating,UISearchBarDelegate,UISearchControllerDelegate>
+@interface Top10TableViewController () <UISearchResultsUpdating>
 
 @property (nonatomic, strong) NSMutableArray * filteredItems;
 @property (nonatomic, weak) NSArray * displayedItems;
-
+@property (nonatomic, strong) UISearchController *searchController;
 
 @end
 
@@ -39,26 +39,20 @@
     
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
-#warning search is not working updateSearchResultsForSearchController: is not being called or updating the tableView
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.definesPresentationContext = YES;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.obscuresBackgroundDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
     
-    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    searchController.searchResultsUpdater = self;
-    searchController.searchBar.delegate = self;
-    searchController.dimsBackgroundDuringPresentation = NO;
-    searchController.obscuresBackgroundDuringPresentation = NO;
-    
-    //searchController.delegate = self;
-    [searchController becomeFirstResponder];
-    
-    [searchController.searchBar sizeToFit];
-    
-    searchController.definesPresentationContext =YES;
+    [self.searchController.searchBar sizeToFit];
     
     // Add the UISearchBar to the top header of the table view
-    self.tableView.tableHeaderView = searchController.searchBar;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
     
     // Hides search bar initially.  When the user pulls down on the list, the search bar is revealed.
-    [self.tableView setContentOffset:CGPointMake(0, searchController.searchBar.frame.size.height)];
+    [self.tableView setContentOffset:CGPointMake(0, self.searchController.searchBar.frame.size.height)];
     
     [self registerForNotifications];
     
@@ -149,6 +143,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 200;
 }
+
+#warning this is not pulling the right data and crashes
 
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
     
