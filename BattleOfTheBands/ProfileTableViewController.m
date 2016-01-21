@@ -21,6 +21,7 @@
 #import "S3Manager.h"
 #import "SongCell.h"
 #import "soundController.h"
+#import "SignUpViewController.h"
 
 
 typedef NS_ENUM(NSUInteger, ProfileRow) {
@@ -52,7 +53,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
 @property (assign, nonatomic) BOOL failure;
 @property (assign, nonatomic) BOOL success;
-@property (assign, nonatomic) BOOL loggedOut;
+//@property (assign, nonatomic) BOOL loggedOut;
 
 @property (nonatomic, strong) soundController *soundController;
 
@@ -70,7 +71,8 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     self.isBand = YES;
     
-    self.loggedOut = NO;
+    [ProfileController sharedInstance].loggedOut = NO;
+    //self.loggedOut = NO;
     
     [self updateBandProfile];
 //this if for adding listeners
@@ -818,12 +820,19 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
            
             if (success) {
                 
-            [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
                 
-                self.loggedOut = YES;
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+//            [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+                
+                [ProfileController sharedInstance].loggedOut = YES;
+                //self.loggedOut = YES;
                 
             
         } else {
+            
+            [ProfileController sharedInstance].loggedOut = NO;
+            //self.loggedOut = NO;
             
             [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
         }
@@ -837,12 +846,13 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     [alertController addAction:cancelAction];
     
     [alertController addAction:resetPassword];
+    
     [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
 -(void)deleteProfileButtonTapped{
-#warning it does not delete the users data from firebase.
+#warning it does not delete the users song form awss3.
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Account" message:@"Enter Your email and password to delete your account" preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
@@ -861,17 +871,33 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
         [FireBaseController deleteProfile:email password:password completion:^(bool success) {
             if (success) {
                 
-                [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
-                [self viewDidLoad];
+//                [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+                //[self viewDidLoad];
                 
-                self.loggedOut = YES;
+                
+                Profile *currentProfile = [ProfileController sharedInstance].currentProfile;
+                
+                
+                //this will delete the data from the profile
+                [[FireBaseController bandProfile:currentProfile] removeValue];
+                
+                [S3Manager deleteImage:[ProfileController sharedInstance].currentProfile.uID completion:nil];
+#warning song is not deleting but image will
+#warning  app crashes after deleting profile
+                [S3Manager deleteSong:[ProfileController sharedInstance].currentProfile.uID completion:nil];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+                [ProfileController sharedInstance].loggedOut = YES;
+
 //                [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
                 
             } else {
                 
                 [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
                 
-                self.loggedOut = NO;
+                [ProfileController sharedInstance].loggedOut = NO;
+//                self.loggedOut = NO;
             }
         }];
         
@@ -894,7 +920,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alert message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    if (self.loggedOut) {
+    if ([ProfileController sharedInstance].loggedOut) {
         [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
     }
     

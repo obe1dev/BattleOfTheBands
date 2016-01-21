@@ -39,12 +39,16 @@
     
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
+#warning search is not working updateSearchResultsForSearchController: is not being called or updating the tableView
+    
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     searchController.searchResultsUpdater = self;
     searchController.searchBar.delegate = self;
     searchController.dimsBackgroundDuringPresentation = NO;
     searchController.obscuresBackgroundDuringPresentation = NO;
     
+    //searchController.delegate = self;
+    [searchController becomeFirstResponder];
     
     [searchController.searchBar sizeToFit];
     
@@ -149,9 +153,11 @@
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
     
     NSString *searchString = searchController.searchBar.text;
+    
     NSLog(@"searchString=%@", searchString);
     
     // Check if the user cancelled or deleted the search term so we can display the full list instead.
+    
     if (![searchString isEqualToString:@""]) {
         [self.filteredItems removeAllObjects];
         for (NSString *str in [ProfileController sharedInstance].searchProfiles) {
@@ -163,8 +169,11 @@
         self.displayedItems = self.filteredItems;
     }
     else {
+        
         self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
+        
     }
+    
     [self.tableView reloadData];
     
 }

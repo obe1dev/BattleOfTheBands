@@ -257,6 +257,7 @@
 //change to the next battle
 - (IBAction)next:(id)sender {
 
+#warning if  next button pressed repeatedly before band info loads, it will play the the previously loaded image and song.
     
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
@@ -266,8 +267,8 @@
     [self.leftbandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     [self.rightBandCheckBox setImage:self.incompleteImage forState:UIControlStateNormal];
     
-    self.leftPlayPause.selected=NO;
-    self.rightPlayPause.selected=NO;
+    self.leftPlayPause.selected = NO;
+    self.rightPlayPause.selected = NO;
     
     self.rightSoundController = nil;
     self.leftSoundController = nil;
@@ -404,7 +405,9 @@
 - (IBAction)vote:(id)sender {
     
     if (self.selectedProfile) {
+        
         [[ProfileController sharedInstance] updateVoteForProfile:self.selectedProfile];
+        
     }
     
     
@@ -424,6 +427,7 @@
 }
 
 //segues to detail view
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"rightButtonSegue"]) {
         

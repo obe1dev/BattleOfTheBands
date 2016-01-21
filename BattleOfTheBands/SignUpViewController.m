@@ -97,6 +97,12 @@
 - (void)viewDidAppear:(BOOL)animated{
     self.email.text = nil;
     self.password.text = nil;
+    if ([ProfileController sharedInstance].loggedOut) {
+        
+        [self ErrorWithAlert:[ProfileController sharedInstance].loginAlert message:[ProfileController sharedInstance].loginMessage];
+        [ProfileController sharedInstance].loggedOut = NO;
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -74,12 +74,13 @@
     
 }
 
-+ (void) deleteImage:(NSString *)name dataPath:(NSString *)deletingDatapath completion:(DownloadDataBlock)block {
-    
++ (void) deleteImage:(NSString *)name completion:(DownloadDataBlock)block {
+    [self deleteData:@"battleofthebands-images" WithName:name completion:block];
 }
 
-+ (void) deleteSong:(NSString *)name dataPath:(NSString *)deletingDatapath completion:(DownloadDataBlock)block {
-    
++ (void) deleteSong:(NSString *)name completion:(DownloadDataBlock)block {
+    [self deleteData:@"battleofthebands-songs" WithName:name completion:block];
+
 }
 
 
@@ -144,10 +145,28 @@
     
 }
 
-+ (void) deleteData:(NSString *)bucketPath WithName:(NSString *)dataName dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block{
++ (void) deleteData:(NSString *)bucketPath WithName:(NSString *)dataName completion:(DownloadDataBlock)block{
     
-    AWSS3DeletedObject *deleteObject = [AWSS3DeletedObject new];
+    AWSS3 *s3 = [AWSS3 defaultS3];
+    AWSS3DeleteObjectRequest *deleteRequest = [AWSS3DeleteObjectRequest new];
     
+    // Construct the NSURL for the download location.
+//    NSString *downloadingFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:deletingDataPath];
+//    NSURL *downloadingFileURL = [NSURL fileURLWithPath:downloadingFilePath];
+    deleteRequest.bucket = bucketPath;
+    deleteRequest.key = dataName;
+//    deleteRequest.downloadingFileURL = downloadingFileURL;
+    
+    [[[s3 deleteObject:deleteRequest] continueWithBlock:^id(AWSTask *task) {
+        if(task.error != nil){
+            if(task.error.code != AWSS3TransferManagerErrorCancelled && task.error.code != AWSS3TransferManagerErrorPaused){
+                NSLog(@"%s Error: [%@]",__PRETTY_FUNCTION__, task.error);
+            }
+        }else{
+            // Completed logic here
+        }
+        return nil;
+    }] waitUntilFinished];
     
     
 }

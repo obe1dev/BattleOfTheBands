@@ -13,4 +13,6 @@
 @property (nonatomic, copy) void (^didSelectListen)();
 @property (nonatomic, copy) void (^isProfile)(BOOL success);
 
+-(void)ErrorWithAlert:(NSString *)alert message:(NSString *)message;
+
 @end

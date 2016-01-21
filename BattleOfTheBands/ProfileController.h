@@ -32,6 +32,7 @@ static NSString *randomBandProfileLoadedNotification = @"randomBandLoaded";
 
 //change if needed
 @property (assign, nonatomic) BOOL isBand;
+@property (assign, nonatomic) BOOL loggedOut;
 
 + (ProfileController *)sharedInstance;
 

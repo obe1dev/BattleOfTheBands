@@ -25,4 +25,8 @@ typedef void (^UploadDataBlock)(BOOL success);
 
 + (void)downloadSongWithName:(NSString *)name dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block;
 
++ (void) deleteImage:(NSString *)name completion:(DownloadDataBlock)block;
+
++ (void) deleteSong:(NSString *)name completion:(DownloadDataBlock)block;
+
 @end
