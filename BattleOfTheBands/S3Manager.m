@@ -150,12 +150,12 @@
     AWSS3 *s3 = [AWSS3 defaultS3];
     AWSS3DeleteObjectRequest *deleteRequest = [AWSS3DeleteObjectRequest new];
     
-    // Construct the NSURL for the download location.
-//    NSString *downloadingFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:deletingDataPath];
-//    NSURL *downloadingFileURL = [NSURL fileURLWithPath:downloadingFilePath];
+    // Construct the NSURL for the delete location.
+//    NSString *deleteFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:deletingDataPath];
+//    NSURL *deleteFileURL = [NSURL fileURLWithPath:deleteFilePath];
     deleteRequest.bucket = bucketPath;
     deleteRequest.key = dataName;
-//    deleteRequest.downloadingFileURL = downloadingFileURL;
+//    deleteRequest.deleteFileURL = deleteFileURL;
     
     [[[s3 deleteObject:deleteRequest] continueWithBlock:^id(AWSTask *task) {
         if(task.error != nil){
@@ -164,6 +164,11 @@
             }
         }else{
             // Completed logic here
+            if (task.result) {
+                
+                NSLog(@"deleting %@ is complete!", dataName);
+                
+            }
         }
         return nil;
     }] waitUntilFinished];

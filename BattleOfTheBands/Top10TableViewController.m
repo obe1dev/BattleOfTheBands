@@ -146,32 +146,94 @@
 
 #warning this is not pulling the right data and crashes
 
--(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+//-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+//    
+//    NSString *searchString = searchController.searchBar.text;
+//    
+//    NSLog(@"searchString=%@", searchString);
+//    
+//    // Check if the user cancelled or deleted the search term so we can display the full list instead.
+//    
+//    NSMutableArray *searchResults = [[ProfileController sharedInstance].searchProfiles mutableCopy];
+//    
+//    //[searchString isEqualToString:@""] || searchString
+//    
+//    if (![searchString isEqualToString:@""]) {
+//        [self.filteredItems removeAllObjects];
+//        
+//        
+//        for (NSString *str in searchResults) {
+////crashes on this line vvvvv
+//            if ([str localizedCaseInsensitiveContainsString:searchString] == YES) {
+//                NSLog(@"str=%@", str);
+//                [self.filteredItems addObject:str];
+//            }
+//        }
+//        self.displayedItems = self.filteredItems;
+//    }
+//    else {
+//        
+//        self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
+//        
+//    }
+//    
+//    [self.tableView reloadData];
+//    
+//}
+
+#warning this is a different attempt to accessing the search data
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    // update the filtered array based on the search text
+    NSString *searchText = searchController.searchBar.text;
+    NSMutableArray *searchResults = [[ProfileController sharedInstance].searchProfiles mutableCopy];
     
-    NSString *searchString = searchController.searchBar.text;
+    NSLog(@"search text = %@", searchText);
     
-    NSLog(@"searchString=%@", searchString);
+    // strip out all the leading and trailing spaces
+    NSString *strippedString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    // Check if the user cancelled or deleted the search term so we can display the full list instead.
+    NSLog(@"strippedString = %@", strippedString);
     
-    if (![searchString isEqualToString:@""]) {
-        [self.filteredItems removeAllObjects];
-        for (NSString *str in [ProfileController sharedInstance].searchProfiles) {
-            if ([searchString isEqualToString:@""] || [str localizedCaseInsensitiveContainsString:searchString] == YES) {
-                NSLog(@"str=%@", str);
-                [self.filteredItems addObject:str];
-            }
+    // break up the search terms (separated by spaces)
+    NSArray *searchItems = nil;
+    if (strippedString.length > 0) {
+        searchItems = [strippedString componentsSeparatedByString:@" "];
+    }
+    
+    NSMutableArray *andMatchPredicates = [NSMutableArray array];
+    
+    if (![searchText isEqualToString:@""]) {
+        
+        for (NSString *searchString in searchItems) {
+            NSMutableArray *searchItemsPredicate = [NSMutableArray array];
+            
+            // Below we use NSExpression represent expressions in our predicates.
+            // NSPredicate is made up of smaller, atomic parts: two NSExpressions (a left-hand value and a right-hand value)
+            
+            // name field matching
+            NSExpression *lhs = [NSExpression expressionForKeyPath:@"nameKey"];
+            NSExpression *rhs = [NSExpression expressionForConstantValue:searchString];
+            NSPredicate *finalPredicate = [NSComparisonPredicate
+                                           predicateWithLeftExpression:lhs
+                                           rightExpression:rhs
+                                           modifier:NSDirectPredicateModifier
+                                           type:NSContainsPredicateOperatorType
+                                           options:NSCaseInsensitivePredicateOption];
+            [searchItemsPredicate addObject:finalPredicate];
         }
-        self.displayedItems = self.filteredItems;
-    }
-    else {
         
+        NSCompoundPredicate *finalCompoundPredicate =
+        [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
+        searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
+        
+        // hand over the filtered results to our search results table
+        //APLResultsTableController *tableController = (APLResultsTableController *)self.searchController.searchResultsController;
+        self.displayedItems = searchResults;
+    } else {
         self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
-        
     }
-    
     [self.tableView reloadData];
-    
 }
 
 /*

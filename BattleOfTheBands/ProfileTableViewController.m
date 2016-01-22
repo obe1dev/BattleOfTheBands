@@ -886,11 +886,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 #warning  app crashes after deleting profile
                 [S3Manager deleteSong:[ProfileController sharedInstance].currentProfile.uID completion:nil];
                 
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
                 [ProfileController sharedInstance].loggedOut = YES;
-
-//                [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+                
+//                [self dismissViewControllerAnimated:YES completion:nil];
                 
             } else {
                 
@@ -900,6 +898,12 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 //                self.loggedOut = NO;
             }
         }];
+        
+        if ([ProfileController sharedInstance].loggedOut == YES) {
+            
+            [self.tabBarController performSegueWithIdentifier:@"notLoggedIn" sender:nil];
+            
+        }
         
     }];
     
