@@ -355,7 +355,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 
                 if (self.success) {
 
-                    [self ErrorWithAlert:@"Success" message:@"You have successfully loaded your song!"];
+                    [self ErrorWithAlert:@"Success" message:@"You have successfully loaded your song! It might take a moment to play your song."];
                     self.success = NO;
 
                 }
@@ -852,7 +852,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 }
 
 -(void)deleteProfileButtonTapped{
-#warning it does not delete the users song form awss3.
+#warning  app crashes after deleting profile
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Account" message:@"Enter Your email and password to delete your account" preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
@@ -882,8 +882,6 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
                 [[FireBaseController bandProfile:currentProfile] removeValue];
                 
                 [S3Manager deleteImage:[ProfileController sharedInstance].currentProfile.uID completion:nil];
-#warning song is not deleting but image will
-#warning  app crashes after deleting profile
                 [S3Manager deleteSong:[ProfileController sharedInstance].currentProfile.uID completion:nil];
                 
                 [ProfileController sharedInstance].loggedOut = YES;

@@ -79,6 +79,9 @@
 }
 
 + (void) deleteSong:(NSString *)name completion:(DownloadDataBlock)block {
+    
+    name = [NSString stringWithFormat:@"%@.m4a",name];
+    
     [self deleteData:@"battleofthebands-songs" WithName:name completion:block];
 
 }
