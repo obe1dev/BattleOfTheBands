@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h> 
 
-
 @interface Profile : NSObject
 
 //do i need to add uid and passwords
@@ -25,7 +24,7 @@
 @property (strong,nonatomic) NSString *bioOfBand;
 @property (strong,nonatomic) NSString *bandWebsite;
 @property (strong,nonatomic) NSString *songs;
-@property (strong,nonatomic) NSArray *likes;
+@property (strong,nonatomic) NSArray  *likes;
 @property (strong,nonatomic) NSString *genre;
 
 

@@ -15,11 +15,12 @@
 
 
 
-@interface Top10TableViewController () <UISearchResultsUpdating>
+@interface Top10TableViewController () <UISearchResultsUpdating, UISearchControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray * filteredItems;
 @property (nonatomic, weak) NSArray * displayedItems;
 @property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
 
 @end
 
@@ -35,7 +36,11 @@
     // Uncomment the following line to preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
     
+    if (self.searchResults == nil) {
+        
     [[ProfileController sharedInstance] loadTopTenBandProfiles];
+    
+    }
     
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     
@@ -45,6 +50,7 @@
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.obscuresBackgroundDuringPresentation = NO;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
     
     [self.searchController.searchBar sizeToFit];
     
@@ -63,6 +69,7 @@
 }
 
 - (void)showUpdatedProfiles {
+    
     
     self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
 
@@ -144,6 +151,7 @@
     return 200;
 }
 
+
 #warning search is not workding
 
 //-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
@@ -163,7 +171,7 @@
 //        
 //        
 //        for (NSString *str in searchResults) {
-////crashes on this line vvvvv
+//            //crashes on this line vvvvv
 //            if ([str localizedCaseInsensitiveContainsString:searchString] == YES) {
 //                NSLog(@"str=%@", str);
 //                [self.filteredItems addObject:str];
@@ -186,7 +194,9 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     // update the filtered array based on the search text
     NSString *searchText = searchController.searchBar.text;
-    NSMutableArray *searchResults = [[ProfileController sharedInstance].searchProfiles mutableCopy];
+    
+    // Everything that can be searched
+    self.searchResults = [[ProfileController sharedInstance].searchProfiles mutableCopy];
     
     NSLog(@"search text = %@", searchText);
     
@@ -196,23 +206,22 @@
     NSLog(@"strippedString = %@", strippedString);
     
     // break up the search terms (separated by spaces)
-    NSArray *searchItems = nil;
+    NSArray *searchItems = [NSArray new];
     if (strippedString.length > 0) {
         searchItems = [strippedString componentsSeparatedByString:@" "];
     }
     
-    NSMutableArray *andMatchPredicates = [NSMutableArray array];
-    
     if (![searchText isEqualToString:@""]) {
         
+        NSMutableArray *searchItemsPredicate = [NSMutableArray array];
+
         for (NSString *searchString in searchItems) {
-            NSMutableArray *searchItemsPredicate = [NSMutableArray array];
             
             // Below we use NSExpression represent expressions in our predicates.
             // NSPredicate is made up of smaller, atomic parts: two NSExpressions (a left-hand value and a right-hand value)
             
             // name field matching
-            NSExpression *lhs = [NSExpression expressionForKeyPath:@"nameKey"];
+            NSExpression *lhs = [NSExpression expressionForKeyPath:@"name"];
             NSExpression *rhs = [NSExpression expressionForConstantValue:searchString];
             NSPredicate *finalPredicate = [NSComparisonPredicate
                                            predicateWithLeftExpression:lhs
@@ -223,13 +232,12 @@
             [searchItemsPredicate addObject:finalPredicate];
         }
         
-        NSCompoundPredicate *finalCompoundPredicate =
-        [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
-        searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
+        NSCompoundPredicate *finalCompoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:searchItemsPredicate];
+        self.searchResults = [[self.searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
         
         // hand over the filtered results to our search results table
         //APLResultsTableController *tableController = (APLResultsTableController *)self.searchController.searchResultsController;
-        self.displayedItems = searchResults;
+        self.displayedItems = self.searchResults;
     } else {
         self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
     }
