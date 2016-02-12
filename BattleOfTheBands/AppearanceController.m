@@ -47,7 +47,6 @@
     [[UINavigationBar appearance] setTintColor:textColor];
     
     
-    
     //viewcontroller
     //[[UIView appearance] setTintColor:viewColor];
     

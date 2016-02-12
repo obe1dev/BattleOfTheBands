@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4798D5531BD9BF1F00B29346"
-               BuildableName = "BattleOfTheBands.app"
-               BlueprintName = "BattleOfTheBands"
-               ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+               BuildableName = "BOTB.app"
+               BlueprintName = "BOTB"
+               ReferencedContainer = "container:BOTB.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4798D56C1BD9BF1F00B29346"
-               BuildableName = "BattleOfTheBandsTests.xctest"
-               BlueprintName = "BattleOfTheBandsTests"
-               ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+               BuildableName = "BOTB.xctest"
+               BlueprintName = "BOTBTests"
+               ReferencedContainer = "container:BOTB.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4798D5771BD9BF1F00B29346"
-               BuildableName = "BattleOfTheBandsUITests.xctest"
-               BlueprintName = "BattleOfTheBandsUITests"
-               ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+               BuildableName = "BOTB.xctest"
+               BlueprintName = "BOTBUITests"
+               ReferencedContainer = "container:BOTB.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4798D5531BD9BF1F00B29346"
-            BuildableName = "BattleOfTheBands.app"
-            BlueprintName = "BattleOfTheBands"
-            ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+            BuildableName = "BOTB.app"
+            BlueprintName = "BOTB"
+            ReferencedContainer = "container:BOTB.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4798D5531BD9BF1F00B29346"
-            BuildableName = "BattleOfTheBands.app"
-            BlueprintName = "BattleOfTheBands"
-            ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+            BuildableName = "BOTB.app"
+            BlueprintName = "BOTB"
+            ReferencedContainer = "container:BOTB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4798D5531BD9BF1F00B29346"
-            BuildableName = "BattleOfTheBands.app"
-            BlueprintName = "BattleOfTheBands"
-            ReferencedContainer = "container:BattleOfTheBands.xcodeproj">
+            BuildableName = "BOTB.app"
+            BlueprintName = "BOTB"
+            ReferencedContainer = "container:BOTB.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

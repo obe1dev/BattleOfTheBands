@@ -106,16 +106,16 @@
 		47889B661BF7A1E700D55AFF /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		47889B681BF7A29300D55AFF /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		47889B691BF7A29300D55AFF /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
-		4798D5541BD9BF1F00B29346 /* BattleOfTheBands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleOfTheBands.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4798D5541BD9BF1F00B29346 /* BOTB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D5581BD9BF1F00B29346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4798D55A1BD9BF1F00B29346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4798D55B1BD9BF1F00B29346 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4798D5631BD9BF1F00B29346 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4798D5681BD9BF1F00B29346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4798D56D1BD9BF1F00B29346 /* BattleOfTheBandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleOfTheBandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4798D56D1BD9BF1F00B29346 /* BOTB.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOTB.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D5711BD9BF1F00B29346 /* BattleOfTheBandsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BattleOfTheBandsTests.m; sourceTree = "<group>"; };
 		4798D5731BD9BF1F00B29346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4798D5781BD9BF1F00B29346 /* BattleOfTheBandsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleOfTheBandsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4798D5781BD9BF1F00B29346 /* BOTB.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOTB.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D57C1BD9BF1F00B29346 /* BattleOfTheBandsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BattleOfTheBandsUITests.m; sourceTree = "<group>"; };
 		4798D57E1BD9BF2000B29346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4798D58E1BD9BF2D00B29346 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
@@ -246,9 +246,9 @@
 		4798D5551BD9BF1F00B29346 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4798D5541BD9BF1F00B29346 /* BattleOfTheBands.app */,
-				4798D56D1BD9BF1F00B29346 /* BattleOfTheBandsTests.xctest */,
-				4798D5781BD9BF1F00B29346 /* BattleOfTheBandsUITests.xctest */,
+				4798D5541BD9BF1F00B29346 /* BOTB.app */,
+				4798D56D1BD9BF1F00B29346 /* BOTB.xctest */,
+				4798D5781BD9BF1F00B29346 /* BOTB.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,9 +388,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4798D5531BD9BF1F00B29346 /* BattleOfTheBands */ = {
+		4798D5531BD9BF1F00B29346 /* BOTB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4798D5811BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBands" */;
+			buildConfigurationList = 4798D5811BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTB" */;
 			buildPhases = (
 				4798D5501BD9BF1F00B29346 /* Sources */,
 				4798D5511BD9BF1F00B29346 /* Frameworks */,
@@ -400,14 +400,14 @@
 			);
 			dependencies = (
 			);
-			name = BattleOfTheBands;
+			name = BOTB;
 			productName = BattleOfTheBands;
-			productReference = 4798D5541BD9BF1F00B29346 /* BattleOfTheBands.app */;
+			productReference = 4798D5541BD9BF1F00B29346 /* BOTB.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4798D56C1BD9BF1F00B29346 /* BattleOfTheBandsTests */ = {
+		4798D56C1BD9BF1F00B29346 /* BOTBTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4798D5841BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsTests" */;
+			buildConfigurationList = 4798D5841BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTBTests" */;
 			buildPhases = (
 				4798D5691BD9BF1F00B29346 /* Sources */,
 				4798D56A1BD9BF1F00B29346 /* Frameworks */,
@@ -418,14 +418,14 @@
 			dependencies = (
 				4798D56F1BD9BF1F00B29346 /* PBXTargetDependency */,
 			);
-			name = BattleOfTheBandsTests;
+			name = BOTBTests;
 			productName = BattleOfTheBandsTests;
-			productReference = 4798D56D1BD9BF1F00B29346 /* BattleOfTheBandsTests.xctest */;
+			productReference = 4798D56D1BD9BF1F00B29346 /* BOTB.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4798D5771BD9BF1F00B29346 /* BattleOfTheBandsUITests */ = {
+		4798D5771BD9BF1F00B29346 /* BOTBUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4798D5871BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsUITests" */;
+			buildConfigurationList = 4798D5871BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTBUITests" */;
 			buildPhases = (
 				4798D5741BD9BF1F00B29346 /* Sources */,
 				4798D5751BD9BF1F00B29346 /* Frameworks */,
@@ -436,9 +436,9 @@
 			dependencies = (
 				4798D57A1BD9BF1F00B29346 /* PBXTargetDependency */,
 			);
-			name = BattleOfTheBandsUITests;
+			name = BOTBUITests;
 			productName = BattleOfTheBandsUITests;
-			productReference = 4798D5781BD9BF1F00B29346 /* BattleOfTheBandsUITests.xctest */;
+			productReference = 4798D5781BD9BF1F00B29346 /* BOTB.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -469,7 +469,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4798D54F1BD9BF1F00B29346 /* Build configuration list for PBXProject "BattleOfTheBands" */;
+			buildConfigurationList = 4798D54F1BD9BF1F00B29346 /* Build configuration list for PBXProject "BOTB" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -482,9 +482,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4798D5531BD9BF1F00B29346 /* BattleOfTheBands */,
-				4798D56C1BD9BF1F00B29346 /* BattleOfTheBandsTests */,
-				4798D5771BD9BF1F00B29346 /* BattleOfTheBandsUITests */,
+				4798D5531BD9BF1F00B29346 /* BOTB */,
+				4798D56C1BD9BF1F00B29346 /* BOTBTests */,
+				4798D5771BD9BF1F00B29346 /* BOTBUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -577,12 +577,12 @@
 /* Begin PBXTargetDependency section */
 		4798D56F1BD9BF1F00B29346 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4798D5531BD9BF1F00B29346 /* BattleOfTheBands */;
+			target = 4798D5531BD9BF1F00B29346 /* BOTB */;
 			targetProxy = 4798D56E1BD9BF1F00B29346 /* PBXContainerItemProxy */;
 		};
 		4798D57A1BD9BF1F00B29346 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4798D5531BD9BF1F00B29346 /* BattleOfTheBands */;
+			target = 4798D5531BD9BF1F00B29346 /* BOTB */;
 			targetProxy = 4798D5791BD9BF1F00B29346 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -684,7 +684,7 @@
 				INFOPLIST_FILE = BattleOfTheBands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBands;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BOTB;
 			};
 			name = Debug;
 		};
@@ -702,7 +702,7 @@
 				INFOPLIST_FILE = BattleOfTheBands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBands;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BOTB;
 			};
 			name = Release;
 		};
@@ -713,8 +713,8 @@
 				INFOPLIST_FILE = BattleOfTheBandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBandsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BattleOfTheBands.app/BattleOfTheBands";
+				PRODUCT_NAME = BOTB;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BOTB.app/BOTB";
 			};
 			name = Debug;
 		};
@@ -725,8 +725,8 @@
 				INFOPLIST_FILE = BattleOfTheBandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBandsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BattleOfTheBands.app/BattleOfTheBands";
+				PRODUCT_NAME = BOTB;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BOTB.app/BOTB";
 			};
 			name = Release;
 		};
@@ -736,7 +736,7 @@
 				INFOPLIST_FILE = BattleOfTheBandsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBandsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BOTB;
 				TEST_TARGET_NAME = BattleOfTheBands;
 				USES_XCTRUNNER = YES;
 			};
@@ -748,7 +748,7 @@
 				INFOPLIST_FILE = BattleOfTheBandsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBandsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BOTB;
 				TEST_TARGET_NAME = BattleOfTheBands;
 				USES_XCTRUNNER = YES;
 			};
@@ -757,7 +757,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4798D54F1BD9BF1F00B29346 /* Build configuration list for PBXProject "BattleOfTheBands" */ = {
+		4798D54F1BD9BF1F00B29346 /* Build configuration list for PBXProject "BOTB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4798D57F1BD9BF2000B29346 /* Debug */,
@@ -766,7 +766,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4798D5811BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBands" */ = {
+		4798D5811BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4798D5821BD9BF2000B29346 /* Debug */,
@@ -775,7 +775,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4798D5841BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsTests" */ = {
+		4798D5841BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTBTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4798D5851BD9BF2000B29346 /* Debug */,
@@ -784,7 +784,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4798D5871BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BattleOfTheBandsUITests" */ = {
+		4798D5871BD9BF2000B29346 /* Build configuration list for PBXNativeTarget "BOTBUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4798D5881BD9BF2000B29346 /* Debug */,

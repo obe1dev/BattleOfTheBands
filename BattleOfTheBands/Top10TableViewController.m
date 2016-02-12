@@ -152,45 +152,6 @@
 }
 
 
-#warning search is not workding
-
-//-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-//    
-//    NSString *searchString = searchController.searchBar.text;
-//    
-//    NSLog(@"searchString=%@", searchString);
-//    
-//    // Check if the user cancelled or deleted the search term so we can display the full list instead.
-//    
-//    NSMutableArray *searchResults = [[ProfileController sharedInstance].searchProfiles mutableCopy];
-//    
-//    //[searchString isEqualToString:@""] || searchString
-//    
-//    if (![searchString isEqualToString:@""]) {
-//        [self.filteredItems removeAllObjects];
-//        
-//        
-//        for (NSString *str in searchResults) {
-//            //crashes on this line vvvvv
-//            if ([str localizedCaseInsensitiveContainsString:searchString] == YES) {
-//                NSLog(@"str=%@", str);
-//                [self.filteredItems addObject:str];
-//            }
-//        }
-//        self.displayedItems = self.filteredItems;
-//    }
-//    else {
-//        
-//        self.displayedItems = [ProfileController sharedInstance].topTenBandProfiles;
-//        
-//    }
-//    
-//    [self.tableView reloadData];
-//    
-//}
-
-#warning this is a different attempt to accessing the search data
-
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     // update the filtered array based on the search text
     NSString *searchText = searchController.searchBar.text;

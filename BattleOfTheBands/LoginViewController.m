@@ -38,6 +38,8 @@
     
 }
 
+
+
 - (void)viewDidAppear:(BOOL)animated{
     self.emailLogin.text = nil;
     self.passwordLogin.text = nil;
