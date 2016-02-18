@@ -28,7 +28,7 @@
 }
 
 - (IBAction)buttonTapped:(id)sender {
-    [self.delegate photoCellButtonTapped];
+    [self.delegate photoCellButtonTapped: self.photoButton];
 }
 - (IBAction)uploadSong:(id)sender {
     [self.delegate uploadSongButtonTapped];

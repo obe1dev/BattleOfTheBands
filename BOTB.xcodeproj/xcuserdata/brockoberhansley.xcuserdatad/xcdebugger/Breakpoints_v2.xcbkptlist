@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "474664006.281717"
+            timestampString = "477460060.322331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "789"
-            endingLineNumber = "789"
+            startingLineNumber = "792"
+            endingLineNumber = "792"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,38 +106,6 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "-playAudioFile"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DetailTableViewController.m"
-            timestampString = "474629122.190119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-updateWithEntry:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DetailTableViewController.m"
-            timestampString = "474629122.190119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-updateWithEntry:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -307,22 +275,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DetailTableViewController.m"
-            timestampString = "474629122.190119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
             timestampString = "474664006.281717"
             startingColumnNumber = "9223372036854775807"
@@ -356,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "474664006.281717"
+            timestampString = "477460060.322331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "829"
-            endingLineNumber = "829"
+            startingLineNumber = "832"
+            endingLineNumber = "832"
             landmarkName = "-resetPasswordButtonTapped"
             landmarkType = "5">
          </BreakpointContent>
@@ -388,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "474664006.281717"
+            timestampString = "477460060.322331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "824"
-            endingLineNumber = "824"
+            startingLineNumber = "827"
+            endingLineNumber = "827"
             landmarkName = "-resetPasswordButtonTapped"
             landmarkType = "5">
          </BreakpointContent>
@@ -436,11 +388,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BattleOfTheBands/ProfileTableViewController.m"
-            timestampString = "475271167.585818"
+            timestampString = "477460060.322331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "879"
-            endingLineNumber = "879"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
             landmarkName = "-deleteProfileButtonTapped"
             landmarkType = "5">
          </BreakpointContent>

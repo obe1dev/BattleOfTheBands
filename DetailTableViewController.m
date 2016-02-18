@@ -16,9 +16,10 @@
 #import "S3Manager.h"
 #import "SongCell.h"
 #import "soundController.h"
+#import <MessageUI/MessageUI.h>
 
 
-@interface DetailTableViewController () <SongCellDelegate>
+@interface DetailTableViewController () <SongCellDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *bio;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSNumber *rank;
 @property (strong, nonatomic) NSData *bandImage;
 @property (strong, nonatomic) NSData *bandSong;
+@property (weak, nonatomic) NSString *uid;
 
 @property (nonatomic, strong) soundController *soundController;
 
@@ -57,6 +59,7 @@
     self.bio = profile.bioOfBand;
     self.website = profile.bandWebsite;
     self.vote = profile.vote;
+    self.uid = profile.uID;
     
     [S3Manager downloadImageWithName:profile.uID dataPath:profile.uID completion:^(NSData *data) {
         if (data) {
@@ -85,6 +88,8 @@
     }];
     
 }
+
+
 
 #pragma mark - Table view data source
 
@@ -229,5 +234,65 @@
     cell.playPauseButton.selected=NO;
     [self.soundController perviousAudioFile];
 }
+
+
+#pragma Report user
+
+- (IBAction)reportUser:(id)sender {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Report User" message:@"Plese report all ccopyright or inappropriate material" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:@"Report" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSString *emailTitle = [NSString stringWithFormat:@"Report User %@", self.uid];
+        NSArray *toRecipents = [NSArray arrayWithObject:@"obe1.dev@gmail.com"];
+        NSString *messageBody = [NSString stringWithFormat:@"please explain why you are reporting %@ \n %@. \n", self.name, self.uid];
+        
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+        [mc setSubject:emailTitle];
+        [mc setToRecipients:toRecipents];
+        [mc setMessageBody:messageBody isHTML:NO];
+        
+        [self presentViewController:mc animated:YES completion:nil];
+        
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:reportAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+
+
 
 @end

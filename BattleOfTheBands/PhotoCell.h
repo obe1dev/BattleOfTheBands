@@ -20,7 +20,7 @@
 
 @protocol PhotoCellDelegate <NSObject>
 
-- (void)photoCellButtonTapped;
+- (void)photoCellButtonTapped:(UIButton *)button;
 
 -(void)uploadSongButtonTapped;
 

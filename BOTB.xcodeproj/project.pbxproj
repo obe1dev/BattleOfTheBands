@@ -25,6 +25,7 @@
 		47889B651BF7A16200D55AFF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B641BF7A16200D55AFF /* libz.tbd */; };
 		47889B671BF7A1E700D55AFF /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B661BF7A1E700D55AFF /* AWSCognito.framework */; };
 		47889B6A1BF7A29300D55AFF /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47889B691BF7A29300D55AFF /* S3Manager.m */; };
+		478D6E591C76831000C4A383 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 478D6E581C76831000C4A383 /* MessageUI.framework */; };
 		4798D5591BD9BF1F00B29346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5581BD9BF1F00B29346 /* main.m */; };
 		4798D55C1BD9BF1F00B29346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D55B1BD9BF1F00B29346 /* AppDelegate.m */; };
 		4798D5641BD9BF1F00B29346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4798D5631BD9BF1F00B29346 /* Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		47889B661BF7A1E700D55AFF /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = "<group>"; };
 		47889B681BF7A29300D55AFF /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		47889B691BF7A29300D55AFF /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
+		478D6E581C76831000C4A383 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4798D5541BD9BF1F00B29346 /* BOTB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D5581BD9BF1F00B29346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4798D55A1BD9BF1F00B29346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				478D6E591C76831000C4A383 /* MessageUI.framework in Frameworks */,
 				47889B651BF7A16200D55AFF /* libz.tbd in Frameworks */,
 				47889B631BF7A15700D55AFF /* libsqlite3.tbd in Frameworks */,
 				4798D5B71BD9C4A600B29346 /* libicucore.tbd in Frameworks */,
@@ -232,11 +235,12 @@
 			children = (
 				47889B641BF7A16200D55AFF /* libz.tbd */,
 				47889B621BF7A15700D55AFF /* libsqlite3.tbd */,
-				47F5852F1BEBF412001453D9 /* StoreKit.framework */,
 				4798D5561BD9BF1F00B29346 /* BattleOfTheBands */,
 				4798D5701BD9BF1F00B29346 /* BattleOfTheBandsTests */,
 				4798D57B1BD9BF1F00B29346 /* BattleOfTheBandsUITests */,
 				4798D5551BD9BF1F00B29346 /* Products */,
+				478D6E581C76831000C4A383 /* MessageUI.framework */,
+				47F5852F1BEBF412001453D9 /* StoreKit.framework */,
 				47889B661BF7A1E700D55AFF /* AWSCognito.framework */,
 				47889B601BF7A13200D55AFF /* AWSCore.framework */,
 				47889B5E1BF7A11C00D55AFF /* AWSS3.framework */,

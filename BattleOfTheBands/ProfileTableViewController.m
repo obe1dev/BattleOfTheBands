@@ -730,7 +730,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 #pragma band photo
 
 
-- (void)photoCellButtonTapped {
+- (void)photoCellButtonTapped: (UIButton *)button {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     imagePicker.delegate = self;
@@ -747,6 +747,9 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
 
     }];
     [photoActionSheet addAction:cancelAction];
+    
+    photoActionSheet.popoverPresentationController.sourceView = self.view;
+    photoActionSheet.popoverPresentationController.sourceRect = button.frame;
     
     
     [self presentViewController:photoActionSheet animated:YES completion:nil];

@@ -1162,7 +1162,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Band Info" id="2fU-mT-jM2"/>
+                    <navigationItem key="navigationItem" title="Band Info" id="2fU-mT-jM2">
+                        <barButtonItem key="rightBarButtonItem" title="Report" id="ct0-Cv-pjU">
+                            <connections>
+                                <action selector="reportUser:" destination="fwB-9Q-EF1" id="aAu-TJ-7VW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTK-Nu-rXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
