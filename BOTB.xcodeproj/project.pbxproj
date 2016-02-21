@@ -26,6 +26,7 @@
 		47889B671BF7A1E700D55AFF /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47889B661BF7A1E700D55AFF /* AWSCognito.framework */; };
 		47889B6A1BF7A29300D55AFF /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47889B691BF7A29300D55AFF /* S3Manager.m */; };
 		478D6E591C76831000C4A383 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 478D6E581C76831000C4A383 /* MessageUI.framework */; };
+		478D6E5E1C7A471700C4A383 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478D6E5D1C7A471700C4A383 /* TermsViewController.m */; };
 		4798D5591BD9BF1F00B29346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D5581BD9BF1F00B29346 /* main.m */; };
 		4798D55C1BD9BF1F00B29346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4798D55B1BD9BF1F00B29346 /* AppDelegate.m */; };
 		4798D5641BD9BF1F00B29346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4798D5631BD9BF1F00B29346 /* Assets.xcassets */; };
@@ -108,6 +109,8 @@
 		47889B681BF7A29300D55AFF /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		47889B691BF7A29300D55AFF /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
 		478D6E581C76831000C4A383 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		478D6E5C1C7A471700C4A383 /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsViewController.h; path = ../TermsViewController.h; sourceTree = "<group>"; };
+		478D6E5D1C7A471700C4A383 /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsViewController.m; path = ../TermsViewController.m; sourceTree = "<group>"; };
 		4798D5541BD9BF1F00B29346 /* BOTB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4798D5581BD9BF1F00B29346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4798D55A1BD9BF1F00B29346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				47701EC71BE3070300FA3371 /* LoginViewController.m */,
 				47701ECD1BE5243300FA3371 /* SignUpViewController.h */,
 				47701ECE1BE5243300FA3371 /* SignUpViewController.m */,
+				478D6E5C1C7A471700C4A383 /* TermsViewController.h */,
+				478D6E5D1C7A471700C4A383 /* TermsViewController.m */,
 				4798D5941BD9BF2D00B29346 /* Top10TableViewController.h */,
 				4798D5951BD9BF2D00B29346 /* Top10TableViewController.m */,
 				4798D59F1BD9BF4500B29346 /* BattleViewController.h */,
@@ -451,6 +456,7 @@
 		4798D54C1BD9BF1F00B29346 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Brock Oberhansley";
 				TargetAttributes = {
@@ -551,6 +557,7 @@
 				4798D5A41BD9BF5800B29346 /* Profile.m in Sources */,
 				4798D59C1BD9BF2D00B29346 /* Top10TableViewCell.m in Sources */,
 				4798D5C81BE15F7200B29346 /* ProfileTableViewController.m in Sources */,
+				478D6E5E1C7A471700C4A383 /* TermsViewController.m in Sources */,
 				47701ED51BE86C9000FA3371 /* FollowingTitleCell.m in Sources */,
 				4798D5CE1BE180C000B29346 /* PhotoCell.m in Sources */,
 				4798D5C11BD9DB5100B29346 /* SongsController.m in Sources */,
@@ -678,6 +685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -689,6 +697,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brockoberhansley.BattleOfTheBands;
 				PRODUCT_NAME = BOTB;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -696,6 +705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

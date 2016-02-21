@@ -118,7 +118,7 @@
                                     <action selector="SignUpBand:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="l5K-7W-BKg"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F06-wW-iBh">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F06-wW-iBh" userLabel="TextFields Stack View">
                                 <rect key="frame" x="0.0" y="273" width="600" height="56"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ue8-V5-6gB" userLabel="Sign Up Email">
@@ -139,50 +139,73 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bje-38-GeR">
-                                <rect key="frame" x="32" y="348" width="38" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backToLogIn:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="QbE-mZ-uug"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-4o-Eb3">
-                                <rect key="frame" x="509" y="348" width="59" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Forgot?">
-                                    <color key="titleColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="forgotPassword:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="MBk-xl-Gbr"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="BbX-2I-1y1" userLabel="Buttons Stack View">
+                                <rect key="frame" x="20" y="348" width="560" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bje-38-GeR">
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backToLogIn:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="X2M-82-ciK"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7HV-vl-qku" userLabel="Terms Stack View">
+                                        <rect key="frame" x="187.5" y="0.0" width="175" height="33"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Signing up you agree to our" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-kV-KM1">
+                                                <rect key="frame" x="0.0" y="0.0" width="122" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8t0-Wl-4xl">
+                                                <rect key="frame" x="122" y="0.0" width="53" height="33"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="8"/>
+                                                <state key="normal" title=" Term of Use">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="b04-Dg-JbC" kind="presentation" identifier="termsOfUse" id="4qA-31-Rws"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-4o-Eb3">
+                                        <rect key="frame" x="501" y="0.0" width="59" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Forgot?">
+                                            <color key="titleColor" red="0.98431372549019602" green="0.0" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forgotPassword:" destination="2vs-Fz-hSo" eventType="touchUpInside" id="MBk-xl-Gbr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="zrb-GQ-ugi" secondAttribute="trailing" constant="-20" id="0Kl-XX-GEW"/>
-                            <constraint firstItem="ya8-4o-Eb3" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="19" id="1XD-HH-zmV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ya8-4o-Eb3" secondAttribute="trailing" constant="12" id="4Ns-Oa-fYz"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="70j-Ch-XYU"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="71" id="9IG-T5-pBF"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="centerX" secondItem="P1c-T2-huh" secondAttribute="centerX" id="CRs-Cn-eHR"/>
+                            <constraint firstItem="BbX-2I-1y1" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" id="D40-Yh-kBd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nJD-pe-X0Q" secondAttribute="trailing" constant="-20" id="M8j-hn-qbI"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="top" secondItem="nJD-pe-X0Q" secondAttribute="bottom" id="Nh5-jj-brX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BbX-2I-1y1" secondAttribute="trailing" id="Pdh-rK-8er"/>
                             <constraint firstItem="F06-wW-iBh" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="WIq-9K-bxj"/>
-                            <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="bje-38-GeR" secondAttribute="bottom" constant="19" id="Y4x-9k-2WJ"/>
                             <constraint firstItem="U1p-8P-vZq" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="ZKY-Jn-MTP"/>
                             <constraint firstItem="zrb-GQ-ugi" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="dKH-uh-goJ"/>
-                            <constraint firstItem="nJD-pe-X0Q" firstAttribute="top" secondItem="ya8-4o-Eb3" secondAttribute="bottom" constant="19" id="hg3-Ko-myf"/>
                             <constraint firstItem="U1p-8P-vZq" firstAttribute="top" secondItem="P1c-T2-huh" secondAttribute="topMargin" id="jxQ-m8-kix"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="zrb-GQ-ugi" secondAttribute="bottom" id="kEM-WS-CAT"/>
                             <constraint firstItem="MGG-Pf-3k3" firstAttribute="top" secondItem="U1p-8P-vZq" secondAttribute="bottom" id="kKE-du-LVq"/>
-                            <constraint firstItem="bje-38-GeR" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="12" id="mSP-qV-zML"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U1p-8P-vZq" secondAttribute="trailing" constant="-20" id="pRv-Dc-tWC"/>
+                            <constraint firstItem="BbX-2I-1y1" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="19" id="q1Z-d8-og3"/>
                             <constraint firstItem="nJD-pe-X0Q" firstAttribute="leading" secondItem="P1c-T2-huh" secondAttribute="leadingMargin" constant="-20" id="rMX-bA-EKS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F06-wW-iBh" secondAttribute="trailing" constant="-20" id="vCu-bd-sVX"/>
-                            <constraint firstItem="bje-38-GeR" firstAttribute="top" secondItem="F06-wW-iBh" secondAttribute="bottom" constant="19" id="zIe-gt-qW3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -193,7 +216,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="It9-Rt-bwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="1080"/>
+            <point key="canvasLocation" x="202" y="1114"/>
+        </scene>
+        <!--Terms Of Use-->
+        <scene sceneID="Piz-YX-JF2">
+            <objects>
+                <viewController id="t0u-HX-8VR" customClass="TermsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dvy-Iy-PN0"/>
+                        <viewControllerLayoutGuide type="bottom" id="PNo-oC-crc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wYc-82-NLe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf4-aR-pdJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">brock Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PNo-oC-crc" firstAttribute="top" secondItem="Pf4-aR-pdJ" secondAttribute="bottom" id="8rx-K9-FDF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pf4-aR-pdJ" secondAttribute="trailing" constant="-20" id="Wqy-j6-2eh"/>
+                            <constraint firstItem="Pf4-aR-pdJ" firstAttribute="leading" secondItem="wYc-82-NLe" secondAttribute="leadingMargin" constant="-20" id="Xih-F8-M27"/>
+                            <constraint firstItem="Pf4-aR-pdJ" firstAttribute="top" secondItem="dvy-Iy-PN0" secondAttribute="bottom" constant="-64" id="y6b-dr-bys"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Terms Of Use" id="BYY-Zd-C42">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="DVd-XZ-tOw">
+                            <connections>
+                                <action selector="backToLogin:" destination="t0u-HX-8VR" id="g0k-bO-Z5E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OYh-yH-mNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="202" y="2157"/>
         </scene>
         <!--Battle-->
         <scene sceneID="OG5-rC-jOQ">
@@ -1318,6 +1381,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRf-eM-NWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1581" y="738"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MPk-as-Ssg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b04-Dg-JbC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hCh-66-zkj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="t0u-HX-8VR" kind="relationship" relationship="rootViewController" id="ZJF-pT-Xgo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eF2-io-xlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-488" y="2157"/>
         </scene>
     </scenes>
     <resources>
