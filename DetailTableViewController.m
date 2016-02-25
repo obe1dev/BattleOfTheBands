@@ -240,14 +240,14 @@
 
 - (IBAction)reportUser:(id)sender {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Report User" message:@"Plese report all ccopyright or inappropriate material" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Report User" message:@"Plese report all copyright or inappropriate material" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     UIAlertAction *reportAction = [UIAlertAction actionWithTitle:@"Report" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         
         NSString *emailTitle = [NSString stringWithFormat:@"Report User %@", self.uid];
-        NSArray *toRecipents = [NSArray arrayWithObject:@"obe1.dev@gmail.com"];
+        NSArray *toRecipents = [NSArray arrayWithObject:@"battleofthebands.dev@gmail.com"];
         NSString *messageBody = [NSString stringWithFormat:@"please explain why you are reporting %@ \n %@. \n", self.name, self.uid];
         
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
