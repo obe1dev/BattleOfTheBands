@@ -14,7 +14,7 @@
 #import "FireBaseController.h"
 
 
-@implementation S3Manager
+@implementation S3Manager 
 
 
 + (void) uploadImage:(UIImage *)image withName:(NSString *)name completion:(UploadDataBlock)block{
@@ -95,6 +95,12 @@
     [self downLoadData:@"battleofthebands-songs" WithName:name dataPath:savingDataPath completion:block];
 }
 
++ (void) cancelDownload {
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    [transferManager cancelAll];
+}
+
+
 
 + (void) downLoadData:(NSString *)bucketPath WithName:(NSString *)dataName dataPath:(NSString *)savingDataPath completion:(DownloadDataBlock)block {
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
@@ -132,6 +138,9 @@
                                                                }
                                                                
                                                                if (task.result) {
+                                                                   
+                                                                
+                                                                   
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
 
                                                                    AWSS3TransferManagerDownloadOutput *downloadOutput = task.result;
@@ -140,6 +149,8 @@
                                                                    //downloadOutput.body
                                                                    //File downloaded successfully.
                                                                    NSLog(@"%@",downloadOutput);
+                                                                   
+                                                                       
                                                                    });
                                                                }
                                                                return nil;
@@ -169,7 +180,7 @@
             // Completed logic here
             if (task.result) {
                 
-                NSLog(@"deleting %@ is complete!", dataName);
+                NSLog(@"deleting %@ was complete!", dataName);
                 
             }
         }

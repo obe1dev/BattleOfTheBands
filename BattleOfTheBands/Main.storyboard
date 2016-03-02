@@ -1304,6 +1304,9 @@ Dated: February 21, 2016</mutableString>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="reportButton" destination="ct0-Cv-pjU" id="gFw-mc-79j"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTK-Nu-rXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

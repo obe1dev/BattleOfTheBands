@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) soundController *soundController;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *reportButton;
 
 @end
 
@@ -262,6 +263,12 @@
     
     [alertController addAction:cancelAction];
     [alertController addAction:reportAction];
+    [alertController setModalPresentationStyle:UIModalPresentationPopover];
+    
+    alertController.popoverPresentationController.sourceView = self.view;
+    alertController.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, alertController.view.frame.size.width, alertController.view.frame.size.height);
+    //alertController.popoverPresentationController.sourceRect = self.view.frame.;
+    
     
     [self presentViewController:alertController animated:YES completion:nil];
     

@@ -780,7 +780,7 @@ typedef NS_ENUM(NSUInteger, ProfileRow) {
     
     // compress image
     
-    self.bandImage = UIImageJPEGRepresentation(scaledImage, 0.6);
+    self.bandImage = UIImageJPEGRepresentation(scaledImage, 0.5);
 
     UIImage *compressedImage = [UIImage imageWithData:self.bandImage];
     

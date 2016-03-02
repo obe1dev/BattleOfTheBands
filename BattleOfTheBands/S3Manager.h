@@ -29,4 +29,6 @@ typedef void (^UploadDataBlock)(BOOL success);
 
 + (void) deleteSong:(NSString *)name completion:(DownloadDataBlock)block;
 
++ (void) cancelDownload;
+
 @end

@@ -259,6 +259,8 @@
 
 #warning if  next button pressed repeatedly before band info loads, it will play the the previously loaded image and song.
     
+    [S3Manager cancelDownload];
+    
     self.completeImage = [UIImage imageNamed:@"complete"];
     self.incompleteImage = [UIImage imageNamed:@"incomplete"];
     
